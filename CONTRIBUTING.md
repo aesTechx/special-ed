@@ -188,15 +188,22 @@ no problem getting your changes merged in.
   ```
   $ git remote add upstream https://USERNAME@github.com/Green-X/green-x.git
   ```
-  4. when working on a feature, bugfix, styling or anything, issue the following command (follow the naming style in #General Workflow and #### Commit Message Guidelines
+  4. when working on a feature, bugfix, styling or anything, issue the following command (follow the naming style in #General Workflow and #### Commit Message Guidelines 
   in your commits :
     
     ```bash
-      $ git checkout -b feat/add-button
+      $ git checkout -b feat-add-button#10
       # Edit some code
-      $ git commit -a -m "(feat) Add first draft of add-button"
+      $ git commit -a -m "Add first draft of add-button"
     ```
-  
+    upon closing an issue, the last commit should include the "closes" or "fixes" (etc) keyword with the issue number:
+    
+    ```bash
+      $ git commit -m "closes #10"
+    ```
+    
+    Then do the same in naming the title of your pull request (PR)
+    
   6. Go to your master branch and rewire your branch on top of master:
 
     ```bash
