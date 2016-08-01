@@ -204,12 +204,14 @@ no problem getting your changes merged in.
     
     Then do the same in naming the title of your pull request (PR)
     
+    Make sure all your tests pass and the code is well commented
+    
   6. Go to your master branch and rewire your branch on top of master:
 
     ```bash
     $ git checkout master
     $ git pull --rebase upstream master
-    $ git checkout feat/add-button
+    $ git checkout feat-add-button#10
     $ git rebase master
     ```
 
