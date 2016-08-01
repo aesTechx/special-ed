@@ -1,0 +1,38 @@
+{
+  "name": "special-ed",
+  "version": "0.0.1",
+  "description": "application to support people with autism and learning disorders improve their abilities and track their learning progress",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aesTechx/special-ed.git"
+  },
+  "keywords": [
+    "Autism",
+    "Special",
+    "Education",
+    "Dyslexia",
+    "Learning",
+    "Children",
+    "Teacher",
+    "NGO",
+    "Rehabilitation",
+    "Cognition",
+    "Brain",
+    "Mind",
+    "Health",
+    "Improve",
+    "Enhance",
+    "Games",
+    "Stats"
+  ],
+  "author": "aesTechx",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/aesTechx/special-ed/issues"
+  },
+  "homepage": "https://github.com/aesTechx/special-ed#readme"
+}
