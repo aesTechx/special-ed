@@ -1,0 +1,43 @@
+{
+  "name": "special-ed-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aesTechx/special-ed.git"
+  },
+  "authors": "aesTechx",
+  "license": "UNLICENCED",
+  "bugs": {
+    "url": "https://github.com/aesTechx/special-ed/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "socket.io": "^1.4.5",
+    "underscore": "^1.8.3",
+    "sqlite3": "~3.1.0",
+    "forever": "^0.10.11",
+    "cors": "^2.7.1",
+    "jwt-simple": "^0.2.0",
+    "chai": "~1.8.0",
+    "mocha": "2.0.1"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon --ignore node_modules server.js",
+    "test": "istanbul cover -x '*Spec.js' node_modules/.bin/_mocha -- -R spec ./spec"
+  },
+  "devDependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "1.0.8",
+    "body-parser": "^1.5.2",
+    "pre-commit": "^1.1.2",
+    "request": "^2.69.0",
+    "gulp": "^3.8.5",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-shell": "^0.2.7",
+    "istanbul": "^0.4.4"
+  }
+}
