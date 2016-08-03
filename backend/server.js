@@ -2,8 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-//Database require
-var db = require('./config/dbconfig.js');
+//TODO Database require
 
 
 var PORT = process.env.port || 8080;
