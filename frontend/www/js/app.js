@@ -27,7 +27,7 @@ angular.module('starter', ['ionic'])
 
 .config(function($stateProvider) {
    $stateProvider
-   .state('index', { url: '/index', templateUrl: './index.html'})
+   .state('index', { url: '/index', templateUrl: '../index.html'})
    .state('form1', {url: '/form1', templateUrl: '../templates/form1.html'});
 })
 
