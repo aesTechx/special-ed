@@ -1,0 +1,47 @@
+<ion-view view-title="Form1">
+    <h1>Form1</h1>
+    <div class="bar bar-header">
+  		<h1 class="title">تقييم حالة الطفل</h1>
+	</div>
+	<div class="bar bar-subheader" ng-controller="Login">
+  		<h2 class="title">يرجى الاختيار مما يلي</h2>
+		<!-- <p><a href="#/main">Home</a></p> -->
+		<button class="button">Home</button>
+	
+	</div>
+
+	<ion-content ng-controller="ExampleController" class="padding has-subheader">
+	
+
+            <form name="social" novalidate ng-submit="sendForm(formData)">
+            <div class="list">
+              <label class="item item-input item-calm">
+                  <span class="input-label"> العلاقات الاجتماعية مع الناس:</span>
+              </label>
+
+                <ion-list>
+                <ion-radio ng-model="formData.social.socialA" ng-value="'A'">ليس هناك ثمة دليل يبرهن على وجود صعوبة أو اضطراب في علاقة الطفل بالآخرين. فسلوك الطفل يتلاءم مع سلوكيات ذويه المشتركين معه في نفس العمر ، وقد يخامر الطفل شعوراً بالخجل ، والارتباك أو الضيق إذا تم إخباره بما يجب عليه أن يفعل لكن هذا الشعور لايتعدى المدى الطبيعي.</ion-radio>
+                
+                <ion-radio ng-model="formData.social.socialB" ng-value="'B'" class="padding-right">اضطراب بسيط في العلاقات الاجتماعية . قد يتجنب الطفل النظر إلى عين الشخص الكبير أو يساوره القلق و الاضطراب إذا فرض عليه التفاعل فرضاً ، ومن ثم يغالى في شعوره بالخجل ولا يستجيب إلى الكبار بنفس درجة الاستجابة التي تصدر عن ذويه ، وقد يظهر التصاقاً بوالديه بعض الشئ بالمقارنة بأقرانه في نفس العمر.</ion-radio>
+
+                <ion-radio ng-model="formData.social.socialC" ng-value="'C'" class="padding-right">اضطراب متوسط في العلاقات الاجتماعية ، ينتاب الطفل شعورا بالوحدة ويبدى عدم اكتراث بالكبار في بعض الأحيان . وتستلزم هذه الحالة الإصرار على القيام بمحاولات دءوبة لجذب انتباه الطفل من حين إلى آخر فالطفل لا يبادر بالتواصل إلا بقدر ضئيل لا يكاد يذكر</ion-radio>
+                <ion-radio ng-model="formData.social.socialD" ng-value="'D'" class="padding-right">اضطراب شديد في العلاقات الاجتماعية . يستمر الطفل في انعزاله عن الناس وعدم اكتراثه بما يفعله الكبار ، و أبدا لا يبادر باى محاولة للتواصل الإ أن المحاولات الدءوبة فقط قد تثمر في جذب انتباه الطفل بعض الشئ</ion-radio>
+                </ion-list>
+
+              <label class="item item-input">
+                <span class="input-label">الملاحظات:</span>
+                <input type="text" name="social" ng-model="formData.social.socialNote" required>
+              </label>             
+
+            </div>
+            <div class="padding">
+                <button type="submit" class="button button-large button-assertive">Submit</button>
+            </div>
+            </form>
+
+
+	</ion-content>
+
+  
+</ion-view>
+
