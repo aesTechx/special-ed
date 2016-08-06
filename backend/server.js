@@ -6,31 +6,31 @@ var models 		= require('./app/models');
 
 var PORT = process.env.port || 8080;
 
-require ('./config/middleware.js');
-require ('./config/routes.js');
-require ('./config/socket.handler.js');
+require ('./config/middleware.js')(app, express);
+require ('./config/routes.js')(app, express);
+require ('./config/socket.handler.js')(app, express);
 
 models.sequelize.sync().then(function () {
-	server.listen(PORT, function serverListen() {
-		console.log('Listening on port' + PORT);
-	})
-})
+	server.listen( PORT, function serverListen() {
+		console.log( 'Listening on port' + PORT);
+	});
+});
 
 //On crash
-app.on('uncaughtException', function(){
+app.on ( 'uncaughtException', function () {
 	//Close connection
 	server.close();
-})
+});
 
 // On kill
-app.on('SIGTERM', function(){
+app.on('SIGTERM', function() {
 	server.close();
-})
+});
 
 //On exit
-app.on('exit', function(){
+app.on('exit', function() {
 	server.close();
-})
+});
 
 module.exports = app;
 
