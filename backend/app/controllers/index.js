@@ -1,6 +1,13 @@
 var db = require('../models');
 
+
 module.exports = {
+  _getAll: function(field){
+    db[field].findAll()
+      .then(function(results){
+      return results;
+    })
+  },
 	Center: {
 		getAllCenter: function (req, res) {
 			db.Center.findAll()
@@ -47,7 +54,6 @@ module.exports = {
 				res.json(teachers);
 			});
 		},
-
 		addTeacher: function(req, res) {
 			db.Teacher.create({
 				username: req.body.username,
