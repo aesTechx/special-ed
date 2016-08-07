@@ -7,6 +7,7 @@ var models 		= require('./app/models');
 
 var PORT = process.env.PORT || 8000;
 
+
 require ('./config/middleware.js')(app, express);
 require ('./config/routes.js')(app, express);
 require ('./config/socket.handler.js');
@@ -28,6 +29,7 @@ models.sequelize.sync().then(function () {
 		console.log('Listening on port ' + PORT);
 	});
  });
+
 
 //On crash
 app.on ( 'uncaughtException', function () {
