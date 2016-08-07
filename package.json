@@ -48,6 +48,6 @@
     "gulp-nodemon": "^1.0.4",
     "gulp-shell": "^0.2.7",
     "isparta": "^4.0.0",
-    "istanbul": "^0.4.4",
+    "istanbul": "^0.4.4"
   }
 }
