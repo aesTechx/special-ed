@@ -4,7 +4,7 @@ var server 		= require('http').createServer(app);
 var io 			= require('socket.io')(server);
 var models 		= require('./app/models');
 
-var PORT = process.env.port || 8080;
+var PORT = process.env.port || 8000;
 
 require ('./config/middleware.js')(app, express);
 require ('./config/routes.js')(app, express);
@@ -15,6 +15,7 @@ models.sequelize.sync().then(function () {
 		console.log( 'Listening on port' + PORT);
 	});
 });
+
 
 //On crash
 app.on ( 'uncaughtException', function () {
