@@ -9,5 +9,11 @@ describe('server()', function () {
 	it('exists', function () {
 		expect(server).to.be.a('function');
 	});
+	it('does something', function () {
+		expect(true).to.equal(false);
+	});
+	it('does something else', function () {
+		expect(true).to.equal(false);
+	});
 });
 
