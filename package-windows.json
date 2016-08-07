@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/aesTechx/special-ed.git"
   },
-  "authors": "aesTechx",
+  "author": "aesTechx",
   "license": "UNLICENCED",
   "bugs": {
     "url": "https://github.com/aesTechx/special-ed/issues"
@@ -32,7 +32,7 @@
     "Stats"
   ],
   "scripts": {
-    "start": "node  server.js",
+    "start": "./node_modules/.bin/nodemon --ignore node_modules  server.js",
     "test": "istanbul cover -x '*Spec.js' node_modules/mocha/bin/_mocha -- -R spec ./spec/server/*.js",
     "postinstall": "bower install",
     "lint": "eslint ./"
@@ -56,10 +56,6 @@
   "devDependencies": {
     "chai": "~1.8.0",
     "chai-http": "^3.0.0",
-    "eslint": "^3.2.2",
-    "eslint-config-standard": "^5.3.5",
-    "eslint-plugin-promise": "^2.0.1",
-    "eslint-plugin-standard": "^2.0.0",
     "gulp": "^3.8.5",
     "gulp-nodemon": "^1.0.4",
     "gulp-shell": "^0.2.7",
@@ -67,7 +63,9 @@
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
-    "mocha": "2.0.1",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.4",
+    "mocha": "2.0.1"
     "isparta": "^4.0.0",
     "istanbul": "^0.4.4",
     "jasmine-core": "^2.4.1",
