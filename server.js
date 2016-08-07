@@ -29,7 +29,6 @@ models.sequelize.sync().then(function () {
 	});
  });
 
-
 //On crash
 app.on ( 'uncaughtException', function () {
 	//Close connection
