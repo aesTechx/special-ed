@@ -7,6 +7,59 @@
     "type": "git",
     "url": "git+https://github.com/aesTechx/special-ed.git"
   },
+<<<<<<< 26ed472822280a75918427f676e747ff9d636929
+  "author": "aesTechx",
+=======
+<<<<<<< 2f5804f4f95cfe080649febd64e25f70d3d87142
+  "authors": "aesTechx",
+>>>>>>> Recreate repo
+  "license": "UNLICENCED",
+  "bugs": {
+    "url": "https://github.com/aesTechx/special-ed/issues"
+  },
+  "keywords": [
+    "Autism",
+    "Special",
+    "Education",
+    "Dyslexia",
+    "Learning",
+    "Children",
+    "Teacher",
+    "NGO",
+    "Rehabilitation",
+    "Cognition",
+    "Brain",
+    "Mind",
+    "Health",
+    "Improve",
+    "Enhance",
+    "Games",
+    "Stats"
+  ],
+  "scripts": {
+    "start": "node  server.js",
+    "test": "istanbul cover -x '*Spec.js' node_modules/mocha/bin/_mocha -- -R spec ./spec/server/*.js",
+    "postinstall": "bower install",
+    "lint": "eslint ./"
+  },
+  "dependencies": {
+    "bower": "^1.3.2",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "socket.io": "^1.4.5",
+    "underscore": "^1.8.3",
+    "sqlite3": "~3.1.0",
+    "cors": "^2.7.1",
+    "bluebird": "1.0.8",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.5.2",
+    "jwt-simple": "^0.2.0",
+    "request": "^2.69.0",  
+    "sequelize-cli": "^2.4.0",
+    "sequelize": "^2.0.3-rc1",
+    "forever": "^0.10.11"
+  },
+=======
   "author": "aesTechx",
   "license": "UNLICENCED",
   "bugs": {
@@ -32,13 +85,11 @@
     "Stats"
   ],
   "scripts": {
-    "start": "node server.js",
-    "test": "istanbul cover -x '*Spec.js' node_modules/mocha/bin/_mocha -- -R spec ./spec/server/*.js",
-    "postinstall": "bower install",
+    "start": "./node_modules/.bin/nodemon --ignore node_modules server.js",
+    "test": "istanbul cover -x '*Spec.js' node_modules/mocha/bin/_mocha -- -R spec ./spec",
     "lint": "eslint ./"
   },
   "dependencies": {
-    "bower": "^1.3.2",
     "express": "^4.13.4",
     "morgan": "^1.7.0",
     "socket.io": "^1.4.5",
@@ -49,26 +100,29 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.5.2",
     "jwt-simple": "^0.2.0",
-    "request": "^2.69.0",
+    "request": "^2.69.0",  
     "sequelize-cli": "^2.4.0",
     "sequelize": "^2.0.3-rc1",
     "forever": "^0.10.11"
   },
+>>>>>>> Recreate repo
   "devDependencies": {
     "chai": "~1.8.0",
-    "chai-http": "^3.0.0",
+    "mocha": "2.0.1",
     "eslint": "^3.2.2",
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
-    "forever": "^0.10.11",
     "gulp": "^3.8.5",
-    "gulp-eslint": "^3.0.1",
-    "gulp-istanbul": "^1.0.0",
-    "gulp-istanbul-enforcer": "^1.0.3",
-    "gulp-mocha": "^3.0.0",
     "gulp-nodemon": "^1.0.4",
     "gulp-shell": "^0.2.7",
+    "eslint": "^3.2.2",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.4",
+    "mocha": "2.0.1"
     "isparta": "^4.0.0",
     "istanbul": "^0.4.4",
     "jasmine-core": "^2.4.1",
@@ -82,4 +136,12 @@
     "phantomjs-polyfill-object-assign": "0.0.2",
     "run-sequence": "^1.2.2"
   }
+<<<<<<< 26ed472822280a75918427f676e747ff9d636929
 }
+=======
+<<<<<<< 2f5804f4f95cfe080649febd64e25f70d3d87142
+}
+=======
+}
+>>>>>>> Recreate repo
+>>>>>>> Recreate repo
