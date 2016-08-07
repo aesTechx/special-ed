@@ -1,40 +1,51 @@
 var db = require('../models');
+<<<<<<< 2bea16ce30bb2406a7626eb204c85f736a33f875
+=======
+
+
+>>>>>>> Server to serve client
 module.exports = {
+  _getAll: function(field){
+    db[field].findAll()
+      .then(function(results){
+      return results;
+    })
+  },
 	Center: {
 		getAllCenter: function (req, res) {
 			db.Center.findAll()
 			.then(function(centers) {
-				res.status(200);
-				res.send(centers);
+				res.json(centers);
 			});
 		},
 		addCenter: function (req, res) {
-			// findOrCreate returns multiple resutls in an array
-			// use spread to assign the array to function arguments
+		// findOrCreate returns multiple resutls in an array
+		// use spread to assign the array to function arguments
 			db.Center.create({
-					centername: req.body.centername,
-					username: req.body.fullname,
-					password: req.body.password
-				}).then(function(center) {
-					res.sendStatus(201);
-				});
+				centername: req.body.centername,
+				username: req.body.fullname,
+				password: req.body.password
+			})
+			.then(function(message) {
+				res.sendStatus(201);
+			});
 		}
 	},
-	Student:{
-		getAllStudent:function(req,res){
+	Student: {
+		getAllStudent: function(req, res) {
 			db.Student.findAll()
 			.then(function(students) {
 				res.json(students);
 			});
 		},
-		addStudent:function(req,res){
+		addStudent: function(req, res) {
 			db.Student.create({
 				username: req.body.username,
 				fullname: req.body.fullname,
 				skillsResult: req.body.skillsResult,
 				birthDate: req.body.birthDate
 			})
-			.then(function(){
+			.then(function() {
 				res.sendStatus(201);
 			});
 		}
@@ -90,4 +101,4 @@ module.exports = {
 			});
 		}
 	}
-}
+};

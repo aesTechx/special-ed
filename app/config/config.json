@@ -11,4 +11,8 @@
 	    "dialect": "sqlite",
 	    "database": "db/production.sqlite"
 	}
+<<<<<<< e576a650345715cb170004bc0e56449a8df7ea98
 }
+=======
+}
+>>>>>>> Server to serve client
