@@ -1,6 +1,7 @@
 {
 	"development": {
 		"dialect": "sqlite",
+<<<<<<< f5b0a777fe8562b8b9b0fe6dd1431603c34619f0
 		"storage": "./app/db.development.sqlite"
 	},
 	"test": {
@@ -14,5 +15,24 @@
 <<<<<<< e576a650345715cb170004bc0e56449a8df7ea98
 }
 =======
+}
+>>>>>>> Server to serve client
+=======
+		"storage": "./app/db/db.development.sqlite"
+	},
+	"test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
 }
 >>>>>>> Server to serve client
