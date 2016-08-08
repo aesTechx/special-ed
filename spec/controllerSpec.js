@@ -71,7 +71,7 @@ describe('index()', function () {
 			.post('api/student/addstudent')
 			.send({username:'ali',password:'ali',fullname:'ali',skillsResult:1,birthDate:25/11/2015})
 			.end(function(err,res){
-				res.should.have.status(200);
+				res.should.have.status(201);
 				res.should.be.json;
 				res.body.should.be.a('array');
 				res.body.should.have.property('SUCCESS');
@@ -114,7 +114,7 @@ describe('index()', function () {
 			.post('/api/teacher/addTeacher')
 			.send({username:'teacher',password:'teacher',fullname:'teacher',category:'speech'})
 			.end(function(err,res){
-				res.should.have.status(200);
+				res.should.have.status(201);
 				res.body.should.have.property('SUCCESS');
 				res.should.be.json;
 				res.body.should.be.a('array');
