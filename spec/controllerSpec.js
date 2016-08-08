@@ -7,22 +7,12 @@ var chaihttp=require('chai-http');
 chai.use(chaihttp);
 var models = require(path.join(__dirname, '..', './app/models'));
 
-// describe('allmodels', function (){
-	// beforeEach(function() {
-	// 	console.log("beforeEach Called alkdkasjdlkasjldkjaslkjdlkasjlkdjlaksj")
-	// 	var Center = models.Center
-	// 	Center.destroy({where:{}}).then(function(){});
-	// 	var Student = models.Student
-	// 	Student.destroy({where:{}}).then(function(){});
-	// 	var Teacher = models.Teacher
-	// 	Teacher.destroy({where:{}}).then(function(){});
-	// })
 	describe('centerGetPost()', function () {
 		'use strict';
 		
 		it('post a new center to DB',function(){
 		 chai.request(app)
-				.post('/api/center/addCenter')
+				.post('http://127.0.0.1:8000/api/center/addCenter')
 				.send({centername:'eshraq',password:'eshraq',username:'eshraq'})
 				.end(function(err,res){
 					res.should.have.status(201);
@@ -41,7 +31,7 @@ var models = require(path.join(__dirname, '..', './app/models'));
 		});
 		it('request all centers from the DB',function(done){
 			chai.request(app)
-			.get('/api/centers')
+			.get('http://127.0.0.1:8000/api/centers')
 			.end(function(err,res){
 				res.should.have.status(200);
 				// res.body.should.be.json;
@@ -62,7 +52,7 @@ var models = require(path.join(__dirname, '..', './app/models'));
 		'use strict';
 		it('post a new student to DB',function(){
 			chai.request(app)
-			.post('api/student/addstudent')
+			.post('http://127.0.0.1:8000/api/student/addstudent')
 			.send({username:'ali',password:'ali',fullname:'ali',skillsResult:1,birthDate:25/11/2015})
 			.end(function(err,res){
 				res.should.have.status(201);
@@ -85,7 +75,7 @@ var models = require(path.join(__dirname, '..', './app/models'));
 		});
 		it('request all students from the DB',function(){
 			chai.request(app)
-			.get('/api/students')
+			.get('http://127.0.0.1:8000/api/students')
 			.end(function(err,res){
 				res.should.have.status(200);
 				res.should.be.json;
@@ -105,7 +95,7 @@ var models = require(path.join(__dirname, '..', './app/models'));
 		'use strict';
 	it('post a new teacher to DB',function(){
 		chai.request(app)
-			.post('/api/teacher/addTeacher')
+			.post('http://127.0.0.1:8000/api/teacher/addTeacher')
 			.send({username:'teacher',password:'teacher',fullname:'teacher',category:'speech'})
 			.end(function(err,res){
 				res.should.have.status(201);
@@ -127,7 +117,7 @@ var models = require(path.join(__dirname, '..', './app/models'));
 	});
 	it('request all teachers from the DB',function(){
 		chai.request(app)
-			.get('/api/teachers')
+			.get('http://127.0.0.1:8000/api/teachers')
 			.end(function(err,res){
 				res.should.have.status(200);
 				res.should.be.json;
@@ -145,7 +135,7 @@ var models = require(path.join(__dirname, '..', './app/models'));
 		'use strict';
 		it('request all games from the DB',function(){
 		chai.request(app)
-			.get('/api/games')
+			.get('http://127.0.0.1:8000/api/games')
 			.end(function(err,res){
 				res.should.have.status(200);
 				res.should.be.json;
@@ -154,4 +144,3 @@ var models = require(path.join(__dirname, '..', './app/models'));
 			});
 		});
 	});
-// })
