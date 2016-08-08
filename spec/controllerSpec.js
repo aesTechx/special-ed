@@ -68,7 +68,7 @@ describe('index()', function () {
 		'use strict';
 		it('post a new student to DB',function(){
 			chai.request(app)
-			.post('api/student/addstudent')
+			.post('http://127.0.0.1:8000/api/student/addstudent')
 			.send({username:'ali',password:'ali',fullname:'ali',skillsResult:1,birthDate:25/11/2015})
 			.end(function(err,res){
 				res.should.have.status(200);
@@ -91,7 +91,7 @@ describe('index()', function () {
 		});
 		it('request all students from the DB',function(){
 			chai.request(app)
-			.get('/api/students')
+			.get('http://127.0.0.1:8000/api/students')
 			.end(function(err,res){
 				res.should.have.status(200);
 				res.should.be.json;
@@ -111,7 +111,7 @@ describe('index()', function () {
 		'use strict';
 	it('post a new teacher to DB',function(){
 		chai.request(app)
-			.post('/api/teacher/addTeacher')
+			.post('http://127.0.0.1:8000/api/teacher/addTeacher')
 			.send({username:'teacher',password:'teacher',fullname:'teacher',category:'speech'})
 			.end(function(err,res){
 				res.should.have.status(200);
@@ -133,7 +133,7 @@ describe('index()', function () {
 	});
 	it('request all teachers from the DB',function(){
 		chai.request(app)
-			.get('/api/teachers')
+			.get('http://127.0.0.1:8000/api/teachers')
 			.end(function(err,res){
 				res.should.have.status(200);
 				res.should.be.json;
@@ -151,7 +151,7 @@ describe('index()', function () {
 		'use strict';
 		it('request all games from the DB',function(){
 		chai.request(app)
-			.get('/api/games')
+			.get('http://127.0.0.1:8000/api/games')
 			.end(function(err,res){
 				res.should.have.status(200);
 				res.should.be.json;
@@ -159,5 +159,9 @@ describe('index()', function () {
 				done();
 			});
 		});
+<<<<<<< 26ed472822280a75918427f676e747ff9d636929
 	});
 // })
+=======
+	});
+>>>>>>> Recreate repo
