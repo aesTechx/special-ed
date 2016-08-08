@@ -10,27 +10,20 @@ var PORT = process.env.PORT || 8000;
 
 
 
-require ('./config/middleware.js')(app, express);
-require ('./config/routes.js')(app, express);
+
+require ('./config/middleware.js')(app,express)
+require ('./config/routes.js')(app,express)
 require ('./config/socket.handler.js');
 
-app.use(express.static('frontend/www'));
-
-app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    next();
-});
-
-models.sequelize.sync().then(function () {
+ models.sequelize.sync().then(function () {
 	app.listen(PORT, function serverListen() {
 		console.log('Listening on port ' + PORT);
-	});
+	})
  }).catch(function(err) {
 	app.listen(PORT, function serverListen() {
 		console.log('Listening on port ' + PORT);
-	});
- });
+	})
+ })
 
 //On crash
 app.on ( 'uncaughtException', function () {
