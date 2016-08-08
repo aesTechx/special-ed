@@ -1,4 +1,8 @@
 **/node_modules
+**/*.min.js
+**/*.sqlite
+**/coverage
+Gulpfile.js
 **/bower_components
 **/lib
 **/vendor
