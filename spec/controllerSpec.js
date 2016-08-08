@@ -64,4 +64,100 @@ describe('index()', function () {
 	});
   // Add more assertions here
 });
-
+	describe('studentGetPost()', function () {
+		'use strict';
+		it('post a new student to DB',function(){
+			chai.request(app)
+			.post('api/student/addstudent')
+			.send({username:'ali',password:'ali',fullname:'ali',skillsResult:1,birthDate:25/11/2015})
+			.end(function(err,res){
+				res.should.have.status(200);
+				res.should.be.json;
+				res.body.should.be.a('array');
+				res.body.should.have.property('SUCCESS');
+				res.body.SUCCESS.should.have.property('id');
+				res.body.SUCCESS.should.have.property('username');
+				res.body.SUCCESS.should.have.property('fullname');
+				res.body.SUCCESS.should.have.property('password');
+				res.body.SUCCESS.should.have.property('skillsResult');
+				res.body.SUCCESS.should.have.property('birthDate');
+				res.body.SUCCESS.should.have.property('centerId');
+				res.body.SUCCESS.username.should.equal('ali');
+				res.body.SUCCESS.fullname.should.equal('ali');
+				res.body.SUCCESS.skillsResult.should.equal(1);
+				res.body.SUCCESS.birthDate.should.equal(25/11/2015);
+				done();
+			});
+		});
+		it('request all students from the DB',function(){
+			chai.request(app)
+			.get('/api/students')
+			.end(function(err,res){
+				res.should.have.status(200);
+				res.should.be.json;
+				res.body.should.be.a('array');
+				res.body[0].should.have.property('id');
+				res.body[0].should.have.property('username');
+				res.body[0].should.have.property('fullname');
+				res.body[0].should.have.property('password');
+				res.body[0].should.have.property('skillsResult');
+				res.body[0].should.have.property('birthDate');
+				res.body[0].should.have.property('centerId');
+				done();
+			});
+		});
+	});
+	describe('teacherGetPost()', function () {
+		'use strict';
+	it('post a new teacher to DB',function(){
+		chai.request(app)
+			.post('/api/teacher/addTeacher')
+			.send({username:'teacher',password:'teacher',fullname:'teacher',category:'speech'})
+			.end(function(err,res){
+				res.should.have.status(200);
+				res.body.should.have.property('SUCCESS');
+				res.should.be.json;
+				res.body.should.be.a('array');
+				res.body.SUCCESS.should.have.property('id');
+				res.body.SUCCESS.should.have.property('username');
+				res.body.SUCCESS.should.have.property('fullname');
+				res.body.SUCCESS.should.have.property('password');
+				res.body.SUCCESS.should.have.property('category');
+				res.body.SUCCESS.should.have.property('centerId');
+				res.body.SUCCESS.username.should.equal('teacher');
+				res.body.SUCCESS.fullname.should.equal('teacher');
+				res.body.SUCCESS.password.should.equal('teacher');
+				res.body.SUCCESS.category.should.equal('speech');
+				done();
+			});
+	});
+	it('request all teachers from the DB',function(){
+		chai.request(app)
+			.get('/api/teachers')
+			.end(function(err,res){
+				res.should.have.status(200);
+				res.should.be.json;
+				res.body.should.be.a('array');
+				res.body[0].should.have.property('id');
+				res.body[0].should.have.property('username');
+				res.body[0].should.have.property('fullname');
+				res.body[0].should.have.property('category');
+				res.body[0].should.have.property('centerId');
+				done();
+			});
+	});
+	});
+	describe('teacherGetPost()', function () {
+		'use strict';
+		it('request all games from the DB',function(){
+		chai.request(app)
+			.get('/api/games')
+			.end(function(err,res){
+				res.should.have.status(200);
+				res.should.be.json;
+				res.body.should.be.a('array');
+				done();
+			});
+		});
+	});
+// })
