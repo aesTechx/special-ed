@@ -20,6 +20,7 @@ iisnode.yml
 **/*.sqlite
 frontend/lib
 frontend/config
+
 # Logs
 logs
 *.log
