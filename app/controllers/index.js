@@ -1,9 +1,7 @@
 var db = require('../models');
-
-
 module.exports = {
 	Center: {
-	    getAllCenter: function (req, res) {
+		getAllCenter: function (req, res) {
 	      db.Center.findAll()
 	        .then(function(centers) {
 	        	res.status(200);

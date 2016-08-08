@@ -15,8 +15,8 @@ module.exports = {
     },
     rules: {
         /* Indentation */
-        'no-mixed-spaces-and-tabs': 2,
-        'indent': [2, 2],
+        'no-mixed-spaces-and-tabs': 1,
+        'indent': ['error', 'tab'],
         /* Variable cames */
         'camelcase': 2,
         /* Language constructs */
