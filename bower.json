@@ -1,0 +1,26 @@
+{
+  "name": "specialed-frontend",
+  "version": "0.0.1",
+  "authors": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib"
+  ],
+  "dependencies": {
+    "angular": ">=1.4.0",
+    "angular-route": "latest",
+    "angular-animate": "latest",
+    "angular-touch": "latest",
+    "angular-resource": "latest",
+    "angular-bootstrap": "^2.0.1"
+  },
+  "resolutions": {
+    "angular": ">=1.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "latest"
+  }
+}
