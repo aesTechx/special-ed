@@ -1,4 +1,5 @@
 'use strict';
+// var bcrypt=require('');
 module.exports = function (sequelize, DataTypes) {
 	var Center = sequelize.define('Center', {
 		centername: DataTypes.STRING,
