@@ -14,8 +14,7 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/nodemon --ignore node_modules server.js",
-    "test": "istanbul cover -x '*Spec.js' node_modules/.bin/_mocha -- -R spec ./spec",
-    "lint": "eslint ./"
+    "test": "istanbul cover -x '*Spec.js' node_modules/mocha/bin/_mocha -- -R spec ./spec"
   },
   "dependencies": {
     "express": "^4.13.4",
@@ -27,7 +26,6 @@
     "jwt-simple": "^0.2.0",
     "chai": "~1.8.0",
     "mocha": "2.0.1",
-<<<<<<< HEAD
     "sequelize": "^2.0.0-rc1",
     "sequelize-cli": "^2.4.0"
   },
@@ -35,39 +33,21 @@
     "start": "./node_modules/.bin/nodemon --ignore node_modules server.js",
     "test": "istanbul cover -x '*Spec.js' node_modules/mocha/bin/_mocha -- -R spec ./spec"
   },
-=======
-    "sequelize-cli": "^2.4.0"
-  },
->>>>>>> d74c869d3a3536602b2c54230874905fd51e06c4
   "devDependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "1.0.8",
     "body-parser": "^1.5.2",
-<<<<<<< HEAD
-=======
     "eslint": "^3.2.2",
     "eslint-config-standard": "^5.3.5",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
+    "chai-http": "^3.0.0",
     "forever": "^0.10.11",
->>>>>>> d74c869d3a3536602b2c54230874905fd51e06c4
     "gulp": "^3.8.5",
-    "gulp-eslint": "^3.0.1",
-    "gulp-istanbul": "^1.0.0",
-    "gulp-istanbul-enforcer": "^1.0.3",
-    "gulp-mocha": "^3.0.0",
     "gulp-nodemon": "^1.0.4",
     "gulp-shell": "^0.2.7",
-<<<<<<< HEAD
     "istanbul": "^0.4.4",
     "pre-commit": "^1.1.2",
     "request": "^2.69.0"
-=======
-    "isparta": "^4.0.0",
-    "istanbul": "^0.4.4",
-    "pre-commit": "^1.1.2",
-    "request": "^2.69.0",
-    "sequelize": "^2.0.3-rc1"
->>>>>>> d74c869d3a3536602b2c54230874905fd51e06c4
   }
 }

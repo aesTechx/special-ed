@@ -69,4 +69,4 @@ module.exports = {
 		addGame: function(req, res) {
 		}
 	}
-};
+}
