@@ -11,4 +11,9 @@
 	    "dialect": "sqlite",
 	    "database": "db/production.sqlite"
 	}
+<<<<<<< 126f07461c267d716a2e41e497910e92d3720a99
 }
+=======
+}
+
+>>>>>>> Recreate repo
