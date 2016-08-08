@@ -3,8 +3,8 @@
 
 var specialEd = function () {
   // your code goes here
-}
+};
 
-if ( typeof module !== "undefined" ) {
-  module.exports = specialEd;
+if ( typeof module !== 'undefined' ) {
+	module.exports = specialEd;
 }

@@ -6,17 +6,17 @@
 
 module.exports = {
     env: {
-        'es6': true
+    'es6': true
     },
     parserOptions: {
         ecmaFeatures: {
-          'jsx': true
+            'jsx': true
         }
     },
     rules: {
         /* Indentation */
-        'no-mixed-spaces-and-tabs': 2,
-        'indent': [2, 2],
+        'no-mixed-spaces-and-tabs': 1,
+        'indent': ['error', 'tab'],
         /* Variable cames */
         'camelcase': 2,
         /* Language constructs */

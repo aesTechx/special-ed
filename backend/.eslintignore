@@ -1,5 +1,0 @@
-**/node_modules
-**/*.min.js
-**/*.sqlite
-**/coverage
-Gulpfile.js
