@@ -17,13 +17,19 @@ iisnode.yml
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
+<<<<<<< bc9691ba7a474232b5aef3e12334ebb6674c6b14
 
 **/*.sqlite
+=======
+>>>>>>> Recreate repo
 node_modules/
 db/
 bower_components/
 frontend/lib
+<<<<<<< bc9691ba7a474232b5aef3e12334ebb6674c6b14
 frontend/config
+=======
+>>>>>>> Recreate repo
 
 # Logs
 logs
