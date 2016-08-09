@@ -25,7 +25,10 @@ module.exports = function(config) {
         'frontend/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'frontend/lib/angular-bootstrap/ui-bootstrap.js',
         'frontend/app/app.js',
-        'frontend/app/*.js',
+        //'frontend/app/services/services.js',
+        //'frontend/app/services/center.js',
+
+        'frontend/app/**/*.js',
         'frontend/helpers/*.js',
         'spec/frontend/*.js'
     ],
@@ -33,6 +36,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+        'frontend/app/forms/*.js'
     ],
 
 

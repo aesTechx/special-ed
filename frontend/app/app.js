@@ -1,21 +1,16 @@
+
 angular.module('SED', [
   'SED.services',
-  'SED.auth',
-  'SED.Users',
-  'SED.Teachers',
-  'dragDropSampleApp',
   'SED.Centers',
+  'SED.multiForms',
   'ngRoute'
 ])
+
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/signinUser', {
       templateUrl: 'app/auth/signinUser.html',
       controller: 'AuthController'
-    })
-    .when('/game', {
-      templateUrl: 'app/game/game.html',
-      controller: 'MainController'
     })
     .when('/signupUser', {
       templateUrl: 'app/auth/signupUser.html',
@@ -38,7 +33,7 @@ angular.module('SED', [
       controller: 'AuthController'
     })
     .when('/user',{
-      templateUrl: 'app/user/user.html',
+      templateUrl: 'app/Users/Users.html',
       controller: 'UserController',
       authenticate: true
     })
@@ -49,10 +44,12 @@ angular.module('SED', [
     })
     .when('/center',{
        templateUrl: 'app/center/center.html',
-       controller: 'centerController',
-       authenticate: true
+       controller: 'centerController'
     })
-   
+    .when('/assessment',{
+      templateUrl: 'app/forms/assessmentForm.html',
+      controller: 'assessmentController'
+    })
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
@@ -74,7 +71,8 @@ angular.module('SED', [
     }
   };
   return attach;
-})
+})  
+
 .run(function ($rootScope, $location, Auth) {
   // here inside the run phase of angular, our services and controllers
   // have just been registered and our app is ready
@@ -90,8 +88,34 @@ angular.module('SED', [
     else if ( $location.path()!== "/user" && $location.path() !== "/center"&&next.$$route && next.$$route.authenticate && !Auth.isAuthteacher()) {
       $location.path('/signinTeacher');
     }
-    else if ( $location.path()!== "/user" && $location.path()!== "/teacher"&&next.$$route && next.$$route.authenticate && !Auth.isAuthcenter()) {
+    else if ( $location.path()!== "/user" &&next.$$route && next.$$route.authenticate && !Auth.isAuthcenter()) {
       $location.path('/signinCenter');
     }
   });
-});
+})
+
+
+// angular.module('SED', [])
+.filter('reverse', [function () {
+    return function (string) {
+        return string.split('').reverse().join('');
+    }
+}]) 
+.factory('AttachTokens', function ($window) {
+  // this is an $httpInterceptor
+  // its job is to stop all out going request
+  // then look in local storage and find the user's token
+  // then add it to the header so the server can validate the request
+  var attach = {
+    request: function (object) {
+      console.log("attach")
+      var jwt = $window.localStorage.getItem('com.GSuser');
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
+})
