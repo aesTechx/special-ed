@@ -1,18 +1,22 @@
 
-<!-- <div class="tab-pane fade in active"> -->
-<ng-form name="nestedForm">
-<div id="assessment">
-	<div ng-repeat="category in allQuestions">	
+<div id="assessmentForm">
+	<div ng-repeat="category in questions">	
 		<span ng-show="category.step==1">
-			<form class="form-horizontal" ng-repeat="Question in category">
-				<div ng-repeat="Q in Question">
-					<h4>Q: {{Q.Q}}</h4>
+			<form class="form-horizontal" ng-repeat="(key, Qvalue) in category">
+				<div ng-repeat="(Question, answer) in Qvalue">
+					<h4>{{key}}</h4>	
 					<div>
-						<div class="radio" style="margin-left: 30px;">
-							<input type="radio"  value="0" ng-model="Q.value" required> Yes
+						<h3>{{Question}}</h3>
+						<!-- <h2>{{key}}</h2>
+						<h3>{{item.q}}</h3> -->
+						<!-- <h3>{{item.value}}</h3> -->
+						<div class="radio">
+							<input type="radio" id="{{key1}}-1" value="1" ng-model="answer.value" checked>
+								Yes
 						</div>
-						<div class="radio"  style="margin-left: 30px;">
-							<input type="radio" value="1" ng-model="Q.value" required> No
+						<div class="radio">
+							<input type="radio" id="{{key1}}-2" value="2" ng-model="answer.value">
+								No
 						</div>
 					</div>
 				</div>
@@ -23,4 +27,5 @@
 </div>
 <button ng-click="submit()" > submit</button> 
 </ng-form>
-<!-- </div> -->
+<!-- </div> -->			
+</div>
