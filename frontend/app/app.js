@@ -1,11 +1,10 @@
 angular.module('SED', [
   'SED.services',
-  'SED.auth',
-  'SED.Users',
-  'SED.Teachers',
   'SED.Centers',
+  'SED.multiForms',
   'ngRoute'
 ])
+
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/signinUser', {
@@ -44,8 +43,11 @@ angular.module('SED', [
     })
     .when('/center',{
        templateUrl: 'app/center/center.html',
-       controller: 'centerController',
-       authenticate: true
+       controller: 'centerController'
+    })
+    .when('/assessment',{
+      templateUrl: 'app/forms/assessmentForm.html',
+      controller: 'assessmentController'
     })
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
@@ -68,7 +70,8 @@ angular.module('SED', [
     }
   };
   return attach;
-})
+})  
+
 .run(function ($rootScope, $location, Auth) {
   // here inside the run phase of angular, our services and controllers
   // have just been registered and our app is ready
@@ -88,4 +91,30 @@ angular.module('SED', [
       $location.path('/signinCenter');
     }
   });
-});
+})
+
+
+// angular.module('SED', [])
+.filter('reverse', [function () {
+    return function (string) {
+        return string.split('').reverse().join('');
+    }
+}]) 
+.factory('AttachTokens', function ($window) {
+  // this is an $httpInterceptor
+  // its job is to stop all out going request
+  // then look in local storage and find the user's token
+  // then add it to the header so the server can validate the request
+  var attach = {
+    request: function (object) {
+      console.log("attach")
+      var jwt = $window.localStorage.getItem('com.GSuser');
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
+})
