@@ -1,10 +1,8 @@
-var module = angular.module('specialEd', [
-	'ngRoute',
-	'ngResource',
-	'ngAnimate',
-	'ngTouch',
-	'ui.bootstrap'
-]);
-
+angular.module('specialEd', [])
+.filter('reverse', [function () {
+	return function (string) {
+		return string.split('').reverse().join('');
+	}
+}]) 
 
 
