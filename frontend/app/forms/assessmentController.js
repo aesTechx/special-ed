@@ -1,9 +1,9 @@
-angular.module('specialEd')
+angular.module('SED.multiForms', [])
 // controller for creating multi form in one view one after one
-.controller('multiForm', function ($scope){
+.controller('assessmentController', function ($scope, $log){
   $scope.counter=0;
 
-  $scope.questions = [
+   $scope.questions = [ 
     {SOCIAL: {
       1: {q: 'withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers', value: undefined},
       2: {q: 'parallel play along side but not with peers', value: undefined},
@@ -65,7 +65,6 @@ angular.module('specialEd')
       22: {q: 'other peculiar eating patterns (e.g., eats only one brand, color, or shape of a food)', value: undefined}
     },
     step: 0},
-
     {COMMUNICATION_AND_DEVELOPMENT: {
       1: {q: 'Language regression or slowing at approximately 1 to 2 years of age (e.g., speaking a few words at one year but then losing speech or normal early language development and later language is delayed)', value: undefined},
       2: {q: 'Visual-motor skills (e.g., assembling puzzles, building with Legos, operating the VCR) significantly higher than language skills during the preschool years or walking at a much earlier age than talking', value: undefined},
@@ -102,20 +101,23 @@ angular.module('specialEd')
     step: 0}
   ]
 
-
-
-
-
   $scope.submit = function() {
     alert('form submitted');  
-    //console.log($scope.forms)
+    console.log($scope.questions)
   }
-  
   $scope.nextStep = function() {
-    console.log($scope.questions.SOCIAL);
+    // console.log($scope.questions.SOCIAL);
     $scope.questions[$scope.counter].step=0;
     $scope.counter++;
     $scope.questions[$scope.counter].step = 1;
   }
+
+
+
 })
+ 
+
+
+
+
 
