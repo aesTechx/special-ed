@@ -2,7 +2,6 @@
 // Generated on Mon Aug 08 2016 22:22:37 GMT+0400 (GST)
 
 module.exports = function(config) {
-    process.env.PHANTOMJS_BIN = 'node_modules/phantomjs-prebuilt/bin/phantomjs';
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
