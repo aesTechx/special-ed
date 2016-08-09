@@ -1,4 +1,4 @@
-]angular.module('SED', [
+angular.module('SED', [
   'SED.services',
   'SED.Centers',
   'SED.multiForms',
@@ -120,4 +120,8 @@
     }
   };
   return attach;
+<<<<<<< b3d09abc4bc01675d85d79e0de4c540643ce0aa7
 })
+=======
+})
+>>>>>>> assessment
