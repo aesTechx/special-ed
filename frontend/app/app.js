@@ -95,4 +95,3 @@ angular.module('SED', [
     }
   });
 });
-
