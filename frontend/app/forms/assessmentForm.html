@@ -1,0 +1,28 @@
+<div id="assessmentForm">
+	<div ng-repeat="category in questions">	
+		<span ng-show="category.step==1">
+			<form class="form-horizontal" ng-repeat="(key, Qvalue) in category">
+				<div ng-repeat="(Question, answer) in Qvalue">
+					<h4>{{key}}</h4>	
+					<div>
+						<h3>{{Question}}</h3>
+						<!-- <h2>{{key}}</h2>
+						<h3>{{item.q}}</h3> -->
+						<!-- <h3>{{item.value}}</h3> -->
+						<div class="radio">
+							<input type="radio" id="{{key1}}-1" value="1" ng-model="answer.value" checked>
+								Yes
+						</div>
+						<div class="radio">
+							<input type="radio" id="{{key1}}-2" value="2" ng-model="answer.value">
+								No
+						</div>
+					</div>
+				</div>
+			</form>	
+		</span>	
+</div>
+<a ng-click="nextStep()">Next</a>
+			
+</div>
+			
