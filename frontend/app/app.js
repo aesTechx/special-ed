@@ -1,4 +1,4 @@
-angular.module('SED', [
+]angular.module('SED', [
   'SED.services',
   'SED.Centers',
   'SED.multiForms',
