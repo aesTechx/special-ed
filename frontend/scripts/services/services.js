@@ -234,18 +234,9 @@ angular.module('SED.services', [])
     return !!$window.localStorage.getItem('com.SEDcenter');
   };
 
-  var signoutUser = function () {
-    $window.localStorage.removeItem('com.SEDuser');
-    $location.path('/');
-  };
-
-  var signoutTeacher = function () {
-    $window.localStorage.removeItem('com.SEDteacher');
-    $location.path('/');
-  };
-
-  var signoutCenter = function () {
-    $window.localStorage.removeItem('com.SEDcenter');
+  var signout = function (item) {
+    console.log(item)
+    $window.localStorage.removeItem(item);
     $location.path('/');
   };
 
@@ -259,9 +250,7 @@ angular.module('SED.services', [])
     isAuthuser: isAuthuser,
     isAuthcenter: isAuthcenter,
     isAuthteacher: isAuthteacher,
-    signoutUser: signoutUser,
-    signoutTeacher: signoutTeacher,
-    signoutCenter:signoutCenter
+    signout: signout
   };
 });
 >>>>>>> Revamp directories to reflect new changes:frontend/scripts/services/services.js
