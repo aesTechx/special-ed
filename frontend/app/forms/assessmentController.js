@@ -6,9 +6,9 @@ angular.module('SED.multiForms', [])
   
 
 	$scope.SOCIAL={questions:[
-		{Q: 'withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers', value: 1},
-		{Q: 'parallel play along side but not with peers', value: 2},
-		{Q: 'difficulty establishing friendships', value: 3},
+		{Q: 'withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers', value: undefined},
+		{Q: 'parallel play along side but not with peers', value: undefined},
+		{Q: 'difficulty establishing friendships', value: undefined},
 		{Q: 'limited social smile or eye contact (looks away, looks through people, looks at speaker’s mouth, needs to be prompted to make eye contact, or does not make eye contact when communicating)', value: undefined},
 		{Q: 'limited sharing and showing (e.g., does not show a toy to an adult, seek recognition, or share an experience or accomplishment with others)', value: undefined},
 		{Q: 'excessively rigid play with peers (dictates play according to his/her peculiar and repetitive interests and rules)', value: undefined},
@@ -105,11 +105,11 @@ angular.module('SED.multiForms', [])
 
 	$scope.finalScore = {SOCIAL:undefined, PERSEVERATION: undefined, SOMATOSENSORY_DISTURBANCE: undefined, COMMUNICATION_AND_DEVELOPMENT: undefined, ATTENTION_AND_SAFETY: undefined};
 	$scope.submit = function() {
-	$scope.finalScore.SOCIAL = $scope.result[0]
-	$scope.finalScore.PERSEVERATION = $scope.result[1]
-	$scope.finalScore.SOMATOSENSORY_DISTURBANCE = $scope.result[2]
-	$scope.finalScore.COMMUNICATION_AND_DEVELOPMENT = $scope.result[3]
-	$scope.finalScore.ATTENTION_AND_SAFETY = $scope.result[4]
+		$scope.finalScore.SOCIAL = $scope.result[0]
+		$scope.finalScore.PERSEVERATION = $scope.result[1]
+		$scope.finalScore.SOMATOSENSORY_DISTURBANCE = $scope.result[2]
+		$scope.finalScore.COMMUNICATION_AND_DEVELOPMENT = $scope.result[3]
+		$scope.finalScore.ATTENTION_AND_SAFETY = $scope.result[4]
 		Record.submitForm($scope.finalScore)
 			.then(function(data) {
 			console.log(data)
