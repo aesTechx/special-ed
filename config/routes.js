@@ -3,6 +3,9 @@ var models = require('../app/models/center.js');
 var controllers = require('../app/controllers/index.js');
 
 module.exports = function (app, express) {
+/////////////////
+	//app.post('/api/users/signinUser',controllers.Student.addstudent)
+	app.post('/api/forms/submitForm', controllers.Record.addRecord);
 	app.get('/api/centers', controllers.Center.getAllCenter);
 	app.get('/api/teachers', controllers.Teacher.getAllTeacher);
 	app.get('/api/students', controllers.Student.getAllStudent);
