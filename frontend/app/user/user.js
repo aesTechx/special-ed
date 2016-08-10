@@ -1,6 +1,6 @@
 angular.module('SED.Users', [])
 
-.controller('UserController', function ($scope, Orders,Auth) {
+.controller('UserController', function ($scope, Orders, Auth) {
   // Your code here
   ///this function must call on submit click
   // $scope.order = {};
