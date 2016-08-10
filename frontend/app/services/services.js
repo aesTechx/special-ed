@@ -1,3 +1,4 @@
+
 angular.module('SED.services', [])
 
 .factory ('Record', function ($http) {
@@ -129,4 +130,8 @@ return {submitForm: submitForm}
 	signoutTeacher: signoutTeacher,
 	signoutCenter:signoutCenter
 	};
+<<<<<<< 69ccdbc6c7ed8be2da7b1d7bc3bd4bdd2475e947
 });
+=======
+});
+>>>>>>> Assessment done
