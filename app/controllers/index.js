@@ -1,5 +1,5 @@
 var db = require('../models');
-jwt = require('jwt-simple');
+var jwt = require('jwt-simple');
 module.exports = {
 	Center: {
 		getAllCenter: function (req, res) {
@@ -19,13 +19,15 @@ module.exports = {
 					res.json({token: token});
 		  		});
 		},
-	    signinCenter:function(req,res){
+		signinCenter:function(req,res){
 			var username=req.body.username;
 			var password=req.body.password;
-			db.Center.findOne({ where: {username: username,password:password}}).then(function(user) {
+			db.Center.findOne({ where: {username: username,password:password}})
+			.then(function(user) {
 				if(user!==null){
-				var token = jwt.encode(user, 'secret');
-			    res.json({token: token});}
+					var token = jwt.encode(user, 'secret');
+			    		res.json({token: token});
+				}
 			})
 		}
 	},
@@ -52,7 +54,8 @@ module.exports = {
 		signinStudent:function(req,res){
 			var username=req.body.username;
 			var password=req.body.password;
-			db.Center.findOne({ where: {username: username,password:password}}).then(function(user) {
+			db.Center.findOne({ where: {username: username,password:password}})
+			.then(function(user) {
 				if(user!==null){
 					var token = jwt.encode(user, 'secret');
 					res.json({token: token});
@@ -85,14 +88,13 @@ module.exports = {
 		},
 	  	signinTeacher:function(req,res){
 	  		var username=req.body.username;
-	    	var password=req.body.password;
-	    	console.log(password);
-	    	db.Center.findOne({ where: {username: username,password:password}}).then(function(user) {
-	    		console.log(user);
-	    		if(user!==null){
-	    			var token = jwt.encode(user, 'secret');
-                	res.json({token: token});
-                }
+		    	var password=req.body.password;
+		    	db.Center.findOne({ where: {username: username,password:password}})
+		    	.then(function(user) {
+		    		if(user!==null){
+		    			var token = jwt.encode(user, 'secret');
+	                		res.json({token: token});
+		    		}
 			})
 	  	}
 	},
