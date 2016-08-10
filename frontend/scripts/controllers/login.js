@@ -1,4 +1,5 @@
 'use strict';
+<<<<<<< 8b94671c2130a7a25c385ffaea8a0af044911ded
 angular.module('SED')
   .controller('LoginCtrl', function($scope, $location, $window, Auth) {
   	$scope.user = {};
@@ -42,3 +43,24 @@ angular.module('SED')
     	}
     }
 })
+=======
+
+/**
+ * @ngdoc function
+ * @name yapp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of yapp
+ */
+angular.module('SED')
+  .controller('LoginCtrl', function($scope, $location) {
+
+    $scope.submit = function() {
+
+      $location.path('/dashboard');
+
+      return false;
+    }
+
+  });
+>>>>>>> Create landing page theme
