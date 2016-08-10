@@ -1,4 +1,4 @@
-angular.module('SED.Users', [])
+angular.module('SED', [])
 
 .controller('UserController', function ($scope,Auth) {
 

@@ -15,6 +15,7 @@ angular.module('SED.services', [])
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signinUser = function (user) {
+    console.log(user)
     return $http({
       method: 'POST',
       url: '/api/users/signinUser',
@@ -26,6 +27,7 @@ angular.module('SED.services', [])
   };
 
  var signinTeacher = function (user) {
+    console.log(user)
     return $http({
       method: 'POST',
       url: '/api/users/signinTeacher',
@@ -33,11 +35,15 @@ angular.module('SED.services', [])
     })
     .then(function (resp) {
       return resp.data.token;
-    });
+    })
+    .catch(function(error){
+      console.log(error)
+    })
   };
 
 
   var signinCenter = function (user) {
+    console.log(user)
     return $http({
       method: 'POST',
       url: '/api/users/signinCenter',

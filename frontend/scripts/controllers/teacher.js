@@ -1,4 +1,4 @@
-angular.module('SED.Teachers', [])
+angular.module('SED', [])
 
 .controller('teacherController', function ($scope, Services,Auth) {
   $scope.data={};

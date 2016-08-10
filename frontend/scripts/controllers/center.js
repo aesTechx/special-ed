@@ -1,4 +1,4 @@
-angular.module('SED.Centers', [])
+angular.module('SED', [])
 
 .controller('centerController', function ($scope, Services,Auth) {
   $scope.data={};
