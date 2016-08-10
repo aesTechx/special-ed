@@ -1,3 +1,4 @@
+<<<<<<< 2591123f51028a9825973e9f6dafbeeaa00da9b9
 angular.module('SED.services', [])
 
 .factory('Orders', function ($http) {
