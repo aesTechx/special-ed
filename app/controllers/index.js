@@ -1,12 +1,4 @@
 var db = require('../models');
-<<<<<<< 26ed472822280a75918427f676e747ff9d636929
-<<<<<<< 2bea16ce30bb2406a7626eb204c85f736a33f875
-=======
-
-
->>>>>>> Server to serve client
-=======
->>>>>>> Recreate repo
 module.exports = {
   _getAll: function(field){
     db[field].findAll()
@@ -16,7 +8,6 @@ module.exports = {
   },
 	Center: {
 		getAllCenter: function (req, res) {
-<<<<<<< 26ed472822280a75918427f676e747ff9d636929
 			db.Center.findAll()
 			.then(function(centers) {
 				res.json(centers);
@@ -25,17 +16,6 @@ module.exports = {
 		addCenter: function (req, res) {
 		// findOrCreate returns multiple resutls in an array
 		// use spread to assign the array to function arguments
-=======
-	      db.Center.findAll()
-	        .then(function(centers) {
-	        	res.status(200);
-	            res.send(centers);
-	        });
-	    },
-	    addCenter: function (req, res) {
-			// findOrCreate returns multiple resutls in an array
-			// use spread to assign the array to function arguments
->>>>>>> Recreate repo
 			db.Center.create({
 				centername: req.body.centername,
 				username: req.body.fullname,
@@ -46,23 +26,35 @@ module.exports = {
 			});
 		}
 	},
-	Student: {
-		getAllStudent: function(req, res) {
+	Student:{
+		getAllStudent:function(req,res){
 			db.Student.findAll()
 			.then(function(students) {
-				res.json(students);
+			  res.json(students);
 			});
 		},
-		addStudent: function(req, res) {
+		addStudent:function(req,res){
 			db.Student.create({
 				username: req.body.username,
 				fullname: req.body.fullname,
 				skillsResult: req.body.skillsResult,
-				birthDate: req.body.birthDate
+				birthdate: req.body.birthdate
 			})
-			.then(function() {
-				res.sendStatus(201);
+			.then(function(student){
+				var token = jwt.encode(student, 'secret');
+				res.json({token: token});
 			});
+		},
+		signinStudent:function(req,res){
+			var username=req.body.username;
+			var password=req.body.password;
+			db.Center.findOne({ where: {username: username,password:password}})
+			.then(function(user) {
+				if(user!==null){
+					var token = jwt.encode(user, 'secret');
+					res.json({token: token});
+				}
+			})
 		}
 	},
 	Teacher: {
@@ -79,10 +71,30 @@ module.exports = {
 				category: req.body.category,
 				password: req.body.password
 			})
-			.then(function() {
-				res.sendStatus(201);
-			});
-		}
+			.then(function(teacher) {
+				var token = jwt.encode(teacher, 'secret');
+        		res.json({token: token});
+				// res.sendStatus(201);
+			})
+			.catch(function(error){
+				console.log(error);
+			})
+		},
+	  	signinTeacher:function(req,res){
+	  		var username=req.body.username;
+	    	var password=req.body.password;
+	    	db.Center.findOne({ where: {username: username,password:password}})
+	    	.then(function(user) {
+	    		console.log('x')
+	    		if(user!==null){
+	    			var token = jwt.encode(user, 'secret');
+                	res.json({token: token});
+	    		}
+			})
+			.catch(function(err){
+				res.json(err)
+			})
+	  	}
 	},
 	Game: {
 		getAllGame: function(req, res) {
