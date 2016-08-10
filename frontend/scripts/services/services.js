@@ -1,4 +1,4 @@
-<<<<<<< 2591123f51028a9825973e9f6dafbeeaa00da9b9
+
 angular.module('SED.services', [])
 
 .factory('Orders', function ($http) {
@@ -245,4 +245,3 @@ return {submitForm: submitForm}
 // 	signoutCenter:signoutCenter
 // 	};
 // });
-// >>>>>>> 57b35a351850be2b2cb96f5dd08dc6080f8eab1d:frontend/app/services/services.js
