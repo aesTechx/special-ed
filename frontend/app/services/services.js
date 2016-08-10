@@ -1,10 +1,10 @@
 angular.module('SED.services', [])
 
 .factory('Orders', function ($http) {
-  
+  return {}
 })
 .factory('Services',function($http){
-
+  return {}
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
@@ -36,6 +36,7 @@ angular.module('SED.services', [])
     });
   };
 
+
   var signinCenter = function (user) {
     return $http({
       method: 'POST',
@@ -50,7 +51,7 @@ angular.module('SED.services', [])
   var signupUser = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/signupUsers',
+      url: '/api/student/addstudent',
       data: user
     })
     .then(function (resp) {
@@ -60,7 +61,7 @@ angular.module('SED.services', [])
  var signupTeacher= function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/signupTeacher',
+      url: '/api/teacher/addTeacher',
       data: user
     })
     .then(function (resp) {
@@ -70,10 +71,11 @@ angular.module('SED.services', [])
  var signupCenter= function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/signupCenter',
+      url: '/api/center/addCenter',
       data: user
     })
     .then(function (resp) {
+      console.log(resp.data);
       return resp.data.token;
     });
   };
@@ -107,6 +109,8 @@ angular.module('SED.services', [])
 
   return {
     signinUser: signinUser,
+    signinCenter:signinCenter,
+    signupCenter:signupCenter,
     signupUser: signupUser,
     signinTeacher: signinTeacher,
     signupTeacher: signupTeacher,

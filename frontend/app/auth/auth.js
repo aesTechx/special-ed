@@ -31,7 +31,6 @@ angular.module('SED.auth', [])
    $scope.signinTeacher = function () {
     Auth.signinTeacher($scope.user)
       .then(function (token) {
-        
         $window.localStorage.setItem('com.SEDteacher', token);
         console.log(token)
         $location.path('/teacher');

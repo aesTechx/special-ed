@@ -15,6 +15,7 @@ models.sequelize.sync().then(function () {
 		console.log('Listening on port ' + PORT);
 	});
  }).catch(function(err) {
+ 	console.log("catch");
 	app.listen(PORT, function serverListen() {
 		console.log('Listening on port ' + PORT);
 	});

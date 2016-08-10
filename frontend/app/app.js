@@ -1,9 +1,9 @@
 angular.module('SED', [
-  'ui.bootstrap',
   'SED.services',
   'SED.auth',
   'SED.Users',
   'SED.Teachers',
+  'dragDropSampleApp',
   'SED.Centers',
   'ngRoute'
 ])
@@ -12,6 +12,10 @@ angular.module('SED', [
     .when('/signinUser', {
       templateUrl: 'app/auth/signinUser.html',
       controller: 'AuthController'
+    })
+    .when('/game', {
+      templateUrl: 'app/game/game.html',
+      controller: 'MainController'
     })
     .when('/signupUser', {
       templateUrl: 'app/auth/signupUser.html',
@@ -34,7 +38,7 @@ angular.module('SED', [
       controller: 'AuthController'
     })
     .when('/user',{
-      templateUrl: 'app/Users/Users.html',
+      templateUrl: 'app/user/user.html',
       controller: 'UserController',
       authenticate: true
     })
@@ -48,6 +52,7 @@ angular.module('SED', [
        controller: 'centerController',
        authenticate: true
     })
+   
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
@@ -85,7 +90,7 @@ angular.module('SED', [
     else if ( $location.path()!== "/user" && $location.path() !== "/center"&&next.$$route && next.$$route.authenticate && !Auth.isAuthteacher()) {
       $location.path('/signinTeacher');
     }
-    else if ( $location.path()!== "/user" &&next.$$route && next.$$route.authenticate && !Auth.isAuthcenter()) {
+    else if ( $location.path()!== "/user" && $location.path()!== "/teacher"&&next.$$route && next.$$route.authenticate && !Auth.isAuthcenter()) {
       $location.path('/signinCenter');
     }
   });

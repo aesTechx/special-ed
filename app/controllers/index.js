@@ -1,4 +1,5 @@
 var db = require('../models');
+jwt = require('jwt-simple');
 module.exports = {
 	Center: {
 		getAllCenter: function (req, res) {
@@ -9,15 +10,24 @@ module.exports = {
 	        });
 	    },
 	    addCenter: function (req, res) {
-			// findOrCreate returns multiple resutls in an array
-			// use spread to assign the array to function arguments
 			db.Center.create({
 					centername: req.body.centername,
-					username: req.body.fullname,
+					username: req.body.username,
 					password: req.body.password
 				}).then(function(center) {
-					res.sendStatus(201);
+					var token = jwt.encode(center, 'secret');
+        			res.json({token: token});
+					// res.sendStatus(201);
 	      		});
+	    },
+	    signinCenter:function(req,res){
+	    	var username=req.body.username;
+	    	var password=req.body.password;
+	    	db.Center.findOne({ where: {username: username,password:password}}).then(function(user) {
+	    		if(user!==null){
+	    		var token = jwt.encode(user, 'secret');
+                res.json({token: token});}
+			})
 	    }
 	},
   	Student:{
@@ -28,15 +38,30 @@ module.exports = {
 	        });
 	  	},
 	  	addStudent:function(req,res){
+	  		console.log("students");
 	  		db.Student.create({
 	  			username: req.body.username,
 	  			fullname: req.body.fullname,
 	  			skillsResult: req.body.skillsResult,
-	  			birthDate: req.body.birthDate
+	  			birthdate: req.body.birthdate
 	  		})
-	  		.then(function(){
-	  			res.sendStatus(201);
+	  		.then(function(student){
+	  			var token = jwt.encode(student, 'secret');
+        		res.json({token: token});
+	  			// res.sendStatus(201);
 	  		});
+	  	},
+	  	signinStudent:function(req,res){
+	  		var username=req.body.username;
+	    	var password=req.body.password;
+	    	console.log(password);
+	    	db.Center.findOne({ where: {username: username,password:password}}).then(function(user) {
+	    		console.log(user);
+	    		if(user!==null){
+	    		var token = jwt.encode(user, 'secret');
+                res.json({token: token});
+            }
+			})
 	  	}
   	},
 	Teacher: {
@@ -48,14 +73,32 @@ module.exports = {
 		},
 		addTeacher: function(req, res) {
 			db.Teacher.create({
-				username: req.body.username,
+				teachername: req.body.teachername,
 				fullname: req.body.fullname,
+				password: req.body.password,
 				category: req.body.category
 			})
-			.then(function() {
-				res.sendStatus(201);
-			});
-		}
+			.then(function(teacher) {
+				var token = jwt.encode(teacher, 'secret');
+        		res.json({token: token});
+				// res.sendStatus(201);
+			})
+			.catch(function(error){
+				console.log(error);
+			})
+		},
+	  	signinTeacher:function(req,res){
+	  		var username=req.body.username;
+	    	var password=req.body.password;
+	    	console.log(password);
+	    	db.Center.findOne({ where: {username: username,password:password}}).then(function(user) {
+	    		console.log(user);
+	    		if(user!==null){
+	    			var token = jwt.encode(user, 'secret');
+                	res.json({token: token});
+                }
+			})
+	  	}
 	},
 	Game: {
 		getAllGame: function(req, res) {
