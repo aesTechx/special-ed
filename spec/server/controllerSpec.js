@@ -1,11 +1,11 @@
 var path = require('path');
-var app = require(path.join(__dirname, '..', './server.js'));
-var controller = require(path.join(__dirname,'..','./app/controllers/index.js'));
+var app = require(path.join(__dirname, '..', '..', './server.js'));
+var controller = require(path.join(__dirname,'..','..','./app/controllers/index.js'));
 var should = require('chai').should();
 var chai = require('chai');
 var chaihttp=require('chai-http');
 chai.use(chaihttp);
-var models = require(path.join(__dirname, '..', './app/models'));
+var models = require(path.join(__dirname, '..', '..', './app/models'));
 
 	describe('centerGetPost()', function () {
 		'use strict';

@@ -24,10 +24,14 @@ module.exports = function(config) {
         'frontend/lib/angular-touch/angular-touch.js',
         'frontend/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'frontend/lib/angular-bootstrap/ui-bootstrap.js',
-        'frontend/app/app.js',
-        'frontend/app/*.js',
+        'lib/ui-router/release/angular-ui-router.js',
+        'lib/snapjs/snap.js',
+        'lib/angular-snap/angular-snap.js',
+        'frontend/scripts/app.js',
+        'frontend/scripts/**/*.js',
         'frontend/helpers/*.js',
-        'spec/frontend/*.js'
+        'spec/frontend/*.js',
+        'spec/frontend/**/*.js'
     ],
 
 
@@ -39,14 +43,33 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'frontend/app/*.js': ['coverage'], 
+        'frontend/helpers/*.js': ['coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec', 'progress', 'coverage'],
 
+    coverageReporter : {
+      type : 'text',
+      dir : 'coverage/'
+    },
+    specReporter: {
+        maxLogLines: 10,         // limit number of lines logged per test 
+        suppressErrorSummary: true,  // do not print error summary 
+        suppressFailed: false,  // do not print information about failed tests 
+        suppressPassed: false,  // do not print information about passed tests 
+        suppressSkipped: true,  // do not print information about skipped tests 
+        showSpecTiming: false // print the time elapsed for each spec 
+      },
+    plugins: [
+    'karma-jasmine',
+    'karma-chrome-launcher',
+    'karma-phantomjs-launcher',
+    "karma-spec-reporter"],
 
     // web server port
     port: 9876,

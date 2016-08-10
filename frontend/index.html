@@ -1,16 +1,33 @@
-<!DOCTYPE html>
-<html ng-app='SED'>
-  <head>
-    <meta charset="utf-8" />
-    <title>Special-ED</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
-    <script src="lib/ui-bootstrap-tpls-2.0.1.min.js"></script>
+<!doctype html>
+<html class="no-js">
+		<head>
+			<meta charset="utf-8">
+			<title>Special Ed</title>
+			<meta name="description" content="">
+			<meta name="viewport" content="width=device-width">
+			<link rel="stylesheet" href="lib/components-font-awesome/css/font-awesome.css" />
+			<link rel="stylesheet" href="lib/angular-snap/angular-snap.css" />
+			<link rel="stylesheet" href="styles/main.css">
+      <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!--       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ -->		</head>
+	<body ng-app="SED">
+		<div class="">
+		  <div ui-view ></div>
+		</div>
+
+		<script src="lib/angular/angular.js"></script>
+		<script src="lib/angular-mocks/angular-mocks.js"></script>
+		<script src="lib/angular-route/angular-route.js"></script>
+		<script src="lib/ui-router/release/angular-ui-router.js"></script>
+		<script src="lib/angular-animate/angular-animate.js"></script>
+		<script src="lib/angular-resource/angular-resource.min.js"></script>
+		<script src="lib/angular-touch/angular-touch.min.js"></script>
+		<script src="lib/snapjs/snap.js"></script>
+		<script src="lib/angular-snap/angular-snap.js"></script>
+		<script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+		<script src="scripts/controllers/login.js"></script>
+		<script src="scripts/controllers/dashboard.js"></script>
     <script src="app/auth/auth.js"></script>
     <script src="app/user/user.js"></script>
     <script src="app/teacher/teacher.js"></script>
@@ -20,25 +37,5 @@
     <script src="app/services/services.js"></script>
 
     <script src="app/app.js"></script>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div class="page-header">
-        <h1 class="text-center">Special-ED</h1>
-      </div>
-      <div class="container">
-        <ul class="nav nav-pills nav-justified">
-          <li><a href="#/user" data-toggle='tab'>User</a></li>
-          <li><a href="#/teacher" data-toggle='tab'>Teacher</a></li>
-          <li><a href="#/center" data-toggle='tab'>Center</a></li>
-          <li><a href="#/game" data-toggle='tab'>Game</a></li>
-        </ul>
-        <div class="container">
-          <div class="col-sm-5 col-md-5 col-lg-5"></div>
-            <div class="login-form tab-content col-sm-7 col-md-7 col-lg-12" ng-view>
-            </div>
-        </div>
-      </div>
-    </div>
-  </body>
+	</body>
 </html>
