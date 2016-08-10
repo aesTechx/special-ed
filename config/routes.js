@@ -1,5 +1,4 @@
 var helpers = require('./helpers.js'); // our custom middleware
-//console.log(models);
 var controllers = require('../app/controllers/index.js');
 module.exports = function (app, express) {
 /////////////////
@@ -15,7 +14,6 @@ module.exports = function (app, express) {
 	app.post('/api/teacher/addTeacher', controllers.Teacher.addTeacher);
 	app.post('api/student/addstudent', controllers.Student.addStudent);
 	app.get('/api/games', controllers.Game.getAllGame);
-///////////
 	// app.use(helpers.errorLogger);
 	// app.use(helpers.errorHandler);
 };
