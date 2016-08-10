@@ -1,6 +1,6 @@
 "use strict";
 
-var dragDropSampleApp = angular.module("dragDropSampleApp", []);
+var dragDropSampleApp = angular.module('SED', []);
 
 dragDropSampleApp.factory("draggableData", function () {
         var data = [

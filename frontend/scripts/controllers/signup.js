@@ -6,9 +6,13 @@ angular.module('SED')
     'Student': "images/flat-avatar.png", 
     'Teacher': "images/teacher-avatar.jpg", 
     'Center': "images/school-minions.jpg"
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
   }
     $scope.initialize = function(){
     }
+=======
+  	}
+>>>>>>> Revamp directories to reflect new changes
   	$scope.changeSelect = function (){
       $scope.user = {};
   		console.log('1')
@@ -26,6 +30,7 @@ angular.module('SED')
 	  		$scope.centerSelected = true;
   		}
   	}
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
     $scope.changeProfilePic = function(){
       var uploadToIMGUR = window.uploadToIMGUR;
       var IMGUR_CLIENT_ID = window.IMGUR_CLIENT_ID;
@@ -49,12 +54,22 @@ angular.module('SED')
     };
     $scope.submit = function() {
     	var option = $scope.option
+=======
+    $scope.submit = function() {
+    	var option = $scope.option
+    	console.log(option, $scope.user)
+>>>>>>> Revamp directories to reflect new changes
     	if (option === 'Teacher') {
         Auth.signupTeacher($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.SEDteacher', token);
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
           // $location.path('/teacher');
           $location.path('/dashboard');
+=======
+          console.log(token)
+          // $location.path('/teacher');
+>>>>>>> Revamp directories to reflect new changes
         })
         .catch(function (error) {
           console.error(error);
@@ -63,7 +78,12 @@ angular.module('SED')
         Auth.signupUser($scope.user)
         .then(function (token) {
             $window.localStorage.setItem('com.SEDuser', token);
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
             $location.path('/dashboard');
+=======
+            console.log(token)
+          // $location.path('/user');
+>>>>>>> Revamp directories to reflect new changes
           })
         .catch(function (error) {
           console.error(error);
@@ -72,12 +92,21 @@ angular.module('SED')
         Auth.signupCenter($scope.user)
         .then(function(token){
           $window.localStorage.setItem('com.SEDcenter',token);
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
           $location.path('/dashboard');
+=======
+          console.log(token)
+          // $location.path('/center');
+>>>>>>> Revamp directories to reflect new changes
         })
         .catch(function(error){
           console.log(error);
         });
     	}
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
+=======
+    	// $location.path('/dashboard');
+>>>>>>> Revamp directories to reflect new changes
     }
 });
 
