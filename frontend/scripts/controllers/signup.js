@@ -7,6 +7,8 @@ angular.module('SED')
     'Teacher': "images/teacher-avatar.jpg", 
     'Center': "images/school-minions.jpg"
   	}
+    $scope.initialize = function(){
+    }
   	$scope.changeSelect = function (){
       $scope.user = {};
   		console.log('1')
@@ -24,15 +26,34 @@ angular.module('SED')
 	  		$scope.centerSelected = true;
   		}
   	}
+    $scope.changeProfilePic = function(){
+      var uploadToIMGUR = window.uploadToIMGUR;
+      var IMGUR_CLIENT_ID = window.IMGUR_CLIENT_ID;
+      
+      var fileBt = $('<input>').attr('type','file');
+      fileBt.on('change', () => {
+        var file = fileBt[0].files[0];
+        var reader = new FileReader();
+        reader.addEventListener('load', ()=>{
+          var imgData = reader.result.slice(23);
+          // sending the decoded image to IMGUR to get a link for that image
+          uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result){
+            $scope.profilePicture = result.link;
+            $scope.changedFlag = true;
+          });
+        })
+        // using the reader to decode the image to base64
+        reader.readAsDataURL(file);
+      })
+      fileBt.click();
+    };
     $scope.submit = function() {
     	var option = $scope.option
-    	console.log(option, $scope.user)
     	if (option === 'Teacher') {
         Auth.signupTeacher($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.SEDteacher', token);
-          console.log(token)
-          // $location.path('/teacher');
+          $location.path('/dashboard');
         })
         .catch(function (error) {
           console.error(error);
@@ -41,8 +62,7 @@ angular.module('SED')
         Auth.signupUser($scope.user)
         .then(function (token) {
             $window.localStorage.setItem('com.SEDuser', token);
-            console.log(token)
-          // $location.path('/user');
+            $location.path('/dashboard');
           })
         .catch(function (error) {
           console.error(error);
@@ -51,14 +71,12 @@ angular.module('SED')
         Auth.signupCenter($scope.user)
         .then(function(token){
           $window.localStorage.setItem('com.SEDcenter',token);
-          console.log(token)
-          // $location.path('/center');
+          $location.path('/dashboard');
         })
         .catch(function(error){
           console.log(error);
         });
     	}
-    	// $location.path('/dashboard');
     }
 });
 

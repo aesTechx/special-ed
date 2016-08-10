@@ -2,7 +2,7 @@
         { name: 'base', state: { abstract: true, url: '', templateUrl: 'views/base.html', data: {text: "Base", visible: false } } },
         { name: 'login', state: { url: '/login', parent: 'base', templateUrl: 'views/login.html', controller: 'LoginCtrl', data: {text: "Login", visible: false } } },
         { name: 'dashboard', state: { url: '/dashboard', parent: 'base', templateUrl: 'views/dashboard.html', controller: 'DashboardCtrl', data: {text: "Dashboard", visible: false } } },
-        { name: 'overview', state: { url: '/overview', parent: 'dashboard', templateUrl: 'views/dashboard/overview.html', data: {text: "Overview", visible: true } } },
+        { name: 'overview', state: { url: '/overview', parent: 'dashboard', templateUrl: 'views/dashboard/overview.html', controller: 'OverviewCtrl', data: {text: "Overview", visible: true } } },
         { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html', data: {text: "Reports", visible: true } } },
         { name: 'logout', state: { url: '/login', data: {text: "Logout", visible: true }} },
         { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html',  controller: 'SignupCtrl', data: {text: "SignUp", visible: false }} }
@@ -97,7 +97,7 @@ angular.module('SED', [
 //   };
 //   return attach;
 // })
-// .run(function ($rootScope, $location, Auth) {
+// // .run(function ($rootScope, $location, Auth) {
 //   // here inside the run phase of angular, our services and controllers
 //   // have just been registered and our app is ready
 //   // however, we want to make sure the user is authorized

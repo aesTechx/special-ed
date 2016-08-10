@@ -12,13 +12,11 @@ angular.module('SED')
   	}
     $scope.submit = function() {
     	var option = $scope.option
-    	console.log(option, $scope.user)
     	if (option === 'Teacher') {
     		Auth.signinTeacher($scope.user)
 			.then(function (token) {
-				console.log(token)
 				$window.localStorage.setItem('com.SEDteacher', token);
-				// $location.path('/teacher');
+				$location.path('/dashboard');
 			})
 			.catch(function (error) {
 				console.error(error);
@@ -26,10 +24,8 @@ angular.module('SED')
     	} else if (option === 'Student') {
     		Auth.signinUser($scope.user)
 			.then(function (token) {
-				console.log(token)
-
 				$window.localStorage.setItem('com.SEDuser', token);
-				// $location.path('/user');
+				$location.path('/dashboard');
 			})
 			.catch(function (error) {
 				console.error(error);
@@ -37,15 +33,12 @@ angular.module('SED')
     	} else if (option === 'Center') {
 			Auth.signinCenter($scope.user)
 			.then(function(token){
-				console.log(token)
-
 				$window.localStorage.setItem('com.SEDcenter',token);
-				// $location.path('/center');
+				$location.path('/dashboard');
 			})
 			.catch(function(error){
 				console.error(error);
 			});
     	}
-    	$location.path('/dashboard');
     }
 })
