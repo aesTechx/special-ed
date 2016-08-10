@@ -2,6 +2,9 @@ angular.module('SED', [
   'SED.services',
   'SED.Centers',
   'SED.multiForms',
+  'SED.Teachers',
+  'SED.Users',
+  'SED.auth',
   'ngRoute'
 ])
 
