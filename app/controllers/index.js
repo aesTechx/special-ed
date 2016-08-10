@@ -50,7 +50,8 @@ module.exports = {
 			db.Teacher.create({
 				username: req.body.username,
 				fullname: req.body.fullname,
-				category: req.body.category
+				category: req.body.category,
+				password: req.body.password
 			})
 			.then(function() {
 				res.sendStatus(201);

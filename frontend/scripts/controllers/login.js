@@ -47,7 +47,4 @@ angular.module('SED')
 			});
     	}
     }
-
-  //console.log($scope.userName)
 })
-
