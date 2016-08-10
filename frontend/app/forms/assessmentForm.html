@@ -1,27 +1,17 @@
-<<<<<<< b3d09abc4bc01675d85d79e0de4c540643ce0aa7
-
 <div id="assessmentForm">
-=======
-<div class="tab-pane fade in active">
-
-<div id="assessment">
->>>>>>> assessment
-	<div ng-repeat="category in questions">	
+	<div ng-repeat="category in allQuestions">	
 		<span ng-show="category.step==1">
-			<form class="form-horizontal" ng-repeat="(key, Qvalue) in category">
-				<div ng-repeat="(Question, answer) in Qvalue">
-					<h4>{{key}}</h4>	
+			<form class="form-horizontal" ng-repeat="Question in category">
+				<div ng-repeat="Q in Question">
+					<h1>Q: {{Q.Q}}</h1>
 					<div>
-						<h3>{{answer.q}}</h3>
-						<!-- <h2>{{key}}</h2>
-						<h3>{{item.q}}</h3> -->
-						<!-- <h3>{{item.value}}</h3> -->
+					
 						<div class="radio">
-							<input type="radio"  value="1" ng-model="answer.value" checked>
+							<input type="radio"  value="1" ng-model="Q.value" checked>
 								Yes
 						</div>
 						<div class="radio">
-							<input type="radio" value="2" ng-model="answer.value">
+							<input type="radio" value="2" ng-model="Q.value">
 								No
 						</div>
 					</div>
@@ -31,18 +21,7 @@
 </div>
 <a ng-click="nextStep()">Next</a>
 </div>
-<<<<<<< b3d09abc4bc01675d85d79e0de4c540643ce0aa7
 <button ng-click="submit()" > submit</button> 
 </ng-form>
 <!-- </div> -->			
-=======
-
-
-<button ng-click="submit()" > submit</button> 
-
-
-
-
-
->>>>>>> assessment
 </div>
