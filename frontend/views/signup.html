@@ -1,19 +1,13 @@
 <div class="login-page">
 	<div class="img-container">
 		<div class="text-center pull-right photo">
-<<<<<<< 5f93d8cdf14b08c0d4dbb473d8e40baa23ffdd08
 			<img src="{{profilePicture || images[option]}}" class="user-avatar img-circle img-responsive"/>
     			<input type="button" ng-click="changeProfilePic()" class="btn btn-white btn-primary" value="Change Profile Picture"/>
-=======
-			<img src="{{images[option]}}" class="user-avatar img-circle img-responsive"/>
->>>>>>> Revamp directories to reflect new changes
 				<h1>Special<br/ > <span>Education</span><br /><small>Portal</small></h1>
 			</div>
 		</div>
 		<div class="form-content">
 			<form role="form" class="bottom-75" ng-submit="submit()">
-<<<<<<< 5f93d8cdf14b08c0d4dbb473d8e40baa23ffdd08
-
 			<div class="table-form">
 				<div class="form-groups">
 					<label for="sel1">Type of user:</label>
@@ -22,10 +16,8 @@
 				        <option value='Teacher'>Teacher</option>
 				        <option value='Center'>Center</option>
 				      </select>
-=======
 			<div class="table-form">
 				<div class="form-groups">
->>>>>>> Revamp directories to reflect new changes
 					<div class="form-group">
 						<input ng-if="studentSelected || teacherSelected" type="text" class="form-control input-lg" id="" placeholder="FULLNAME"ng-model='user.fullname'>
 						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER NAME"ng-model='user.centername'>
@@ -40,16 +32,6 @@
 					<div class="form-group">
 						<input ng-if="studentSelected" class='form-control input-lg' type="date" id="dateOfBirth" ng-model="user.dateOfBirth" placeholder="Date of Birth">
 					</div>					
-<<<<<<< 5f93d8cdf14b08c0d4dbb473d8e40baa23ffdd08
-
-=======
-					<label for="sel1">Select list (select one):</label>
-				      <select class="form-control" id="sel1" ng-model="option" ng-change="changeSelect()">
-				        <option value='Student'>Student</option>
-				        <option value='Teacher'>Teacher</option>
-				        <option value='Center'>Center</option>
-				      </select>
->>>>>>> Revamp directories to reflect new changes
 				</div>	
 				<div class="button-container">
 					<button type="submit" class="btn btn-default login"><img src="images/arrow.png" alt=""></button>
