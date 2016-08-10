@@ -25,6 +25,7 @@ module.exports = function(config) {
         'frontend/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'frontend/lib/angular-bootstrap/ui-bootstrap.js',
         'frontend/app/app.js',
+        'frontend/app/forms/assessmentTest.js',
         //'frontend/app/services/services.js',
         //'frontend/app/services/center.js',
 
