@@ -6,9 +6,15 @@ angular.module('SED.multiForms', [])
   
 
 	$scope.SOCIAL={questions:[
+<<<<<<< 69ccdbc6c7ed8be2da7b1d7bc3bd4bdd2475e947
 		{Q: 'withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers', value: undefined},
 		{Q: 'parallel play along side but not with peers', value: undefined},
 		{Q: 'difficulty establishing friendships', value: undefined},
+=======
+		{Q: 'withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers', value: 1},
+		{Q: 'parallel play along side but not with peers', value: 2},
+		{Q: 'difficulty establishing friendships', value: 3},
+>>>>>>> Assessment done
 		{Q: 'limited social smile or eye contact (looks away, looks through people, looks at speaker’s mouth, needs to be prompted to make eye contact, or does not make eye contact when communicating)', value: undefined},
 		{Q: 'limited sharing and showing (e.g., does not show a toy to an adult, seek recognition, or share an experience or accomplishment with others)', value: undefined},
 		{Q: 'excessively rigid play with peers (dictates play according to his/her peculiar and repetitive interests and rules)', value: undefined},
@@ -134,4 +140,3 @@ angular.module('SED.multiForms', [])
   }
 
 })
- 
