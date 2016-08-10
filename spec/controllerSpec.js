@@ -10,8 +10,6 @@ var models = require(path.join(__dirname, '..', './app/models'));
 describe('centerGetPost()', function () {
 	'use strict';
 		
-<<<<<<< HEAD
-<<<<<<< 882801aedffcd30b1c522dc5539a7c321b6bf8ed
 		it('post a new center to DB',function(){
 		 chai.request(app)
 				.post('http://127.0.0.1:8000/api/center/addCenter')
@@ -29,30 +27,6 @@ describe('centerGetPost()', function () {
 					res.body.SUCCESS.centername.should.equal('eshraq');
 					res.body.should.be.a('object');
 					done();
-=======
-=======
->>>>>>> assessmentDone
-	it('post a new center to DB', function(){
-	chai.request(app)
-		.post('http://127.0.0.1:8000/api/center/addCenter')
-		.send({centername:'eshraq',password:'eshraq',username:'eshraq'})
-		.end(function(err,res){
-			res.should.have.status(201);
-			res.should.be.json;
-			res.body.should.have.property('SUCCESS');
-			res.body.SUCCESS.should.be.a('object');
-					// res.body.SUCCESS.should.have.property('username');
-					// res.body.SUCCESS.should.have.property('centername');
-					// res.body.SUCCESS.should.have.property('password');
-					// res.body.SUCCESS.should.have.property('id');
-					// res.body.SUCCESS.username.should.equal('eshraq');
-					// res.body.SUCCESS.centername.should.equal('eshraq');
-			res.body.should.be.a('object');
-			done();
-<<<<<<< HEAD
->>>>>>> Assessment done
-=======
->>>>>>> assessmentDone
 				});
 		});
 		it('request all centers from the DB',function(done){
