@@ -41,7 +41,6 @@ module.exports = {
 			});
 		},
 		addStudent:function(req,res){
-			console.log("students");
 			db.Student.create({
 				username: req.body.username,
 				fullname: req.body.fullname,

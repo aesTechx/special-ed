@@ -1,4 +1,3 @@
-
 angular.module('SED.services', [])
 
 .factory ('Record', function ($http) {

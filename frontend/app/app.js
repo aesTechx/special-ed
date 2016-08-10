@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> assessmentDone
 angular.module('SED', [
   'SED.services',
   'SED.Centers',

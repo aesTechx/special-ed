@@ -10,6 +10,7 @@ var models = require(path.join(__dirname, '..', './app/models'));
 describe('centerGetPost()', function () {
 	'use strict';
 		
+<<<<<<< HEAD
 <<<<<<< 882801aedffcd30b1c522dc5539a7c321b6bf8ed
 		it('post a new center to DB',function(){
 		 chai.request(app)
@@ -29,6 +30,8 @@ describe('centerGetPost()', function () {
 					res.body.should.be.a('object');
 					done();
 =======
+=======
+>>>>>>> assessmentDone
 	it('post a new center to DB', function(){
 	chai.request(app)
 		.post('http://127.0.0.1:8000/api/center/addCenter')
@@ -46,7 +49,10 @@ describe('centerGetPost()', function () {
 					// res.body.SUCCESS.centername.should.equal('eshraq');
 			res.body.should.be.a('object');
 			done();
+<<<<<<< HEAD
 >>>>>>> Assessment done
+=======
+>>>>>>> assessmentDone
 				});
 		});
 		it('request all centers from the DB',function(done){
