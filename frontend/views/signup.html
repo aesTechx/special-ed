@@ -1,8 +1,12 @@
 <div class="login-page">
 	<div class="img-container">
 		<div class="text-center pull-right photo">
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
 			<img src="{{profilePicture || images[option]}}" class="user-avatar img-circle img-responsive"/>
     			<input type="button" ng-click="changeProfilePic()" class="btn btn-white btn-primary" value="Change Profile Picture"/>
+=======
+			<img src="{{images[option]}}" class="user-avatar img-circle img-responsive"/>
+>>>>>>> Revamp directories to reflect new changes
 				<h1>Special<br/ > <span>Education</span><br /><small>Portal</small></h1>
 			</div>
 		</div>
@@ -10,6 +14,7 @@
 			<form role="form" class="bottom-75" ng-submit="submit()">
 			<div class="table-form">
 				<div class="form-groups">
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
 					<label for="sel1">Type of user:</label>
 				      <select class="form-control" id="sel1" ng-model="option" ng-change="changeSelect()">
 				        <option value='Student'>Student</option>
@@ -25,14 +30,34 @@
 					<div class="form-group">
 						<input ng-if='!teacherSelected' type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
 						<input ng-if='teacherSelected' type="text" class="form-control input-lg" id="" placeholder="TEACHER USERNAME" ng-model='user.teachername'>
+=======
+					<div class="form-group">
+						<input ng-if="studentSelected || teacherSelected" type="text" class="form-control input-lg" id="" placeholder="FULLNAME"ng-model='user.fullname'>
+						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER NAME"ng-model='user.centername'>
+					</div>
+					<div class="form-group">
+						<input ng-if='!teacherSelected' type="text" class="form-control input-lg" id="" placeholder="USERNAME"ng-model='user.username'>
+						<input ng-if='teacherSelected' type="text" class="form-control input-lg" id="" placeholder="TEACHER USERNAME"ng-model='user.teachername'>
+>>>>>>> Revamp directories to reflect new changes
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control input-lg" id="" placeholder="PASSWORD" ng-model='user.password'>
 					</div>
 					<div class="form-group">
+<<<<<<< 3f2147e120f602c6190447d823f060ef6cb3ad2e
 						<input ng-if="studentSelected" class='form-control input-lg' type="date" id="dateOfBirth" ng-model="user.birthdate" placeholder="Date of Birth">
 					</div>					
 
+=======
+						<input ng-if="studentSelected" class='form-control input-lg' type="date" id="dateOfBirth" ng-model="user.dateOfBirth" placeholder="Date of Birth">
+					</div>					
+					<label for="sel1">Select list (select one):</label>
+				      <select class="form-control" id="sel1" ng-model="option" ng-change="changeSelect()">
+				        <option value='Student'>Student</option>
+				        <option value='Teacher'>Teacher</option>
+				        <option value='Center'>Center</option>
+				      </select>
+>>>>>>> Revamp directories to reflect new changes
 				</div>	
 				<div class="button-container">
 					<button type="submit" class="btn btn-default login"><img src="images/arrow.png" alt=""></button>
