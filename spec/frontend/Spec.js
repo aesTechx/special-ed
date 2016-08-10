@@ -11,27 +11,16 @@
 // 		})
 // 	});
 // })
-describe('Filters', function (){
+describe('Filters', function () {
 	beforeEach(module('SED'));
 	describe('attach tokens', function () {
 		var attach;
-		beforeEach(inject(function(_AttachTokens_){
+		beforeEach(inject(function(_AttachTokens_) {
 			attach = _AttachTokens_;
 		}));
 		it ('should attach a string', function () {
 			expect(attach).toBeDefined();
 			// expect(typeof attach.request).toBe('function');
-		})
-	})
-	describe('attach tokens', function () {
-		var attach;
-		beforeEach(inject(function(_AttachTokens_){
-			attach = _AttachTokens_;
-		}));
-		it ('should attach a string', function () {
-			expect(attach).toBeDefined();
-			expect(typeof attach.x).toBe('function');
-		})
-	})
-})
-
+		});
+	});
+});
