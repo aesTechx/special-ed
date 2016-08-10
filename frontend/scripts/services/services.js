@@ -132,3 +132,4 @@ return {submitForm: submitForm}
     isAuthteacher: isAuthteacher,
     signout: signout
   };
+});
