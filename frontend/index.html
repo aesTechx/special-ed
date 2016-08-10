@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html ng-app="specialEd">
-	<head>
-		<title>SpecialEd</title>
-		<script src="lib/angular/angular.js"></script>
-		<script src="lib/angular-route/angular-route.js"></script>
-		<script src="lib/angular-animate/angular-animate.min.js"></script>
-		<script src="lib/angular-resource/angular-resource.min.js"></script>
-		<script src="lib/angular-touch/angular-touch.min.js"></script>
-		<script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-		<link data-require="bootsrap@" data-server="3.3.1" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	</head>
-	<body>
-		<div class='container-fluid' style='background-color: red;'>
-			<div class='col-xs-12'> 
-				Hello World! 
-			</div>
-		</div>
-		<script src="app/app.js"></script>
-	</body>
+<html ng-app='SED'>
+  <head>
+    <meta charset="utf-8" />
+    <title>Special-ED</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/ui-bootstrap-tpls-2.0.1.min.js"></script>
+    <script src="app/auth/auth.js"></script>
+    <script src="app/user/user.js"></script>
+    <script src="app/teacher/teacher.js"></script>
+    <script src="app/center/center.js"></script>
+   <!--  <script src="app/game/game.js"></script> -->
+    <script src="app/matchFruitsAngular_1/js/app.js"></script>
+    <script src="app/services/services.js"></script>
+
+    <script src="app/app.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1 class="text-center">Special-ED</h1>
+      </div>
+      <div class="container">
+        <ul class="nav nav-pills nav-justified">
+          <li><a href="#/user" data-toggle='tab'>User</a></li>
+          <li><a href="#/teacher" data-toggle='tab'>Teacher</a></li>
+          <li><a href="#/center" data-toggle='tab'>Center</a></li>
+          <li><a href="#/game" data-toggle='tab'>Game</a></li>
+        </ul>
+        <div class="container">
+          <div class="col-sm-5 col-md-5 col-lg-5"></div>
+            <div class="login-form tab-content col-sm-7 col-md-7 col-lg-7" ng-view>
+            </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
