@@ -1,4 +1,6 @@
 var db = require('../models');
+var jwt = require('jwt-simple');
+
 module.exports = {
   _getAll: function(field){
     db[field].findAll()
@@ -67,7 +69,7 @@ module.exports = {
 		addTeacher: function(req, res) {
 			db.Teacher.create({
 				username: req.body.username,
-				fullname: req.body.fullname,=
+				fullname: req.body.fullname,
 				category: req.body.category,
 				password: req.body.password
 			})
