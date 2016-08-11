@@ -29,6 +29,12 @@ module.exports = function(config) {
         'lib/angular-snap/angular-snap.js',
         'frontend/scripts/app.js',
         'frontend/scripts/**/*.js',
+        'frontend/app/app.js',
+        'frontend/app/forms/assessmentTest.js',
+        //'frontend/app/services/services.js',
+        //'frontend/app/services/center.js',
+
+        'frontend/app/**/*.js',
         'frontend/helpers/*.js',
         'spec/frontend/*.js',
         'spec/frontend/**/*.js'
@@ -37,6 +43,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+        'frontend/app/forms/*.js'
     ],
 
 

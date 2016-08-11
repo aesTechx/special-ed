@@ -19,5 +19,4 @@ var uploadToIMGUR = function(clientId, imgData, callback) {
 		}
 	});
 };
-
 window.uploadToIMGUR = uploadToIMGUR;

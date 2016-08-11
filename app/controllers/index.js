@@ -4,13 +4,13 @@ var jwt = require('jwt-simple');
 module.exports = {
 	Center: {
 		getAllCenter: function (req, res) {
-	      db.Center.findAll()
-	        .then(function(centers) {
-	        	res.status(200);
-	            res.send(centers);
-	        });
-	    },
-	    addCenter: function (req, res) {
+			db.Center.findAll()
+			.then(function(centers) {
+				res.status(200);
+				res.send(centers);
+			});
+		},
+		addCenter: function (req, res) {
 			// findOrCreate returns multiple resutls in an array
 			// use spread to assign the array to function arguments
 			db.Center.create({
@@ -132,6 +132,29 @@ module.exports = {
 			});
 		},
 		addGame: function(req, res) {
+		}
+	},
+	Record: {
+		getAllRecords: function(req, res) {
+			db.Record.findAll()
+			.then(function(records) {
+				res.json(records);
+			});
+		},
+		
+
+		addRecord: function(req, res) {
+			console.log(req.body.SOCIAL)
+			db.Record.create({
+				SOCIAL: req.body.SOCIAL,
+				PERSEVERATION: req.body.PERSEVERATION,
+				SOMATOSENSORY_DISTURBANCE: req.body.SOMATOSENSORY_DISTURBANCE,
+				COMMUNICATION_AND_DEVELOPMENT: req.body.COMMUNICATION_AND_DEVELOPMENT,
+				ATTENTION_AND_SAFETY: req.body.ATTENTION_AND_SAFETY
+			})
+			.then(function(record) {
+				res.json(record);
+			});
 		}
 	}
 }
