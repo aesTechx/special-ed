@@ -1,4 +1,6 @@
 var db = require('../models');
+var jwt = require('jwt-simple');
+
 module.exports = {
 	Center: {
 		getAllCenter: function (req, res) {
@@ -71,6 +73,7 @@ module.exports = {
 	        });
 	  	},
 	  	addStudent:function(req,res){
+	  		console.log(req.body)
 	  		db.Student.create({
 	  			username: req.body.username,
 	  			fullname: req.body.fullname,
@@ -92,7 +95,7 @@ module.exports = {
 		addTeacher: function(req, res) {
 			db.Teacher.create({
 				username: req.body.username,
-				fullname: req.body.fullname,=
+				fullname: req.body.fullname,
 				category: req.body.category,
 				password: req.body.password
 			})

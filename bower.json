@@ -22,12 +22,13 @@
     "bootstrap-btn-outline-rounded": "~0.0.3",
     "angular-animate": "latest",
     "components-font-awesome": "~4.3.0",
-    "angular-snap": "latest"
+    "angular-snap": "latest",
+    "underscore": "^1.8.3"
   },
   "resolutions": {
     "angular": ">=1.4.0"
   },
   "devDependencies": {
-    "angular-mocks": "latest"
+    "angular-mocks": "latest",
   }
 }

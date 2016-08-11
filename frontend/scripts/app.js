@@ -5,15 +5,17 @@
         { name: 'overview', state: { url: '/overview', parent: 'dashboard', templateUrl: 'views/dashboard/overview.html', controller: 'OverviewCtrl', data: {text: "Overview", visible: true } } },
         { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html', data: {text: "Reports", visible: true } } },
         { name: 'logout', state: { url: '/login', data: {text: "Logout", visible: true }} },
-        { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html',  controller: 'SignupCtrl', data: {text: "SignUp", visible: false }} }
+        { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html',  controller: 'SignupCtrl', data: {text: "SignUp", visible: false }} },
+        { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html',  controller: 'MainController', data: {text: "Play Game", visible: true }} }
     ];
    
 angular.module('SED', [
-                // 'ngRoute',
-                // 'ngAnimate',
-                // 'ngTouch',
-                // 'ngResource',
-                // 'ui.bootstrap',
+                'ngRoute',
+                'ngAnimate',
+                'ngTouch',
+                'ngResource',
+                'ui.bootstrap',
+                'dragDropSampleApp',
                 'SED.services',
                 'ui.router',
                 'snap',
