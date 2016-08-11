@@ -1,6 +1,20 @@
 
 angular.module('SED.services', [])
 
+.factory ('Record', function ($http) {
+	var submitForm = function(form){
+	console.log(form)
+	return $http({
+		method: 'POST',
+		url: '/api/forms/submitForm',
+		data: form
+	})
+	.then(function (resp) {
+		return resp.data;
+	});
+	}
+return {submitForm: submitForm}
+})
 .factory('Orders', function ($http) {
   return {}
 })

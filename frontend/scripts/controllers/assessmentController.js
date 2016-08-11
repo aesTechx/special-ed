@@ -2,9 +2,6 @@ angular.module('SED.multiForms', [])
 // controller for creating multi form in one view one after one
 .controller('assessmentController', function ($scope, Record) {
 	$scope.counter=0;
-
-  
-
 	$scope.SOCIAL={questions:[
 		{Q: 'withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers', value: undefined},
 		{Q: 'parallel play along side but not with peers', value: undefined},
@@ -24,8 +21,7 @@ angular.module('SED.multiForms', [])
 		{Q: 'wants to have friends but does not know how to make friends', value: undefined}*/
 	],
 	step: 1}
-
-	$scope.PERSEVERATION= {questions:[
+	$scope.PERSEVERATION = {questions:[
 		{Q: 'obsessive preoccupations or extreme fixation on things such as certain movies or TV shows (reenacts or watches the same movies over and over), computer games, letters, shapes, numbers, counting, objects or topics (e.g., trains, dinosaurs, NASCAR, maps, planes, electricity, Yu-Gi-Oh, cartoon characters, etc.)', value: undefined},
 		{Q: 'unusual attachment to and holding or hoarding objects (e.g., small figures, string)', value: undefined},
 		{Q: 'repetitive play (e.g., excessively lines up, sorts, spins, or throws objects; opens and closes things repeatedly; plays with the same toys without variation; draws the same pictures repeatedly)', value: undefined}/*,
@@ -41,7 +37,6 @@ angular.module('SED.multiForms', [])
 		{Q: 'Stereotypies (unusual repetitive movements such as hand flapping when excited, toe walking, body rocking, head shaking, body tensing, teeth clenching, teeth grinding while awake, finger movements, facial grimacing, repeatedly running back and forth, twirling or spinning, pacing, playing with saliva, skin picking)', value: undefined}*/
 	],
 	step: 0}
-
 	$scope.SOMATOSENSORY_DISTURBANCE= {questions:[
 		{Q: ' Excessive atypical craving and love of spinning, tickling, climbing, rocking, swinging, bouncing, jumping', value: undefined},
 		{Q: ' Unresponsive at times to verbal input (not react when name called or spoken to, hearing DISTURBANCEriuestioned)', value: undefined},
@@ -132,22 +127,4 @@ angular.module('SED.multiForms', [])
 		$scope.counter++;
 		$scope.allQuestions[$scope.counter].step = 1;
   }
-
-  // pagination section:
-  $scope.totalItems = ($scope.allQuestions.length*10);
-  $scope.currentPage = 1;
-
-  $scope.setPage = function (pageNo) {
-    $scope.currentPage = pageNo;
-  };
-
-  $scope.pageChanged = function() {
-    console.log('Page changed to: ' + $scope.currentPage);
-  };
-
-  $scope.maxSize = 5;
-  $scope.bigTotalItems = 50;
-  $scope.bigCurrentPage = 1;
-
 })
-
