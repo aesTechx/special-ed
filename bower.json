@@ -29,6 +29,6 @@
     "angular": ">=1.4.0"
   },
   "devDependencies": {
-    "angular-mocks": "latest",
+    "angular-mocks": "latest"
   }
 }
