@@ -19,7 +19,7 @@ iisnode.yml
 .Trashes
 **/*.sqlite
 frontend/lib
-
+frontend/config
 # Logs
 logs
 *.log
