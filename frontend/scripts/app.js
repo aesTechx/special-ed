@@ -6,7 +6,8 @@
         { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html', data: {text: "Reports", visible: true } } },
         { name: 'logout', state: { url: '/login', data: {text: "Logout", visible: true }} },
         { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html',  controller: 'SignupCtrl', data: {text: "SignUp", visible: false }} },
-        { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html',  controller: 'MainController', data: {text: "Play Game", visible: true }} }
+        { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html',  controller: 'MainController', data: {text: "Play Game", visible: true }} },
+        { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html',  controller: 'assessmentController', data: {text: "C.A.R.S Assessment", visible: true }} }
     ];
    
 angular.module('SED', [
@@ -16,6 +17,7 @@ angular.module('SED', [
                 'ngResource',
                 'ui.bootstrap',
                 'dragDropSampleApp',
+                'SED.multiForms',
                 'SED.services',
                 'ui.router',
                 'snap',
