@@ -15,8 +15,6 @@ angular.module('SED.services', [])
 	}
 return {submitForm: submitForm}
 })
-angular.module('SED.services', [])
-
 .factory('Orders', function ($http) {
   return {}
 })

@@ -2,7 +2,6 @@ var db = require('../models');
 var jwt = require('jwt-simple');
 
 module.exports = {
-
   Center: {
     getAllCenter: function (req, res) {
       db.Center.findAll()
@@ -47,7 +46,8 @@ module.exports = {
         username: req.body.username,
         fullname: req.body.fullname,
         skillsResult: req.body.skillsResult,
-        birthdate: req.body.birthdate
+        birthdate: req.body.birthdate,
+        password: req.body.password
       })
       .then(function(student) {
         var token = jwt.encode(student, 'secret');
