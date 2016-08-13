@@ -1,6 +1,7 @@
 'use strict';
 angular.module('SED')
   .controller('LoginCtrl', function($scope, $location, $window, Auth) {
+  	console.log($window.localStorage)
   	$scope.user = {};
   	$scope.images = {
   		'Student': "images/flat-avatar.png", 
@@ -11,11 +12,15 @@ angular.module('SED')
       $scope.user = {};
   	}
     $scope.submit = function() {
+    //console.log($scope.user)
+    //$scope.userName.a=$scope.user;
+      //console.log($scope.userName)
     	var option = $scope.option
     	if (option === 'Teacher') {
-    console.log($scope.userName)
     		Auth.signinTeacher($scope.user)
 			.then(function (token) {
+	  			//$scope.userName = {};
+				//$scope.test = function () {console.log($scope.user)}
 				$window.localStorage.setItem('com.SEDteacher', token);
 				$location.path('/dashboard');
 			})
@@ -42,5 +47,7 @@ angular.module('SED')
 			});
     	}
     }
-    $scope.userName = $scope.user;
+
+  //console.log($scope.userName)
 })
+
