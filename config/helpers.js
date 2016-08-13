@@ -1,8 +1,10 @@
-var jwt = require('jwt-simple');
+	var jwt = require('jwt-simple');
 
 module.exports = {
 	decode: function (req, res, next) {
+		console.log("decode");
 		var token = req.headers['x-access-token'];
+		console.log(token);
 		var user;
 		if (!token) {
 			return res.send(403); // send forbidden if a token is not provided

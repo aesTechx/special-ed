@@ -213,7 +213,7 @@ dragDropSampleApp.directive("dropme", ["$timeout", function ($timeout) {
                                                         value: "happy"
                                                 })
                                         } else {
-                                                // $(this).effect("shake");
+                                                 $(this).effect("shake");
                                                         $scope.setDoraemon({
                                                                 value: "tease"
                                                         })
