@@ -1,66 +1,44 @@
 'use strict';
-<<<<<<< 8b94671c2130a7a25c385ffaea8a0af044911ded
 angular.module('SED')
-  .controller('LoginCtrl', function($scope, $location, $window, Auth) {
-  	$scope.user = {};
-  	$scope.images = {
-  		'Student': "images/flat-avatar.png", 
-  		'Teacher': "images/teacher-avatar.jpg", 
-  		'Center': "images/school-minions.jpg"
-  	}
-  	$scope.changeSelect = function (){
-      $scope.user = {};
-  	}
-    $scope.submit = function() {
-    	var option = $scope.option
-    	if (option === 'Teacher') {
-    		Auth.signinTeacher($scope.user)
-			.then(function (token) {
-				$window.localStorage.setItem('com.SEDteacher', token);
-				$location.path('/dashboard');
-			})
-			.catch(function (error) {
-				console.error(error);
-			});
-    	} else if (option === 'Student') {
-    		Auth.signinUser($scope.user)
-			.then(function (token) {
-				$window.localStorage.setItem('com.SEDuser', token);
-				$location.path('/dashboard');
-			})
-			.catch(function (error) {
-				console.error(error);
-			});
-    	} else if (option === 'Center') {
-			Auth.signinCenter($scope.user)
-			.then(function(token){
-				$window.localStorage.setItem('com.SEDcenter',token);
-				$location.path('/dashboard');
-			})
-			.catch(function(error){
-				console.error(error);
-			});
-    	}
+.controller('LoginCtrl', function($scope, $location, $window, Auth) {
+  $scope.user = {};
+  $scope.images = {
+    'Student': 'images/flat-avatar.png', 
+    'Teacher': 'images/teacher-avatar.jpg', 
+    'Center': 'images/school-minions.jpg'
+  };
+  $scope.changeSelect = function () {
+    $scope.user = {};
+  };
+  $scope.submit = function() {
+    var option = $scope.option;
+    if (option === 'Teacher') {
+      Auth.signinTeacher($scope.user)
+      .then(function (token) {
+        $window.localStorage.setItem('com.SEDteacher', token);
+        $location.path('/dashboard');
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+    } else if (option === 'Student') {
+      Auth.signinUser($scope.user)
+      .then(function (token) {
+        $window.localStorage.setItem('com.SEDuser', token);
+        $location.path('/dashboard');
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+    } else if (option === 'Center') {
+      Auth.signinCenter($scope.user)
+      .then(function(token) {
+        $window.localStorage.setItem('com.SEDcenter', token);
+        $location.path('/dashboard');
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
     }
-})
-=======
-
-/**
- * @ngdoc function
- * @name yapp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of yapp
- */
-angular.module('SED')
-  .controller('LoginCtrl', function($scope, $location) {
-
-    $scope.submit = function() {
-
-      $location.path('/dashboard');
-
-      return false;
-    }
-
-  });
->>>>>>> Create landing page theme
+  };
+});
