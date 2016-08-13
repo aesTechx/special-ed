@@ -1,6 +1,11 @@
 'use strict';
 angular.module('SED')
-.controller('SignupCtrl', function($scope, $location, $window, Auth) {
+.controller('SignupCtrl', function($scope, $location, $window, Auth,Centers) {
+  $scope.data={};
+  Centers.getAllCenters()
+  .then(function(resp){
+    $scope.data.centers=resp.data;
+  })
   $scope.user = {};
   $scope.images = {
     'Student': "images/flat-avatar.png", 
@@ -11,7 +16,6 @@ angular.module('SED')
     }
   	$scope.changeSelect = function (){
       $scope.user = {};
-  		console.log('1')
   		if ($scope.option === 'Student') {
 	  		$scope.studentSelected = true;
 	  		$scope.teacherSelected = false;
@@ -47,8 +51,12 @@ angular.module('SED')
       })
       fileBt.click();
     };
+    $scope.changeSelect1 = function(){
+      $scope.center = $scope.option1;
+    }
     $scope.submit = function() {
-    	var option = $scope.option
+    	var option = $scope.option;
+      $scope.user.center=$scope.center;
     	if (option === 'Teacher') {
         Auth.signupTeacher($scope.user)
         .then(function (token) {
@@ -59,6 +67,8 @@ angular.module('SED')
           console.error(error);
         });
     	} else if (option === 'Student') {
+        console.log("inside student")
+        console.log($scope.user)
         Auth.signupUser($scope.user)
         .then(function (token) {
             $window.localStorage.setItem('com.SEDuser', token);
@@ -68,6 +78,7 @@ angular.module('SED')
           console.error(error);
         });
     	} else if (option === 'Center') {
+        console.log("center")
         Auth.signupCenter($scope.user)
         .then(function(token){
           $window.localStorage.setItem('com.SEDcenter',token);

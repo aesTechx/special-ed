@@ -7,7 +7,8 @@
         { name: 'logout', state: { url: '/login', data: {text: "Logout", visible: true }} },
         { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html',  controller: 'SignupCtrl', data: {text: "SignUp", visible: false }} },
         { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html',  controller: 'MainController', data: {text: "Play Game", visible: true }} },
-        { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html',  controller: 'assessmentController', data: {text: "C.A.R.S Assessment", visible: true }} }
+        { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html',  controller: 'assessmentController', data: {text: "C.A.R.S Assessment", visible: true }} },
+        { name: 'profile', state: { url: '/profile', parent: 'dashboard', templateUrl: 'views/dashboard/profileStudent.html',  controller: 'studentController', data: {text: "Profile", visible: true }}}
     ];
    
 angular.module('SED', [
@@ -16,6 +17,7 @@ angular.module('SED', [
                 'ngTouch',
                 'ngResource',
                 'ui.bootstrap',
+                'SED.student',
                 'dragDropSampleApp',
                 'SED.multiForms',
                 'SED.services',
@@ -23,13 +25,14 @@ angular.module('SED', [
                 'snap',
                 'ngAnimate'
             ])
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$routeProvider,$httpProvider) {
     $urlRouterProvider.when('/dashboard', '/dashboard/overview');
     $urlRouterProvider.otherwise('/login');
 
     angular.forEach(states, function (state) {
         $stateProvider.state(state.name, state.state);
     });
+    $httpProvider.interceptors.push('AttachTokens');
 })
 
 
@@ -83,24 +86,24 @@ angular.module('SED', [
 //     // of interceptors. Think of it like middleware for your ajax calls
 //     $httpProvider.interceptors.push('AttachTokens');
 // })
-// .factory('AttachTokens', function ($window) {
-//   // this is an $httpInterceptor
-//   // its job is to stop all out going request
-//   // then look in local storage and find the user's token
-//   // then add it to the header so the server can validate the request
-//   var attach = {
-//     request: function (object) {
-//       console.log("attach")
-//       var jwt = $window.localStorage.getItem('com.GSuser');
-//       if (jwt) {
-//         object.headers['x-access-token'] = jwt;
-//       }
-//       object.headers['Allow-Control-Allow-Origin'] = '*';
-//       return object;
-//     }
-//   };
-//   return attach;
-// })
+.factory('AttachTokens', function ($window) {
+  // this is an $httpInterceptor
+  // its job is to stop all out going request
+  // then look in local storage and find the user's token
+  // then add it to the header so the server can validate the request
+  var attach = {
+    request: function (object) {
+      console.log("attach")
+      var jwt = $window.localStorage.getItem('com.GSuser');
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
+});
 // // .run(function ($rootScope, $location, Auth) {
 //   // here inside the run phase of angular, our services and controllers
 //   // have just been registered and our app is ready

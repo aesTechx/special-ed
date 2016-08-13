@@ -1,10 +1,33 @@
 angular.module('SED.services', [])
 
-.factory('Orders', function ($http) {
-  return {}
+.factory('Centers', function ($http) {
+  getAllCenters=function(){
+    return $http({
+     method: 'GET',
+     url: '/api/centers'
+   })
+   .then(function (resp) {
+    console.log(resp);
+     return resp;
+     });
+    }
+  return {
+    getAllCenters:getAllCenters
+  }
 })
-.factory('Services',function($http){
-  return {}
+.factory('Teachers',function($http){
+  getAllTeachers=function(){
+      return $http({
+     method: 'GET',
+     url: '/api/teachers'
+   })
+   .then(function (resp) {
+     return resp;
+     });
+  }
+  return {
+    getAllTeachers:getAllTeachers
+  }
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
@@ -55,6 +78,7 @@ angular.module('SED.services', [])
   };
 
   var signupUser = function (user) {
+    console.log(user)
     return $http({
       method: 'POST',
       url: '/api/student/addstudent',

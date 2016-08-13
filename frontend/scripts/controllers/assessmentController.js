@@ -3,8 +3,6 @@ angular.module('SED.multiForms', [])
 .controller('assessmentController', function ($scope, $log, Record) {
 	$scope.counter=0;
 
-  
-
 	$scope.SOCIAL={questions:[
 		{Q: 'withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers', value: undefined},
 		{Q: 'parallel play along side but not with peers', value: undefined},
@@ -112,11 +110,11 @@ angular.module('SED.multiForms', [])
 		$scope.finalScore.ATTENTION_AND_SAFETY = $scope.result[4]
 		Record.submitForm($scope.finalScore)
 			.then(function(data) {
-			console.log(data)
-		})
+				console.log(data)
+			})
 			.catch(function(error) {
 				console.error(error);
-		});
+			});
 	}
 	$scope.result = [];
 	$scope.nextStep = function() {
