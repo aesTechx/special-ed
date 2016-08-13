@@ -2,14 +2,12 @@
 	<div ng-include="'menu.html'"></div>
 	<snap-dragger></snap-dragger>
 	<snap-content snap-opt-tap-to-close="false">
-
 		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
 			<span class="menutoggle">
 				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
 				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
 			</span>
 		</a>
-		
 		<div class="fr">
 		<h2>Overview <small>Why is SpecialEd so awesome?</small></h2>
 		</div>
@@ -18,10 +16,8 @@
 				<h1>Welcome!</h1>
 				Special Ed welcomes you into a unique learning and educational management experience, click the icon at the top left corner and see the different options you can choose from test <br /><br />
 				<p>
-					<a href="" class="btn btn-primary btn-lg btn-white" ng-click='logout()'>Logout</a>
 					<a ui-sref="login" class="btn btn-primary btn-lg btn-white">Logout</a>
 				</p>
-				
 			</div>
 		</div>
 	</snap-content>	

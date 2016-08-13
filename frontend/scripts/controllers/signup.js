@@ -3,10 +3,10 @@ angular.module('SED')
 .controller('SignupCtrl', function($scope, $location, $window, Auth) {
   $scope.user = {};
   $scope.images = {
-    'Student': "images/flat-avatar.png", 
-    'Teacher': "images/teacher-avatar.jpg", 
-    'Center': "images/school-minions.jpg"
-  }
+    'Student': 'images/flat-avatar.png', 
+    'Teacher': 'images/teacher-avatar.jpg', 
+    'Center': 'images/school-minions.jpg'
+  };
   $scope.initialize = function() {
   };
   $scope.changeSelect = function () {
