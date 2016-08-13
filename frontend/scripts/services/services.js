@@ -27,6 +27,7 @@ angular.module('SED.services', [])
   };
 
  var signinTeacher = function (user) {
+    console.log('current user is:')
     console.log(user)
     return $http({
       method: 'POST',

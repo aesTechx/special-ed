@@ -13,6 +13,7 @@ angular.module('SED')
     $scope.submit = function() {
     	var option = $scope.option
     	if (option === 'Teacher') {
+    console.log($scope.userName)
     		Auth.signinTeacher($scope.user)
 			.then(function (token) {
 				$window.localStorage.setItem('com.SEDteacher', token);
@@ -21,7 +22,7 @@ angular.module('SED')
 			.catch(function (error) {
 				console.error(error);
 			});
-    	} else if (option === 'Student') {
+		} else if (option === 'Student') {
     		Auth.signinUser($scope.user)
 			.then(function (token) {
 				$window.localStorage.setItem('com.SEDuser', token);
@@ -41,4 +42,5 @@ angular.module('SED')
 			});
     	}
     }
+    $scope.userName = $scope.user;
 })
