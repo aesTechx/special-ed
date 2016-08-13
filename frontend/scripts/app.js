@@ -1,15 +1,15 @@
-    var states = [
-        { name: 'base', state: { abstract: true, url: '', templateUrl: 'views/base.html', data: {text: "Base", visible: false } } },
-        { name: 'login', state: { url: '/login', parent: 'base', templateUrl: 'views/login.html', controller: 'LoginCtrl', data: {text: "Login", visible: false } } },
-        { name: 'dashboard', state: { url: '/dashboard', parent: 'base', templateUrl: 'views/dashboard.html', controller: 'DashboardCtrl', data: {text: "Dashboard", visible: false } } },
-        { name: 'overview', state: { url: '/overview', parent: 'dashboard', templateUrl: 'views/dashboard/overview.html', controller: 'OverviewCtrl', data: {text: "Overview", visible: true } } },
-        { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html', data: {text: "Reports", visible: true } } },
-        { name: 'logout', state: { url: '/login', data: {text: "Logout", visible: true }} },
-        { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html',  controller: 'SignupCtrl', data: {text: "SignUp", visible: false }} },
-        { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html',  controller: 'MainController', data: {text: "Play Game", visible: true }} },
-        { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html',  controller: 'assessmentController', data: {text: "C.A.R.S Assessment", visible: true }} }
-    ];
-   
+var states = [
+  { name: 'base', state: { abstract: true, url: '', templateUrl: 'views/base.html', data: {text: "Base", visible: false } } },
+  { name: 'login', state: { url: '/login', parent: 'base', templateUrl: 'views/login.html', controller: 'LoginCtrl', data: {text: "Login", visible: false } } },
+  { name: 'dashboard', state: { url: '/dashboard', parent: 'base', templateUrl: 'views/dashboard.html', controller: 'DashboardCtrl', data: {text: "Dashboard", visible: false } } },
+  { name: 'overview', state: { url: '/overview', parent: 'dashboard', templateUrl: 'views/dashboard/overview.html', controller: 'OverviewCtrl', data: {text: "Overview", visible: true } } },
+  { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html', data: {text: "Reports", visible: true } } },
+  { name: 'logout', state: { url: '/login', data: {text: "Logout", visible: true }} },
+  { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html',  controller: 'SignupCtrl', data: {text: "SignUp", visible: false }} },
+  { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html',  controller: 'MainController', data: {text: "Play Game", visible: true }} },
+  { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html',  controller: 'assessmentController', data: {text: "C.A.R.S Assessment", visible: true }} },
+  { name: 'profile', state: { url: '/profile', parent: 'dashboard', templateUrl: 'views/dashboard/profile.html',  controller: 'ProfileCtrl', data: {text: "Profile page", visible: false }} }
+];
 angular.module('SED', [
                 'ngRoute',
                 'ngAnimate',
@@ -22,14 +22,14 @@ angular.module('SED', [
                 'ui.router',
                 'snap',
                 'ngAnimate'
-            ])
+                ])
 .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.when('/dashboard', '/dashboard/overview');
-    $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.when('/dashboard', '/dashboard/overview');
+  $urlRouterProvider.otherwise('/login');
 
-    angular.forEach(states, function (state) {
-        $stateProvider.state(state.name, state.state);
-    });
+  angular.forEach(states, function (state) {
+    $stateProvider.state(state.name, state.state);
+  });
 })
 
 

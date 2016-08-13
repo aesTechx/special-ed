@@ -4,7 +4,6 @@
 var specialEd = function () {
   // your code goes here
 };
-
 if ( typeof module !== 'undefined' ) {
-	module.exports = specialEd;
+  module.exports = specialEd;
 }

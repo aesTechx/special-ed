@@ -1,17 +1,16 @@
-
 <div>
-	<div ng-include="'menu.html'"></div>
-	<snap-dragger></snap-dragger>
+	<div ng-include="'menu.html'"> 
+  </div>
+	<snap-dragger> 
+  </snap-dragger>
 	<snap-content snap-opt-tap-to-close="false">
-
 		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
 			<span class="menutoggle">
 				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
 				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
 			</span>
 		</a>
-<!-- <div class="tab-pane fade in active"> -->
-		<div class="fr">
+    <div class="fr">
 			<div id="assessment">
 				<div ng-repeat="category in allQuestions">	
 					<span ng-show="category.step==1">
@@ -29,9 +28,9 @@
 							</div>
 						</form>	
 					</span>	
-			</div>
-			<a class="btn btn-primary btn-white btn-lg" ng-click="nextStep()">Next</a>
-			<button class="btn btn-primary btn-white btn-lg" ng-click="submit()" > submit</button> 
+        </div>
+        <a class="btn btn-primary btn-white btn-lg" ng-click="nextStep()">Next</a>
+        <button class="btn btn-primary btn-white btn-lg" ng-click="submit()" > submit</button> 
 			</div>
 		</div>
 	</snap-content>	

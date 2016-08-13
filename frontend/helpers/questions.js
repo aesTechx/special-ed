@@ -96,15 +96,3 @@ $scope.ATTENTION_AND_SAFETY = {questions: [
     step: 0}
   
 $scope.all = [$scope.SOCIAL, $scope.PERSEVERATION, $scope.SOMATOSENSORY_DISTURBANCE, $scope.COMMUNICATION_AND_DEVELOPMENT, $scope.ATTENTION_AND_SAFETY]
-
-
-
-
-
-
-
-  // removed questions:
-  // {COMMUNICATION24: 'Moodiness and emotional lability (the cause for mood changes may not always apparent, such as laughter or distress for no apparent reason)', value: undefined},
-  // {COMMUNICATION25: 'Difficulty showing and recognizing emotions, emotionally unresponsive in some situations, lack of empathy or emotional reciprocity (e.g., does not respond appropriately or provide comfort when someone is hurt or sad), or misinterprets the emotions or responses of others ', value: undefined},
-  // {COMMUNICATION26: 'Unusual fears, such as fear of elevators, steps, toilets, balloons, vacuums, tornadoes', value: undefined}
-  //

@@ -1,5 +1,4 @@
 var uploadToIMGUR = function(clientId, imgData, callback) {
-
 	$.ajax({
 		url: 'https://api.imgur.com/3/upload',
 		headers: {
@@ -12,7 +11,6 @@ var uploadToIMGUR = function(clientId, imgData, callback) {
 			'type': 'base64'
 		},
 		success: function success(res) {
-
 			if (callback) {
 				callback(res.data);
 			}
