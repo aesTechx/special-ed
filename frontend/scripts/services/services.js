@@ -2,24 +2,24 @@
 angular.module('SED.services', [])
 
 .factory ('Record', function ($http) {
-	var submitForm = function(form){
-	console.log(form)
-	return $http({
-		method: 'POST',
-		url: '/api/forms/submitForm',
-		data: form
-	})
-	.then(function (resp) {
-		return resp.data;
-	});
-	}
-return {submitForm: submitForm}
+  var submitForm = function(form) {
+    console.log(form);
+    return $http({
+      method: 'POST',
+      url: '/api/forms/submitForm',
+      data: form
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+  return {submitForm: submitForm};
 })
 .factory('Orders', function ($http) {
-  return {}
+  return {};
 })
-.factory('Services',function($http){
-  return {}
+.factory('Services', function($http) {
+  return {};
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
@@ -30,7 +30,7 @@ return {submitForm: submitForm}
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signinUser = function (user) {
-    console.log(user)
+    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/users/signinUser',
@@ -41,9 +41,8 @@ return {submitForm: submitForm}
     });
   };
 
- var signinTeacher = function (user) {
-    console.log('current user is:')
-    console.log(user)
+  var signinTeacher = function (user) {
+    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/users/signinTeacher',
@@ -52,15 +51,15 @@ return {submitForm: submitForm}
     .then(function (resp) {
       return resp.data.token;
     })
-    .catch(function(error){
-      console.log(error)
-    })
+    .catch(function(error) {
+      console.log(error);
+    });
   };
 
 
   var signinCenter = function (user) {
-    console.log(user)
-    return $http({
+    console.log(user);
+    return $http ({
       method: 'POST',
       url: '/api/users/signinCenter',
       data: user
@@ -80,7 +79,7 @@ return {submitForm: submitForm}
       return resp.data.token;
     });
   };
- var signupTeacher= function (user) {
+  var signupTeacher = function (user) {
     return $http({
       method: 'POST',
       url: '/api/teacher/addTeacher',
@@ -90,7 +89,7 @@ return {submitForm: submitForm}
       return resp.data.token;
     });
   };
- var signupCenter= function (user) {
+  var signupCenter = function (user) {
     return $http({
       method: 'POST',
       url: '/api/center/addCenter',
@@ -115,15 +114,15 @@ return {submitForm: submitForm}
   };
 
   var signout = function (item) {
-    console.log(item)
+    console.log(item);
     $window.localStorage.removeItem(item);
     $location.path('/');
   };
 
   return {
     signinUser: signinUser,
-    signinCenter:signinCenter,
-    signupCenter:signupCenter,
+    signinCenter: signinCenter,
+    signupCenter: signupCenter,
     signupUser: signupUser,
     signinTeacher: signinTeacher,
     signupTeacher: signupTeacher,

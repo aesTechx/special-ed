@@ -12,29 +12,29 @@ require ('./config/routes.js')(app, express);
 require ('./config/socket.handler.js');
 
 models.sequelize.sync().then(function () {
-	app.listen(PORT, function serverListen() {
-		console.log('Listening on port ' + PORT);
-	});
- }).catch(function(err) {
-	app.listen(PORT, function serverListen() {
-		console.log('Listening on port ' + PORT);
-	});
- });
+  app.listen(PORT, function serverListen() {
+    console.log('Listening on port ' + PORT);
+  });
+}).catch(function(err) {
+  app.listen(PORT, function serverListen() {
+    console.log('Listening on port ' + PORT);
+  });
+});
 
 //On crash
 app.on ( 'uncaughtException', function () {
-	//Close connection
-	server.close();
+  //Close connection
+  server.close();
 });
 
 // On kill
 app.on('SIGTERM', function() {
-	server.close();
+  server.close();
 });
 
 //On exit
 app.on('exit', function() {
-	server.close();
+  server.close();
 });
 
 module.exports = app;
