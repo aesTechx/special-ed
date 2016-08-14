@@ -9,10 +9,10 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		classMethods: {
 			associate: function(models) {
-				Student.belongsTo(models.Center);
+				//Student.belongsTo(models.Center);
 				Student.hasMany(models.Record);
-				Student.hasMany(models.Teacher);
-				Student.hasMany(models.Game);
+				Student.belongsToMany(models.Teacher,{through:"Student_Teacher"});
+				Student.belongsToMany(models.Game,{through:"Student_Game"});
 			}
 		}
 	});

@@ -55,6 +55,9 @@ module.exports = {
         birthdate: req.body.birthdate
       })
       .then(function(student){
+        // db.Teacher.findOne({teachername:"ahmad"}).then(function(teacher){
+        //   teacher.addStudent(student)
+        // })
         var token = jwt.encode(student, 'secret');
         res.json({token: token});
       });

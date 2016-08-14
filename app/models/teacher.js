@@ -8,8 +8,8 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		classMethods: {
 			associate: function(models) {
-				Teacher.belongsTo(models.Center);
-				Teacher.hasMany(models.Student);
+				//Teacher.belongsTo(models.Center);
+				Teacher.belongsToMany(models.Student,{through:"Student_Teacher"});
 			}
 		}
 	});
