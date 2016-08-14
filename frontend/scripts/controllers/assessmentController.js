@@ -1,6 +1,6 @@
 angular.module('SED.multiForms', [])
 // controller for creating multi form in one view one after one
-.controller('assessmentController', function ($scope, $log, Record) {
+.controller('assessmentController', function assessmentController ($scope, $log, Record) {
   $scope.counter = 0;
   $scope.SOCIAL = { questions: [
                     {Q: 'withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers', value: undefined},

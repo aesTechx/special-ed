@@ -1,4 +1,4 @@
-angular.module ('SED')
+angular.module ('SED.Overview', [])
 .controller('OverviewCtrl', function ($scope, $state, Auth) {
   $scope.logout = function () {
     if (Auth.isAuthuser()) {

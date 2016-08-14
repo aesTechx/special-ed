@@ -28,38 +28,6 @@ describe('centerGetPost()', function () {
       done();
     });
   });
-  it('request all centers from the DB', function(done) {
-    chai.request(app)
-    .get('http://127.0.0.1:8000/api/centers')
-    .end(function(err, res) {
-      res.should.have.status(200);
-      // res.body.should.be.json;
-      // res.body.should.be.a('array');
-      // res.body[0].should.have.property('id');
-      // res.body[0].should.have.property('centername');
-      // res.body[0].should.have.property('username');
-      // res.body[0].should.have.property('password');
-      // res.body[0].centername.should.equal('eshraq');
-      // res.body[0].username.should.equal('eshraq');
-      done();
-    });
-  });
-});
-
-describe('index()', function () {
-  'use strict';
-  it('exists', function () {
-    expect(index).to.be.a('function');
-  });
-  it('does something', function () {
-    expect(true).to.equal(false);
-  });
-  it('does something else', function () {
-    expect(true).to.equal(false);
-  });
-  it('post a student to student schema', function() {
-  });
-  // Add more assertions here
 });
 describe('studentGetPost()', function () {
   'use strict';

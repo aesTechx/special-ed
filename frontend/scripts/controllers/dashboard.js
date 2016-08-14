@@ -1,6 +1,5 @@
 'use strict';
-
-angular.module('SED')
+angular.module('SED.Dashboard', [])
 .controller('DashboardCtrl', function($scope, $state) {
   $scope.$state = $state;
   $scope.menuItems = [];

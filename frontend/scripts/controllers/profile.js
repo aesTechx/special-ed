@@ -1,4 +1,4 @@
-angular.module('SED')
+angular.module('SED.Profile', [])
 .controller('ProfileCtrl', function($scope, $state, Auth) {
   $scope.initialize = function () {
     var loadLiquidFillGauge = window.loadLiquidFillGauge;
