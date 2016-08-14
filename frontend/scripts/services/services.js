@@ -41,14 +41,9 @@ angular.module('SED.services', [])
     });
   };
 
-<<<<<<< HEAD
- var signinTeacher = function (user) {
-    console.log('current user is:', user.username)
-    console.log(user)
-=======
+
   var signinTeacher = function (user) {
     console.log(user);
->>>>>>> 38bf77f0e709eecc25dd254847e60641313d48fa
     return $http({
       method: 'POST',
       url: '/api/users/signinTeacher',

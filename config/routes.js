@@ -6,6 +6,7 @@ module.exports = function (app, express) {
   app.post('/api/forms/submitForm', controllers.Record.addRecord);
   app.get('/api/centers', controllers.Center.getAllCenter);
   app.get('/api/teachers', controllers.Teacher.getAllTeacher);
+  app.post('/api/users/signinTeacher', controllers.Teacher.signinTeacher);
   app.get('/api/students', controllers.Student.getAllStudent);
   app.post('/api/center/addCenter', controllers.Center.addCenter);
   app.post('/api/teacher/addTeacher', controllers.Teacher.addTeacher);

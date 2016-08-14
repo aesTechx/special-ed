@@ -89,7 +89,7 @@ module.exports = {
 			})
 		},
 	  	signinTeacher:function(req, res) {
-	  		var teachername = req.body.username;
+	  		var teachername = req.body.teachername;
 	    	var password = req.body.password;
 	    	db.Center.findOne({ where: {teachername: teachername, password: password }})
 	    	.then(function(user) {
