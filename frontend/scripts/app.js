@@ -43,7 +43,8 @@ angular.module('SED', [
   var attach = {
     request: function (object) {
       console.log("attach")
-      var jwt = $window.localStorage.getItem('com.GSuser');
+      var jwt = $window.localStorage.getItem('com.GSstudent');
+      console.log(jwt)
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }

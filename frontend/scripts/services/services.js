@@ -30,6 +30,21 @@ angular.module('SED.services', [])
     getAllCenters:getAllCenters
   }
 })
+.factory('Students', function ($http) {
+  getCurrentStudent=function(){
+    return $http({
+     method: 'GET',
+     url: '/api/oneStudent'
+   })
+   .then(function (resp) {
+    console.log(resp);
+     return resp;
+     });
+    }
+  return {
+    getCurrentStudent:getCurrentStudent
+  }
+})
 .factory('Teachers',function($http){
   getAllTeachers=function(){
       return $http({

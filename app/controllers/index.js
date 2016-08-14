@@ -34,25 +34,36 @@ module.exports = {
       });
     }
   },
-  Student: {
-    getAllStudent: function (req, res) {
+
+  Student:{
+    getCurrentStudent:function(req,res){
+      console.log(req);
+      var token = req.headers['x-access-token'];
+      console.log(token);
+    },
+    getAllStudent:function(req,res){
       db.Student.findAll()
       .then(function(students) {
         res.json(students);
       });
     },
-    addStudent: function (req, res) {
-      db.Student.create ({
+
+    addStudent:function(req,res){
+    //  db.Center.findOne({where:{centername:req.body.center}})
+      //.then(function(center){
+      db.Student.create({
+        password: req.body.password,
         username: req.body.username,
         fullname: req.body.fullname,
         skillsResult: req.body.skillsResult,
-        birthdate: req.body.birthdate,
-        password: req.body.password
+        birthdate: req.body.birthdate
+      //  centerId:center.id
       })
       .then(function(student) {
         var token = jwt.encode(student, 'secret');
         res.json({token: token});
       });
+
     },
     signinStudent: function(req, res) {
       var username = req.body.username;
@@ -64,6 +75,16 @@ module.exports = {
           res.json({token: token});
         }
       });
+    },
+  },
+  Game: {
+    getAllGame: function(req, res) {
+      db.Game.findAll()
+      .then(function(games) {
+        res.json(games);
+      });
+    },
+    addGame: function(req, res) {
     }
   },
 	Teacher: {
@@ -102,16 +123,6 @@ module.exports = {
 	        res.json(err)
 	      })
 	  }
-	},
-	Game: {
-		getAllGame: function(req, res) {
-			db.Game.findAll()
-			.then(function(games) {
-				res.json(games);
-			});
-		},
-		addGame: function(req, res) {
-		}
 	},
 	Record: {
 		getAllRecords: function(req, res) {

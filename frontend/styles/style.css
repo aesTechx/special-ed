@@ -28,7 +28,7 @@ body{
     width:1024px;
     height:650px;
     position: relative;
-    background:#f9e296;
+    background: #000000;
     margin:0 auto;
 }
 
@@ -37,7 +37,7 @@ body{
     height: 630px;
     position: relative;
     float: left;
-    background:rgba(10,200,80,.5);
+    background: #f3fcc9;
     margin-top: 10px;
     border-radius: 10px;
     margin-left: 5px;
