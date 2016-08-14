@@ -8,7 +8,6 @@ chai.use(chaihttp);
 var models = require(path.join(__dirname, '..', '..', './app/models'));
 
 describe('centerGetPost()', function () {
-<<<<<<< 6b42263ebc0899f800ca51a1c6719dc1979a496f
   'use strict';
   it('post a new center to DB', function() {
     chai.request(app)
@@ -126,8 +125,6 @@ describe('teacherGetPost()', function () {
     });
   });
 });
-=======
-	'use strict';
 		
 		it('post a new center to DB',function(){
 		 chai.request(app)
@@ -165,33 +162,6 @@ describe('teacherGetPost()', function () {
 			});
 			
 		});
-		it('create a new teacher',function(done){
-			var student = models.Student.create({
-			  username: 'eshraq',
-			  fullname: 'eshraq Albakri',
-			  skillsResult:2,
-			  password:"123",
-			  birthdate:25/11/2013
-			})
-		});
-		it('create a new teacher',function(done){
-			var teacher = models.Teacher.create({
-				teachername:"ahmad",
-				fullname:"hasan",
-				category:"speech",
-				password:"123"
-			});
-		});
-		it('retreiving the student',function(done){
-			models.Student.findAll({}).then(function(students){
-				console.log(students);
-			})
-		});
-		it('retreiving the teacher',function(done){
-			models.Teacher.findAll({}).then(function(teachers){
-				console.log(teachers)
-			})
-		})
 	});
 
 	describe('studentGetPost()', function () {
@@ -290,4 +260,4 @@ describe('teacherGetPost()', function () {
 			});
 		});
 	});
->>>>>>> modifications
+
