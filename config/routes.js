@@ -2,7 +2,6 @@ var helpers = require('./helpers.js'); // our custom middleware
 var controllers = require('../app/controllers');
 
 module.exports = function (app, express) {
-
 	app.get('/api/oneStudent', controllers.Student.getCurrentStudent);
 	app.post('/api/forms/submitForm',controllers.Record.addRecord);
 	app.get('/api/centers', controllers.Center.getAllCenter);
@@ -16,5 +15,4 @@ module.exports = function (app, express) {
 	app.post('/api/users/signinTeacher',controllers.Teacher.signinTeacher);
 	app.post('/api/users/signinUser',controllers.Student.signinStudent);
 	app.get('/api/games', controllers.Game.getAllGame);
-
 };

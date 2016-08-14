@@ -17,7 +17,6 @@
 				        <option value='Teacher'>Teacher</option>
 				        <option value='Center'>Center</option>
 				      </select>
-<<<<<<< 9c6909e31dcdc885fffa1bb352c7e958daba9163
 				     </div>
 				    <div class="form-group">
 						<input ng-if="studentSelected || teacherSelected" type="text" class="form-control input-lg" id="" placeholder="FULLNAME" ng-model='user.fullname'>
@@ -26,7 +25,7 @@
 					<div class="form-group">
 						<input ng-if='!teacherSelected' type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
 						<input ng-if='teacherSelected' type="text" class="form-control input-lg" id="" placeholder="TEACHER USERNAME" ng-model='user.teachername'>
-=======
+
 				      <div class="form-group" ng-if="studentSelected">
 				      	<label for="sel1">Choose Center</label>
 						    <select class="form-control" id="sel1" ng-model="option1" ng-change="changeSelect1()">
@@ -40,7 +39,6 @@
 					<div class="form-group">
 						<input ng-if='!teacherSelected' type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
 						<input ng-if='teacherSelected' type="text" class="form-control input-lg" id="" placeholder="TEACHER USERNAME"ng-model='user.teachername'>
->>>>>>> dataBaseServerMod
 					</div>
 					<div class="form-group">
 						<input type="password" class="form-control input-lg" id="" placeholder="PASSWORD" ng-model='user.password'>

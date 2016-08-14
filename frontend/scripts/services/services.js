@@ -1,6 +1,5 @@
 
 angular.module('SED.services', [])
-
 .factory ('Record', function ($http) {
   var submitForm = function(form) {
     console.log(form);
@@ -58,7 +57,6 @@ angular.module('SED.services', [])
   return {
     getAllTeachers:getAllTeachers
   }
-
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
