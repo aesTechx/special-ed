@@ -1,6 +1,6 @@
 'use strict';
-angular.module('SED')
-.controller('SignupCtrl', function($scope, $location, $window, Auth) {
+angular.module('SED.Signup', [])
+.controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, Auth) {
   $scope.user = {};
   $scope.images = {
     'Student': 'images/flat-avatar.png', 
