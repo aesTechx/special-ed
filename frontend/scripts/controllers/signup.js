@@ -25,7 +25,7 @@ angular.module('SED.Signup', [])
       $scope.teacherSelected = false;
       $scope.centerSelected = true;
     }
-  }
+  };
   $scope.changeProfilePic = function() {
     var uploadToIMGUR = window.uploadToIMGUR;
     var IMGUR_CLIENT_ID = window.IMGUR_CLIENT_ID;
