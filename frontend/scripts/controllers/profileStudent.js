@@ -1,5 +1,4 @@
 angular.module('SED.student', [])
-
 .controller('studentController', function($scope, $location, $window, Auth,Centers,Teachers,Students){
 	$scope.data={};
 	Students.getCurrentStudent().then(function(resp){

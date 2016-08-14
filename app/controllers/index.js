@@ -45,8 +45,8 @@ module.exports = {
       });
     },
     addStudent:function(req,res){
-      db.Center.findOne({where:{centername:req.body.center}})
-      .then(function(center){
+    //  db.Center.findOne({where:{centername:req.body.center}})
+      //.then(function(center){
       db.Student.create({
         password: req.body.password,
         username: req.body.username,
@@ -58,8 +58,6 @@ module.exports = {
         var token = jwt.encode(student, 'secret');
         res.json({token: token});
       });
-      })
-
     },
     signinStudent:function(req,res){
       var username=req.body.username;
@@ -96,7 +94,7 @@ module.exports = {
         console.log(error);
       })
     },
-      signinTeacher:function(req,res){
+    signinTeacher:function(req,res){
         var username=req.body.username;
           var password=req.body.password;
           db.Teacher.findOne({ where: {teachername: username,password:password}})
