@@ -1,6 +1,6 @@
-angular.module('SED.multiForms', [])
+angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
 // controller for creating multi form in one view one after one
-.controller('assessmentController', function assessmentController ($scope, $log, Record) {
+.controller('assessmentController', function assessmentController ($scope, $log, $uibModal, Record) {
   $scope.counter = 0;
   $scope.questionsCategories = [];
   $scope.questionsCategories = {
@@ -120,32 +120,72 @@ angular.module('SED.multiForms', [])
                     {Q: 'Selective attention, ability to hyperfocus on activities, objects, or topics of interest to self (e.g., lines up toys, spins wheels, watches the same movie, assembles puzzles, builds with Legos, or draws pictures for long periods of time), but is inattentive, impulsive, and fidgety at other times', value: undefined, questionNum: 75},
                     {Q: 'Limited safety awareness, fearless, or oblivious to danger (e.g., unsafe climbing, wanders about house at night, runs off by self, goes into traffic or water, walks off with strangers)', value: undefined, questionNum: 76}
                   ];
+
+  $scope.animationsEnabled = true;
+  
   $scope.initialize = function () {
     $scope.currentQuestion = $scope.questionsCategories.social.questions[0];
     Qnum = $scope.currentQuestion.questionNum;
     $scope.currentQuestion.category = 'Social';
+    $scope.readyToSubmit = false;
   };
   $scope.initialize();
+  $scope.open = function (size) {
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      controller: function($scope, $uibModalInstance, Record) {
+        $scope.ok = function () {
+          $uibModalInstance.close($scope.finalScore);
+        };
 
+        $scope.cancel = function () {
+          $uibModalInstance.dismiss('cancel');
+        };
+      },
+      size: size,
+      resolve: {
+        finalScore: function () {
+          return $scope.finalScore;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (finalScore) {
+      Record.submitForm(finalScore)
+      .then(function(data) {
+        console.log(data);
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  
   $scope.nextQuestion = function () {
     console.log(Qnum)
     if (Qnum < 16) {
-      $scope.currentQuestion = $scope.questionsCategories.social.questions[Qnum];
-      $scope.currentQuestion.category = 'Social';
-    } else if (Qnum < 29) {
-      $scope.currentQuestion = $scope.questionsCategories.preservation.questions[Qnum-16];
-      $scope.currentQuestion.category = 'Preservation';
-    } else if (Qnum < 51) {
-      $scope.currentQuestion = $scope.questionsCategories.somatoSensoryDisturbance.questions[Qnum-29];
-      $scope.currentQuestion.category = 'Sensory Disturbance';
-    } else if (Qnum < 74) {
-      $scope.currentQuestion = $scope.questionsCategories.communicationAndDevelopment.questions[Qnum-51];
-      $scope.currentQuestion.category = 'Communication and Development';
-    } else if (Qnum < 76) {
-      $scope.currentQuestion = $scope.questionsCategories.attentionAndSafety.questions[Qnum-74];
-      $scope.currentQuestion.category = 'Attention and Safety';
-    }
-    Qnum = $scope.currentQuestion.questionNum;
+        $scope.currentQuestion = $scope.questionsCategories.social.questions[Qnum];
+        $scope.currentQuestion.category = 'Social';
+      } else if (Qnum < 29) {
+        $scope.currentQuestion = $scope.questionsCategories.preservation.questions[Qnum-16];
+        $scope.currentQuestion.category = 'Preservation';
+      } else if (Qnum < 51) {
+        $scope.currentQuestion = $scope.questionsCategories.somatoSensoryDisturbance.questions[Qnum-29];
+        $scope.currentQuestion.category = 'Sensory Disturbance';
+      } else if (Qnum < 74) {
+        $scope.currentQuestion = $scope.questionsCategories.communicationAndDevelopment.questions[Qnum-51];
+        $scope.currentQuestion.category = 'Communication and Development';
+      } else if (Qnum < 76) {
+        $scope.currentQuestion = $scope.questionsCategories.attentionAndSafety.questions[Qnum-74];
+        $scope.currentQuestion.category = 'Attention and Safety';
+      }
+      Qnum = $scope.currentQuestion.questionNum;
+      if (Qnum === 76) {
+        $scope.readyToSubmit = true;
+      }
   };
 
   $scope.submit = function() {
@@ -155,13 +195,7 @@ angular.module('SED.multiForms', [])
     // $scope.finalScore.COMMUNICATION_AND_DEVELOPMENT = $scope.result[3];
     // $scope.finalScore.ATTENTION_AND_SAFETY = $scope.result[4];
     console.log('xxxxx')
-    Record.submitForm($scope.finalScore)
-    .then(function(data) {
-      console.log(data);
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
+    
   };
   $scope.result = [];
   $scope.nextStep = function() {

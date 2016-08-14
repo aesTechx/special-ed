@@ -11,7 +11,7 @@ angular.module('SED.services', [])
     })
     .then(function (resp) {
       return resp.data;
-    });
+    })
   };
   return {submitForm: submitForm};
 })
