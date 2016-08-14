@@ -11,7 +11,35 @@
       </span>
     </a>
     <div class="fr">
-      <div id="assessment">
+      <div class='jumbotron'>
+        <div class="container-fluid" style="background: white; padding:10px; color:black">
+          <form role="form"  ng-submit="submit()">
+            <div class="table-form">
+              <div class="form-groups">
+                <div class="form-group">
+                   <div class='col-xs-12'>
+                      <h3> Category: {{currentQuestion.category}} </h3>
+                     <h4> Does your kid show the following: </h4>
+                     <p> {{currentQuestion.Q}} </p>
+                    </div>
+                    <div class='col-xs-9'>
+                      <div class="radio" style="margin-left: 30px;" >
+                        <input type="radio"  value="0" ng-model="currentQuestion.value" > Yes
+                      </div>
+                      <div class="radio"  style="margin-left: 30px;">
+                        <input type="radio" value="1" ng-model="currentQuestion.value" > No
+                      </div>
+                    </div>
+                    <div class='col-xs-3'>
+                      <button class='btn btn-primary' ng-click="nextQuestion()"> Next Question</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+<!--       <div id="assessment">
         <div ng-repeat="category in allQuestions">  
           <span ng-show="category.step==1">
             <form class="form-horizontal" ng-repeat="Question in category">
@@ -31,7 +59,8 @@
         </div>
         <a class="btn btn-primary btn-white btn-lg" ng-click="nextStep()">Next</a>
         <button class="btn btn-primary btn-white btn-lg" ng-click="submit()" > submit </button> 
-      </div>
+      </div> -->
+
     </div>
   </snap-content>	
 </div>
