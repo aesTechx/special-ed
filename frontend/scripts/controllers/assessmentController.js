@@ -23,7 +23,7 @@ angular.module('SED.multiForms', [])
 		{Q: 'poor social reasoning (difficulty understanding social cues/comments, facial expressions, body language)', value: undefined},
 		{Q: 'wants to have friends but does not know how to make friends', value: undefined}*/
 	],
-	step: 1}
+	step: 1, pageNo: 1}
 
 	$scope.PERSEVERATION= {questions:[
 		{Q: 'obsessive preoccupations or extreme fixation on things such as certain movies or TV shows (reenacts or watches the same movies over and over), computer games, letters, shapes, numbers, counting, objects or topics (e.g., trains, dinosaurs, NASCAR, maps, planes, electricity, Yu-Gi-Oh, cartoon characters, etc.)', value: undefined},
@@ -40,7 +40,7 @@ angular.module('SED.multiForms', [])
 		{Q: 'overly precise and inflexible, upset if someone breaks a “rule,” rigid and literal thinking', value: undefined},
 		{Q: 'Stereotypies (unusual repetitive movements such as hand flapping when excited, toe walking, body rocking, head shaking, body tensing, teeth clenching, teeth grinding while awake, finger movements, facial grimacing, repeatedly running back and forth, twirling or spinning, pacing, playing with saliva, skin picking)', value: undefined}*/
 	],
-	step: 0}
+	step: 0, pageNo: 2}
 
 	$scope.SOMATOSENSORY_DISTURBANCE= {questions:[
 		{Q: ' Excessive atypical craving and love of spinning, tickling, climbing, rocking, swinging, bouncing, jumping', value: undefined},
@@ -66,7 +66,7 @@ angular.module('SED.multiForms', [])
 		{Q: 'eats inedible substances', value: undefined},
 		{Q: 'other peculiar eating patterns (e.g., eats only one brand, color, or shape of a food)', value: undefined}*/
 	],
-	step: 0}
+	step: 0, pageNo: 3}
 
 	$scope.COMMUNICATION_AND_DEVELOPMENT= {questions: [
 		{Q: 'Language regression or slowing at approximately 1 to 2 years of age (e.g., speaking a few words at one year but then losing speech or normal early language development and later language is delayed)', value: undefined},
@@ -93,14 +93,14 @@ angular.module('SED.multiForms', [])
 		{Q: 'extremely well-developed gross motor skills with delayed development in other areas (in contrast to highfunctioning children with autism who often have writing or coordination problems)', value: undefined},
 		{Q: 'Overreactivity, irritability, low frustration tolerance, agitation, tantrums, meltdowns, explosiveness, aggression, or self-injurious behavior (distressed by minor events or occurrences most children can tolerate, such as intrusions, activity interruptions, proximity, confinement, performance demands, writing tasks, or when things are not the way the child thinks they should be)', value: undefined}*/
 	],
-	step: 0}
+	step: 0, pageNo: 4}
 
 	$scope.ATTENTION_AND_SAFETY = {questions: [
 		{Q: 'Selective attention, ability to hyperfocus on activities, objects, or topics of interest to self (e.g., lines up toys, spins wheels, watches the same movie, assembles puzzles, builds with Legos, or draws pictures for long periods of time), but is inattentive, impulsive, and fidgety at other times', value: undefined},
 		{Q: 'Limited safety awareness, fearless, or oblivious to danger (e.g., unsafe climbing, wanders about house at night, runs off by self, goes into traffic or water, walks off with strangers)', value: undefined}
 	],
-	step: 0}
-  
+	step: 0, pageNo: 5}
+  	
 	$scope.allQuestions = [$scope.SOCIAL, $scope.PERSEVERATION, $scope.SOMATOSENSORY_DISTURBANCE, $scope.COMMUNICATION_AND_DEVELOPMENT, $scope.ATTENTION_AND_SAFETY]
 
 	$scope.finalScore = {SOCIAL:undefined, PERSEVERATION: undefined, SOMATOSENSORY_DISTURBANCE: undefined, COMMUNICATION_AND_DEVELOPMENT: undefined, ATTENTION_AND_SAFETY: undefined};
@@ -129,6 +129,7 @@ angular.module('SED.multiForms', [])
 		$scope.result.push(num);
 		console.log($scope.result);
 		$scope.allQuestions[$scope.counter].step=0;
+		$scope.currentPage = $scope.allQuestions[$scope.counter].pageNo;
 		$scope.counter++;
 		$scope.allQuestions[$scope.counter].step = 1;
   }
