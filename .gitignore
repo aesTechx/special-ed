@@ -17,9 +17,10 @@ iisnode.yml
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
-**/*.sqlite
+*.sqlite
 frontend/lib
 frontend/config
+
 # Logs
 logs
 *.log

@@ -46,7 +46,8 @@ module.exports = {
         username: req.body.username,
         fullname: req.body.fullname,
         skillsResult: req.body.skillsResult,
-        birthdate: req.body.birthdate
+        birthdate: req.body.birthdate,
+        password: req.body.password
       })
       .then(function(student) {
         var token = jwt.encode(student, 'secret');
@@ -81,25 +82,25 @@ module.exports = {
 			})
 			.then(function(teacher) {
 				var token = jwt.encode(teacher, 'secret');
-        res.json({token: token});
+        		res.json({token: token});
 			})
 			.catch(function(error){
 				console.log(error);
 			})
 		},
-  	signinTeacher:function(req, res) {
-  		var teachername = req.body.username;
-    	var password = req.body.password;
-    	db.Center.findOne({ where: {teachername: teachername, password: password }})
-    	.then(function(user) {
-    		if(user!== null){
-    			var token = jwt.encode(user, 'secret');
-          res.json({token: token});
-    		}
-      })
-      .catch(function(err){
-        res.json(err)
-      })
+	  	signinTeacher:function(req, res) {
+	  		var teachername = req.body.username;
+	    	var password = req.body.password;
+	    	db.Center.findOne({ where: {teachername: teachername, password: password }})
+	    	.then(function(user) {
+	    		if(user!== null){
+	    			var token = jwt.encode(user, 'secret');
+	          res.json({token: token});
+	    		}
+	      })
+	      .catch(function(err){
+	        res.json(err)
+	      })
 	  }
 	},
 	Game: {

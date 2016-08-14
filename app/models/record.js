@@ -6,8 +6,6 @@ module.exports = function(sequelize, DataTypes) {
 		SOMATOSENSORY_DISTURBANCE:  DataTypes.INTEGER,
 		COMMUNICATION_AND_DEVELOPMENT:  DataTypes.INTEGER,
 		ATTENTION_AND_SAFETY:  DataTypes.INTEGER
-
-
 	}, {
 		classMethods: {
 			associate: function(models) {

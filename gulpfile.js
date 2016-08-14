@@ -16,14 +16,14 @@ gulp.task('mocha', (cb) =>
             process.exit();
         })
 );
-gulp.task('karma', (done) => {
-  new Server({
-    configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, done).start();
-});
+// gulp.task('karma', (done) => {
+//   new Server({
+//     configFile: __dirname + '/karma.conf.js',
+//     singleRun: true
+//   }, done).start();
+// });
 gulp.task ('test', function (cb) {
-  runSeq('karma' , 'mocha', cb)
+  runSeq('mocha', cb)
 })
 /**
  * Watch for file changes and re-run tests on each change
