@@ -1227,7 +1227,9 @@ h1,
 h2,
 .h2,
 h3,
-.h3 {
+.h3,
+h4,
+.h4 {
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -1245,8 +1247,6 @@ h3 .small,
 .h3 .small {
   font-size: 65%;
 }
-h4,
-.h4,
 h5,
 .h5,
 h6,

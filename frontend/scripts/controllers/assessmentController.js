@@ -123,35 +123,38 @@ angular.module('SED.multiForms', [])
   $scope.initialize = function () {
     $scope.currentQuestion = $scope.questionsCategories.social.questions[0];
     Qnum = $scope.currentQuestion.questionNum;
-  }
+    $scope.currentQuestion.category = 'Social';
+  };
   $scope.initialize();
 
   $scope.nextQuestion = function () {
-    if (Qnum < $scope.questionsCategories.social.numberOfQuestions) {
+    console.log(Qnum)
+    if (Qnum < 16) {
       $scope.currentQuestion = $scope.questionsCategories.social.questions[Qnum];
       $scope.currentQuestion.category = 'Social';
-    } else if (Qnum < $scope.questionsCategories.preservation.numberOfQuestions) {
-      $scope.currentQuestion = $scope.questionsCategories.preservation.questions[Qnum];
+    } else if (Qnum < 29) {
+      $scope.currentQuestion = $scope.questionsCategories.preservation.questions[Qnum-16];
       $scope.currentQuestion.category = 'Preservation';
-    } else if (Qnum < $scope.questionsCategories.somatoSensoryDisturbance.numberOfQuestions) {
-      $scope.currentQuestion = $scope.questionsCategories.somatoSensoryDisturbance.questions[Qnum];
+    } else if (Qnum < 51) {
+      $scope.currentQuestion = $scope.questionsCategories.somatoSensoryDisturbance.questions[Qnum-29];
       $scope.currentQuestion.category = 'Sensory Disturbance';
-    } else if (Qnum < $scope.questionsCategories.communicationAndDevelopment.numberOfQuestions) {
-      $scope.currentQuestion = $scope.questionsCategories.communicationAndDevelopment.questions[Qnum];
+    } else if (Qnum < 74) {
+      $scope.currentQuestion = $scope.questionsCategories.communicationAndDevelopment.questions[Qnum-51];
       $scope.currentQuestion.category = 'Communication and Development';
-    } else if (Qnum < $scope.questionsCategories.communicationAndDevelopment.numberOfQuestions) {
-      $scope.currentQuestion = $scope.questionsCategories.attentionAndSafety.questions[Qnum];
+    } else if (Qnum < 76) {
+      $scope.currentQuestion = $scope.questionsCategories.attentionAndSafety.questions[Qnum-74];
       $scope.currentQuestion.category = 'Attention and Safety';
     }
     Qnum = $scope.currentQuestion.questionNum;
-  }
+  };
 
   $scope.submit = function() {
-    $scope.finalScore.SOCIAL = $scope.result[0];
-    $scope.finalScore.PERSEVERATION = $scope.result[1];
-    $scope.finalScore.SOMATOSENSORY_DISTURBANCE = $scope.result[2];
-    $scope.finalScore.COMMUNICATION_AND_DEVELOPMENT = $scope.result[3];
-    $scope.finalScore.ATTENTION_AND_SAFETY = $scope.result[4];
+    // $scope.finalScore.SOCIAL = $scope.result[0];
+    // $scope.finalScore.PERSEVERATION = $scope.result[1];
+    // $scope.finalScore.SOMATOSENSORY_DISTURBANCE = $scope.result[2];
+    // $scope.finalScore.COMMUNICATION_AND_DEVELOPMENT = $scope.result[3];
+    // $scope.finalScore.ATTENTION_AND_SAFETY = $scope.result[4];
+    console.log('xxxxx')
     Record.submitForm($scope.finalScore)
     .then(function(data) {
       console.log(data);
