@@ -31,10 +31,10 @@ angular.module('SED')
       var IMGUR_CLIENT_ID = window.IMGUR_CLIENT_ID;
       
       var fileBt = $('<input>').attr('type','file');
-      fileBt.on('change', () => {
+      fileBt.on('change', function () {
         var file = fileBt[0].files[0];
         var reader = new FileReader();
-        reader.addEventListener('load', ()=>{
+        reader.addEventListener('load', function () {
           var imgData = reader.result.slice(23);
           // sending the decoded image to IMGUR to get a link for that image
           uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result){

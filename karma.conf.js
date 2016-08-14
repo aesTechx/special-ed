@@ -29,12 +29,12 @@ module.exports = function(config) {
         'lib/angular-snap/angular-snap.js',
         'frontend/scripts/app.js',
         'frontend/scripts/**/*.js',
-        'frontend/app/app.js',
-        'frontend/app/forms/assessmentTest.js',
+        // 'frontend/app/app.js',
+        // 'frontend/app/forms/assessmentTest.js',
         //'frontend/app/services/services.js',
         //'frontend/app/services/center.js',
 
-        'frontend/app/**/*.js',
+        //'frontend/app/**/*.js',
         'frontend/helpers/*.js',
         'spec/frontend/*.js',
         'spec/frontend/**/*.js'
@@ -49,34 +49,34 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-        'frontend/app/*.js': ['coverage'], 
-        'frontend/helpers/*.js': ['coverage']
-    },
+    // preprocessors: {
+    //     'frontend/app/*.js': ['coverage'], 
+    //     'frontend/helpers/*.js': ['coverage']
+    // },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec', 'progress', 'coverage'],
+    reporters: ['progress'],
 
-    coverageReporter : {
-      type : 'text',
-      dir : 'coverage/'
-    },
-    specReporter: {
-        maxLogLines: 10,         // limit number of lines logged per test 
-        suppressErrorSummary: true,  // do not print error summary 
-        suppressFailed: false,  // do not print information about failed tests 
-        suppressPassed: false,  // do not print information about passed tests 
-        suppressSkipped: true,  // do not print information about skipped tests 
-        showSpecTiming: false // print the time elapsed for each spec 
-      },
-    plugins: [
-    'karma-jasmine',
-    'karma-chrome-launcher',
-    'karma-phantomjs-launcher',
-    "karma-spec-reporter"],
+    // coverageReporter : {
+    //   type : 'text',
+    //   dir : 'coverage/'
+    // },
+    // specReporter: {
+    //     maxLogLines: 10,         // limit number of lines logged per test 
+    //     suppressErrorSummary: true,  // do not print error summary 
+    //     suppressFailed: false,  // do not print information about failed tests 
+    //     suppressPassed: false,  // do not print information about passed tests 
+    //     suppressSkipped: true,  // do not print information about skipped tests 
+    //     showSpecTiming: false // print the time elapsed for each spec 
+    //   },
+    // plugins: [
+    // 'karma-jasmine',
+    // 'karma-chrome-launcher',
+    // 'karma-phantomjs-launcher',
+    // "karma-spec-reporter"],
 
     // web server port
     port: 9876,
