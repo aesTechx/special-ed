@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		classMethods: {
 			associate: function(models) {
-				Game.belongsToMany(models.Student,{through:"GameStudent");
+				Game.belongsToMany(models.Student,{through:"GameStudent"});
 			}
 		}
 	});

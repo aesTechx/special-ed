@@ -1,6 +1,12 @@
 'use strict';
 angular.module('SED.Signup', [])
-.controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, Auth) {
+.controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, Auth, Centers) {
+  $scope.data={};
+  Centers.getAllCenters()
+  .then(function(centers){
+    console.log(centers);
+    $scope.data.centers=centers;
+  });
   $scope.user = {};
   $scope.images = {
     'Student': 'images/flat-avatar.png', 
@@ -49,6 +55,8 @@ angular.module('SED.Signup', [])
   };
   $scope.submit = function() {
     var option = $scope.option;
+    $scope.user.center=$scope.center;
+    console.log($scope.user)
     if (option === 'Teacher') {
       Auth.signupTeacher($scope.user)
       .then(function (token) {
@@ -78,5 +86,8 @@ angular.module('SED.Signup', [])
       });
     }
   };
+  $scope.changeSelect1=function(){
+    $scope.center=$scope.option1;
+  }
 });
 
