@@ -1,5 +1,8 @@
 var db = require('../models');
 var jwt = require('jwt-simple');
+
+var Record = require('./recordController.js');
+
 module.exports = {
   Center: {
     getAllCenter: function (req, res) {
@@ -111,6 +114,7 @@ module.exports = {
     addGame: function(req, res) {
     }
   },
+<<<<<<< 768459e0fed312f410f662329a424e8e94f8e76d
   Record: {
     getAllRecords: function(req, res) {
       db.Record.findAll()
@@ -131,4 +135,54 @@ module.exports = {
       });
     }
   }
+=======
+	Teacher: {
+		getAllTeacher: function(req, res) {
+			db.Teacher.findAll()
+			.then(function(teachers) {
+				res.json(teachers);
+			});
+		},
+		addTeacher: function(req, res) {
+			db.Teacher.create({
+				teachername: req.body.teachername,
+				fullname: req.body.fullname,
+				category: req.body.category,
+				password: req.body.password
+			})
+			.then(function(teacher) {
+				var token = jwt.encode(teacher, 'secret');
+        		res.json({token: token});
+			})
+			.catch(function(error){
+				console.log(error);
+			})
+		},
+	  	signinTeacher:function(req, res) {
+	  		var teachername = req.body.teachername;
+	    	var password = req.body.password;
+	    	db.Center.findOne({ where: {teachername: teachername, password: password }})
+	    	.then(function(user) {
+	    		if(user!== null){
+	    			var token = jwt.encode(user, 'secret');
+	          res.json({token: token});
+	    		}
+	      })
+	      .catch(function(err){
+	        res.json(err)
+	      })
+	  }
+	},
+	Game: {
+		getAllGame: function(req, res) {
+			db.Game.findAll()
+			.then(function(games) {
+				res.json(games);
+			});
+		},
+		addGame: function(req, res) {
+		}
+	},
+	Record: Record
+>>>>>>> Make assessment work with backend
 }

@@ -1,5 +1,7 @@
 var helpers = require('./helpers.js'); // our custom middleware
-var controllers = require('../app/controllers');
+
+var controllers = require('../app/controllers/index');
+
 module.exports = function (app, express) {
   //app.post('/api/users/signinUser',controllers.Student.addstudent)
   app.post('/api/forms/submitForm', controllers.Record.addRecord);

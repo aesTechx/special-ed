@@ -15,6 +15,8 @@
     </div>
       <div class='jumbotron'>
         <div class="container-fluid" style="background: white; padding:20px; color:black;">
+        <button ng-if="readyToStart" ng-click="start()"> Start </button>
+        <div ng-if="!readyToStart">
           <form role="form">
             <div class="table-form">
               <div class="form-groups">
@@ -51,9 +53,10 @@
               <p> click ok to send assessment answers, and cancel to edit your answers </p>
           </div>
           <div class="modal-footer">
-              <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+              <button class="btn btn-primary" type="button" ng-click="ok(finalScore)">OK</button>
               <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
           </div>
       </script>
+    </div>
   </snap-content>	
 </div>
