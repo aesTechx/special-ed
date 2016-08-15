@@ -13,6 +13,7 @@ angular.module('SED.Login', [])
   $scope.submit = function() {
     var option = $scope.option;
     if (option === 'Teacher') {
+      console.log($scope.user)
       Auth.signinTeacher($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.SEDteacher', token);
