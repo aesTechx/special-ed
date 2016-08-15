@@ -6,6 +6,7 @@ var specialistController = require('../app/controllers/specialistController.js')
 var centerController = require('../app/controllers/centerController.js');
 
 module.exports = function (app, express) {
+
   //center routes
   app.get('/api/centers', centerController.getAll);
   app.get('/api/centers/:id', centerController.getCenter);
