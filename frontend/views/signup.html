@@ -33,14 +33,6 @@
 						      </select>
 					   </div>
 					<div class="form-group">
-						<input ng-if="studentSelected || teacherSelected" type="text" class="form-control input-lg" id="" placeholder="FULLNAME" ng-model='user.fullname'>
-						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER NAME"ng-model='user.centername'>
-					</div>
-					<div class="form-group">
-						<input ng-if='!teacherSelected' type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
-						<input ng-if='teacherSelected' type="text" class="form-control input-lg" id="" placeholder="TEACHER USERNAME"ng-model='user.teachername'>
-					</div>
-					<div class="form-group">
 						<input type="password" class="form-control input-lg" id="" placeholder="PASSWORD" ng-model='user.password'>
 					</div>
 					<div class="form-group">
@@ -50,7 +42,7 @@
 				<div class="button-container">
     			<button type="submit" class="btn btn-default login">
         		<img src="images/arrow.png" alt="">
-      		</button>
+      			</button>
 				</div>
       </div>
 			<div class="remember">

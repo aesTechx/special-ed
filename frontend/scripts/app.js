@@ -13,9 +13,10 @@
    
 angular.module('SED', [
                 // 'SED.student',
-                'dragDropSampleApp',
-                'SED.multiForms',
-                'SED.services',
+                //'dragDropSampleApp',
+                //'SED.Dashboard',
+                //'SED.multiForms',
+                //'SED.services',
                 'ngRoute',
                 'ngAnimate',
                 'ngTouch',
