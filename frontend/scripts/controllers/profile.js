@@ -1,5 +1,10 @@
 angular.module('SED.Profile', [])
-.controller('ProfileCtrl', function($scope, $state, Auth) {
+.controller('ProfileCtrl', function($scope, $state, Auth, Teachers) {
+  $scope.data={};
+  Teachers.getCurrentTeacher()
+  .then(function(resp){
+    $scope.data.teacher=resp;
+  })
   $scope.initialize = function () {
     var loadLiquidFillGauge = window.loadLiquidFillGauge;
     var gauge1 = loadLiquidFillGauge('fillgauge1', 80);

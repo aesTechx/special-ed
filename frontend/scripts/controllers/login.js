@@ -32,6 +32,7 @@ angular.module('SED.Login', [])
         console.error(error);
       });
     } else if (option === 'Center') {
+      console.log($scope.user)
       Auth.signinCenter($scope.user)
       .then(function(token) {
         $window.localStorage.setItem('com.SEDcenter', token);

@@ -32,6 +32,22 @@ angular.module('SED.services', [])
 .factory('Services', function($http) {
   return {};
 })
+.factory('Teachers', function($http){
+  var getCurrentTeacher=function(){
+    console.log("here")
+    return $http({
+      method:'GET',
+      url:'/api/teachers/currentteacher'
+    })
+    .then(function(resp){
+      console.log(resp.data);
+      return resp.data;
+    })
+  }
+  return{
+    getCurrentTeacher:getCurrentTeacher
+  }
+})
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
@@ -52,7 +68,6 @@ angular.module('SED.services', [])
     });
   };
 
-
   var signinTeacher = function (user) {
     console.log(user);
     return $http({
@@ -61,15 +76,13 @@ angular.module('SED.services', [])
       data: user
     })
     .then(function (resp) {
-            console.log(resp.data.token)
-
+      console.log(resp.data.token)
       return resp.data.token;
     })
     .catch(function(error) {
       console.log(error);
     });
   };
-
 
   var signinCenter = function (user) {
     console.log(user);
