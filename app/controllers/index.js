@@ -3,7 +3,7 @@ var jwt = require('jwt-simple');
 
 module.exports = {
   Center: {
-    getAllCenter: function (req, res) {
+    getAllCenters: function (req, res) {
       db.Center.findAll()
       .then(function(centers) {
         res.status(200);

@@ -1,4 +1,3 @@
-
 angular.module('SED.services', [])
 
 .factory ('Record', function ($http) {
@@ -15,6 +14,7 @@ angular.module('SED.services', [])
   };
   return {submitForm: submitForm};
 })
+
 .factory('Centers', function ($http) {
   var getAllCenters=function(){
     return $http({
@@ -29,9 +29,9 @@ angular.module('SED.services', [])
     getAllCenters:getAllCenters
   };
 })
-.factory('Services', function($http) {
-  return {};
-})
+
+
+
 .factory('Teachers', function($http){
   var getCurrentTeacher=function(){
     console.log("here")

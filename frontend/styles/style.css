@@ -117,3 +117,7 @@ body{
     overflow:auto;
     text-align:center;
 }
+
+/*style for the cards..*/
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }

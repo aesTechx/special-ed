@@ -1,0 +1,111 @@
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
+
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="fr">
+		<h2>Centers details <small>The list of centers:</small></h2>
+		</div>
+		<div class="jumbotron">
+			<div class="container">
+				<div id="map" style="width: 600px; height: 400px; background-color:lightyellow;"></div>
+				<h1>Center Name</h1>
+				<!-- <h1>{{data.centers}}</h1> -->
+				<div>
+					<ul ng-repeat="center in data.centers">
+						<li>{{center.centername}}</li>
+					</ul>
+				</div>
+				Centers details:  ......
+				<br/><br />
+				
+
+				<p>
+					<a href="" class="btn btn-primary btn-lg btn-white" ng-click='logout()'>Logout</a>
+				</p>
+				
+
+
+				<!-- Cards -->
+				<div ng-controller="centersCtr" ng-cloak="" class="carddemoBasicUsage">
+  					<md-content class="md-padding" layout-xs="column" layout="row">
+    					<div flex-xs="" flex-gt-xs="50" layout="column">
+						    
+						    <div flex-xs="" flex-gt-xs="50" layout="column">
+						    	<md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch="">
+						        <md-card-title>
+						          <md-card-title-text>
+						            <span class="md-headline">Card with image</span>
+						            <span class="md-subhead">Small</span>
+						          </md-card-title-text>
+						          <md-card-title-media>
+						            <div class="md-media-sm card-media"></div>
+						          </md-card-title-media>
+						        </md-card-title>
+						        <md-card-actions layout="row" layout-align="end center">
+						          <md-button>Action 1</md-button>
+						          <md-button>Action 2</md-button>
+						        </md-card-actions>
+						      </md-card>
+						    </div>
+      
+          					<div flex-xs="" flex-gt-xs="50" layout="column">
+      							<md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch="">
+							        <md-card-title>
+							          <md-card-title-text>
+							            <span class="md-headline">Card with image</span>
+							            <span class="md-subhead">Small</span>
+							          </md-card-title-text>
+							          <md-card-title-media>
+							            <div class="md-media-sm card-media"></div>
+							          </md-card-title-media>
+							        </md-card-title>
+							        <md-card-actions layout="row" layout-align="end center">
+							          <md-button>Action 1</md-button>
+							          <md-button>Action 2</md-button>
+							        </md-card-actions>
+							      </md-card>
+      
+      						</div>
+      
+    					</div>
+  					</md-content>
+				</div>
+
+
+
+
+<!-- Thumbnain -->
+ 				
+ 				<div class="col-sm-2 thumbnail">
+                <div>
+                    <h3 class='text-center' style='color:blue;'> Center </h3>
+                </div>
+                <img src="" class='img-responsive' style='width:100%;'>
+                <div class='caption'>
+                    <button class='btn btn-default btn-block'> button </button>
+                </div>
+
+
+
+
+
+
+				<!-- <div style="background-color: lightyellow;">
+					<ul ng-repeat="marker in markers" ng-click="openInfoWindow($event, marker)">
+						<li>
+							{{marker}}
+						</li>
+					</ul>
+				</div> -->
+			</div>
+		</div>
+	</snap-content>	
+</div>
