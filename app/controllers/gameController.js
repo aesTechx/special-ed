@@ -35,16 +35,16 @@ module.exports = {
   },
   getUserGame: function (req, res, next) {
     var userId = req.params.userId.toString();
-    findAllGames({userId: userId, game: req.body.game})
+    findAllGames({userId: userId, game: req.params.game.toString()})
     .then(function (games) {
       res.json(games);
     })
     res.status(500).send(err);
   },
   playGame : function(req, res, next) {
-  	var studentId = req.params.id.toString();
+  	var studentId = req.params.studentId.toString();
     var level = req.body.level;
-    var game = req.body.game;
+    var game = req.params.game.toString();
     var newtiming = req.body.newtiming;
     var besttime = req.body.besttime;
     var oldtime = req.body.oldtime;
