@@ -1,20 +1,5 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
-	var Specialist = sequelize.define('Specialist', {
-		Specialistname: DataTypes.STRING,
-		fullname: DataTypes.STRING,
-		category: DataTypes.STRING,
-		password: DataTypes.STRING
-	}, {
-		classMethods: {
-			associate: function(models) {
-				Specialist.belongsTo(models.Center);
-				Specialist.belongsToMany(models.Student,{through:"StudentSpecialist"});
-			}
-		}
-	});
-	return Specialist;
-};
+
 var Q = require('q');
 var mongoose = require('mongoose');
 
@@ -74,7 +59,7 @@ Specialist.comparePassword = function(candidatePassword, savedPassword, res, cb)
 };
 
 
-StudentSchema.pre('save', function (next) {
+SpecialistSchema.pre('save', function (next) {
   var specialist = this;
 
   // only hash the password if it has been modified (or is new)

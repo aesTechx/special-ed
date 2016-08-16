@@ -11,7 +11,7 @@ var CenterSchema = new mongoose.Schema({
   	type: String,
   	unique: true,
   	required: true
-  }
+  },
   username: {
   	type: String,
     unique: true,
@@ -22,14 +22,14 @@ var CenterSchema = new mongoose.Schema({
     required: true
   },
   foundationDate: Date,
-  coverPicture: String,
+  profilePicture: String,
   todos: [String],
   teachers: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
   students: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
   pendingSpecialistApplications: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
-  pendingStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student';}],
+  pendingStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student'}],
   rejectedSpecialistApplications: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
-  rejectedStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student';}],
+  rejectedStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student'}],
   longitude: Number,
   latitude: Number,
   address: String,

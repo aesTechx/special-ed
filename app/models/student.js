@@ -28,7 +28,8 @@ var StudentSchema = new mongoose.Schema({
   saveApplication: { type : Array , "default" : [] },
   todos: { type : Array , "default" : [] },
   teachers: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
-  games: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
+  gameRecords: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
+  records: [{ type: Schema.Types.ObjectId, ref: 'Record' }],  
   status: {
     type: String,
     enum: ['Active', 'Pending', 'Rejected']
