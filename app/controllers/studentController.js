@@ -92,7 +92,7 @@ module.exports = {
             centerId: centerId
           });
           newStudent.save(function(err, newStudent) {
-            res.send(200,'done')
+            res.send(201, newStudent)
           });
         } else {
           res.redirect('/signup');

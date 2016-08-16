@@ -36,10 +36,6 @@ var SpecialistSchema = new mongoose.Schema({
   profilePicture: String,
   todos: [String],
   students: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
-  status: {
-    type: String,
-    enum: ['Active', 'Pending', 'Rejected']
-  },
   email: String,
   phone: String,
   mobile: String,

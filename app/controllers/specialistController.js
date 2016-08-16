@@ -75,7 +75,6 @@ module.exports = {
     var password = req.body.password;
     var fullname = req.body.fullname;
     var email = req.body.email;
-    var birthdate = req.body.birthdate;
     var profilePicture = req.body.profilePicture;
     var centerId = req.body.centerId;
 
@@ -92,7 +91,7 @@ module.exports = {
             centerId: centerId
           });
           newSpecialist.save(function(err, newSpecialist) {
-            res.send(200,'done')
+            res.send(201, newSpecialist)
           });
         } else {
           res.redirect('/signup');

@@ -1,40 +1,49 @@
 var path = require('path');
 var app = require(path.join(__dirname, '..', '..', './server.js'));
-var controller = require(path.join(__dirname, '..', '..', './app/controllers/index.js'));
+var centerController = require(path.join(__dirname, '..', '..', './app/controllers/centerController.js'));
+var gameController = require(path.join(__dirname, '..', '..', './app/controllers/gameController.js'));
+var recordController = require(path.join(__dirname, '..', '..', './app/controllers/recordController.js'));
+var specialistController = require(path.join(__dirname, '..', '..', './app/controllers/specialistController.js'));
+var studentController = require(path.join(__dirname, '..', '..', './app/controllers/studentController.js'));
 var should = require('chai').should();
 var chai = require('chai');
 var chaihttp = require('chai-http');
 chai.use(chaihttp);
-var models = require(path.join(__dirname, '..', '..', './app/models'));
 
 describe('centerGetPost()', function () {
   'use strict';
   it('post a new center to DB', function() {
     chai.request(app)
-    .post('http://127.0.0.1:8000/api/center/addCenter')
+    .post('http://127.0.0.1:8000/api/centers/signup')
     .send({centername: 'eshraq', password: 'eshraq', username: 'eshraq'})
     .end(function(err, res) {
       res.should.have.status(201);
       res.should.be.json;
       res.body.should.have.property('SUCCESS');
-      res.body.SUCCESS.should.be.a('object');
-      // res.body.SUCCESS.should.have.property('username');
-      // res.body.SUCCESS.should.have.property('centername');
-      // res.body.SUCCESS.should.have.property('password');
-      // res.body.SUCCESS.should.have.property('id');
-      // res.body.SUCCESS.username.should.equal('eshraq');
-      // res.body.SUCCESS.centername.should.equal('eshraq');
       res.body.should.be.a('object');
       done();
     });
+  });
+  it('request all students from the DB', function() {
+    chai.request(app)
+      .get('http://127.0.0.1:8000/api/centers')
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        res.body[0].should.have.property('id');
+        res.body[0].should.have.property('username');
+        res.body[0].should.have.property('centername');
+        done();
+      });
   });
 });
 describe('studentGetPost()', function () {
   'use strict';
   it('post a new student to DB', function() {
     chai.request(app)
-    .post('http://127.0.0.1:8000/api/student/addstudent')
-    .send({username: 'ali', password: 'ali', fullname: 'ali', skillsResult: 1, birthDate: '25/11/2015'})
+    .post('http://127.0.0.1:8000/api/student/signup')
+    .send({username: 'ali', password: 'ali', fullname: 'ali', birthdate: '25/11/2015'})
     .end(function(err, res) {
       res.should.have.status(201);
       res.should.be.json;
@@ -72,33 +81,31 @@ describe('studentGetPost()', function () {
       });
   });
 });
-describe('teacherGetPost()', function () {
+describe('specialistGetPost()', function () {
   'use strict';
-  it('post a new teacher to DB', function() {
+  it('post a new specialist to DB', function() {
     chai.request(app)
-      .post('http://127.0.0.1:8000/api/teacher/addTeacher')
-      .send({username: 'teacher', password: 'teacher', fullname: 'teacher', category: 'speech'})
+      .post('http://127.0.0.1:8000/api/specialist/signup')
+      .send({username: 'teacher', password: 'teacher', fullname: 'teacher'})
       .end(function(err, res) {
         res.should.have.status(201);
         res.body.should.have.property('SUCCESS');
         res.should.be.json;
         res.body.should.be.a('array');
-        res.body.SUCCESS.should.have.property('id');
         res.body.SUCCESS.should.have.property('username');
         res.body.SUCCESS.should.have.property('fullname');
         res.body.SUCCESS.should.have.property('password');
-        res.body.SUCCESS.should.have.property('category');
+        res.body.SUCCESS.should.have.property('specialty');
         res.body.SUCCESS.should.have.property('centerId');
         res.body.SUCCESS.username.should.equal('teacher');
         res.body.SUCCESS.fullname.should.equal('teacher');
         res.body.SUCCESS.password.should.equal('teacher');
-        res.body.SUCCESS.category.should.equal('speech');
         done();
       });
   });
-  it('request all teachers from the DB', function() {
+  it('request all specialists from the DB', function() {
     chai.request(app)
-      .get('http://127.0.0.1:8000/api/teachers')
+      .get('http://127.0.0.1:8000/api/specialists')
       .end(function(err, res) {
         res.should.have.status(200);
         res.should.be.json;
@@ -106,22 +113,9 @@ describe('teacherGetPost()', function () {
         res.body[0].should.have.property('id');
         res.body[0].should.have.property('username');
         res.body[0].should.have.property('fullname');
-        res.body[0].should.have.property('category');
+        res.body[0].should.have.property('specialty');
         res.body[0].should.have.property('centerId');
         done();
       });
-  });
-});
-describe('teacherGetPost()', function () {
-  'use strict';
-  it('request all games from the DB', function() {
-    chai.request(app)
-    .get('http://127.0.0.1:8000/api/games')
-    .end(function(err, res) {
-      res.should.have.status(200);
-      res.should.be.json;
-      res.body.should.be.a('array');
-      done();
-    });
   });
 });
