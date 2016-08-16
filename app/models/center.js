@@ -1,17 +1,85 @@
 'use strict';
-// var bcrypt=require('');
-module.exports = function (sequelize, DataTypes) {
-	var Center = sequelize.define('Center', {
-		centername: DataTypes.STRING,
-		username: DataTypes.STRING,
-		password: DataTypes.STRING
-	}, {
-		classMethods: {
-			associate: function(models) {
-				Center.hasMany(models.Student);
-				Center.hasMany(models.Teacher);
-			}
-		}
-	});
-	return Center;
+var Q = require('q');
+var mongoose = require('mongoose');
+
+var bcrypt = require('bcrypt-nodejs');
+var SALT_WORK_FACTOR = 10;
+var Schema = mongoose.Schema;
+
+var CenterSchema = new mongoose.Schema({
+  centername: {
+  	type: String,
+  	unique: true,
+  	required: true
+  },
+  username: {
+  	type: String,
+    unique: true,
+  	required: true
+  },
+  password : {
+    type: String,
+    required: true
+  },
+  foundationDate: Date,
+  profilePicture: String,
+  todos: [String],
+  teachers: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
+  students: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
+  pendingSpecialistApplications: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
+  pendingStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student'}],
+  rejectedSpecialistApplications: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
+  rejectedStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student'}],
+  longitude: Number,
+  latitude: Number,
+  address: String,
+  email: String,
+  phone: String,
+  mobile: String,
+  rating: Number,
+  facebook: String
+});
+var Center = mongoose.model('Center', CenterSchema);
+
+
+Center.comparePassword = function(candidatePassword, savedPassword, res, cb){
+  bcrypt.compare( candidatePassword, savedPassword, function(err, isMatch){
+    if(err){
+      res.status(500).send('Error');
+    } else if(cb){
+      cb(isMatch);
+    }
+  });
 };
+
+
+CenterSchema.pre('save', function (next) {
+  var center = this;
+
+  // only hash the password if it has been modified (or is new)
+  if (!center.isModified('password')) {
+    return next();
+  }
+
+  // generate a salt
+  bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
+    if (err) {
+      return next(err);
+    }
+
+    // hash the password along with our new salt
+    bcrypt.hash(center.password, salt, null, function (err, hash) {
+      if (err) {
+        return next(err);
+      }
+
+      // override the cleartext password with the hashed one
+      center.password = hash;
+      center.salt = salt;
+      next();
+    });
+  });
+});
+
+
+module.exports = Center;

@@ -12,6 +12,12 @@ var states = [
   { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'LoginCtrl', data: {text: 'teacherProfile', visible: true }} },
 ];
 angular.module('SED', [
+  'ngAnimate',
+  'ngTouch',
+  'ngResource',
+  'ui.bootstrap',
+  'ui.router',
+  'snap',
   'SED.services',
   'dragDropSampleApp',
   'SED.multiForms',
@@ -19,14 +25,7 @@ angular.module('SED', [
   'SED.Signup',
   'SED.Profile',
   'SED.Overview',
-  'SED.Dashboard',
-  'ngRoute',
-  'ngAnimate',
-  'ngTouch',
-  'ngResource',
-  'ui.bootstrap',
-  'ui.router',
-  'snap'
+  'SED.Dashboard'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.when('/dashboard', '/dashboard/overview');

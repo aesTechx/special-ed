@@ -11,27 +11,52 @@
       </span>
     </a>
     <div class="fr">
-      <div id="assessment">
-        <div ng-repeat="category in allQuestions">  
-          <span ng-show="category.step==1">
-            <form class="form-horizontal" ng-repeat="Question in category">
-              <div ng-repeat="Q in Question">
-                <h4>Q: {{Q.Q}}</h4>
-                <div>
-                  <div class="radio" style="margin-left: 30px;">
-                    <input type="radio"  value="0" ng-model="Q.value" required> Yes
+      <h2> Autism Assessment<small> Based on C.A.R.S phsycological model </small></h2>
+    </div>
+      <div class='jumbotron'>
+        <div class="container-fluid" style="background: white; padding:20px; color:black;">
+        <button ng-if="readyToStart" ng-click="start()"> Start </button>
+        <div ng-if="!readyToStart">
+          <form role="form">
+            <div class="table-form">
+              <div class="form-groups">
+                <div class="form-group">
+                   <div class='col-sm-9'>
+                    <div class='col-xs-12'>
+                      <h3> Category: {{currentQuestion.category}} </h3>
+                     <h4> Does your kid show the following: </h4>
+                     <p> <big> {{currentQuestion.Q}} </big></p>
+                    </div>
+                    <div class='col-sm-4 col-xs-12'>
+                      <div class="radio" style="margin-left: 30px;" >
+                        <span class='col-xs-6'><input type="radio"  value="0" ng-model="currentQuestion.value" > Yes </span>
+                        <span class='col-xs-6'><input type="radio" value="1" ng-model="currentQuestion.value" > No </span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="radio"  style="margin-left: 30px;">
-                    <input type="radio" value="1" ng-model="Q.value" required> No
+                  <div class='col-sm-3 col-xs-12'>
+                      <h4> Question {{currentQuestion.questionNum}} of {{totalNumberOfQuestions}} </h4>
+                      <button class='btn btn-primary btn-default btn-block' ng-if="!readyToSubmit" ng-click="nextQuestion()"> Next Question</button>
+                      <button class='btn btn-primary btn-default btn-block' ng-if="readyToSubmit" ng-click="open()"> Submit </button>
                   </div>
                 </div>
               </div>
-            </form> 
-          </span> 
+            </div>
+          </form>
         </div>
-        <a class="btn btn-primary btn-white btn-lg" ng-click="nextStep()">Next</a>
-        <button class="btn btn-primary btn-white btn-lg" ng-click="submit()" > submit </button> 
       </div>
+      <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-header">
+              <h3 class="modal-title">You are about to submit</h3>
+          </div>
+          <div class="modal-body">
+              <p> click ok to send assessment answers, and cancel to edit your answers </p>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-primary" type="button" ng-click="ok(finalScore)">OK</button>
+              <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+          </div>
+      </script>
     </div>
   </snap-content>	
 </div>
