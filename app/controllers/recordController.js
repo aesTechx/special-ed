@@ -1,4 +1,4 @@
-var sendEmail = require('../emailComms.js');
+var sendEmail = require('../../emailComms.js');
 var Record = require('../models/record.js');
 var Student = require('../models/student.js');
 Q = require('q');
@@ -56,9 +56,9 @@ module.exports = {
             res.send(200,'done')
           }
         })
-        .fail(function (err)) {
+        .fail(function (err) {
           res.json(newRecord)
-        }
+        })
       }
     });
   }

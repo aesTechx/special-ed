@@ -1,4 +1,4 @@
-var sendEmail = require('../emailComms.js');
+var sendEmail = require('../../emailComms.js');
 var Specialist = require('../models/specialist.js');
 Q = require('q');
 jwt = require('jwt-simple');
@@ -165,4 +165,4 @@ module.exports = {
       }
     })
   }   
-
+}

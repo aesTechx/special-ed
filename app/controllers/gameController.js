@@ -1,4 +1,4 @@
-var sendEmail = require('../emailComms.js');
+var sendEmail = require('../../emailComms.js');
 var Game = require('../models/game.js');
 var Student = require('../models/student.js');
 Q = require('q');
@@ -74,9 +74,9 @@ module.exports = {
             res.send(200,'done')
           }
         })
-        .fail(function (err)) {
+        .fail(function (err) {
           res.json(newGame)
-        }
+        })
       }
     });
   }

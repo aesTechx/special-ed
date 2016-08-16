@@ -1,4 +1,4 @@
-var sendEmail = require('../emailNotifications.js');
+var sendEmail = require('../../emailComms.js');
 var Center = require('../models/center.js');
 Q = require('q');
 jwt = require('jwt-simple');
@@ -162,4 +162,4 @@ module.exports = {
       }
     })
   }   
-
+}
