@@ -10,7 +10,8 @@ var states = [
   { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: true }} },
   { name: 'profile', state: { url: '/profile', parent: 'dashboard', templateUrl: 'views/dashboard/profile.html', controller: 'ProfileCtrl', data: {text: 'Profile page', visible: false }} },
   { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'LoginCtrl', data: {text: 'teacherProfile', visible: true }} },
-  { name: 'game', state: { url: '/game', parent: 'dashboard', templateUrl: 'views/dashboard/picGame.html', controller: 'oneCtrl', data: {text: 'PIC Game', visible: true }} }
+  { name: 'game', state: { url: '/game', parent: 'dashboard', templateUrl: 'views/dashboard/picGame.html', controller: 'oneCtrl', data: {text: 'PIC Game', visible: true }} },
+  { name: 'StudentProfile', state: { url: '/StudentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'StudentProfile', visible: true }} }
 ];
 angular.module('SED', [
   'ngAnimate',
@@ -27,7 +28,8 @@ angular.module('SED', [
   'SED.Signup',
   'SED.Profile',
   'SED.Overview',
-  'SED.Dashboard'
+  'SED.Dashboard',
+  'SED.studentProfile'
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.when('/dashboard', '/dashboard/overview');
@@ -47,7 +49,7 @@ angular.module('SED', [
   var attach = {
     request: function (object) {
       console.log('attach')
-      var jwt = $window.localStorage.getItem('com.SEDuser');
+      var jwt = $window.localStorage.getItem('com.SEDuser') || $window.localStorage.getItem('com.SEDteacher') || $window.localStorage.getItem('com.SEDcenter');
       console.log(jwt);
       if (jwt) {
         object.headers['x-access-token'] = jwt;

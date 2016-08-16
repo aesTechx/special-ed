@@ -1,14 +1,6 @@
 angular.module('SED.Profile', [])
 .controller('ProfileCtrl', function($scope, $state, Auth, Centers, Students) {
-  $scope.data={};
-  Centers.getAllCenters()
-  .then(function(centers){
-    $scope.data.centers=centers;
-  })
-  Students.getCurrentStudent()
-  .then(function(resp){
-    $scope.data.student=resp;
-  })
+ 
   $scope.initialize = function () {
     var loadLiquidFillGauge = window.loadLiquidFillGauge;
     var gauge1 = loadLiquidFillGauge('fillgauge1', 80);
