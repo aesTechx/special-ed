@@ -44,4 +44,5 @@ module.exports = function (app, express) {
   app.get('/api/forms', recordController.getAll);
   app.get('/api/form/:studentId', recordController.getRecord);
   app.post('/api/forms/submitForm', recordController.addRecord);
+
 };

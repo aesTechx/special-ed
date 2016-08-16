@@ -10,6 +10,7 @@ var states = [
   { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: true }} },
   { name: 'profile', state: { url: '/profile', parent: 'dashboard', templateUrl: 'views/dashboard/profile.html', controller: 'ProfileCtrl', data: {text: 'Profile page', visible: false }} },
   { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'LoginCtrl', data: {text: 'teacherProfile', visible: true }} },
+  { name: 'game', state: { url: '/game', parent: 'dashboard', templateUrl: 'views/dashboard/picGame.html', controller: 'oneCtrl', data: {text: 'PIC Game', visible: true }} }
 ];
 angular.module('SED', [
   'ngAnimate',
@@ -18,6 +19,7 @@ angular.module('SED', [
   'ui.bootstrap',
   'ui.router',
   'snap',
+  'drag-and-drop',
   'SED.services',
   'dragDropSampleApp',
   'SED.multiForms',
@@ -27,15 +29,35 @@ angular.module('SED', [
   'SED.Overview',
   'SED.Dashboard'
 ])
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.when('/dashboard', '/dashboard/overview');
   $urlRouterProvider.otherwise('/login');
 
   angular.forEach(states, function (state) {
     $stateProvider.state(state.name, state.state);
   });
-});
+  $httpProvider.interceptors.push('AttachTokens');
+})
 
+.factory('AttachTokens', function ($window) {
+  // this is an $httpInterceptor
+  // its job is to stop all out going request
+  // then look in local storage and find the user's token
+  // then add it to the header so the server can validate the request
+  var attach = {
+    request: function (object) {
+      console.log('attach')
+      var jwt = $window.localStorage.getItem('com.SEDuser');
+      console.log(jwt);
+      if (jwt) {
+        object.headers['x-access-token'] = jwt;
+      }
+      object.headers['Allow-Control-Allow-Origin'] = '*';
+      return object;
+    }
+  };
+  return attach;
+})
 
 // .config(function ($routeProvider, $httpProvider) {
 //   $routeProvider
@@ -85,26 +107,9 @@ angular.module('SED', [
    
 //     // We add our $httpInterceptor into the array
 //     // of interceptors. Think of it like middleware for your ajax calls
-//     $httpProvider.interceptors.push('AttachTokens');
+     // $httpProvider.interceptors.push('AttachTokens');
 // })
-// .factory('AttachTokens', function ($window) {
-//   // this is an $httpInterceptor
-//   // its job is to stop all out going request
-//   // then look in local storage and find the user's token
-//   // then add it to the header so the server can validate the request
-//   var attach = {
-//     request: function (object) {
-//       console.log('attach')
-//       var jwt = $window.localStorage.getItem('com.GSuser');
-//       if (jwt) {
-//         object.headers['x-access-token'] = jwt;
-//       }
-//       object.headers['Allow-Control-Allow-Origin'] = '*';
-//       return object;
-//     }
-//   };
-//   return attach;
-// })
+
 // // .run(function ($rootScope, $location, Auth) {
 //   // here inside the run phase of angular, our services and controllers
 //   // have just been registered and our app is ready

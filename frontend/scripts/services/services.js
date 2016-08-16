@@ -29,8 +29,19 @@ angular.module('SED.services', [])
     getAllCenters:getAllCenters
   };
 })
-.factory('Services', function($http) {
-  return {};
+.factory('Students', function($http) {
+  var getCurrentStudent=function(){
+    return $http({
+      method:'GET',
+      url:'/api/users/currentuser'
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
+  return {
+    getCurrentStudent:getCurrentStudent
+  };
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
