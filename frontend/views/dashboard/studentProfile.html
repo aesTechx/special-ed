@@ -25,16 +25,19 @@
         </figure>
 			</div>
 			<!-- col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 -->
-      <div class="col-sm-9">
-        <h2>{{data.student.fullname}}</h2>
-        <p><strong>About: </strong> Cool kid </p>
-        <p><strong>Age: </strong> 6 </p>
-        <p><strong>Skills: </strong>
-            <span class="tags">html5</span> 
-            <span class="tags">css3</span>
-            <span class="tags">jquery</span>
-            <span class="tags">bootstrap3</span>
-        </p>
+      <div ng-if="!edit" class="col-sm-9">
+        <h2 >{{data.student.fullname}}</h2>
+        <p><strong>Birthdate: </strong> {{data.student.birthdate}} </p>
+        <p><strong>Emergency Number: </strong>{{data.student.emergencyNumber}}</p>
+        <p><strong>Todos:</strong>{{data.student.todos}}</p>
+        </div>
+        <div ng-if="edit">
+          <p><strong>Name: </strong> <input type="text" value={{data.student.fullname}} style="color: #C0C0C0;" ng-model="user.fullname"></input></p>
+          <p><strong>Password: </strong><input type="text" value={{data.student.password}} style="color: #C0C0C0;" ng-model=user.password> </p>
+          <p><strong>Birthdate: </strong><input type="date" id="dateOfBirth" ng-model="user.birthdate"></p>
+          <p><strong>Emergency Number: </strong><input type="text" value={{data.student.emergencyNumber}} style="color: #C0C0C0;" ng-model="user.emergencyNumber"></p>
+          <p><strong>Todos:</strong><input type="text" value={{data.student.todos}} style="color: #C0C0C0;" ng-model="user.todos"></p>
+          <button ng-click="editProfile()">Edit</button>
       </div>            
       <div class="col-xs-12 divider text-center">
         <div class="col-xs-12 col-sm-4 emphasis">
@@ -50,7 +53,7 @@
         <div class="col-xs-12 col-sm-4 emphasis">
             <h3><strong>3</strong></h3>                    
             <p><small>Edit</small></p>
-            <button class="btn btn-warning btn-block" ng-click="editProfile()"></span> Edit Profile </button>
+            <button class="btn btn-warning btn-block" ng-click="editflag()"></span> Edit Profile </button>
           </div>
       </div>
  </div>

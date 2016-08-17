@@ -11,6 +11,7 @@ var findStudent = Q.nbind(Student.findOne, Student);
 
 module.exports = {
   getAll : function (req, res, next){
+
     Record.find({}, function(err, users) {
       if(err){
         res.status(500).send(err);
@@ -19,21 +20,27 @@ module.exports = {
     })
   },
   getRecord : function (req,res,next) {
-    Record.findOne({studentId: req.params.studentId}, function (err , user) {
+    var token = req.headers['x-access-token'];
+    var user = jwt.decode(token, 'secret');
+    Record.find({studentId: user._id}, function (err , records) {
       if(err)
         res.status(500).send(err);
-      res.json(user);
+      res.json(records);
     })
   },
   addRecord : function(req, res, next) {
-  	var studentId = req.params.id
-    var social = req.body.social;
-    var preservation = req.body.preservation;
-    var sensoryDisturbance = req.body.sensoryDisturbance;
-    var communicationAndDevelopment = req.body.communicationAndDevelopment;
-    var attentionAndSafety = req.body.attentionAndSafety;
-    var centerId = req.body.centerId;
-    
+  	var token = req.headers['x-access-token'];
+    var user = jwt.decode(token, 'secret');
+    console.log(req.body)
+    //"Social": 0, "Preservation": 0, "SensoryDisturbance": 0, "CommunicationandDevelopment": 0, "AttentionandSafety": 0
+    var studentId=user._id;
+    var social = req.body.Social;
+    var preservation = req.body.Preservation;
+    var sensoryDisturbance = req.body.SensoryDisturbance;
+    var communicationAndDevelopment = req.body.CommunicationandDevelopment;
+    var attentionAndSafety = req.body.AttentionandSafety;
+    //var centerId = req.body.centerId;
+    console.log(attentionAndSafety)
     var newRecord = new Record({
       social: social,
       preservation: preservation,
