@@ -18,8 +18,8 @@ iisnode.yml
 .Spotlight-V100
 .Trashes
 *.sqlite
-frontend/lib
-frontend/config
+frontend/lib/**/*
+frontend/config/*.js
 
 # Logs
 logs
