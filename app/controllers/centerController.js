@@ -78,6 +78,7 @@ module.exports = {
     var profilePicture = req.body.profilePicture;
     var longitude = req.body.longitude;
     var latitude = req.body.latitude;
+    var address = req.body.address;
 console.log(longitude)
     Center.findOne({ username: username })
       .exec(function(err, user) {
@@ -89,7 +90,8 @@ console.log(longitude)
             email: email,
             profilePicture: profilePicture,
             longitude : longitude,
-            latitude: latitude
+            latitude: latitude,
+            address: address
           });
           newCenter.save(function(err, newCenter) {
             res.send(200,'done');

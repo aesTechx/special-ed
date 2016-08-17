@@ -21,7 +21,7 @@
 				   <!--  <div class="form-group">
 					<label for="sel1">Choose Center:</label>
 				      <select class="form-control" id="sel11" ng-model="option1" ng-change="changeSelect1()">
-				        <option ng-repeat="center in data.centers">{{center.centername}}</option>
+						<option ng-repeat="center in data.centers">{{center.centername}}</option>
 				      </select>
 				     </div> -->
 				    <div class="form-group">
@@ -35,11 +35,13 @@
 
 					<!-- center location: -->
 					<div class="form-group">
-						<!-- <input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER lat" ng-model='user.latitude'>
+						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER email" ng-model='user.email'>
 						<br/>
-						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER lng" ng-model='user.longitude'> -->
+						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER address" ng-model='user.address'>
 						<br/>
-						<button ng-if="centerSelected">choose location</button>
+						<!-- <input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER phone" ng-model='user.longitude'>
+						<br/>
+						<button ng-if="centerSelected">choose location</button> -->
 					</div>
 					<!-- end center location -->
 

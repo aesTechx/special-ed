@@ -36,7 +36,7 @@ var CenterSchema = new mongoose.Schema({
   email: String,
   phone: String,
   mobile: String,
-  rating: Number,
+  rating: {type:Number,default:0},
   facebook: String
 });
 var Center = mongoose.model('Center', CenterSchema);
