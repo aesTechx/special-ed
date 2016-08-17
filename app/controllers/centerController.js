@@ -90,10 +90,9 @@ console.log(longitude)
             profilePicture: profilePicture,
             longitude : longitude,
             latitude: latitude
-
           });
           newCenter.save(function(err, newCenter) {
-            res.send(200,'done')
+            res.send(200,'done');
           });
         } else {
           res.redirect('/signup');

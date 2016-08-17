@@ -35,7 +35,7 @@ var SpecialistSchema = new mongoose.Schema({
   },
   profilePicture: String,
   todos: [String],
-  students: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
+  students: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
   email: String,
   phone: String,
   mobile: String,

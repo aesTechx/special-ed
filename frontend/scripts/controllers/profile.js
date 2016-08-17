@@ -14,5 +14,5 @@ angular.module('SED.Profile', [])
     var gauge5 = loadLiquidFillGauge('fillgauge5', 90);
     var gauge6 = loadLiquidFillGauge('fillgauge6', 40);
   };
-  $scope.initialize();
+$scope.initialize();
 });

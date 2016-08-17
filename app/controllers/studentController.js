@@ -1,11 +1,15 @@
 var sendEmail = require('../../emailComms.js');
 var Student = require('../models/student.js');
+var Specialist = require('../models/specialist.js');
+var Game = require('../models/game.js');
 Q = require('q');
 jwt = require('jwt-simple');
 
 var findStudent = Q.nbind(Student.findOne, Student);
 var createStudent = Q.nbind(Student.create, Student);
 var findAllStudents = Q.nbind(Student.find, Student);
+var findAllSpecialist = Q.nbind(Specialist.find, Specialist);
+var findAllGames = Q.nbind(Game.find, Game);
 
 module.exports = {
   getAll : function (req, res, next){
@@ -17,9 +21,12 @@ module.exports = {
     })
   },
   getStudent : function (req,res,next) {
-    Student.findOne({username: req.params.username}, function (err , user) {
+    var token = req.headers['x-access-token'];
+    user = jwt.decode(token, 'secret');
+    Student.findOne({username: user.username}, function (err , user) {
       if(err)
         res.status(500).send(err);
+      console.log(user);
       res.json(user);
     })
   },
@@ -159,5 +166,40 @@ module.exports = {
         res.status(500).send('No matching email found');
       }
     })
-  }   
+  },
+  getTeachers:function(req,res){
+    var token = req.headers['x-access-token'];
+    user = jwt.decode(token, 'secret');
+    findStudent({username:user.username})
+    .then(function(user){
+      return user.teachers
+    })
+    .then(function(teachers){
+        findAllSpecialist({'_id': { $in: teachers }})
+        .then(function(teachers){
+          res.json(teachers)
+        })
+        .fail(function(err){
+          res.send(204)
+        })
+      })
+  },
+  getGames:function(req,res){
+    var token = req.headers['x-access-token'];
+    user = jwt.decode(token, 'secret');
+    findStudent({username:user.username})
+    .then(function(user){
+      return user.gameRecords
+    })
+    .then(function(games){
+        findAllGames({'_id': { $in: games }})
+        .then(function(games){
+          res.json(games)
+        })
+        .fail(function(err){
+          res.send(204)
+        })
+      })
+  },
+  
 }
