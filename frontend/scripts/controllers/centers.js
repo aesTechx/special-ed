@@ -19,6 +19,7 @@ angular.module('SED.centers', [])
                 address: center.address,
                 icon: "../../images/marker.png"
                 //phone: center.phone
+                
               });
               marker.content = '<div class="infoWindowContent">'+ center.centername +'<br>'+ center.address +'<br>'+'</div>';
               google.maps.event.addListener(marker, 'click', function() {
