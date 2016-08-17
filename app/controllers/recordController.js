@@ -26,7 +26,7 @@ module.exports = {
     })
   },
   addRecord : function(req, res, next) {
-  	var studentId = req.params.id.toString();
+  	var studentId = req.params.id
     var social = req.body.social;
     var preservation = req.body.preservation;
     var sensoryDisturbance = req.body.sensoryDisturbance;

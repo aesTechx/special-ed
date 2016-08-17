@@ -44,6 +44,7 @@ angular.module('SED.services', [])
   return{
     getCurrentTeacher:getCurrentTeacher
   }
+})
 .factory('Students', function($http) {
   var getCurrentStudent=function(){
     return $http({
