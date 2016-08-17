@@ -180,3 +180,23 @@ body{
     margin: 0 0 11px;
 }
 
+
+
+
+
+
+/*Map and marker style*/
+#map {
+  width: 90%;
+  background-color:lightyellow; 
+  height: 500px;
+  margin: 10px auto;
+}
+
+.infoWindowContent {
+  color: green;
+  font-size: 14px;
+  border-top: 1px solid lightgreen;
+  padding-top: 10px;
+}
+
