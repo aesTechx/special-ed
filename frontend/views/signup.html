@@ -18,12 +18,12 @@
 				        <option value='Center'>Center</option>
 				      </select>
 				     </div>
-				    <div class="form-group" ng-if="studentSelected">
+				   <!--  <div class="form-group">
 					<label for="sel1">Choose Center:</label>
 				      <select class="form-control" id="sel11" ng-model="option1" ng-change="changeSelect1()">
 				        <option ng-repeat="center in data.centers">{{center.centername}}</option>
 				      </select>
-				     </div>
+				     </div> -->
 				    <div class="form-group">
 						<input ng-if="studentSelected || teacherSelected" type="text" class="form-control input-lg" id="" placeholder="FULLNAME" ng-model='user.fullname'>
 						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER NAME" ng-model='user.centername'>

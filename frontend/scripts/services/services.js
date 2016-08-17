@@ -29,9 +29,6 @@ angular.module('SED.services', [])
     getAllCenters:getAllCenters
   };
 })
-
-
-
 .factory('Teachers', function($http){
   var getCurrentTeacher=function(){
     console.log("here")
@@ -47,6 +44,49 @@ angular.module('SED.services', [])
   return{
     getCurrentTeacher:getCurrentTeacher
   }
+.factory('Students', function($http) {
+  var getCurrentStudent=function(){
+    return $http({
+      method:'GET',
+      url:'/api/students/currentStudent'
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
+  var viewTeachers=function(){
+     return $http({
+      method:'GET',
+      url:'/api/students/specialists'
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
+  var viewGames=function(){
+    return $http({
+      method:'GET',
+      url:'/api/students/games'
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
+  var viewRecords=function(){
+    return $http({
+      method:'GET',
+      url:'/api/students/records'
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
+  return {
+    getCurrentStudent:getCurrentStudent,
+    viewTeachers:viewTeachers,
+    viewGames:viewGames,
+    viewRecords:viewRecords
+  };
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
@@ -60,7 +100,7 @@ angular.module('SED.services', [])
     console.log(user);
     return $http({
       method: 'POST',
-      url: '/api/users/signinUser',
+      url: '/api/students/signin',
       data: user
     })
     .then(function (resp) {
@@ -99,7 +139,7 @@ angular.module('SED.services', [])
   var signupUser = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/student/addstudent',
+      url: '/api/students/signup',
       data: user
     })
     .then(function (resp) {
