@@ -61,57 +61,6 @@ angular.module('SED', [
   return attach;
 })
 
-// .config(function ($routeProvider, $httpProvider) {
-//   $routeProvider
-//     .when('/signinUser', {
-//       templateUrl: 'app/auth/signinUser.html',
-//       controller: 'AuthController'
-//     })
-//     .when('/game', {
-//       templateUrl: 'app/game/game.html',
-//       controller: 'MainController'
-//     })
-//     .when('/signupUser', {
-//       templateUrl: 'app/auth/signupUser.html',
-//       controller: 'AuthController'
-//     })
-//      .when('/signinCenter', {
-//       templateUrl: 'app/auth/signinCenter.html',
-//       controller: 'AuthController'
-//     })
-//      .when('/signupCenter', {
-//       templateUrl: 'app/auth/signupCenter.html',
-//       controller: 'AuthController'
-//     })
-//     .when ('/signinTeacher',{
-//       templateUrl: 'app/auth/signinTeacher.html',
-//       controller: 'AuthController'
-//     })
-//     .when('/signupTeacher',{
-//       templateUrl: 'app/auth/signupTeacher.html',
-//       controller: 'AuthController'
-//     })
-//     .when('/user',{
-//       templateUrl: 'app/user/user.html',
-//       controller: 'UserController',
-//       authenticate: true
-//     })
-//     .when('/teacher',{
-//        templateUrl: 'app/teacher/teacher.html',
-//        controller: 'teacherController',
-//        authenticate: true
-//     })
-//     .when('/center',{
-//        templateUrl: 'app/center/center.html',
-//        controller: 'centerController',
-//        authenticate: true
-//     })
-   
-//     // We add our $httpInterceptor into the array
-//     // of interceptors. Think of it like middleware for your ajax calls
-     // $httpProvider.interceptors.push('AttachTokens');
-// })
-
 // // .run(function ($rootScope, $location, Auth) {
 //   // here inside the run phase of angular, our services and controllers
 //   // have just been registered and our app is ready

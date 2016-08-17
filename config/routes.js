@@ -26,7 +26,6 @@ module.exports = function (app, express) {
   app.get('/api/specialists/requestPass/:email', specialistController.requestNewPass);
   
   //student routes
-  
   app.get('/api/students/games', studentController.getGames);
   app.get('/api/students/specialists', studentController.getTeachers);
   app.get('/api/students', studentController.getAll);
@@ -34,7 +33,7 @@ module.exports = function (app, express) {
   app.get('/api/student/signedin', studentController.checkAuth);
   app.post('/api/students/signin', studentController.signin);
   app.post('/api/students/signup', studentController.signup);
-  app.put('/api/student/:username/edit', studentController.editStudent);
+  app.post('/api/students/editProfile', studentController.editStudent);
   app.get('/api/students/requestPass/:email', studentController.requestNewPass);
 
   //game routes
@@ -46,7 +45,7 @@ module.exports = function (app, express) {
 
   //records routes
   app.get('/api/forms', recordController.getAll);
-  app.get('/api/form/:studentId', recordController.getRecord);
+  app.get('/api/form/student', recordController.getRecord);
   app.post('/api/forms/submitForm', recordController.addRecord);
 
 };

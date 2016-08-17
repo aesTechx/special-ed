@@ -107,30 +107,30 @@ module.exports = {
       });
   },
   editStudent : function(req, res, next){
-    Student.findOne({username: req.params.username}, function(err, user){
+    var token = req.headers['x-access-token'];
+    var user = jwt.decode(token, 'secret');
+    Student.findOne({username: user.username}, function(err, user){
       if(err){
         res.status(500).send(err);
       } else if (!user){
         res.status(500).send(new Error ('User does not exist'));
       } else {
-
+        console.log(req.body.fullname)
         user.fullname = req.body.fullname || user.fullname;
         user.password = req.body.password || user.password
         user.birthdate = req.body.birthdate || user.birthdate;
-        user.centerId = req.body.centerId || user.centerId;
         user.skillsResult = req.body.skillsResult || user.skillsResult;
         user.profilePicture = req.body.profilePicture || user.profilePicture;
         user.emergencyContact = req.body.emergencyContact || user.emergencyContact;
         user.emergencyNumber = req.body.emergencyNumber || user.emergencyNumber;
         user.todos = req.body.todos || user.todos;
-        user.saveApplication = req.body.saveApplication || user.saveApplication;
-        user.teachers = req.body.teachers || user.teachers;
-        user.games = req.body.games || user.games;
 
         user.save(function(err, savedUser){
+          console.log(savedUser);
           if(err){
             res.status(500).send(error);
           } else {
+            console.log()
             res.status(201).send(JSON.stringify(savedUser));
           }
         });
