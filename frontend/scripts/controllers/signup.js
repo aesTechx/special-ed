@@ -56,7 +56,7 @@ angular.module('SED.Signup', [])
   $scope.submit = function() {
     var option = $scope.option;
     $scope.user.center=$scope.center;
-    console.log($scope.user)
+    //console.log($scope.user)
     if (option === 'Teacher') {
       Auth.signupTeacher($scope.user)
       .then(function (token) {
@@ -76,14 +76,28 @@ angular.module('SED.Signup', [])
         console.error(error);
       });
     } else if (option === 'Center') {
-      Auth.signupCenter($scope.user)
+      /*center location*/
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            $scope.user.latitude= position.coords.latitude;
+            $scope.user.longitude= position.coords.longitude;
+            
+          }); 
+        } else {
+          // Browser doesn't support Geolocation
+          alert('your browser does not support the geolocation');
+        }
+
+      console.log($scope.user)
+      setTimeout(function(){  Auth.signupCenter($scope.user)
       .then(function(token) {
         $window.localStorage.setItem('com.SEDcenter', token);
         $location.path('/dashboard');
       })
       .catch(function(error) {
         console.log(error);
-      });
+      });},4000)
+    
     }
   };
   $scope.changeSelect1=function(){

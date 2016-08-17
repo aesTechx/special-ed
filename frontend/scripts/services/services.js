@@ -88,7 +88,7 @@ angular.module('SED.services', [])
     console.log(user);
     return $http ({
       method: 'POST',
-      url: '/api/users/signinCenter',
+      url: '/api/centers/signin',
       data: user
     })
     .then(function (resp) {
@@ -117,9 +117,10 @@ angular.module('SED.services', [])
     });
   };
   var signupCenter = function (user) {
+    console.log(user)
     return $http({
       method: 'POST',
-      url: '/api/center/addCenter',
+      url: '/api/centers/signup',
       data: user
     })
     .then(function (resp) {

@@ -76,7 +76,9 @@ module.exports = {
     var centername = req.body.centername;
     var email = req.body.email;
     var profilePicture = req.body.profilePicture;
-
+    var longitude = req.body.longitude;
+    var latitude = req.body.latitude;
+console.log(longitude)
     Center.findOne({ username: username })
       .exec(function(err, user) {
         if (!user) {
@@ -86,6 +88,9 @@ module.exports = {
             centername: centername,
             email: email,
             profilePicture: profilePicture,
+            longitude : longitude,
+            latitude: latitude
+
           });
           newCenter.save(function(err, newCenter) {
             res.send(200,'done')

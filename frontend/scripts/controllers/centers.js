@@ -1,7 +1,7 @@
 angular.module('SED.centers', [])
 	.controller('centersCtr', function centersCtr ($scope, Centers) {
 		$scope.data={};
-    //$scope.markers = [];
+    $scope.markers = [];
 
 		Centers.getAllCenters()
 			.then(function(resp){
@@ -40,12 +40,26 @@ angular.module('SED.centers', [])
         infoWindow.open($scope.map, marker);
       });
       // if marker 
-      //$scope.markers.push(marker);
+      $scope.markers.push(marker);
 
     }
     $scope.openInfoWindow = function(e, selectedMarker) {
       e.preventDefault();
       google.maps.event.trigger(selectedMarker, 'click');
     }
+
+
+
+
+
+/*list view grid view for the centers:*/
+
+$(document).ready(function() {
+    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+});
+
+/**/
+
 
 	})

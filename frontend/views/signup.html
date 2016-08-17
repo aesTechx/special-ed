@@ -32,6 +32,17 @@
 						<input ng-if='!teacherSelected' type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
 						<input ng-if='teacherSelected' type="text" class="form-control input-lg" id="" placeholder="TEACHER USERNAME" ng-model='user.teachername'>
 					</div>
+
+					<!-- center location: -->
+					<div class="form-group">
+						<!-- <input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER lat" ng-model='user.latitude'>
+						<br/>
+						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER lng" ng-model='user.longitude'> -->
+						<br/>
+						<button ng-if="centerSelected">choose location</button>
+					</div>
+					<!-- end center location -->
+
 					<div class="form-group">
 						<input type="password" class="form-control input-lg" id="" placeholder="PASSWORD" ng-model='user.password'>
 					</div>

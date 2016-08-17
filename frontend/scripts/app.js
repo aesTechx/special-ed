@@ -12,6 +12,7 @@ var states = [
   { name: 'centers', state: { url: '/centers', parent: 'dashboard', templateUrl: 'views/dashboard/centers.html', controller: 'centersCtr', data: {text: 'centers', visible: true }} }
 ];
 angular.module('SED', [
+  'SED.centers',
   'ngAnimate',
   'ngTouch',
   'ngResource',
@@ -43,9 +44,9 @@ angular.module('SED', [
   // then add it to the header so the server can validate the request
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.SEDteacher');
-      console.log("attach")
-      console.log(jwt);
+      var jwt = $window.localStorage.getItem('com.SEDcenter');
+      //console.log("attach")
+      //console.log(jwt);
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
