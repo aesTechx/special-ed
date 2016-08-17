@@ -11,8 +11,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       './node_modules/phantomjs-polyfill-object-assign/object-assign-polyfill.js',
+        'node_modules/babel-polyfill/dist/polyfill.js',
       'frontend/lib/angular/angular.js',
-      'frontend/lib/angular-route/angular-route.js',
       'frontend/lib/angular-animate/angular-animate.js',
       'frontend/lib/angular-resource/angular-resource.js',
       'frontend/lib/angular-touch/angular-touch.js',
