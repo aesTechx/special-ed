@@ -95,7 +95,10 @@ module.exports = {
             address: address
           });
           newCenter.save(function(err, newCenter) {
-            res.send(200, 'done');
+            console.log(newCenter)
+            var token = jwt.encode(newCenter, 'secret');
+            res.setHeader('x-access-token',token);
+            res.json({token: token, userId : newCenter._id});
           });
         } else {
           res.redirect('/signup');

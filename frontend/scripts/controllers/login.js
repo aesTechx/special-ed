@@ -17,6 +17,7 @@ angular.module('SED.Login', [])
       Auth.signinTeacher($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.SEDteacher', token);
+        $window.localStorage.setItem('typeOfUser', 'teacher');
         $location.path('/dashboard');
       })
       .catch(function (error) {
@@ -26,6 +27,7 @@ angular.module('SED.Login', [])
       Auth.signinUser($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.SEDuser', token);
+        $window.localStorage.setItem('typeOfUser', 'student');
         $location.path('/dashboard');
       })
       .catch(function (error) {
@@ -36,6 +38,7 @@ angular.module('SED.Login', [])
       Auth.signinCenter($scope.user)
       .then(function(token) {
         $window.localStorage.setItem('com.SEDcenter', token);
+        $window.localStorage.setItem('typeOfUser', 'center');
         $location.path('/dashboard');
       })
       .catch(function(error) {
@@ -44,3 +47,5 @@ angular.module('SED.Login', [])
     }
   };
 });
+
+

@@ -1,12 +1,9 @@
 angular.module('SED.studentProfile', [])
 .controller('studentCtrl', function($scope, $state, Auth, Centers, Students) {
-  
-
-  //////
  $scope.edit=false;
  $scope.data={};
  $scope.user={};
- $scope.record={social:0,preservation:0,communicationAndDevelopment:0,sensoryDisturbance:0,attentionAndSafety:0};
+ $scope.record={ social: 0, preservation: 0, communicationAndDevelopment: 0, sensoryDisturbance: 0, attentionAndSafety: 0 };
   Centers.getAllCenters()
   .then(function(centers){
     $scope.data.centers=centers;
@@ -14,8 +11,10 @@ angular.module('SED.studentProfile', [])
   Students.getCurrentStudent()
   .then(function(resp){
     $scope.data.student=resp;
-    $scope.data.student.birthdate.toString();
-    $scope.data.student.birthdate=$scope.data.student.birthdate.substr(0,10);
+    if ($scope.data.student.birthdate) {
+      $scope.data.student.birthdate.toString();
+      $scope.data.student.birthdate = $scope.data.student.birthdate.substr(0,10);
+    } 
   });
   $scope.viewTeachers=function(){
   	Students.viewTeachers()
@@ -74,7 +73,6 @@ angular.module('SED.studentProfile', [])
     var gauge3 = loadLiquidFillGauge('fillgauge3', $scope.record.communicationAndDevelopment*10);
     var gauge4 = loadLiquidFillGauge('fillgauge4', $scope.record.sensoryDisturbance*10);
     var gauge5 = loadLiquidFillGauge('fillgauge5', $scope.record.attentionAndSafety*10);
-    var gauge6 = loadLiquidFillGauge('fillgauge6', 40);
   };
 
  });

@@ -85,13 +85,14 @@ module.exports = {
             password: password,
             username: username,
             fullname: fullname,
-            birthdate: birthdate,
             email: email,
             profilePicture: profilePicture,
             centerId: centerId
           });
           newSpecialist.save(function(err, newSpecialist) {
-            res.send(201, newSpecialist)
+            var token = jwt.encode(newSpecialist, 'secret');
+            res.setHeader('x-access-token',token);
+            res.json({token: token, userId : newSpecialist._id});          
           });
         } else {
           res.redirect('/signup');

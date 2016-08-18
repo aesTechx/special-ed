@@ -10,9 +10,10 @@ var states = [
   { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: true }} },
   { name: 'profile', state: { url: '/profile', parent: 'dashboard', templateUrl: 'views/dashboard/profile.html', controller: 'ProfileCtrl', data: {text: 'Profile page', visible: false }} },
   { name: 'centers', state: { url: '/centers', parent: 'dashboard', templateUrl: 'views/dashboard/centers.html', controller: 'centersCtr', data: {text: 'centers', visible: true }} },
-  { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'LoginCtrl', data: {text: 'teacherProfile', visible: true }} },
   { name: 'game', state: { url: '/game', parent: 'dashboard', templateUrl: 'views/dashboard/picGame.html', controller: 'oneCtrl', data: {text: 'PIC Game', visible: true }} },
-  { name: 'StudentProfile', state: { url: '/StudentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'StudentProfile', visible: true }} }
+  { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'teacherCtrl', data: {text: 'teacherProfile', visible: false }} },
+  { name: 'studentProfile', state: { url: '/studentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'studentProfile', visible: false }} },
+  { name: 'centerProfile', state: { url: '/centerProfile', parent: 'dashboard', templateUrl: 'views/dashboard/centerProfile.html', controller: 'centerCtrl', data: {text: 'centerProfile', visible: false }} }
 ];
 angular.module('SED', [
   'ngAnimate',
@@ -31,7 +32,9 @@ angular.module('SED', [
   'SED.Profile',
   'SED.Overview',
   'SED.Dashboard',
-  'SED.studentProfile'
+  'SED.centerProfile',
+  'SED.studentProfile',
+  'SED.teacherProfile',
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.when('/dashboard', '/dashboard/overview');
