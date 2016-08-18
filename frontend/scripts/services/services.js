@@ -82,32 +82,11 @@ angular.module('SED.services', [])
       return resp.data;
     })
   }
-  var editProfile=function(user){
-     return $http({
-      method:'POST',
-      url:'/api/students/editProfile',
-      data: user
-    })
-    .then(function(resp){
-      return resp.data;
-    })
-  }
-  var getRecords=function(){
-    return $http({
-      method:'GET',
-      url:'/api/form/student'
-    })
-    .then(function(resp){
-      return resp.data;
-    })
-  }
   return {
     getCurrentStudent:getCurrentStudent,
     viewTeachers:viewTeachers,
     viewGames:viewGames,
-    viewRecords:viewRecords,
-    editProfile:editProfile,
-    getRecords:getRecords
+    viewRecords:viewRecords
   };
 })
 .factory('Auth', function ($http, $location, $window) {
