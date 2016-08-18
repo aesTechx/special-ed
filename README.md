@@ -12,6 +12,15 @@ A portal/app for helping those with learning disabilities and autism to connect 
 * Email connectivity with center/teacher/student
 * Map view of registered centers
 
+## General Use
+* Visit homepage and check the various features of assessments, games, and centers
+* Visit the portal from the home page and signup for an account
+* Once your account is created you can visit your profile and more details
+* You can choose a center at signup or apply to one that you like afterwards
+* Once you are part of a center, you can view teachers/center profiles
+* Play game
+* Take free assessment again to update your stats
+
 ## Meet The Engineers
 Product Owner: Eshraq Bakri
 Scrum Master: Salah Alomari
@@ -30,7 +39,7 @@ After cloning the project into your local do from the root repository
 ## Linting
 * Eslint used for linting based on hackreactor styling guide
 To run the lint file do:
-* npm run lint
+* ```npm run lint```
 
 ## Testing
 * Frontend:    ```gulp karma```
