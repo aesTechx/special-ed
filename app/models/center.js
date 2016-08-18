@@ -8,16 +8,16 @@ var Schema = mongoose.Schema;
 
 var CenterSchema = new mongoose.Schema({
   centername: {
-  	type: String,
-  	unique: true,
-  	required: true
+    type: String,
+    unique: true,
+    required: true
   },
   username: {
-  	type: String,
+    type: String,
     unique: true,
-  	required: true
+    required: true
   },
-  password : {
+  password: {
     type: String,
     required: true
   },

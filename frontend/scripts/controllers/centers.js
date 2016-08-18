@@ -31,9 +31,14 @@ angular.module('SED.centers', [])
 
         // collecting the lat and lng then devided by the no. of the centers to make the center in the middle of the location of all centers.
         for (i = 0; i < $scope.data.centers.length; i++) {
-          $scope.data.lat += $scope.data.centers[i].latitude;
-          $scope.data.lng += $scope.data.centers[i].longitude;
-         }
+          if (($scope.data.centers[i].latitude ===0) && ($scope.data.centers[i].longitude===0)){
+            $scope.data.lat += 31.971715;
+            $scope.data.lng += 35.8355179;
+          } else {
+            $scope.data.lat += $scope.data.centers[i].latitude;
+            $scope.data.lng += $scope.data.centers[i].longitude;
+            }
+        }
           $scope.data.avglat = $scope.data.lat/$scope.data.centers.length;
           $scope.data.avglng = $scope.data.lng/$scope.data.centers.length;
 
@@ -48,7 +53,9 @@ angular.module('SED.centers', [])
 
           // create a marker for each center
           for (i = 0; i < $scope.data.centers.length; i++) {
+              if (($scope.data.centers[i].latitude !==0)&&($scope.data.centers[i].longitude !==0)){
               $scope.createMarker($scope.data.centers[i]);
+              }
           }
     
           //display the marker on the map by click on each center marker on on view button on the center list grid

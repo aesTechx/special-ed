@@ -108,7 +108,9 @@ module.exports = {
   },
   editStudent : function(req, res, next){
     var token = req.headers['x-access-token'];
+    console.log(token)
     var user = jwt.decode(token, 'secret');
+    console.log(user);
     Student.findOne({username: user.username}, function(err, user){
       if(err){
         res.status(500).send(err);

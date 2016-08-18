@@ -8,20 +8,21 @@ var createCenter = Q.nbind(Center.create, Center);
 var findAllCenters = Q.nbind(Center.find, Center);
 
 module.exports = {
-  getAll : function (req, res, next){
+  getAll: function (req, res, next) {
     Center.find({}, function(err, users) {
-      if(err){
+      if (err) {
         res.status(500).send(err);
       }
-      res.json(users)
-    })
+      res.json(users);
+    });
   },
-  getCenter : function (req,res,next) {
-    Center.findOne({username: req.params.username}, function (err , user) {
-      if(err)
+  getCenter: function (req, res, next) {
+    Center.findOne({username: req.params.username}, function (err, user) {
+      if (err) {
         res.status(500).send(err);
+      }
       res.json(user);
-    })
+    });
   },
   checkAuth: function (req, res, next) {
     // checking to see if the user is authenticated
@@ -51,26 +52,26 @@ module.exports = {
     var password = req.body.password;
     Center.findOne({username: username})
     .exec(function (error, user) {
-      if(error){
+      if (error) {
         console.log(error);
         res.status(500).send(error);
       } else if (!user) {
         res.status(500).send(new Error('User does not exist'));
       } else {
         //console.log('hi')
-        Center.comparePassword(password, user.password, res, function(found){
-          if(!found){
+        Center.comparePassword(password, user.password, res, function(found) {
+          if (!found) {
             res.status(500).send('Wrong Password');
           } else {
             var token = jwt.encode(user, 'secret');
-            res.setHeader('x-access-token',token);
-            res.json({token: token, userId : user._id});
+            res.setHeader('x-access-token', token);
+            res.json({token: token, userId: user._id});
           }
         });
       }
     });
   },
-  signup : function(req, res) {
+  signup: function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
     var centername = req.body.centername;
@@ -79,8 +80,8 @@ module.exports = {
     var longitude = req.body.longitude;
     var latitude = req.body.latitude;
     var address = req.body.address;
-console.log(longitude)
-    Center.findOne({ username: username })
+    console.log(longitude);
+    Center.findOne({username: username})
       .exec(function(err, user) {
         if (!user) {
           var newCenter = new Center({
@@ -89,28 +90,28 @@ console.log(longitude)
             centername: centername,
             email: email,
             profilePicture: profilePicture,
-            longitude : longitude,
+            longitude: longitude,
             latitude: latitude,
             address: address
           });
           newCenter.save(function(err, newCenter) {
-            res.send(200,'done');
+            res.send(200, 'done');
           });
         } else {
           res.redirect('/signup');
         }
       });
   },
-  editCenter : function(req, res, next){
-    Center.findOne({username: req.params.username}, function(err, user){
-      if(err){
+  editCenter: function(req, res, next) {
+    Center.findOne({username: req.params.username}, function(err, user) {
+      if (err) {
         res.status(500).send(err);
-      } else if (!user){
+      } else if (!user) {
         res.status(500).send(new Error ('User does not exist'));
       } else {
 
         user.centername = req.body.centername || user.centername;
-        user.password = req.body.password || user.password
+        user.password = req.body.password || user.password;
         user.foundationDate = req.body.foundationDate || user.foundationDate;
         user.skillsResult = req.body.skillsResult || user.skillsResult;
         user.profilePicture = req.body.profilePicture || user.profilePicture;
@@ -128,30 +129,30 @@ console.log(longitude)
         user.rating = req.body.rating || user.rating;
         user.facebook = req.body.facebook || user.facebook;
 
-        user.save(function(err, savedUser){
-          if(err){
+        user.save(function(err, savedUser) {
+          if (err) {
             res.status(500).send(error);
           } else {
             res.status(201).send(JSON.stringify(savedUser));
           }
         });
       }
-    })
+    });
   },
-  requestNewPass : function(req,res){
-    Center.findOne({email: req.params.email}, function (err , user) {
-      if(err) {
+  requestNewPass: function(req, res) {
+    Center.findOne({email: req.params.email}, function (err, user) {
+      if (err) {
         res.status(500).send(err);
-      } else if(user) {
+      } else if (user) {
         var newPass = Math.random().toString(36).slice(-8);
         user.password = newPass;
-        user.save(function(err, savedUser){
-          if(err){
+        user.save(function(err, savedUser) {
+          if (err) {
             res.status(500).send(error);
           } else {
             var emailBody = 'Dear ' + user.centername + ';';
-              emailBody += '\n\nYour Username is: ' +savedUser.username;
-              emailBody += '\nYour New Password is: '+ newPass + '\n\nRegards,\nSpecialEd Team';   
+            emailBody += '\n\nYour Username is: ' + savedUser.username;
+            emailBody += '\nYour New Password is: ' + newPass + '\n\nRegards,\nSpecialEd Team';   
 
             // email params
             var mailOptions = {
@@ -166,6 +167,6 @@ console.log(longitude)
       } else {
         res.status(500).send('No matching email found');
       }
-    })
+    });
   }   
-}
+};
