@@ -99,7 +99,9 @@ module.exports = {
             centerId: centerId
           });
           newStudent.save(function(err, newStudent) {
-            res.send(201, newStudent)
+            var token = jwt.encode(user, 'secret');
+            res.setHeader('x-access-token',token);
+            res.json({token: token});
           });
         } else {
           res.redirect('/signup');
@@ -200,6 +202,6 @@ module.exports = {
           res.send(204)
         })
       })
-  },
+  }
   
 }

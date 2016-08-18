@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 angular.module('SED.Signup', [])
 .controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, Auth, Centers) {
   $scope.data={};
