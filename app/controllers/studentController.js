@@ -204,6 +204,6 @@ module.exports = {
           res.send(204)
         })
       })
-  },
+  }
   
 }
