@@ -6,76 +6,61 @@ angular.module('SED.centers', [])
 		Centers.getAllCenters()
 			.then(function(resp){
 				$scope.data.centers = resp;
-				//console.log($scope.data.centers)
 				$scope.data.lat= 0;
         $scope.data.lng=0;
 
+        //create a marker function will be called for each center to dispalay center info on map
         $scope.createMarker = function (center) {
-            // console.log (center.latitude)
              console.log (center.address)
-
               var marker = new google.maps.Marker({
                 map: $scope.map,
                 position: new google.maps.LatLng(center.latitude, center.longitude),
                 centerName: center.centername,
-                address: center.address
+                address: center.address,
+                icon: "../../images/marker.png"
                 //phone: center.phone
+                
               });
               marker.content = '<div class="infoWindowContent">'+ center.centername +'<br>'+ center.address +'<br>'+'</div>';
               google.maps.event.addListener(marker, 'click', function() {
-                infoWindow.setContent('<h2>' + marker.centerName + '</h2>' + marker.content);
+                infoWindow.setContent('<h2 style="color:green;">' + marker.centerName + '</h2>' + marker.content);
                 infoWindow.open($scope.map, marker);
               });
-              // if marker 
               $scope.markers.push(marker);
+        }
+
+        // collecting the lat and lng then devided by the no. of the centers to make the center in the middle of the location of all centers.
+        for (i = 0; i < $scope.data.centers.length; i++) {
+          $scope.data.lat += $scope.data.centers[i].latitude;
+          $scope.data.lng += $scope.data.centers[i].longitude;
          }
-
-          //$scope.data.mapCenter={}
-
-          for (i = 0; i < $scope.data.centers.length; i++) {
-                //console.log($scope.data.centers[i].latitude);
-                $scope.data.lat += $scope.data.centers[i].latitude;
-                // console.log($scope.data.lat)
-                //console.log($scope.data)
-                $scope.data.lng += $scope.data.centers[i].longitude;
-                
-                // $scope.createMarker($scope.data.centers[i]);
-                //console.log($scope.data.centers[i].latitude)
-          }
           $scope.data.avglat = $scope.data.lat/$scope.data.centers.length;
           $scope.data.avglng = $scope.data.lng/$scope.data.centers.length;
-          console.log($scope.data.avglat);
 
           var mapOptions = {
               zoom: 12,
-              center: new google.maps.LatLng(/*31.971715, 35.8355179*/$scope.data.avglat, $scope.data.avglng),
+              center: new google.maps.LatLng($scope.data.avglat, $scope.data.avglng),
               mapTypeId: google.maps.MapTypeId.ROADMAP
             }
             
           $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
           var infoWindow = new google.maps.InfoWindow();
 
+          // create a marker for each center
           for (i = 0; i < $scope.data.centers.length; i++) {
               $scope.createMarker($scope.data.centers[i]);
           }
     
+          //display the marker on the map by click on each center marker on on view button on the center list grid
           $scope.openInfoWindow = function(e, selectedMarker) {
             e.preventDefault();
             google.maps.event.trigger(selectedMarker, 'click');
           }
-          // console.log($scope.markers[0].centerName)
-})    
+      })    
 
-
-
-/*list view grid view for the centers:*/
-
-        $(document).ready(function() {
-            $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-            $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
-        });
-
-/**/
-
-
+      /*list view grid view for the centers:*/
+      $(document).ready(function() {
+          $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+          $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+      });
 	})
