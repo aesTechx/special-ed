@@ -18,11 +18,10 @@
 
 
 
-body{
-
-    /*background: url(../img/bodyBg.png) no-repeat;
-    background-size: cover;*/
-}
+/*body{
+    background: url(../img/bodyBg.png) no-repeat;
+    background-size: cover;
+}*/
 snap-content .menutoggle .fa2 {
   position: absolute;
   right: 15px;
