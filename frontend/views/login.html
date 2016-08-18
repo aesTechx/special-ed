@@ -15,12 +15,13 @@
 					<div class="form-group">
 						<input type="password" class="form-control input-lg" id="" placeholder="PASSWORD" ng-model='user.password'>
 					</div>
-					<label for="sel1">Type of user:</label>
-				      <select class="form-control" id="sel1" ng-model="option" ng-change="changeSelect()">
+					<div class='select-wrapper form-control input-lg-wrapper'>
+				      <select id="sel1" class='form-control2 input-lg2' ng-model="option" ng-change="changeSelect()">
 				        <option value='Student'>Student</option>
 				        <option value='Teacher'>Teacher</option>
 				        <option value='Center'>Center</option>
 				      </select>
+				    </div>
 				</div>	
 				<div class="button-container">
 					<button type="submit" class="btn btn-default login"><img src="images/arrow.png" alt=""></button>

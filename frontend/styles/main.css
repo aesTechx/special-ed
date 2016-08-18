@@ -2554,6 +2554,21 @@ output {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+.form-control2 {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: white;
+  background-color: #fff;
+  background-image: none;
+  border: none;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
@@ -2731,7 +2746,21 @@ select[multiple].form-group-sm .form-control {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.3333333;
-  border-radius: 6px;
+  border-radius: 20px;
+  background: black;
+}
+.input-lg-wrapper {
+  height: 46px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 20px;
+  background: black;
+}
+.input-lg2 {
+  height: 20px;
+  height: 30px;
+  font-size: 18px;
+  background: black;
 }
 select.input-lg {
   height: 46px;
@@ -2973,6 +3002,27 @@ select[multiple].form-group-lg .form-control {
     padding-top: 6px;
   }
 }
+select {
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+border-radius: 0;
+border:none;
+outline:none;
+}
+.select-wrapper {
+  border:2px solid black;
+  background: black;
+  -moz-border-radius:8px; 
+  border-radius: 30px;
+  display: inline-block;
+  padd
+}
+/*.fake-like-search {
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+border-radius: 20px; /* future proofing */
+-khtml-border-radius: 20px;  
+}*/
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -6530,21 +6580,20 @@ button.close {
   display: table;
   width: 100%;
   height: 100%;
-  background: #eadfd7;
+  background: url('../img/Cute-Minions-Wallpapers.jpg') no-repeat;
+  background-size: cover;
   color: #fff;
   padding: 3em;
   position: relative;
 }
 .login-page:before {
   content: '';
-  background-color: rgba(255, 255, 255, 0.15);
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   width: 40%;
-  border-right: solid 120px #eadfd7;
 }
 .login-page h1 {
   font-weight: 700;
@@ -6615,11 +6664,14 @@ button.close {
   max-width: 400px;
 }
 .login-page .form-content .input-lg {
-  border-radius: 0;
+  border-radius: 30px;
+}
+.login-page .form-content .input-lg select{
+  border-radius: 30px;
 }
 .login-page .form-content .form-control {
-  background: #e7ccb8;
-  border-color: #e7ccb8;
+  /*background: #e7ccb8;*/
+  /*border-color: #e7ccb8;*/
   box-shadow: none;
   color: white;
   font-weight: 600;
