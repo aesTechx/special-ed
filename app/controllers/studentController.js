@@ -216,6 +216,15 @@ module.exports = {
           res.send(204)
         })
       })
+  },
+  saveRecord:function(req, res, next) {
+    var token = req.headers['x-access-token'];
+    var user = jwt.decode(token, 'secret');
+    var record = req.body
+    findStudent({username:user.username})
+    .then(function(user){
+      user.saveApplication = record;
+    })
   }
   
 }
