@@ -94,7 +94,9 @@ console.log(longitude)
             address: address
           });
           newCenter.save(function(err, newCenter) {
-            res.send(200,'done');
+            var token = jwt.encode(user, 'secret');
+            res.setHeader('x-access-token',token);
+            res.json({token: token});
           });
         } else {
           res.redirect('/signup');

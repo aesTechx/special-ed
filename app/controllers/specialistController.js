@@ -91,7 +91,9 @@ module.exports = {
             centerId: centerId
           });
           newSpecialist.save(function(err, newSpecialist) {
-            res.send(201, newSpecialist)
+            var token = jwt.encode(user, 'secret');
+            res.setHeader('x-access-token',token);
+            res.json({token: token});
           });
         } else {
           res.redirect('/signup');
