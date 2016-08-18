@@ -17,6 +17,25 @@ Product Owner: Eshraq Bakri
 Scrum Master: Salah Alomari
 Development Engineer: Aws Ahmed
 
+## Database
+This project uses Mongo DB, therefore, mongo must be installed on your PC, follow the instructions [here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) for OS
+
+## Start the app
+After cloning the project into your local do from the root repository
+* ```sudo npm install -g bower ```
+* npm install - to install dependancies
+* mongod - to start the database
+* npm start - to start the project and access the portal on local host
+
+## Linting
+* Eslint used for linting based on hackreactor styling guide
+To run the lint file do:
+* npm run lint
+
+## Testing
+* Frontend:    ```gulp karma```
+* Backend:   ```gulp test```
+
 ## Dependancies
 ### Server Side
 * Express 4.13.4
