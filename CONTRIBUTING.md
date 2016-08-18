@@ -218,6 +218,7 @@ no problem getting your changes merged in.
     Note during the rebase, if you face any conflicts, then the rebase will pause until you resolve your conflicts then issuing: 
     
     ```bash
+    git add .
     git rebase --continue
     ```
     
