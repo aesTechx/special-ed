@@ -23,9 +23,9 @@ This project uses Mongo DB, therefore, mongo must be installed on your PC, follo
 ## Start the app
 After cloning the project into your local do from the root repository
 * ```sudo npm install -g bower ```
-* npm install - to install dependancies
-* mongod - to start the database
-* npm start - to start the project and access the portal on local host
+* ```npm install```   - to install dependancies
+* ```mongod```    - to start the database
+* ```npm start```   - to start the project and access the portal on local host
 
 ## Linting
 * Eslint used for linting based on hackreactor styling guide
