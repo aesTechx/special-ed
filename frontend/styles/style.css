@@ -23,7 +23,20 @@ body{
     /*background: url(../img/bodyBg.png) no-repeat;
     background-size: cover;*/
 }
-
+snap-content .menutoggle .fa2 {
+  position: absolute;
+  right: 15px;
+  top: 25px;
+}
+.fa2 {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
 .outerContainer{
     width:1024px;
     height:650px;

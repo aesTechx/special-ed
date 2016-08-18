@@ -15,7 +15,6 @@ var states = [
   { name: 'StudentProfile', state: { url: '/StudentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'StudentProfile', visible: true }} }
 ];
 angular.module('SED', [
-  'SED.centers',
   'ngAnimate',
   'ngTouch',
   'ngResource',
@@ -25,6 +24,7 @@ angular.module('SED', [
   'drag-and-drop',
   'SED.services',
   'dragDropSampleApp',
+  'SED.centers',
   'SED.multiForms',
   'SED.Login',
   'SED.Signup',
