@@ -16,6 +16,16 @@ angular.module('SED.services', [])
 })
 
 .factory('Centers', function ($http) {
+  var editProfile=function(user){
+     return $http({
+      method:'POST',
+      url:'/api/centers/editProfile',
+      data: user
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
   var getAllCenters=function(){
     return $http({
       method:'GET',
@@ -56,6 +66,7 @@ angular.module('SED.services', [])
     })
   }
   return {
+    editProfile:editProfile,
     getStudents:getStudents,
     getTeachers:getTeachers,
     getCurrentCenter: getCurrentCenter,

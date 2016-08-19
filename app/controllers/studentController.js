@@ -119,28 +119,6 @@ module.exports = {
         }
       });   
     })
-
-    // Student.findOne({ username: username })
-    //   .exec(function(err, user) {
-    //     if (!user) {
-    //       var newStudent = new Student({
-    //         password: password,
-    //         username: username,
-    //         fullname: fullname,
-    //         birthdate: birthdate,
-    //         email: email,
-    //         profilePicture: profilePicture,
-    //         centerId: centerId
-    //       });
-    //       newStudent.save(function(err, newStudent) {
-    //         var token = jwt.encode(newStudent, 'secret');
-    //         res.setHeader('x-access-token',token);
-    //         res.json({token: token, userId : newStudent._id});
-    //       });
-    //     } else {
-    //       res.redirect('/signup');
-    //     }
-    //   });
   },
   editStudent : function(req, res, next){
     var token = req.headers['x-access-token'];

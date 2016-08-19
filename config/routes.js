@@ -13,7 +13,7 @@ module.exports = function (app, express) {
   app.get('/api/center/signedin', centerController.checkAuth);
   app.post('/api/centers/signin', centerController.signin);
   app.post('/api/centers/signup', centerController.signup);
-  app.put('/api/center/:username/edit', centerController.editCenter);
+  app.post('/api/centers/editProfile', centerController.editCenter);
   app.get('/api/centers/requestPass/:email', centerController.requestNewPass);
   app.get('/api/center/teachers',centerController.getTeachers);
   app.get('/api/center/students',centerController.getStudents)

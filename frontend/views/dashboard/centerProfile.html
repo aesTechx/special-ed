@@ -26,17 +26,18 @@
 			</div>
 			<!-- col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6 -->
       <div ng-if="!edit" class="col-sm-9">
-        <h2> Center </h2>
-        <p><strong>Birthdate: </strong> {{data.student.birthdate}} </p>
-        <p><strong>Emergency Number: </strong>{{data.student.emergencyNumber}}</p>
-        <p><strong>Todos:</strong>{{data.student.todos}}</p>
+        <h2> {{data.center.centername}} </h2>
+        <p><strong>Foundation Date : </strong> {{data.center.foundationDate}} </p>
+        <p><strong>Phone Number: </strong>{{data.center.phone}}</p>
+        <p><strong>mobile:</strong>{{data.center.mobile}}</p>
         </div>
         <div ng-if="edit">
-          <p><strong>Name: </strong> <input type="text" value={{data.student.fullname}} style="color: #C0C0C0;" ng-model="user.fullname"></input></p>
-          <p><strong>Password: </strong><input type="text" value={{data.student.password}} style="color: #C0C0C0;" ng-model=user.password> </p>
-          <p><strong>Birthdate: </strong><input type="date" id="dateOfBirth" ng-model="user.birthdate"></p>
-          <p><strong>Emergency Number: </strong><input type="text" value={{data.student.emergencyNumber}} style="color: #C0C0C0;" ng-model="user.emergencyNumber"></p>
-          <p><strong>Todos:</strong><input type="text" value={{data.student.todos}} style="color: #C0C0C0;" ng-model="user.todos"></p>
+          <p><strong>Name: </strong> <input type="text" value={{data.center.fullname}} style="color: #C0C0C0;" ng-model="center.fullname"></input></p>
+          <p><strong>Foundation Date: </strong><input type="date" value={{data.center.foundationDate}} style="color: #C0C0C0;"ng-model="center.foundationDate"></p>
+          <p><strong>Password: </strong><input type="text" value={{data.center.password}} style="color: #C0C0C0;" ng-model=center.password> </p>
+          <!-- <p><strong>Birthdate: </strong><input type="date" id="dateOfBirth" ng-model="user.birthdate"></p> -->
+          <p><strong>Phone Number: </strong><input type="text" value={{data.center.phone}} style="color: #C0C0C0;" ng-model="center.phone"></p>
+          <p><strong>mobile:</strong><input type="text" value={{data.center.mobile}} style="color: #C0C0C0;" ng-model="center.mobile"></p>
           <button ng-click="editProfile()">Edit</button>
       </div>            
       <div class="col-xs-12 divider text-center">
@@ -83,12 +84,12 @@
                             <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" />
                             <div class="caption">
                               <h4 class="group inner list-group-item-heading">
-                                Teacher Name: {{teacher.teachername}}</h4>
+                                Teacher Name: {{teacher.fullname}}</h4>
                               <p class="group inner list-group-item-text">
                                 {{teacher.email}}</p>
                               <div class="row">
                                 <div class="col-xs-12 col-md-6">
-                                  <p class="lead">{{teacher.username}}</p>
+                                  <p class="lead">{{teacher.fullname}}</p>
                                 </div>
                               </div>
                             </div>
@@ -115,14 +116,18 @@
                             <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" />
                             <div class="caption">
                               <h4 class="group inner list-group-item-heading">
-                                Teacher Name: {{student.fullname}}</h4>
+                                Student Name: {{student.fullname}}</h4>
                               <p class="group inner list-group-item-text">
                                 {{teacher.email}}</p>
                               <div class="row">
                                 <div class="col-xs-12 col-md-6">
-                                  <p class="lead">{{teacher.username}}</p>
+                                  <p class="lead">{{student.fullname}}</p>
                                 </div>
                               </div>
+                              <button ng-click="getTeachersMenu()">Teachers</button>
+                              <ui>
+                                <li ng-repeat="teach in data.menuteachers">{{teach.fullname}}</li>
+                              </ui>
                             </div>
                           </div>
                           </div>
