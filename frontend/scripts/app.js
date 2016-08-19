@@ -9,10 +9,14 @@ var states = [
   { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html', controller: 'MainController', data: {text: 'Play Game', visible: true }} },
   { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: true }} },
   { name: 'profile', state: { url: '/profile', parent: 'dashboard', templateUrl: 'views/dashboard/profile.html', controller: 'ProfileCtrl', data: {text: 'Profile page', visible: false }} },
-  { name: 'centers', state: { url: '/centers', parent: 'dashboard', templateUrl: 'views/dashboard/centers.html', controller: 'centersCtr', data: {text: 'centers', visible: true }} },
   { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'LoginCtrl', data: {text: 'teacherProfile', visible: true }} },
   { name: 'game', state: { url: '/game', parent: 'dashboard', templateUrl: 'views/dashboard/picGame.html', controller: 'oneCtrl', data: {text: 'PIC Game', visible: true }} },
-  { name: 'StudentProfile', state: { url: '/StudentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'StudentProfile', visible: true }} }
+  { name: 'StudentProfile', state: { url: '/StudentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'StudentProfile', visible: true }} },
+  { name: 'centers', state: { url: '/centers', parent: 'dashboard', templateUrl: 'views/dashboard/centers.html', controller: 'centersCtr', data: {text: 'centers', visible: true }} },
+  { name: 'publicCenters', state: { url: '/publicCenters', templateUrl: 'views/guest/publicCenters.html', controller: 'centersCtr', data: {text: 'publicCenters', visible: true }} },
+  { name: 'freeAssessment', state: { url: '/freeAssessment', templateUrl: 'views/guest/freeAssessment.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: true }} },
+  { name: 'freePlay', state: { url: '/freePlay', templateUrl: 'views/guest/freeGame.html', controller: 'MainController', data: {text: 'Play Free Game', visible: true }} },
+  { name: 'landingPage', state: { url: '/landingPage', templateUrl: 'views/landingPage.html', controller: 'landingController', data: {text: 'landingPage', visible: true }} }
 ];
 angular.module('SED', [
   'SED.centers',
@@ -31,11 +35,12 @@ angular.module('SED', [
   'SED.Profile',
   'SED.Overview',
   'SED.Dashboard',
-  'SED.studentProfile'
+  'SED.studentProfile',
+  'SED.landing'
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.when('/dashboard', '/dashboard/overview');
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/landingPage');
 
   angular.forEach(states, function (state) {
     $stateProvider.state(state.name, state.state);
