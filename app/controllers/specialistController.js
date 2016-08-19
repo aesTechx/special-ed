@@ -2,7 +2,10 @@ var sendEmail = require('../../emailComms.js');
 var Specialist = require('../models/specialist.js');
 Q = require('q');
 jwt = require('jwt-simple');
+var Center = require('../models/center.js');
 
+var findOneCenter= Q.nbind(Center.findOne,Center);
+var updateOneCenter = Q.nbind(Center.findOneAndUpdate, Center);
 var findSpecialist = Q.nbind(Specialist.findOne, Specialist);
 var createSpecialist = Q.nbind(Specialist.create, Specialist);
 var findAllSpecialists = Q.nbind(Specialist.find, Specialist);
@@ -76,8 +79,10 @@ module.exports = {
     var fullname = req.body.fullname;
     var email = req.body.email;
     var profilePicture = req.body.profilePicture;
-    var centerId = req.body.centerId;
-
+    var center = req.body.center;
+    findOneCenter({centername:center})
+    .then(function(center){
+      console.log(center)
     Specialist.findOne({ username: username })
       .exec(function(err, user) {
         if (!user) {
@@ -87,17 +92,22 @@ module.exports = {
             fullname: fullname,
             email: email,
             profilePicture: profilePicture,
-            centerId: centerId
+            centerId: center._id
           });
           newSpecialist.save(function(err, newSpecialist) {
-            var token = jwt.encode(newSpecialist, 'secret');
-            res.setHeader('x-access-token',token);
-            res.json({token: token, userId : newSpecialist._id});          
+            updateOneCenter({_id: center._id}, { $push: {specialists: newSpecialist._id }})
+            .then(function (center) {
+              console.log(center)
+              var token = jwt.encode(newSpecialist, 'secret');
+              res.setHeader('x-access-token',token);
+              res.json({ token: token, userId: newSpecialist._id });
+            })
           });
         } else {
           res.redirect('/signup');
         }
-      });
+      });   
+    })
   },
   editSpecialist : function(req, res, next){
     Specialist.findOne({username: req.params.usernam}, function(err, user){

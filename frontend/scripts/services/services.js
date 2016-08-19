@@ -16,6 +16,16 @@ angular.module('SED.services', [])
 })
 
 .factory('Centers', function ($http) {
+  var editProfile=function(user){
+     return $http({
+      method:'POST',
+      url:'/api/centers/editProfile',
+      data: user
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
   var getAllCenters=function(){
     return $http({
       method:'GET',
@@ -25,7 +35,41 @@ angular.module('SED.services', [])
       return resp.data;
     })
   }
+  var getCurrentCenter=function(){
+    return $http({
+      method:'GET',
+      url:'/api/center'
+    })
+    .then(function(resp){
+      console.log(resp.data);
+      return resp.data;
+    })
+  }
+  var getTeachers=function(){
+    return $http({
+      method:'GET',
+      url:'/api/center/teachers'
+    })
+    .then(function(resp){
+      console.log(resp.data)
+      return resp.data;
+    })
+  }
+  var getStudents=function(){
+     return $http({
+      method:'GET',
+      url:'/api/center/students'
+    })
+    .then(function(resp){
+      console.log(resp.data)
+      return resp.data;
+    })
+  }
   return {
+    editProfile:editProfile,
+    getStudents:getStudents,
+    getTeachers:getTeachers,
+    getCurrentCenter: getCurrentCenter,
     getAllCenters:getAllCenters
   };
 })

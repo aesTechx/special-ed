@@ -2,10 +2,14 @@ var sendEmail = require('../../emailComms.js');
 var Center = require('../models/center.js');
 Q = require('q');
 jwt = require('jwt-simple');
+var Specialist = require('../models/specialist.js');
+var Student = require('../models/student.js');
 
 var findCenter = Q.nbind(Center.findOne, Center);
 var createCenter = Q.nbind(Center.create, Center);
 var findAllCenters = Q.nbind(Center.find, Center);
+var findAllSpecialist = Q.nbind(Specialist.find, Specialist);
+var findAllStudent =Q.nbind(Student.find, Student)
 
 module.exports = {
   getAll: function (req, res, next) {
@@ -17,12 +21,48 @@ module.exports = {
     });
   },
   getCenter: function (req, res, next) {
-    Center.findOne({username: req.params.username}, function (err, user) {
+    var token = req.headers['x-access-token'];
+    var center = jwt.decode(token, 'secret');
+    Center.findOne({_id: center._id}, function (err, user) {
       if (err) {
         res.status(500).send(err);
       }
       res.json(user);
     });
+  },
+  getTeachers:function(req,res,next){
+    var token = req.headers['x-access-token'];
+    user = jwt.decode(token, 'secret');
+    findCenter({username:user.username})
+    .then(function(user){
+      return user.specialists
+    })
+    .then(function(teachers){
+        findAllSpecialist({'_id': { $in: teachers }})
+        .then(function(teachers){
+          res.json(teachers)
+        })
+        .fail(function(err){
+          res.send(204)
+        })
+      })
+  },
+  getStudents:function(req,res,next){
+    var token = req.headers['x-access-token'];
+    user = jwt.decode(token, 'secret');
+    findCenter({username:user.username})
+    .then(function(user){
+      return user.students
+    })
+    .then(function(students){
+        findAllStudent({'_id': { $in: students }})
+        .then(function(students){
+          res.json(students)
+        })
+        .fail(function(err){
+          res.send(204)
+        })
+      })
   },
   checkAuth: function (req, res, next) {
     // checking to see if the user is authenticated
@@ -106,41 +146,36 @@ module.exports = {
       });
   },
   editCenter: function(req, res, next) {
-    Center.findOne({username: req.params.username}, function(err, user) {
-      if (err) {
+    var token = req.headers['x-access-token'];
+    console.log(token)
+    var user = jwt.decode(token, 'secret');
+    console.log(user);
+    Center.findOne({username: user.username}, function(err, center){
+      if(err){
         res.status(500).send(err);
-      } else if (!user) {
-        res.status(500).send(new Error ('User does not exist'));
+      } else if (!center){
+        res.status(500).send(new Error ('center does not exist'));
       } else {
+        console.log(req.body.foundationDate)
+        center.foundationDate=req.body.foundationDate || center.foundationDate;
+        center.centername = req.body.fullname || center.centername;
+        center.password = req.body.password || center.password
+        center.profilePicture = req.body.profilePicture || center.profilePicture;
+        center.phone = req.body.phone || center.phone;
+        center.mobile = req.body.mobile || center.mobile;
+        center.email = req.body.email || center.email;
 
-        user.centername = req.body.centername || user.centername;
-        user.password = req.body.password || user.password;
-        user.foundationDate = req.body.foundationDate || user.foundationDate;
-        user.skillsResult = req.body.skillsResult || user.skillsResult;
-        user.profilePicture = req.body.profilePicture || user.profilePicture;
-        user.todos = req.body.todos || user.todos;
-        user.saveApplication = req.body.saveApplication || user.saveApplication;
-        user.teachers = req.body.teachers || user.teachers;
-        user.students = req.body.students || user.students;
-        user.games = req.body.games || user.games;
-        user.longitude = req.body.longitude || user.longitude;
-        user.latitude = req.body.latitude || user.latitude;
-        user.address = req.body.address || user.address;
-        user.email = req.body.email || user.email;
-        user.phone = req.body.phone || user.phone;
-        user.mobile = req.body.mobile || user.mobile;
-        user.rating = req.body.rating || user.rating;
-        user.facebook = req.body.facebook || user.facebook;
-
-        user.save(function(err, savedUser) {
-          if (err) {
+        center.save(function(err, savedUser){
+          console.log(savedUser);
+          if(err){
             res.status(500).send(error);
           } else {
+            console.log()
             res.status(201).send(JSON.stringify(savedUser));
           }
         });
       }
-    });
+    })
   },
   requestNewPass: function(req, res) {
     Center.findOne({email: req.params.email}, function (err, user) {

@@ -2,6 +2,7 @@
 angular.module('SED.Signup', [])
 .controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, Auth, Centers) {
   $scope.data={};
+  $scope.option1 = {};
   Centers.getAllCenters()
   .then(function(centers){
     console.log(centers);
@@ -55,8 +56,8 @@ angular.module('SED.Signup', [])
   };
   $scope.submit = function() {
     var option = $scope.option;
-    $scope.user.center=$scope.center;
-    //console.log($scope.user)
+    $scope.user.center = $scope.center;
+    console.log($scope.user.center)
     if (option === 'Teacher') {
       Auth.signupTeacher($scope.user)
       .then(function (token) {
@@ -104,7 +105,9 @@ angular.module('SED.Signup', [])
     }
   };
   $scope.changeSelect1=function(){
-    $scope.center=$scope.option1;
+    console.log($scope.option1);
+    $scope.center=$scope.option1.center;
+    console.log($scope.center)
   }
 });
 
