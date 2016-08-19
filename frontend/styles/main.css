@@ -5,11 +5,13 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-/*@media (max-width: @screen-xs) {
-    body{font-size: 10px;}
-}
+/*@media (min-width: @screen-sm) {
+    .login-page .img-container {
+      bottom:10%;
+    }
+}*/
 
-@media (max-width: @screen-sm) {
+/*@media (max-width: @screen-sm) {
     body{font-size: 14px;}
 }
 @media (max-width: @screen-m) {
@@ -17,13 +19,13 @@ html {
 }
 @media (max-width: @screen-lg) {
     body{font-size: 25px;}
-}
+}*/
 h2 {
   font-size: 2em;
 }
 p {
   font-size: 0.9em;
-}*/
+}
 body {
   margin: 0;
 }
@@ -2747,20 +2749,20 @@ select[multiple].form-group-sm .form-control {
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 20px;
-  background: black;
+  background: #232c4b;
 }
 .input-lg-wrapper {
   height: 46px;
   font-size: 18px;
   line-height: 1.3333333;
   border-radius: 20px;
-  background: black;
+  background: #232c4b;
 }
 .input-lg2 {
   height: 20px;
   height: 30px;
   font-size: 18px;
-  background: black;
+  background: #232c4b;
 }
 select.input-lg {
   height: 46px;
@@ -3010,8 +3012,8 @@ border:none;
 outline:none;
 }
 .select-wrapper {
-  border:2px solid black;
-  background: black;
+  border:2px solid #232c4b;
+  background: #232c4b;
   -moz-border-radius:8px; 
   border-radius: 30px;
   display: inline-block;
@@ -3224,6 +3226,15 @@ fieldset[disabled] .btn-success.active {
   background-color: #31b0d5;
   border-color: #269abc;
 }
+.btn-login-hover:hover,
+.btn-login-hover:focus,
+.btn-login-hover.focus,
+.btn-login-hover:active,
+.btn-login-hover.active,
+.open > .dropdown-toggle.btn-login-hover {
+  color: #fff;
+  background-color: #232c4b;
+}
 .btn-info:active,
 .btn-info.active,
 .open > .dropdown-toggle.btn-info {
@@ -3397,6 +3408,25 @@ fieldset[disabled] .btn-link:focus {
   line-height: 1.5;
   border-radius: 3px;
 }
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
 .btn-block {
   display: block;
   width: 100%;
@@ -6582,8 +6612,8 @@ button.close {
   height: 100%;
   background: url('../img/Cute-Minions-Wallpapers.jpg') no-repeat;
   background-size: cover;
-  color: #fff;
-  padding: 3em;
+  color: #232c4b;
+  padding: 1em;
   position: relative;
 }
 .login-page:before {
@@ -6593,7 +6623,7 @@ button.close {
   right: 0;
   top: 0;
   bottom: 0;
-  width: 40%;
+  width: 20%;
 }
 .login-page h1 {
   font-weight: 700;
@@ -6621,7 +6651,7 @@ button.close {
 .login-page .user-avatar {
   max-width: 230px;
   width: 100%;
-  border: 3px solid white;
+  border: 3px solid #232c4b;
 }
 .login-page .img-container,
 .login-page .form-content {
@@ -6630,8 +6660,8 @@ button.close {
   padding: 15px;
 }
 .login-page .img-container {
-  text-align: right;
-  width: 40%;
+  text-align: left;
+  width: 25%;
   position: relative;
 }
 .login-page .form-content {
@@ -6706,8 +6736,8 @@ button.close {
   height: 110px;
   width: 100px;
   border-radius: 0;
-  background: Black;
-  border-color: Black;
+  background: #232c4b;
+  border-color: #232c4b;
   box-shadow: none;
   margin-left: 15px;
   color: orange;
@@ -7112,7 +7142,7 @@ table.white tbody {
 }
 .btn-outline.btn-primary:hover {
   box-shadow: 0 0 0 2px #eadfd7 inset;
-  color: #eadfd7;
+  color: #232c4b;
 }
 .btn-outline.btn-success {
   box-shadow: 0 0 0 2px #449d44 inset;

@@ -66,7 +66,8 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     }
   };
   $scope.saveAndContinue = function () {
-    Students.saveIncompleteAssessment($scope.list.questions)
+    Students.saveIncompleteAssessment($scope.list.questions);
+    
   }
   $scope.goToQuestion = function (no) {
     console.log(no)
