@@ -25,7 +25,40 @@ angular.module('SED.services', [])
       return resp.data;
     })
   }
+  var getCurrentCenter=function(){
+    return $http({
+      method:'GET',
+      url:'/api/center'
+    })
+    .then(function(resp){
+      console.log(resp.data);
+      return resp.data;
+    })
+  }
+  var getTeachers=function(){
+    return $http({
+      method:'GET',
+      url:'/api/center/teachers'
+    })
+    .then(function(resp){
+      console.log(resp.data)
+      return resp.data;
+    })
+  }
+  var getStudents=function(){
+     return $http({
+      method:'GET',
+      url:'/api/center/students'
+    })
+    .then(function(resp){
+      console.log(resp.data)
+      return resp.data;
+    })
+  }
   return {
+    getStudents:getStudents,
+    getTeachers:getTeachers,
+    getCurrentCenter: getCurrentCenter,
     getAllCenters:getAllCenters
   };
 })

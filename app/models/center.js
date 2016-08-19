@@ -24,7 +24,7 @@ var CenterSchema = new mongoose.Schema({
   foundationDate: Date,
   profilePicture: String,
   todos: [String],
-  teachers: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
+  specialists: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
   students: [{ type: Schema.Types.ObjectId, ref: 'Student' }],
   pendingSpecialistApplications: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
   pendingStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student'}],

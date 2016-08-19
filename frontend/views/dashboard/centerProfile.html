@@ -57,31 +57,79 @@
           </div>
       </div>
  </div>
- </div>
-    <div id="Stats" class='jumbotron'>
-      <div class="container-fluid" style="border-top:1px white solid; border-bottom:1px white solid; 'padding:10px;">
-        <div class='col-xs-12 text-center' >
-          <h2> STATS </h2>
-        </div>
-        <div class='col-sm-2 col-xs-12'>
-          <svg id="fillgauge1" width="97%"></svg> <h5 class="text-center"> COMMUNICATION </h5>
-        </div>
-        <div class='col-sm-2 col-xs-12'>
-          <svg id="fillgauge2" width="97%"></svg> <h5 class="text-center"> SPEECH </h5>
-        </div>
-        <div class='col-sm-2 col-xs-12'>
-          <svg id="fillgauge3" width="97%"></svg> <h5 class="text-center"> SOCIAL </h5>
-        </div>
-        <div class='col-sm-2 col-xs-12'>
-          <svg id="fillgauge4" width="97%"></svg> <h5 class="text-center"> MEMORY</h5>
-        </div>
-        <div class='col-sm-2 col-xs-12'>
-          <svg id="fillgauge5" width="97%"></svg> <h5 class="text-center"> PHYSICAL </h5>
-        </div>
-        <div class='col-sm-2 col-xs-12'>
-          <svg id="fillgauge6" width="97%"></svg> <h5 class="text-center"> RESPNISIVENESS </h5>
-        </div>
-      </div>
-    </div>
+
+ <form name='outerform' class="tab-form-demo" >
+  <uib-tabset active='activeForm'>
+    <uib-tab index='0' heading='Form Tab'>
+    <ng-form name='nestedForm'>
+      <label> Name </label>
+      <input type='text' class='form-control' required ng-model='model.name'/>
+    </ng-form>
+    </uib-tab>
+    <uib-tab index='1' heading='Teachers'>
+          <div class="container">
+            <div class="well well-sm">
+                <strong>Display</strong>
+                <div class="btn-group">
+                    <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+                    </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                        class="glyphicon glyphicon-th"></span>Grid</a>
+                    </div>
+                      </div>
+                      <!-- the lists is going here: -->
+                      <div id="products" class="row list-group">
+                        <div class="item  col-xs-4 col-lg-4" ng-repeat="teacher in data.teachers" style="float: right;">
+                          <div class="thumbnail">
+                            <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" />
+                            <div class="caption">
+                              <h4 class="group inner list-group-item-heading">
+                                Teacher Name: {{teacher.teachername}}</h4>
+                              <p class="group inner list-group-item-text">
+                                {{teacher.email}}</p>
+                              <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                  <p class="lead">{{teacher.username}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+
+  </uib-tab>
+  <uib-tab index='2' heading='Students'>
+       <div class="container">
+            <div class="well well-sm">
+                <strong>Display</strong>
+                <div class="btn-group">
+                    <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+                    </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                        class="glyphicon glyphicon-th"></span>Grid</a>
+                    </div>
+                      </div>
+                      <!-- the lists is going here: -->
+                      <div id="products" class="row list-group">
+                        <div class="item  col-xs-4 col-lg-4" ng-repeat="student in data.students" style="float: right;">
+                          <div class="thumbnail">
+                            <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" />
+                            <div class="caption">
+                              <h4 class="group inner list-group-item-heading">
+                                Teacher Name: {{student.fullname}}</h4>
+                              <p class="group inner list-group-item-text">
+                                {{teacher.email}}</p>
+                              <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                  <p class="lead">{{teacher.username}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+  </uib-tab>
+  </uib-tabset> 
+  </form>
 	</snap-content>	
 </div>

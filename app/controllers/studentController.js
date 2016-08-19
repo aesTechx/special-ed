@@ -4,12 +4,15 @@ var Specialist = require('../models/specialist.js');
 var Game = require('../models/game.js');
 Q = require('q');
 jwt = require('jwt-simple');
+var Center = require('../models/center.js');
 
+var findOneCenter= Q.nbind(Center.findOne,Center);
 var findStudent = Q.nbind(Student.findOne, Student);
 var createStudent = Q.nbind(Student.create, Student);
 var findAllStudents = Q.nbind(Student.find, Student);
 var findAllSpecialist = Q.nbind(Specialist.find, Specialist);
 var findAllGames = Q.nbind(Game.find, Game);
+var updateOneCenter = Q.nbind(Center.findOneAndUpdate, Center);
 
 module.exports = {
   getAll : function (req, res, next){
@@ -84,8 +87,12 @@ module.exports = {
     var email = req.body.email;
     var birthdate = req.body.birthdate;
     var profilePicture = req.body.profilePicture;
-    var centerId = req.body.centerId;
+    var center = req.body.center;
 
+
+    findOneCenter({centername:center})
+    .then(function(center){
+      console.log(center)
     Student.findOne({ username: username })
       .exec(function(err, user) {
         if (!user) {
@@ -93,20 +100,47 @@ module.exports = {
             password: password,
             username: username,
             fullname: fullname,
-            birthdate: birthdate,
             email: email,
             profilePicture: profilePicture,
-            centerId: centerId
+            centerId: center._id
           });
           newStudent.save(function(err, newStudent) {
-            var token = jwt.encode(newStudent, 'secret');
-            res.setHeader('x-access-token',token);
-            res.json({token: token, userId : newStudent._id});
+            console.log(newStudent)
+            updateOneCenter({_id: center._id}, { $push: {students: newStudent._id }})
+            .then(function (center) {
+              console.log(center)
+              var token = jwt.encode(newStudent, 'secret');
+              res.setHeader('x-access-token',token);
+              res.json({ token: token, userId: newStudent._id });
+            })
           });
         } else {
           res.redirect('/signup');
         }
-      });
+      });   
+    })
+
+    // Student.findOne({ username: username })
+    //   .exec(function(err, user) {
+    //     if (!user) {
+    //       var newStudent = new Student({
+    //         password: password,
+    //         username: username,
+    //         fullname: fullname,
+    //         birthdate: birthdate,
+    //         email: email,
+    //         profilePicture: profilePicture,
+    //         centerId: centerId
+    //       });
+    //       newStudent.save(function(err, newStudent) {
+    //         var token = jwt.encode(newStudent, 'secret');
+    //         res.setHeader('x-access-token',token);
+    //         res.json({token: token, userId : newStudent._id});
+    //       });
+    //     } else {
+    //       res.redirect('/signup');
+    //     }
+    //   });
   },
   editStudent : function(req, res, next){
     var token = req.headers['x-access-token'];

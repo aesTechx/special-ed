@@ -2,10 +2,14 @@ var sendEmail = require('../../emailComms.js');
 var Center = require('../models/center.js');
 Q = require('q');
 jwt = require('jwt-simple');
+var Specialist = require('../models/specialist.js');
+var Student = require('../models/student.js');
 
 var findCenter = Q.nbind(Center.findOne, Center);
 var createCenter = Q.nbind(Center.create, Center);
 var findAllCenters = Q.nbind(Center.find, Center);
+var findAllSpecialist = Q.nbind(Specialist.find, Specialist);
+var findAllStudent =Q.nbind(Student.find, Student)
 
 module.exports = {
   getAll: function (req, res, next) {
@@ -17,12 +21,48 @@ module.exports = {
     });
   },
   getCenter: function (req, res, next) {
-    Center.findOne({username: req.params.username}, function (err, user) {
+    var token = req.headers['x-access-token'];
+    var center = jwt.decode(token, 'secret');
+    Center.findOne({_id: center._id}, function (err, user) {
       if (err) {
         res.status(500).send(err);
       }
       res.json(user);
     });
+  },
+  getTeachers:function(req,res,next){
+    var token = req.headers['x-access-token'];
+    user = jwt.decode(token, 'secret');
+    findCenter({username:user.username})
+    .then(function(user){
+      return user.specialists
+    })
+    .then(function(teachers){
+        findAllSpecialist({'_id': { $in: teachers }})
+        .then(function(teachers){
+          res.json(teachers)
+        })
+        .fail(function(err){
+          res.send(204)
+        })
+      })
+  },
+  getStudents:function(req,res,next){
+    var token = req.headers['x-access-token'];
+    user = jwt.decode(token, 'secret');
+    findCenter({username:user.username})
+    .then(function(user){
+      return user.students
+    })
+    .then(function(students){
+        findAllStudent({'_id': { $in: students }})
+        .then(function(students){
+          res.json(students)
+        })
+        .fail(function(err){
+          res.send(204)
+        })
+      })
   },
   checkAuth: function (req, res, next) {
     // checking to see if the user is authenticated
