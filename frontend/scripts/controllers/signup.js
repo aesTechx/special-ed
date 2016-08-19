@@ -1,8 +1,10 @@
-  'use strict';
+'use strict';
 angular.module('SED.Signup', [])
 .controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, Auth, Centers) {
   $scope.data={};
   $scope.option1 = {};
+  $scope.option1.center = 'Select Center';
+  $scope.option = 'Select Type of User';
   Centers.getAllCenters()
   .then(function(centers){
     console.log(centers);
@@ -76,7 +78,7 @@ angular.module('SED.Signup', [])
         $location.path('/dashboard');
       })
       .catch(function (error) {
-        console.error(error);
+        alert(error.data.split("<br>")[0]);
       });
     } else if (option === 'Center') {
       /*center location*/

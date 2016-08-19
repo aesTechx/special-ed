@@ -178,7 +178,7 @@ angular.module('SED.services', [])
     console.log(user);
     return $http({
       method: 'POST',
-      url: '/api/users/signinTeacher',
+      url: '/api/specialists/signin',
       data: user
     })
     .then(function (resp) {
