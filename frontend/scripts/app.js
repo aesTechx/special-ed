@@ -13,7 +13,11 @@ var states = [
   { name: 'game', state: { url: '/game', parent: 'dashboard', templateUrl: 'views/dashboard/picGame.html', controller: 'oneCtrl', data: {text: 'PIC Game', visible: true }} },
   { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'teacherCtrl', data: {text: 'teacherProfile', visible: false }} },
   { name: 'studentProfile', state: { url: '/studentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'studentProfile', visible: false }} },
-  { name: 'centerProfile', state: { url: '/centerProfile', parent: 'dashboard', templateUrl: 'views/dashboard/centerProfile.html', controller: 'centerCtrl', data: {text: 'centerProfile', visible: false }} }
+  { name: 'centerProfile', state: { url: '/centerProfile', parent: 'dashboard', templateUrl: 'views/dashboard/centerProfile.html', controller: 'centerCtrl', data: {text: 'centerProfile', visible: false }} },
+  { name: 'publicCenters', state: { url: '/publicCenters', templateUrl: 'views/guest/publicCenters.html', controller: 'centersCtr', data: {text: 'publicCenters', visible: true }} },
+  { name: 'freeAssessment', state: { url: '/freeAssessment', templateUrl: 'views/guest/freeAssessment.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: true }} },
+  { name: 'freePlay', state: { url: '/freePlay', templateUrl: 'views/guest/freeGame.html', controller: 'MainController', data: {text: 'Play Free Game', visible: true }} },
+  { name: 'landingPage', state: { url: '/landingPage', templateUrl: 'views/landingPage.html', controller: 'landingController', data: {text: 'landingPage', visible: true }} }
 ];
 angular.module('SED', [
   'ngAnimate',
@@ -35,10 +39,11 @@ angular.module('SED', [
   'SED.centerProfile',
   'SED.studentProfile',
   'SED.teacherProfile',
+  'SED.landing'
 ])
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.when('/dashboard', '/dashboard/overview');
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/landingPage');
 
   angular.forEach(states, function (state) {
     $stateProvider.state(state.name, state.state);
