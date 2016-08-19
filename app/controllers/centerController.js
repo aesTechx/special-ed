@@ -100,7 +100,7 @@ module.exports = {
         res.status(500).send(new Error('User does not exist'));
       } else {
         //console.log('hi')
-        Center.comparePassword(password, user.password, function(found) {
+        Center.comparePassword(password, user.password, res, function(found) {
           if (!found) {
             res.status(500).send('Wrong Password');
           } else {
