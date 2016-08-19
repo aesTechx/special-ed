@@ -249,9 +249,9 @@ angular.module('SED.services', [])
   };
 
   var signout = function (item) {
-    console.log(item);
     $window.localStorage.removeItem(item);
-    $location.path('/');
+    $window.localStorage.removeItem('typeOfUser');
+    $location.path('/login');
   };
 
   return {
