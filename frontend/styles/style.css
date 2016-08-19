@@ -16,7 +16,17 @@
 	font-style: normal;
 }
 
-
+.login-btn-new {
+    background:#BCBDBF; 
+    color:#232c4b; 
+    border-radius:40px; 
+    border:none; 
+    height:46px; 
+    font-size:18px; 
+    font-weight: 600; 
+    margin-top:10px; 
+    margin-bottom: 10px;
+}
 
 /*body{
     background: url(../img/bodyBg.png) no-repeat;
