@@ -70,7 +70,6 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     
   }
   $scope.goToQuestion = function (no) {
-    console.log(no)
     $scope.showAllQs = !$scope.showAllQs;
     $scope.currentQuestion = $scope.list.questions[no];
   };

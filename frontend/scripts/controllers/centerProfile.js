@@ -1,9 +1,8 @@
 angular.module('SED.centerProfile', [])
 .controller('centerCtrl', function($scope, $state, Auth, Centers) {
   $scope.edit=false;
-  $scope.data={};
-  $scope.center={};
-  
+  $scope.data = {};
+  $scope.center = {};
   Centers.getCurrentCenter()
   .then(function(resp){
     console.log(resp)
@@ -13,16 +12,24 @@ angular.module('SED.centerProfile', [])
        $scope.data.center.foundationDate = $scope.data.center.foundationDate.substr(0,10);
     //}
   });
-  Centers.getTeachers()
-  .then(function(resp){
-    console.log(resp);
-    $scope.data.teachers=resp;
-  });
-  Centers.getStudents()
-  .then(function(resp){
-    console.log(resp);
-    $scope.data.students=resp;
-  });
+  $scope.viewTeachers = function () {
+    Centers.getTeachers()
+    .then(function(resp){
+      console.log(resp);
+      $scope.data.teachers=resp;
+    });
+    $scope.viewTeachersFlag = true;
+    $scope.viewStudentsFlag = false;
+  }
+  $scope.viewStudents = function () {
+    Centers.getStudents()
+    .then(function(resp){
+      console.log(resp);
+      $scope.data.students=resp;
+    });
+    $scope.viewTeachersFlag = false;
+    $scope.viewStudentsFlag = true; 
+  }
    $scope.editflag=function(){
     $scope.edit=true;
   }

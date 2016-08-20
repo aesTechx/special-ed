@@ -1,33 +1,81 @@
-<div>
-	<div ng-include="'menu.html'"></div>
-	<snap-dragger></snap-dragger>
-	<snap-content snap-opt-tap-to-close="false">
-
-		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
-			<span class="menutoggle">
-				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
-				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
-			</span>
-		</a>
-		
-		<div class="fr">
-		<h2>Teacher Profile <small>Details of techer profile</small></h2>
-		</div>
-		<div class="jumbotron">
-			<div class="container">
-				<h1>Teacher Name</h1>
-				<h1>{{user}}</h1>
-				teacher profile details:  ......
-				<br /><br />
-				<div>
-					<h1 ng-click="test()">Hi</h1>
-				</div>
-
-				<p>
-					<a href="" class="btn btn-primary btn-lg btn-white" ng-click='logout()'>Logout</a>
-				</p>
-				
-			</div>
-		</div>
-	</snap-content>	
+<div ng-include="'menu.html'"></div>
+  <snap-dragger></snap-dragger>
+  <snap-content snap-opt-tap-to-close="false">
+    <a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+      <span class="menutoggle">
+        <i ng-hide="menuOpen" class="fa1 glyphicon glyphicon-chevron-right fa-2x"></i>
+        <i ng-show="menuOpen" class="fa1 glyphicon glyphicon-chevron-left fa-2x"></i>
+      </span>
+    </a>
+    <a href="" snap-toggle="right" ng-click="menuOpen = !menuOpen">
+      <span class="menutoggle">
+        <i ng-hide="menuOpen"  class="fa2 glyphicon glyphicon-chevron-left fa-2x"></i>
+        <i ng-show="menuOpen" class="fa2 glyphicon glyphicon-chevron-right fa-2x"></i>
+      </span>
+    </a>
+    <div class="fr" >
+      <h2> SPECIAL ED </h2>
+    </div>
+    <div class='fr'>
+      <div class='jumbotron'>
+        <div class='row'>
+  		    <div class="container-fluid">
+            <div class="photo text-center col-sm-3 col-xs-12">
+              <div class="img-container">
+                <img src="../images/teacher-avatar.jpg" class="user-avatar img-circle img-responsive" style='border:#232c4b solid 2px;display:inline-block;width:250px;height:250px;overflow:hidden;vertical-align:top'/>
+                <h3><button style='border:none; background:none;' ng-click="editflag()"></span> MY Profile <sup><span class='glyphicon glyphicon-edit'></span></sup> </button></h3>
+              </div>
+              <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="viewStudents()"></span><i class="fa fa-user"></i> My Students</button>
+              <button class="btn btn-login-hover btn-block profile-btn-new" type='submit' ng-click="viewGames()"></span><i class='glyphicon glyphicon-play'></i> Prepare Assessment </button>
+              <button class="btn btn-login-hover btn-block profile-btn-new" type='submit'></span><i class='glyphicon glyphicon-pencil'></i> My Reviews </button>
+            </div>
+          <div ng-if="!edit" class="col-sm-9">
+            <h2 >{{data.teacher.fullname}}
+              <span class="text-center p">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star-o"></span>
+              </span>
+            </h2>
+            <p><strong>Center:</strong></strong>{{data.teacher.center}}</p></p>
+            <p><strong>Todos:</strong><span ng-repeat='todo in data.teacher.todos'>{{todo}}</span></p>
+            <p><strong>Specialties:</strong><span ng-repeat='specialty in data.teacher.specialties'>{{specialty}}</span></p>
+          </div>
+          <div ng-if="edit">
+            <p><strong>Name: </strong> <input type="text" value={{data.student.fullname}} style="color: #C0C0C0;" ng-model="user.fullname"></input></p>
+            <p><strong>Password: </strong><input type="text" value={{data.student.password}} style="color: #C0C0C0;" ng-model=user.password> </p>
+            <p><strong>Birthdate: </strong><input type="date" id="dateOfBirth" ng-model="user.birthdate"></p>
+            <p><strong>Emergency Number: </strong><input type="text" value={{data.student.emergencyNumber}} style="color: #C0C0C0;" ng-model="user.emergencyNumber"></p>
+            <p><strong>Todos:</strong><input type="text" value={{data.student.todos}} style="color: #C0C0C0;" ng-model="user.todos"></p>
+            <button ng-click="editProfile()">Edit</button>
+          </div>
+        </div>
+        <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
+          <div class="container text-center">
+            <div class='col-sm-2 col-xs-12'>
+              <svg id="fillgauge0" width="97%"><h4> OVERALL </h4></svg>
+            </div>
+            <div class='col-sm-2 col-xs-12'>
+              <svg id="fillgauge1" width="97%"><h4> SOCIAL </h4></svg>   
+            </div>
+            <div class='col-sm-2 col-xs-12'>
+              <svg id="fillgauge2" width="97%"><h4> PRESERVATION </h4></svg>
+            </div>
+            <div class='col-sm-2 col-xs-12'>
+              <svg id="fillgauge3" width="97%"><h4> COMMUNICATIONS </h4></svg>
+            </div>
+            <div class='col-sm-2 col-xs-12'>
+              <svg id="fillgauge4" width="97%"><h4> SENSORY </h4></svg>
+            </div>
+            <div class='col-sm-2 col-xs-12'>
+              <svg id="fillgauge5" width="97%"><h4> ATTENTION </h4></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </snap-content>	
+</div>
 </div>

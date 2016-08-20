@@ -5,7 +5,7 @@ var io 			= require('socket.io')(server);
 var mongoose = require('mongoose');
 // var models 		= require('./app/models');
 
-var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/VolunteerHub';
+var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/SpecialEd';
 mongoose.connect(mongoURI);
 db = mongoose.connection;
 
