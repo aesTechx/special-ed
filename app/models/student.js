@@ -12,8 +12,8 @@ var StudentSchema = new mongoose.Schema({
   	required: true
   },
   centerId: { 
-  	type: mongoose.Schema.Types.ObjectId,
-  	ref: 'Center',
+  	type: Schema.Types.ObjectId,
+  	ref: 'Center'
   },
   password : {
     type: String,
@@ -26,9 +26,18 @@ var StudentSchema = new mongoose.Schema({
   profilePicture: String,
   emergencyContact: String,
   emergencyNumber: String,
-  saveApplication: { type : Array , "default" : [] },
-  todos: { type : Array , "default" : [] },
-  teachers: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
+  saveApplication: { 
+    type: Schema.Types.ObjectId, 
+    ref: 'CarsAssessment'
+  },
+  todos: { 
+    type : Array, 
+    "default" : [] 
+  },
+  teachers: [{ 
+    type: Schema.Types.ObjectId, 
+    ref: 'Specialist' 
+  }],
   gameRecords: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
   records: [{ type: Schema.Types.ObjectId, ref: 'Record' }],  
   status: {
