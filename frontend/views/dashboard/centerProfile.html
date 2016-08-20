@@ -28,7 +28,7 @@
               </div>
               <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="viewTeachers()"></span><i class="fa glyphicon-education"></i> My Teachers</button>
               <button class="btn btn-login-hover btn-block profile-btn-new" type='submit' ng-click="viewStudents()"></span><i class='glyphicon glyphicon-user'></i> My Students </button>
-              <button class="btn btn-login-hover btn-block profile-btn-new" type='submit'></span><i class='glyphicon glyphicon-pencil'></i> My Reviews </button>
+              <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="assign()" type='submit'></span><i class='glyphicon glyphicon-pencil'></i> Assign Teachers Students</button>
             </div>
           <div ng-if="!edit" class="col-sm-9">
             <h2> {{data.center.centername}}
@@ -44,6 +44,7 @@
             <p><strong>Phone Number: </strong>{{data.center.phone}}</p>
             <p><strong>mobile:</strong>{{data.center.mobile}}</p>
           </div>
+          </div>
           <div ng-if="edit">
             <p><strong>Name: </strong> <input type="text" value={{data.center.fullname}} style="color: #C0C0C0;" ng-model="center.fullname"></input></p>
             <p><strong>Foundation Date: </strong><input type="date" value={{data.center.foundationDate}} style="color: #C0C0C0;"ng-model="center.foundationDate"></p>
@@ -56,7 +57,7 @@
         </div> 
           <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
             <div class="container text-center">
-              <div ng-if='viewTeachersFlag' style='background:#fff;' class="item col-sm-4 col-xs-4" ng-repeat="teacher in data.teachers">
+              <div ng-if='viewTeachersFlag' ng-if="!assignFlag" style='background:#fff;' class="item col-sm-4 col-xs-4" ng-repeat="teacher in data.teachers">
                 <div class="thumbnail">
                   <img class="col-xs-6 group list-group-image" src="../../images/school-minions.jpg" alt="" />
                   <div class="col-xs-6 caption">
@@ -72,7 +73,20 @@
                   </div>
                 </div>
               </div>
-              <div  ng-if='viewStudentsFlag' style='background:#fff;' class="item col-sm-4 col-xs-4" ng-repeat="student in data.students">
+          <div ng-if="assignFlag">
+          <h2>Teachers</h2>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-success" ng-click="clickedteacher($index)" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</li>
+            </ul>
+          </div>
+           <div ng-if="assignFlag">
+           <h2>Students</h2>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-success" ng-click="clickedstudent($index)" ng-repeat="student in data.students">{{student.fullname}}</li>
+            </ul>
+          </div>
+          <button ng-click="assignTeacher()" ng-if="assignOne">Assign</button>
+              <div ng-if='viewStudentsFlag' ng-if="!assignFlag" style='background:#fff;' class="item col-sm-4 col-xs-4" ng-repeat="student in data.students">
                 <div class="thumbnail">
                     <img class="col-xs-6 group list-group-image" src="../../images/school-minions.jpg" alt="" />
                   <div class="col-xs-6 caption">
@@ -85,7 +99,6 @@
                     <ui>
                       <li ng-repeat="teach in data.menuteachers">{{teach.fullname}}</li>
                     </ui>
-                  </div>
                 </div>
               </div>
             </div>

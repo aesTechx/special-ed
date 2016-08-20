@@ -5,14 +5,16 @@ var Game = require('../models/game.js');
 Q = require('q');
 jwt = require('jwt-simple');
 var Center = require('../models/center.js');
+var Specialist= require('../models/specialist.js');
 
+var findTeacher= Q.nbind(Specialist.findOne, Specialist);
 var findOneCenter= Q.nbind(Center.findOne,Center);
 var findStudent = Q.nbind(Student.findOne, Student);
 var createStudent = Q.nbind(Student.create, Student);
 var findAllStudents = Q.nbind(Student.find, Student);
 var findAllSpecialist = Q.nbind(Specialist.find, Specialist);
 var findAllGames = Q.nbind(Game.find, Game);
-var updateOneCenter = Q.nbind(Center.findOneAndUpdate, Center);
+var updateOneSpecialist = Q.nbind(Specialist.findOneAndUpdate, Specialist);
 
 module.exports = {
   getAll : function (req, res, next){
@@ -225,6 +227,24 @@ module.exports = {
     .then(function(user){
       user.saveApplication = record;
     })
+  },
+  addstudent:function(req, res, next){
+    findStudent({_id:req.body.studentId})
+    .then(function(user){
+      if(user.teachers.indexOf(req.body.teacherId) ===-1){
+        user.teachers.push(req.body.teacherId);
+        user.save();
+        console.log(user);
+      }
+    });
+    findTeacher({_id:req.body.teacherId})
+    .then(function(teacher){
+      if(teacher.students.indexOf(req.body.studentId) ===-1){
+        teacher.students.push(req.body.studentId);
+        teacher.save();
+        console.log(teacher)
+    }
+    });
   }
   
 }
