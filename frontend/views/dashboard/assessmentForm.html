@@ -68,6 +68,20 @@
               <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
           </div>
       </script>
+      <script type="text/ng-template" id="myModalSaveAs.html">
+        <div class="modal-header">
+            <h3 class="modal-title">You are about to submit</h3>
+        </div>
+        <div class="modal-body">
+            <p> click ok to send assessment answers, and cancel to edit your answers </p>
+        <div class="form-group">
+          <input ng-model='savedAssessment.name'>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok(finalScore)">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+      </script>
     </div>
     <div class='fr' ng-if='showAllQs'>
       <div class='col-xs-8'>
