@@ -14,9 +14,8 @@
 		</div>
 		<div class="jumbotron">
 			<div id="map"></div>
-				<br/>
-			<div class="container" style="width: 30%; float: left;">
-				<div class="well well-sm">
+			<div class="container" style="width: 25%; float: left;">
+				<!-- <div class="well well-sm">
 				    <strong>Display</strong>
 				    <div class="btn-group">
 				        <a href="#" id="list" class="btn btn-default btn-sm">
@@ -26,26 +25,57 @@
 				        	<span class="glyphicon glyphicon-th">
 				        	</span>Grid</a>
 				    </div>
-				</div>
+				</div> -->
 
 			<!-- the lists is going here: -->
-				<div id="products" class="row list-group">
-					<div class="item  col-xs-4 col-lg-4" ng-repeat="center in data.centers" style="float: right;">
-					    <div class="thumbnail">
-						    <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" width="50" height="50" />
+				<div style="height: 500px; overflow: scroll; margin-top: 10px;">
+
+					<!-- <div style="border-radius: 0px 20px 20px 0px; width: 100%; height: 100px; float: left; background-color:lightgreen;">
+						<div style="height: 100%; width: 100px; background-color: white;"><img src="../../images/school-minions.jpg" alt="" width="50" height="50" style="float: left;"/>
+						</div>
+						<h4>Center name:</h4>
+						<a class="btn btn-success">Show</a>
+						
+					</div> -->
+					<!-- <div ng-repeat="center in data.centers"> -->
+						<!-- <div> -->
+							<!-- <img src="../../images/school-minions.jpg" alt="" width="50" height="50" style="float: left;" /> -->
+							<!-- <div style="float: left;"> -->
+						      <!-- <h4>Center Name: {{center.centername}}</h4> -->
+						      <!-- <p>{{center.address}}</p> -->
+						      <!-- <div style="float: left;"> -->
+						        <!-- <div> -->
+						          <!-- <p>{{center.email}}</p> -->
+						        <!-- </div> -->
+						<!--     </div>    
+							<div ng-repeat="marker in markers" style="clear: both;">
+						          <div style="float: left;">
+						          	<a class="btn btn-success" ng-if="marker.centerName === center.centername" ng-click="openInfoWindow($event, marker)">Show</a>
+						          </div>
+						    </div>
+					</div> -->
+							<!-- </div> -->
+						<!-- </div> -->
+					<!-- </div> -->
+				
+				<div id="centersList" class="row list-group" style="height: 500px; overflow: scroll">
+					<div  ng-repeat="center in data.centers">
+					    <div class="thumbnail" style="margin: 20px; border-radius: 0px 40px 40px 0px; height: 100px;">
+						    <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" width="90" height="90" style="float: left;" />
 						    <div class="caption">
-						      <h4 class="group inner list-group-item-heading">
-						        Center Name: {{center.centername}}</h4>
-						      <p class="group inner list-group-item-text">
-						        {{center.address}}</p>
-						      <div class="row">
-						        <div class="col-xs-12 col-md-6">
+						      <p class="group inner list-group-item-heading">
+						        {{center.centername}}</p3>
+						      <!-- <p class="group inner list-group-item-text">
+						        {{center.address}}</p> -->
+						      <!-- <div class="row"> -->
+						        <!-- <div class="col-xs-12 col-md-6">
 						          <p class="lead">{{center.email}}</p>
+						        </div> -->
+						        <div class="col-xs-12 col-md-6" ng-repeat="marker in markers" style="float:left;">
+						          <a class="btn btn-success" ng-if="marker.centerName === center.centername" ng-click="openInfoWindow($event, marker)">Show</a>
 						        </div>
-						        <div class="col-xs-12 col-md-6" ng-repeat="marker in markers">
-						          <a class="btn btn-success" ng-if="marker.centerName === center.centername" ng-click="openInfoWindow($event, marker)"  style="float:right;">Show</a>
-						        </div>
-						      </div>
+						      <!-- </div> -->
+						      <div style="clear: both;"></div>
 						    </div>
 					    </div>
 				    </div>
