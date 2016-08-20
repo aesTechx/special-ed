@@ -4,6 +4,7 @@ var gameController = require('../app/controllers/gameController.js');
 var recordController = require('../app/controllers/recordController.js');
 var specialistController = require('../app/controllers/specialistController.js');
 var centerController = require('../app/controllers/centerController.js');
+var carsAssessmentController = require('../app/controllers/assessmentController.js');
 
 module.exports = function (app, express) {
 
@@ -51,4 +52,5 @@ module.exports = function (app, express) {
   app.get('/api/form/student', recordController.getRecord);
   app.post('/api/forms/submitForm', recordController.addRecord);
 
+  app.get('/api/assessments/cars/new', carsAssessmentController.getNewAssessment);
 };
