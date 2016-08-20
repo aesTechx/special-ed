@@ -20,6 +20,7 @@ var StudentSchema = new mongoose.Schema({
     required: true
   },
   fullname: String,
+  salt: String,
   birthdate: Date,
   skillsResult: [Number],
   profilePicture: String,
