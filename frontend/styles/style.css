@@ -213,3 +213,151 @@ snap-content .menutoggle .fa2 {
   padding-top: 10px;
 }
 
+
+
+
+
+/*landing page:*/
+#container{
+    overflow: auto;
+}
+
+.landingPage{
+  width: 90%;
+  height: 600px;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 30px;
+  background-color: white;
+  background-image: url('../images/minion.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 30%;
+/*    overflow: auto;
+*/}
+
+
+.showContainer{
+    width: 100%;
+    min-height: 400px;
+    margin: 5px auto;
+}
+
+.slideShow{
+    width: 70%;
+    min-height: 400px;
+    float: left;
+    background-color: yellow;
+}
+
+.minion{
+    width: 30%;
+    height: 300px;
+    float: left;
+    
+}
+
+.circles{
+    width: 500px;
+    height: 200px;
+    margin: 10px auto;
+    background-color: white;
+}
+
+
+.circle {
+    width: 100px;
+    height: 120px;
+    float:left; 
+    margin-left: 10px;
+    margin-top: 40px; 
+    transition: all .2s;
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+}
+
+.circle img{
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+.circle img:hover {
+margin-top: -20px;
+transition: all .2s;
+-o-transition: all .2s;
+-moz-transition: all .2s;
+-webkit-transition: all .2s;
+}
+
+
+
+
+
+
+/*SlideShow*/
+
+
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+        
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+
+
+
+
+.carousel, 
+.carousel-inner, 
+.carousel-inner .item {
+    height: 400px;
+}
+
+.item:nth-child(1) {
+    background: #74C390;
+}
+
+.item:nth-child(2) {
+    background: #51BCE8;
+}
+
+.item:nth-child(3) {
+    background: #E46653;
+}
+
+
+
+
+
+#mainContainer{
+    overflow-y: scroll;
+}
