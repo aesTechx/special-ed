@@ -11,7 +11,7 @@ angular.module('SED.landing', [])
 
       /*list view grid view for the centers:*/
       $(document).ready(function() {
-          $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-          $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+          $('#list').click(function(event){event.preventDefault();$('#centersList .item').addClass('list-group-item');});
+          $('#grid').click(function(event){event.preventDefault();$('#centersList .item').removeClass('list-group-item');$('#centersList .item').addClass('grid-group-item');});
       });
 	});

@@ -18,7 +18,7 @@ angular.module('SED.centers', [])
                 centerName: center.centername,
                 address: center.address,
                 icon: "../../images/marker.png"
-                //phone: center.phone
+                // email: center.email
                 
               });
               marker.content = '<div class="infoWindowContent">'+ center.centername +'<br>'+ center.address +'<br>'+'</div>';
@@ -67,7 +67,7 @@ angular.module('SED.centers', [])
 
       /*list view grid view for the centers:*/
       $(document).ready(function() {
-          $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-          $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+          $('#list').click(function(event){event.preventDefault();$('#centersList .item').addClass('list-group-item');});
+          $('#grid').click(function(event){event.preventDefault();$('#centersList .item').removeClass('list-group-item');$('#centersList .item').addClass('grid-group-item');});
       });
 	})
