@@ -80,7 +80,7 @@ module.exports = {
       }
     });
   },
-  signup : function(req, res) {
+  signup : function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
     var fullname = req.body.fullname;
@@ -115,7 +115,7 @@ module.exports = {
             })
           });
         } else {
-          res.redirect('/signup');
+          next(new Error('User already exists'))
         }
       });   
     })
@@ -216,6 +216,15 @@ module.exports = {
           res.send(204)
         })
       })
+  },
+  saveRecord:function(req, res, next) {
+    var token = req.headers['x-access-token'];
+    var user = jwt.decode(token, 'secret');
+    var record = req.body
+    findStudent({username:user.username})
+    .then(function(user){
+      user.saveApplication = record;
+    })
   }
   
 }

@@ -10,9 +10,9 @@ describe('SignUp Controller', function() {
   var $q;
   beforeEach(inject(function(_$controller_, _Auth_, _$q_){
     // The injector unwraps the underscores (_) from around the parameter names when matching
-     // $q = _$q_
+     $q = _$q_
     $controller = _$controller_;
-    // Auth = _Auth_;
+    Auth = _Auth_;
   }));
 
   describe('change selection', function() {
@@ -33,18 +33,10 @@ describe('SignUp Controller', function() {
           return resolve(user);
       })};
       var Auth = {signupTeacher: promise};
-      // spyOn(Auth, 'signupTeacher').and.callFake(function(user){
-      //   return resolve(user)
-      // })
-      // jasmine.spyOn(Auth, 'signupTeacher').andCallFake(function(){
-      //   var deferred = $q.defer();
-      //   return deferred.promise;
-      // });
       controller = $controller('SignupCtrl', { $scope: $scope, Auth:Auth});
       $scope.option = 'Teacher';
       $scope.user = {username:'x'};
       $scope.submit();
-      console.log(Auth)
       expect(hasBeenCalled).toEqual(true);
     })
   })

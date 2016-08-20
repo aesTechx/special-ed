@@ -1,9 +1,9 @@
 angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
 // controller for creating multi form in one view one after one
-.controller('assessmentController', function assessmentController ($scope, $log, $uibModal, Record) {
+.controller('assessmentController', function assessmentController ($scope, $log, $uibModal, Record, Students) {
   $scope.counter = 0;
+  $scope.list = {}
   var Qnum;
-  var questions;
   var finalScore = { "Social": 0, "Preservation": 0, "SensoryDisturbance": 0, "CommunicationandDevelopment": 0, "AttentionandSafety": 0 };
   var socialQuestionsCategories = [{ Q:"withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers", questionNum: 1, category: "Social", value: undefined}, { Q:"parallel play along side but not with peers", questionNum: 2, category: "Social", value: undefined}, { Q:"difficulty establishing friendships", questionNum: 3, category: "Social", value: undefined}, { Q:"limited social smile or eye contact (looks away, looks through people, looks at speaker’s mouth, needs to be prompted to make eye contact, or does not make eye contact when communicating)", questionNum: 4, category: "Social", value: undefined}, { Q:"limited sharing and showing (e.g., does not show a toy to an adult, seek recognition, or share an experience or accomplishment with others)", questionNum: 5, category: "Social", value: undefined}, { Q:"excessively rigid play with peers (dictates play according to his/her peculiar and repetitive interests and rules)", questionNum: 6, category: "Social", value: undefined}, { Q:"enjoys physical or sensory play with others (e.g., tickling, chasing) but has limited reciprocal social interaction (e.g., does not play social games or games involving turn taking)", questionNum: 7, category: "Social", value: undefined}, { Q:"self-absorbed or in own world (e.g., engages in self-stimulating behaviors, talks to self, or fantasizes excessively about things such as movies or cartoons)", questionNum: 8, category: "Social", value: undefined}, { Q:"oblivious to the presence of others or unresponsive to the social overtures of others", questionNum: 9, category: "Social", value: undefined}, { Q:"inappropriately talks to or hugs strangers", questionNum: 10, category: "Social", value: undefined}, { Q:"invades personal space (gets too close to or touches others)", questionNum: 11, category: "Social", value: undefined}, { Q:"no stranger/separation anxiety when young (not wary of strangers or upset if separated from parents)", questionNum: 12, category: "Social", value: undefined}, { Q:"socially inappropriate, insensitive comments or behaviors (picks nose in public, asks personal uestions)", questionNum: 13, category: "Social", value: undefined}, { Q:"does not appropriately initiate or sustain peer interaction though may interact well with adults", questionNum: 14, category: "Social", value: undefined}, { Q:"poor social reasoning (difficulty understanding social cues/comments, facial expressions, body language)", questionNum: 15, category: "Social", value: undefined}, { Q:"wants to have friends but does not know how to make friends", questionNum: 16, category: "Social", value: undefined}];
   var preservationCategories = [{ Q: "obsessive preoccupations or extreme fixation on things such as certain movies or TV shows (reenacts or watches the same movies over and over), computer games, letters, shapes, numbers, counting, objects or topics (e.g., trains, dinosaurs, NASCAR, maps, planes, electricity, Yu-Gi-Oh, cartoon characters, etc.)", questionNum: 17, category: "Preservation", value: undefined }, { Q: "unusual attachment to and holding or hoarding objects (e.g., small figures, string)", questionNum: 18, category: "Preservation", value: undefined }, { Q: "repetitive play (e.g., excessively lines up, sorts, spins, or throws objects; opens and closes things repeatedly; plays with the same toys without variation; draws the same pictures repeatedly)", questionNum: 19, category: "Preservation", value: undefined }, { Q: "disinterest in toys or lack of normal and varied imaginative play", questionNum: 20, category: "Preservation", value: undefined }, { Q: "unusual preoccupation with parts of objects (e.g., repetitively spins wheels on a toy)", questionNum: 21, category: "Preservation", value: undefined }, { Q: "distressed by change (e.g., change in routine or schedule, parent takes a different car route home from school, furniture or child’s toys are moved, seasonal change in clothing)", questionNum: 22, category: "Preservation", value: undefined }, { Q: "difficulty with transitions (e.g., from one activity to another)", questionNum: 23, category: "Preservation", value: undefined }, { Q: "extreme need to finish what he/she starts", questionNum: 24, category: "Preservation", value: undefined }, { Q: "idiosyncratic or ritualized patterns (e.g., drinks only from a certain cup, wears only certain clothes, insists that food be arranged a certain way on a plate)", questionNum: 25, category: "Preservation", value: undefined }, { Q: "insists that things be in a certain location or a certain way (e.g., doors must be closed, coats zipped, etc.)", questionNum: 26, category: "Preservation", value: undefined }, { Q: "insists on doing things the same way every time", questionNum: 27, category: "Preservation", value: undefined }, { Q: "overly precise and inflexible, upset if someone breaks a “rule,” rigid and literal thinking", questionNum: 28, category: "Preservation", value: undefined }, { Q: "Stereotypies (unusual repetitive movements such as hand flapping when excited, toe walking, body rocking, head shaking, body tensing, teeth clenching, teeth grinding while awake, finger movements, facial grimacing, repeatedly running back and forth, twirling or spinning, pacing, playing with saliva, skin picking)", questionNum: 29, category: "Preservation", value: undefined }];
@@ -12,7 +12,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   var attentionAndSafetyCategories = [{ Q: "Selective attention, ability to hyperfocus on activities, objects, or topics of interest to self (e.g., lines up toys, spins wheels, watches the same movie, assembles puzzles, builds with Legos, or draws pictures for long periods of time), but is inattentive, impulsive, and fidgety at other times", questionNum: 75, category: "Attention and Safety", value: undefined }, { Q: "Limited safety awareness, fearless, or oblivious to danger (e.g., unsafe climbing, wanders about house at night, runs off by self, goes into traffic or water, walks off with strangers)", questionNum: 76, category: "Attention and Safety", value: undefined }];
   
   $scope.totalNumberOfQuestions = 76;
-
+  $scope.showAllQs = false;
   $scope.animationsEnabled = true;
   
   $scope.open = function (size) {
@@ -49,7 +49,10 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   };
   $scope.start = function () {
     $scope.readyToStart = false;
-    $scope.currentQuestion = questions[Qnum];
+    $scope.currentQuestion = $scope.list.questions[Qnum];
+  }
+  $scope.showAll = function () {
+    $scope.showAllQs = !$scope.showAllQs;
   }
   $scope.nextQuestion = function () {
     if ($scope.currentQuestion.value) {
@@ -57,15 +60,23 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     }
     Qnum++;
     if (Qnum < 76){
-      $scope.currentQuestion = questions[Qnum];
+      $scope.currentQuestion = $scope.list.questions[Qnum];
     } else if (Qnum === 76) {
         $scope.readyToSubmit = true;
     }
   };
+  $scope.saveAndContinue = function () {
+    Students.saveIncompleteAssessment($scope.list.questions);
+    
+  }
+  $scope.goToQuestion = function (no) {
+    $scope.showAllQs = !$scope.showAllQs;
+    $scope.currentQuestion = $scope.list.questions[no];
+  };
   $scope.initialize = function () {
     $scope.readyToSubmit = false;
     $scope.readyToStart = true;
-    questions = socialQuestionsCategories.concat(preservationCategories, somatoSensoryDisturbanceCategories, communicationAndDevelopmentCategories, attentionAndSafetyCategories);
+    $scope.list.questions = socialQuestionsCategories.concat(preservationCategories, somatoSensoryDisturbanceCategories, communicationAndDevelopmentCategories, attentionAndSafetyCategories);
     Qnum = 0;
   };
   $scope.result = [];

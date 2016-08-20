@@ -88,6 +88,7 @@ module.exports = {
     }
   },
   signin: function (req, res) {
+    console.log(req.body)
     var username = req.body.username;
     var password = req.body.password;
     Center.findOne({username: username})

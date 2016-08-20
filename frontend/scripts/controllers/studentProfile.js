@@ -68,6 +68,12 @@ angular.module('SED.studentProfile', [])
     $scope.initialize = function () {
       console.log($scope.record);
     var loadLiquidFillGauge = window.loadLiquidFillGauge;
+    var overall = ((($scope.record.social + 
+                  $scope.record.preservation + 
+                  $scope.record.communicationAndDevelopment + 
+                  $scope.record.sensoryDisturbance + 
+                  $scope.record.attentionAndSafety) / 35) * 10);
+    var gauge0 = loadLiquidFillGauge('fillgauge0', overall);
     var gauge1 = loadLiquidFillGauge('fillgauge1', $scope.record.social*10);
     var gauge2 = loadLiquidFillGauge('fillgauge2', $scope.record.preservation*10);
     var gauge3 = loadLiquidFillGauge('fillgauge3', $scope.record.communicationAndDevelopment*10);

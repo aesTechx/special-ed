@@ -178,7 +178,7 @@ angular.module('SED.services', [])
     console.log(user);
     return $http({
       method: 'POST',
-      url: '/api/users/signinTeacher',
+      url: '/api/specialists/signin',
       data: user
     })
     .then(function (resp) {
@@ -249,9 +249,9 @@ angular.module('SED.services', [])
   };
 
   var signout = function (item) {
-    console.log(item);
     $window.localStorage.removeItem(item);
-    $location.path('/');
+    $window.localStorage.removeItem('typeOfUser');
+    $location.path('/login');
   };
 
   return {

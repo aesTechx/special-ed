@@ -16,19 +16,46 @@
 	font-style: normal;
 }
 
-
-
-body{
-
-    /*background: url(../img/bodyBg.png) no-repeat;
-    background-size: cover;*/
+.login-btn-new {
+    background:#BCBDBF; 
+    color:#232c4b; 
+    border-radius:40px; 
+    border:none; 
+    height:46px; 
+    font-size:18px; 
+    font-weight: 600; 
+    margin-top:10px; 
+    margin-bottom: 10px;
 }
+.profile-btn-new {
+    background:#232c4b; 
+    color:#fff; 
+    border-radius:30px; 
+    border:none; 
+    height:30px; 
+    font-size:12px; 
+    font-weight: 400; 
+    margin-top:20px; 
+    margin-bottom: 20px;
+}
+
+/*body{
+    background: url(../img/bodyBg.png) no-repeat;
+    background-size: cover;
+}*/
 snap-content .menutoggle .fa2 {
   position: absolute;
   right: 15px;
   top: 25px;
+  color: #232c4b;
 }
-.fa2 {
+snap-content .menutoggle .fa1 {
+  position: absolute;
+  left: 15px;
+  top: 25px;
+  color: #232c4b;
+}
+/*.fa2 {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -36,7 +63,7 @@ snap-content .menutoggle .fa2 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
-}
+}*/
 .outerContainer{
     width:1024px;
     height:650px;

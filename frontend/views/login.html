@@ -1,42 +1,45 @@
+<div class='col-xs-12' style='background:white;border-bottom: 1px solid #232c4b;'>
+	<h1 class='col-xs-10' style='color:#232c4b;'>
+	SPECIAL ED
+	</h1>
+	<a ui-sref="signup" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center">Sign up</a>
+</div>
 <div class="login-page">
 	<div class="img-container">
-		<div class="text-center pull-right photo">
-			<img src="{{images[option]}}" class="user-avatar img-circle img-responsive"/>
-				<h1>Special<br/ > <span>Education</span><br /><small>Portal</small></h1>
-			</div>
+		<div class="text-center pull-right photo" >
+			<img src="{{images[option]}}" class="user-avatar img-circle img-responsive" style='min-width:200px;min-height:200px;'/>		
 		</div>
-		<div class="form-content">
-			<form role="form" class="bottom-75" ng-submit="submit()">
+	</div>
+	<div class="form-content">
+		<h1 style='color:#232c4b;'> HELLO </h1>
+		<p style='color:#232c4b;'> Please sign in </p>
+		<form role="form" class="bottom-75" ng-submit="submit()">
 			<div class="table-form">
 				<div class="form-groups">
-					<div class="form-group">
-						<input type="text" class="form-control input-lg" id="" ng-model='user.username'>
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control input-lg" id="" placeholder="PASSWORD" ng-model='user.password'>
-					</div>
-					<label for="sel1">Type of user:</label>
-				      <select class="form-control" id="sel1" ng-model="option" ng-change="changeSelect()">
-				        <option value='Student'>Student</option>
-				        <option value='Teacher'>Teacher</option>
-				        <option value='Center'>Center</option>
-				      </select>
-				</div>	
-				<div class="button-container">
-					<button type="submit" class="btn btn-default login"><img src="images/arrow.png" alt=""></button>
+					<div class='select-wrapper form-control input-lg-wrapper' style='margin-bottom: 10px;'>
+			      <select id="sel1" class='form-control2 input-lg2' ng-model="option"  ng-change="changeSelect()">
+			      	<option value='Select Type of User' selected="selected">Select Type of User </option>
+			        <option value='Student'>Student</option>
+			        <option value='Teacher'>Teacher</option>
+			        <option value='Center'>Center</option>
+			      </select>
+			    </div> 
+				<div class="form-group">
+					<input type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
 				</div>
-			</div>
-			<div class="remember">
-				<label class="checkbox1" for="Option"> 
-					<input id="Option" type="checkbox" class="">
-					<span></span>
-				</label>
-				remember me
-				<span class="pass"> forgot password?</span>
-				<p>
-					<a ui-sref="signup" class="btn btn-primary btn-lg btn-white">Sign Up</a>
-				</p>
-			</div>			
-			</form>
-		</div>			
+				<div class="form-group">
+					<input type="password" class="form-control input-lg"  id="" placeholder="PASSWORD" ng-model='user.password' class='glyphicon'>
+				</div>
+        <button class="btn btn-login-hover btn-block login-btn-new" type='submit'></span> Login <i class='glyphicon glyphicon-log-in'></i></button>
+        <div class="remember">
+  				<label class="checkbox1" for="Option"> 
+  					<input id="Option" type="checkbox" class="">
+  					<span></span>
+  				</label>
+  			  remember me
+  			  <span class="pass"> forgot password?</span>
+        </div>
+      </div>			
+		</form>
+	</div>			
 </div>
