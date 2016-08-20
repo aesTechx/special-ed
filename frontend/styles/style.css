@@ -27,6 +27,7 @@
     margin-top:10px; 
     margin-bottom: 10px;
 }
+
 .profile-btn-new {
     background:#232c4b; 
     color:#fff; 
@@ -43,6 +44,13 @@
     background: url(../img/bodyBg.png) no-repeat;
     background-size: cover;
 }*/
+
+.thumbnail { height: 280px !important; }
+      .btn-droppable { width: 180px; height: 30px; padding-left: 4px; }
+      .btn-draggable { width: 160px; }
+      .emage { height: 215px; }
+
+
 snap-content .menutoggle .fa2 {
   position: absolute;
   right: 15px;
