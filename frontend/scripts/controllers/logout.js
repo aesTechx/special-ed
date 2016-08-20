@@ -13,5 +13,4 @@ angular.module('SED.Logout', [])
     }
   };
   logout();
-
 });
