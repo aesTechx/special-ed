@@ -80,9 +80,9 @@ angular.module('SED', [
   // when it does change routes, we then look for the token in localstorage
   // and send that token to the server to see if it is a real user or hasn't expired
   // if it's not valid, we then redirect back to signin/signup
+  var allowedURLS = ['/landingPage', '/freePlay', '/freeAssessment', '/publicCenters', '/signup', '/logout', '/login'];
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    console.log('routeChanged', toState.url)
-    if (event && toState.url !== ('/signup' || '/logout' || '/login') && (!Auth.isAuthuser() && !Auth.isAuthteacher() && !Auth.isAuthcenter())) {
+    if (event && allowedURLS.indexOf(toState.url) === -1 && (!Auth.isAuthuser() && !Auth.isAuthteacher() && !Auth.isAuthcenter())) {
       $location.path('/login');
     }
   });
