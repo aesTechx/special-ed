@@ -185,7 +185,7 @@ angular.module('SED.services', [])
   // that JWT is then stored in localStorage as 'com.shortly'
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
-  var signinUser = function (user) {
+  var signinStudent = function (user) {
     console.log(user);
     return $http({
       method: 'POST',
@@ -271,14 +271,8 @@ angular.module('SED.services', [])
     return !!$window.localStorage.getItem('com.SEDcenter');
   };
 
-  var signout = function (item) {
-    $window.localStorage.removeItem(item);
-    $window.localStorage.removeItem('typeOfUser');
-    $location.path('/login');
-  };
-
   return {
-    signinUser: signinUser,
+    signinStudent: signinStudent,
     signinCenter: signinCenter,
     signupCenter: signupCenter,
     signupStudent: signupStudent,
@@ -286,7 +280,6 @@ angular.module('SED.services', [])
     signupTeacher: signupTeacher,
     isAuthuser: isAuthuser,
     isAuthcenter: isAuthcenter,
-    isAuthteacher: isAuthteacher,
-    signout: signout
+    isAuthteacher: isAuthteacher  
   };
 });
