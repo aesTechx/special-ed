@@ -59,53 +59,33 @@ angular.module('SED.Signup', [])
   $scope.submit = function() {
     var option = $scope.option;
     $scope.user.center = $scope.center;
-    console.log($scope.user.center)
-    if (option === 'Teacher') {
-      Auth.signupTeacher($scope.user)
+    var sendRequest = function () {
+      Auth['signup'+$scope.option]($scope.user)
       .then(function (token) {
-        $window.localStorage.setItem('com.SEDteacher', token);
-        $window.localStorage.setItem('typeOfUser', 'teacher');
+        $window.localStorage.setItem('com.SEDuser', token);
+        $window.localStorage.setItem('typeOfUser', $scope.option.toLowerCase());
         $location.path('/dashboard');
       })
       .catch(function (error) {
         console.error(error);
       });
-    } else if (option === 'Student') {
-      Auth.signupStudent($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.SEDuser', token);
-        $window.localStorage.setItem('typeOfUser', 'student');
-        $location.path('/dashboard');
-      })
-      .catch(function (error) {
-        alert(error.data.split("<br>")[0]);
-      });
-    } else if (option === 'Center') {
+    }
+     if (option === 'Center') {
       /*center location*/
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             $scope.user.latitude= position.coords.latitude;
             $scope.user.longitude= position.coords.longitude;
-            
           }); 
-        } else {
-          // Browser doesn't support Geolocation
-          alert('your browser does not support the geolocation');
-        }
-
-      console.log($scope.user)
-      setTimeout(function(){  Auth.signupCenter($scope.user)
-      .then(function(token) {
-        $window.localStorage.setItem('com.SEDcenter', token);
-        $window.localStorage.setItem('typeOfUser', 'center');
-        $location.path('/dashboard');
-      })
-      .catch(function(error) {
-        console.log(error);
-      });},4000)
-    
+      } else {
+        // Browser doesn't support Geolocation
+        alert('your browser does not support the geolocation');
+      }
+      setTimeout(function(){ sendRequest(); },4000);
+    } else {
+      sendRequest();
     }
-  };
+  }
   $scope.changeSelect1=function(){
     console.log($scope.option1);
     $scope.center=$scope.option1.center;
