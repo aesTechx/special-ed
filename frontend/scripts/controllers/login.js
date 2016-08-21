@@ -12,40 +12,16 @@ angular.module('SED.Login', [])
     };
   $scope.submit = function() {
     var option = $scope.option;
-    if (option === 'Teacher') {
-      console.log($scope.user)
-      Auth.signinTeacher($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.SEDteacher', token);
-        $window.localStorage.setItem('typeOfUser', 'teacher');
-        $location.path('/dashboard');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-    } else if (option === 'Student') {
-      Auth.signinUser($scope.user)
+    Auth['signin'+$scope.option]($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.SEDuser', token);
-        $window.localStorage.setItem('typeOfUser', 'student');
+        $window.localStorage.setItem('typeOfUser', $scope.option.toLowerCase());
         $location.path('/dashboard');
       })
       .catch(function (error) {
-        console.error(error);
-      });
-    } else if (option === 'Center') {
-      console.log($scope.user)
-      Auth.signinCenter($scope.user)
-      .then(function(token) {
-        $window.localStorage.setItem('com.SEDcenter', token);
-        $window.localStorage.setItem('typeOfUser', 'center');
-        $location.path('/dashboard');
-      })
-      .catch(function(error) {
         console.error(error);
       });
     }
-  };
 });
 
 
