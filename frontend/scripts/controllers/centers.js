@@ -5,6 +5,7 @@ angular.module('SED.centers', [])
 
 		Centers.getAllCenters()
 			.then(function(resp){
+        console.log(resp)
 				$scope.data.centers = resp;
 				$scope.data.lat= 0;
         $scope.data.lng=0;

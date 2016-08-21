@@ -1,48 +1,27 @@
 <div>
-	<snap-content>
-		<div class="fr">
-			<h2>Centers details <small>The list of centers:</small></h2>
-		</div>
-		<div class="jumbotron">
-			<div>
-				<div id="map"></div>
-				<br/>
-			</div>
-			<hr>
-
-			<div class="container">
-			<div class="well well-sm">
-			    <strong>Display</strong>
-			    <div class="btn-group">
-			        <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-			        </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-			            class="glyphicon glyphicon-th"></span>Grid</a>
-			    </div>
-			</div>
-
-			<!-- the lists is going here: -->
-			<div id="centersList" class="row list-group">
-				<div class="item  col-xs-4 col-lg-4" ng-repeat="center in data.centers" style="float: right;">
-			    <div class="thumbnail">
-				    <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" />
-				    <div class="caption">
-				      <h4 class="group inner list-group-item-heading">
-				        Center Name: {{center.centername}}</h4>
-				      <p class="group inner list-group-item-text">
-				        {{center.address}}</p>
-				      <div class="row">
-				        <div class="col-xs-12 col-md-6">
-				          <p class="lead">{{center.email}}</p>
-				        </div>
-				        <div class="col-xs-12 col-md-6" ng-repeat="marker in markers">
-				          <a class="btn btn-success" ng-if="marker.centerName === center.centername" ng-click="openInfoWindow($event, marker)"  style="float:right;">Show</a>
-				        </div>
-				      </div>
-				    </div>
-			    </div>
-			    </div>
+  <snap-content>
+    <div class="fr">
+      <h2>Centers details <small>The list of centers:</small></h2>
+    </div>
+    <div>
+      <div id="map"></div>
+      <div class="container" style="width: 25%; float: left;">
+        <div style="height: 500px; overflow: scroll; margin-top: 10px;">
+          <div id="centersList" class="row list-group" style="height: 500px; overflow: scroll">
+            <div  ng-repeat="center in data.centers">
+              <div class="thumbnail" style="margin: 20px; border-radius: 0px 40px 40px 0px; height: 100px; background-color: white;">
+                <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" width="90" height="90" style="float: left;" />
+                <div class="caption">
+                  <p class="group inner list-group-item-heading">{{center.centername}}</p>
+                  <div class="col-xs-12 col-md-6" ng-repeat="marker in markers" style="float:left;">
+                    <a class="btn btn-success" ng-if="marker.centerName === center.centername" ng-click="openInfoWindow($event, marker)">Show</a>
+                  </div>
+                </div>
+              </div>
+						</div>
+					</div>
 				</div>
 			</div>
-			</div>
+		</div>	
 	</snap-content>	
 </div>
