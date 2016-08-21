@@ -32,7 +32,7 @@ body{
     background-size: cover;*/
 }
 .login-btn-new {
-    background:#BCBDBF; 
+    background:#F1F1F1; 
     color:#232c4b; 
     border-radius:40px; 
     border:none; 
@@ -63,52 +63,53 @@ snap-content .menutoggle .fa2 {
   position: absolute;
   right: 15px;
   top: 25px;
+  color: #232c4b;
 }
-.fa2 {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
+snap-content .menutoggle .fa1 {
+  position: absolute;
+  left: 15px;
+  top: 25px;
+  color: #232c4b;
+}
+snap-content .menutoggle .fa1:hover{
+  color: #ffdf75;
+  text-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 .outerContainer{
-    width:1024px;
+    width:1200px;
     height:650px;
     position: relative;
-    background:#f9e296;
     margin:0 auto;
 }
 
 #draggableContainer{
-    width: 200px;
-    height: 630px;
+    width: 250px;
+    height: 550px;
     position: relative;
     float: left;
-    background:rgba(10,200,80,.5);
     margin-top: 10px;
     border-radius: 10px;
+    border:#232c4b solid;
     margin-left: 5px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 #droppableContainer{
-    width: 600px;
-    height: 630px;
+    width: 300px;
+    height: 550px;
     position: relative;
+    border: #232c4b solid;
     float: left;
-    background:rgba(10,200,80,.5);
     margin-top: 10px;
     border-radius: 10px;
     margin-left: 5px;
 }
 #scoreArea{
-    width: 200px;
-    height: 630px;
+    width: 250px;
+    height: 550px;
     position: relative;
-    float: right;
-    background:rgba(10,200,80,.5);
+    float: left;
+    border: #232c4b solid;
     margin-top: 10px;
     border-radius: 10px;
     margin-left: 5px;
@@ -143,21 +144,21 @@ snap-content .menutoggle .fa2 {
 }
 
 #scoreHeader{
-    font-family:'Conv_comic',Sans-Serif;
+    font-family:inherit;
     margin:0 auto;
     text-align:center;
     font-size:1.5em;
-    border-bottom:1px solid red;
     margin-top:20px;
+    color:#232c4b;
 }
 
 #scoreText{
-    font-family:'Conv_KBZipaDeeDooDah';
+    font-family:inherit;
     margin:0 auto;
     text-align:center;
     font-size:8em;
     margin-top:20px;
-    color:#f93d00;
+    color:#ffdf75;
 }
 
 #doraemonArea{
