@@ -26,6 +26,6 @@ var GameSchema = new mongoose.Schema({
 });
 
 
-var Game = mongoose.model('Game' , GameSchema);
+var Game = mongoose.model ('Game', GameSchema);
 
 module.exports = Game;

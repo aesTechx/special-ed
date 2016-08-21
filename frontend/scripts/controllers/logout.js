@@ -8,7 +8,7 @@ angular.module('SED.Logout', [])
     } else if (Auth.isAuthcenter()) {
       Auth.signout('com.SEDcenter');
     } else {
-    	$window.localStorage.removeItem('typeOfUser');
+      $window.localStorage.removeItem('typeOfUser');
       $location.path('/login');
     }
   };

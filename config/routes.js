@@ -15,8 +15,8 @@ module.exports = function (app, express) {
   app.post('/api/centers/signup', centerController.signup);
   app.post('/api/centers/editProfile', centerController.editCenter);
   app.get('/api/centers/requestPass/:email', centerController.requestNewPass);
-  app.get('/api/center/teachers',centerController.getTeachers);
-  app.get('/api/center/students',centerController.getStudents)
+  app.get('/api/center/teachers', centerController.getTeachers);
+  app.get('/api/center/students', centerController.getStudents);
   
   //specialist routes
   app.get('/api/specialists', specialistController.getAll);

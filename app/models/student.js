@@ -7,15 +7,15 @@ var Schema = mongoose.Schema;
 
 var StudentSchema = new mongoose.Schema({
   username: {
-  	type: String,
+    type: String,
     unique: true,
-  	required: true
+    required: true
   },
   centerId: { 
-  	type: mongoose.Schema.Types.ObjectId,
-  	ref: 'Center',
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Center',
   },
-  password : {
+  password: {
     type: String,
     required: true
   },
@@ -26,8 +26,8 @@ var StudentSchema = new mongoose.Schema({
   profilePicture: String,
   emergencyContact: String,
   emergencyNumber: String,
-  saveApplication: { type : Array , "default" : [] },
-  todos: { type : Array , "default" : [] },
+  saveApplication: { type: Array , 'default': [] },
+  todos: { type: Array , 'default': [] },
   teachers: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
   gameRecords: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
   records: [{ type: Schema.Types.ObjectId, ref: 'Record' }],  
@@ -36,44 +36,43 @@ var StudentSchema = new mongoose.Schema({
     enum: ['Active', 'Pending', 'Rejected']
   }
 });
-var Student = mongoose.model('Student', StudentSchema);
+var Student = mongoose.model ('Student', StudentSchema);
 
-
-Student.comparePassword = function(candidatePassword, savedPassword, res, cb){
-  bcrypt.compare( candidatePassword, savedPassword, function(err, isMatch){
-    if(err){
-      res.status(500).send('Error');
-    } else if(cb){
-      cb(isMatch);
+Student.comparePassword = function (candidatePassword, savedPassword, res, cb) {
+  bcrypt.compare ( candidatePassword, savedPassword, function (err, isMatch) {
+    if (err) {
+      res.status (500).send ('Error');
+    } else if (cb) {
+      cb (isMatch);
     }
   });
 };
 
 
-StudentSchema.pre('save', function (next) {
+StudentSchema.pre ('save', function (next) {
   var student = this;
 
   // only hash the password if it has been modified (or is new)
-  if (!student.isModified('password')) {
-    return next();
+  if (!student.isModified ('password') ) {
+    return next ();
   }
 
   // generate a salt
-  bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
+  bcrypt.genSalt (SALT_WORK_FACTOR, function (err, salt) {
     if (err) {
-      return next(err);
+      return next (err);
     }
 
     // hash the password along with our new salt
-    bcrypt.hash(student.password, salt, null, function (err, hash) {
+    bcrypt.hash (student.password, salt, null, function (err, hash) {
       if (err) {
-        return next(err);
+        return next (err);
       }
 
       // override the cleartext password with the hashed one
       student.password = hash;
       student.salt = salt;
-      next();
+      next ();
     });
   });
 });

@@ -2,18 +2,18 @@
 angular.module('SED.Login', [])
 .controller('LoginCtrl', function LoginCtrl($scope, $window, Auth, $location) {
   $scope.user = {};
-  $scope.option = 'Select Type of User'
+  $scope.option = 'Select Type of User';
   $scope.images = {
     'Student': 'images/flat-avatar.png', 
     'Teacher': 'images/teacher-avatar.jpg', 
     'Center': 'images/school-minions.jpg'
   };
   $scope.changeSelect = function () {
-    };
+  };
   $scope.submit = function() {
     var option = $scope.option;
     if (option === 'Teacher') {
-      console.log($scope.user)
+      console.log($scope.user);
       Auth.signinTeacher($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.SEDteacher', token);
@@ -34,7 +34,7 @@ angular.module('SED.Login', [])
         console.error(error);
       });
     } else if (option === 'Center') {
-      console.log($scope.user)
+      console.log($scope.user);
       Auth.signinCenter($scope.user)
       .then(function(token) {
         $window.localStorage.setItem('com.SEDcenter', token);
@@ -47,5 +47,3 @@ angular.module('SED.Login', [])
     }
   };
 });
-
-

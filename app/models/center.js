@@ -30,23 +30,23 @@ var CenterSchema = new mongoose.Schema({
   pendingStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student'}],
   rejectedSpecialistApplications: [{ type: Schema.Types.ObjectId, ref: 'Specialist' }],
   rejectedStudentApplications: [{ type: Schema.Types.ObjectId, ref: 'Student'}],
-  longitude: {type:Number,default:0},
-  latitude: {type:Number,default:0},
+  longitude: { type: Number, default: 0},
+  latitude: { type: Number, default: 0},
   address: String,
   email: String,
   phone: String,
   mobile: String,
-  rating: {type:Number,default:0},
+  rating: { type: Number, default: 0 },
   facebook: String
 });
 var Center = mongoose.model('Center', CenterSchema);
 
 
-Center.comparePassword = function(candidatePassword, savedPassword, res, cb){
-  bcrypt.compare( candidatePassword, savedPassword, function(err, isMatch){
-    if(err){
+Center.comparePassword = function (candidatePassword, savedPassword, res, cb) {
+  bcrypt.compare ( candidatePassword, savedPassword, function (err, isMatch) {
+    if (err) {
       res.status(500).send('Error');
-    } else if(cb){
+    } else if (cb) {
       cb(isMatch);
     }
   });

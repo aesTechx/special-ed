@@ -9,11 +9,11 @@ var Schema = mongoose.Schema;
 
 var SpecialistSchema = new mongoose.Schema({
   username: {
-  	type: String,
+    type: String,
     unique: true,
-  	required: true
+    required: true
   },
-  password : {
+  password: {
     type: String,
     required: true
   },
@@ -44,12 +44,12 @@ var SpecialistSchema = new mongoose.Schema({
 var Specialist = mongoose.model('Specialist', SpecialistSchema);
 
 
-Specialist.comparePassword = function(candidatePassword, savedPassword, res, cb){
-  bcrypt.compare( candidatePassword, savedPassword, function(err, isMatch){
-    if(err){
+Specialist.comparePassword = function (candidatePassword, savedPassword, res, cb) {
+  bcrypt.compare ( candidatePassword, savedPassword, function (err, isMatch) {
+    if (err) {
       res.status(500).send('Error');
-    } else if(cb){
-      cb(isMatch);
+    } else if (cb) {
+      cb (isMatch);
     }
   });
 };
