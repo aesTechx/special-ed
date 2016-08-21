@@ -15,6 +15,7 @@ var findAllStudents = Q.nbind(Student.find, Student);
 var findAllSpecialist = Q.nbind(Specialist.find, Specialist);
 var findAllGames = Q.nbind(Game.find, Game);
 var updateOneSpecialist = Q.nbind(Specialist.findOneAndUpdate, Specialist);
+var updateOneCenter = Q.nbind(Center.findOneAndUpdate, Center);
 
 module.exports = {
   getAll : function (req, res, next){

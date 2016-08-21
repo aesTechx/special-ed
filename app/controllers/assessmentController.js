@@ -44,5 +44,18 @@ module.exports = {
     .catch(function (err) {
       next(err);
     });
+  },
+  getAssessment: function (req, res, next) {
+    findAssessment({_id: req.body.assessmentId})
+    .then(function (found) {
+      if (found) {
+        res.json(found);
+      } else {
+        next(new Error('not found'))
+      }
+    })
+    .catch(function (err) {
+      next(err);
+    });
   }
 }
