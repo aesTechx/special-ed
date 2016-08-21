@@ -20,6 +20,8 @@ html {
 @media (max-width: @screen-lg) {
     body{font-size: 25px;}
 }*/
+
+
 h2 {
   font-size: 2em;
 }
