@@ -11,8 +11,20 @@ angular.module('SED.services', [])
     .then(function (resp) {
       return resp.data;
     })
+  }
+  var getAll = function(){
+    return $http({
+      method:'GET',
+      url:'/api/forms'
+    })
+    .then(function(resp){
+      return resp.data
+    })
+  }
+  return {
+    submitForm: submitForm,
+    getAll:getAll
   };
-  return {submitForm: submitForm};
 })
 
 .factory('Centers', function ($http) {
