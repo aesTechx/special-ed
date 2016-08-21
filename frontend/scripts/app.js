@@ -63,7 +63,6 @@ angular.module('SED', [
   var attach = {
     request: function (object) {
       var jwt = $window.localStorage.getItem('com.SEDuser');
-      console.log(jwt);
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
