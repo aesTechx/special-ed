@@ -32,7 +32,7 @@
     "Stats"
   ],
   "scripts": {
-    "start": "nodemon  server.js",
+    "start": "node  server.js",
     "test": "istanbul cover -x '*Spec.js' node_modules/mocha/bin/_mocha -- -R spec ./spec/server/*.js",
     "postinstall": "bower install",
     "lint": "eslint ./"
