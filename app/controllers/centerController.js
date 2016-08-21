@@ -9,7 +9,7 @@ var findCenter = Q.nbind(Center.findOne, Center);
 var createCenter = Q.nbind(Center.create, Center);
 var findAllCenters = Q.nbind(Center.find, Center);
 var findAllSpecialist = Q.nbind(Specialist.find, Specialist);
-var findAllStudent =Q.nbind(Student.find, Student)
+var findAllStudent = Q.nbind(Student.find, Student);
 
 module.exports = {
   getAll: function (req, res, next) {
@@ -17,7 +17,6 @@ module.exports = {
       if (err) {
         res.status(500).send(err);
       }
-      console.log(users)
       res.json(users);
     });
   },
@@ -31,39 +30,39 @@ module.exports = {
       res.json(user);
     });
   },
-  getTeachers:function(req,res,next){
-    var token = req.headers['x-access-token'];
-    user = jwt.decode(token, 'secret');
-    findCenter({username:user.username})
-    .then(function(user){
-      return user.specialists
+  getTeachers: function(req, res, next) {
+    var token = req.headers ['x-access-token'];
+    user = jwt.decode (token, 'secret');
+    findCenter ({username: user.username})
+    .then (function (user) {
+      return user.specialists;
     })
-    .then(function(teachers){
-        findAllSpecialist({'_id': { $in: teachers }})
-        .then(function(teachers){
-          res.json(teachers)
+    .then (function (teachers) {
+      findAllSpecialist( {'_id': { $in: teachers }} )
+        .then (function (teachers) {
+          res.json(teachers);
         })
-        .fail(function(err){
-          res.send(204)
-        })
-      })
+        .fail (function (err) {
+          res.send(204);
+        });
+    });
   },
-  getStudents:function(req,res,next){
-    var token = req.headers['x-access-token'];
-    user = jwt.decode(token, 'secret');
-    findCenter({username:user.username})
-    .then(function(user){
-      return user.students
+  getStudents: function(req, res, next) {
+    var token = req.headers ['x-access-token'];
+    user = jwt.decode (token, 'secret');
+    findCenter( {username: user.username} )
+    .then(function (user) {
+      return user.students;
     })
-    .then(function(students){
-        findAllStudent({'_id': { $in: students }})
-        .then(function(students){
-          res.json(students)
+    .then(function(students) {
+      findAllStudent({'_id': { $in: students }})
+        .then(function(students) {
+          res.json(students);
         })
-        .fail(function(err){
-          res.send(204)
-        })
-      })
+        .fail(function(err) {
+          res.send(204);
+        });
+    });
   },
   checkAuth: function (req, res, next) {
     // checking to see if the user is authenticated
@@ -89,18 +88,15 @@ module.exports = {
     }
   },
   signin: function (req, res) {
-    console.log(req.body)
     var username = req.body.username;
     var password = req.body.password;
     Center.findOne({username: username})
     .exec(function (error, user) {
       if (error) {
-        console.log(error);
         res.status(500).send(error);
       } else if (!user) {
         res.status(500).send(new Error('User does not exist'));
       } else {
-        //console.log('hi')
         Center.comparePassword(password, user.password, res, function(found) {
           if (!found) {
             res.status(500).send('Wrong Password');
@@ -122,7 +118,6 @@ module.exports = {
     var longitude = req.body.longitude;
     var latitude = req.body.latitude;
     var address = req.body.address;
-    console.log(longitude);
     Center.findOne({username: username})
       .exec(function(err, user) {
         if (!user) {
@@ -137,10 +132,9 @@ module.exports = {
             address: address
           });
           newCenter.save(function(err, newCenter) {
-            console.log(newCenter)
             var token = jwt.encode(newCenter, 'secret');
-            res.setHeader('x-access-token',token);
-            res.json({token: token, userId : newCenter._id});
+            res.setHeader('x-access-token', token);
+            res.json({token: token, userId: newCenter._id});
           });
         } else {
           res.redirect('/signup');
@@ -149,42 +143,37 @@ module.exports = {
   },
   editCenter: function(req, res, next) {
     var token = req.headers['x-access-token'];
-    console.log(token)
     var user = jwt.decode(token, 'secret');
-    console.log(user);
-    Center.findOne({username: user.username}, function(err, center){
-      if(err){
+    Center.findOne( {username: user.username}, function(err, center) {
+      if (err) {
         res.status(500).send(err);
-      } else if (!center){
-        res.status(500).send(new Error ('center does not exist'));
+      } else if (!center) {
+        res.status (500).send (new Error ('center does not exist'));
       } else {
-        console.log(req.body.foundationDate)
-        center.foundationDate=req.body.foundationDate || center.foundationDate;
+        center.foundationDate = req.body.foundationDate || center.foundationDate;
         center.centername = req.body.fullname || center.centername;
-        center.password = req.body.password || center.password
+        center.password = req.body.password || center.password;
         center.profilePicture = req.body.profilePicture || center.profilePicture;
         center.phone = req.body.phone || center.phone;
         center.mobile = req.body.mobile || center.mobile;
         center.email = req.body.email || center.email;
 
-        center.save(function(err, savedUser){
-          console.log(savedUser);
-          if(err){
-            res.status(500).send(error);
+        center.save (function (err, savedUser) {
+          if (err) {
+            res.status (500).send (error);
           } else {
-            console.log()
             res.status(201).send(JSON.stringify(savedUser));
           }
         });
       }
-    })
+    });
   },
-  requestNewPass: function(req, res) {
-    Center.findOne({email: req.params.email}, function (err, user) {
+  requestNewPass: function (req, res) {
+    Center.findOne ({email: req.params.email}, function (err, user) {
       if (err) {
-        res.status(500).send(err);
+        res.status (500).send (err);
       } else if (user) {
-        var newPass = Math.random().toString(36).slice(-8);
+        var newPass = Math.random ().toString(36).slice(-8);
         user.password = newPass;
         user.save(function(err, savedUser) {
           if (err) {
