@@ -6,91 +6,89 @@
   <snap-content snap-opt-tap-to-close="false">
   <a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
     <span class="menutoggle">
-      <i ng-hide="menuOpen" class="fa1 glyphicon glyphicon-chevron-right fa-2x" style='color:#232c4b'></i>
-      <i ng-show="menuOpen" class="fa1 glyphicon glyphicon-chevron-left fa-2x" style='color:#232c4b' ></i>
+      <i ng-hide="menuOpen" class="fa1 glyphicon glyphicon-menu-hamburger fa-2x"></i>
+      <i ng-show="menuOpen" class="fa1 glyphicon glyphicon-remove fa-2x"></i>
     </span>
   </a>
-    <a href="" snap-toggle="right" ng-click="menuOpen = !menuOpen">
-      <span class="menutoggle">
-        <i ng-hide="menuOpen"  class="fa2 glyphicon glyphicon-chevron-left fa-2x" style='color:#232c4b' ></i>
-        <i ng-show="menuOpen" class="fa2 glyphicon glyphicon-chevron-right fa-2x" style='color:#232c4b'></i>
-      </span>
-    </a>
-    <div class="fr" >
-      <h2> SPECIAL ED </h2>
-    </div>
-    <div class='fr'>
-    <div class='jumbotron'>
-      <h2> Autism Assessment<small> Based on C.A.R.S phsycological model </small></h2>
-      <div class='jumbotron' ng-if='!showAllQs'>
-        <div class="container-fluid" style="background: white; padding:20px; color:black;">
-        <button ng-if="readyToStart" ng-click="start()"> Start </button>
-        <div ng-if="!readyToStart">
-          <form role="form">
-            <div class="table-form">
-              <div class="form-groups">
-                <div class="form-group">
-                   <div class='col-sm-9'>
-                    <div class='col-xs-12'>
-                      <h3> Category: {{currentQuestion.category}} </h3>
-                     <h4> Does your kid show the following: </h4>
-                     <p> <big> {{currentQuestion.Q}} </big></p>
-                    </div>
-                    <div class='col-sm-4 col-xs-12'>
-                      <div class="radio" style="margin-left: 30px;" >
-                        <span class='col-xs-6'><input type="radio"  value="0" ng-model="currentQuestion.value" > Yes </span>
-                        <span class='col-xs-6'><input type="radio" value="1" ng-model="currentQuestion.value" > No </span>
-                      </div>
+  <a href="#/logout" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" style='float:right;'>Logout</a>
+  <div class="fr" >
+    <h2> SPECIAL ED <small> Assessments</small></h2>
+  </div>
+  <div class='fr'>
+  <div class='jumbotron col-sm-8'>
+    <h2> Autism Assessment<small> Based on C.A.R.S phsycological model </small></h2>
+    <div class='jumbotron' ng-if='!showAllQs'>
+      <div class="container-fluid" style="background: white; padding:20px; color:black;">
+      <button ng-if="readyToStart" ng-click="start()"> Start </button>
+      <div ng-if="!readyToStart" class='jumbotron' style='border:#232c4b solid; border-radius:100px;'>
+      <div>
+        <form role="form">
+          <div class="table-form">
+            <div class="form-groups">
+              <div class="form-group">
+                 <div class='col-sm-9'>
+                  <div class='col-xs-12'>
+                    <h3> Category: {{currentQuestion.category}} </h3>
+                   <h4> Does your kid show the following: </h4>
+                   <p> <big> {{currentQuestion.Q}} </big></p>
+                  </div>
+                  <div class='col-sm-4 col-xs-12'>
+                    <div class="radio" style="margin-left: 30px;" >
+                      <span class='col-xs-6'><input type="radio"  value="0" ng-model="currentQuestion.value" > Yes </span>
+                      <span class='col-xs-6'><input type="radio" value="1" ng-model="currentQuestion.value" > No </span>
                     </div>
                   </div>
-                  <div class='col-sm-3 col-xs-12'>
-                      <h4> Question {{currentQuestion.questionNum}} of {{totalNumberOfQuestions}} </h4>
-                      <button class='btn btn-primary btn-default btn-block' ng-if="!readyToSubmit" ng-click="nextQuestion()"> Next Question</button>
-                      <button class='btn btn-primary btn-default btn-block' ng-if="readyToSubmit" ng-click="open()"> Submit </button>
-                      <button class='btn btn-primary btn-default btn-block' ng-click="showAll()"> Show All Questions </button>
-                      <button class='btn btn-primary btn-default btn-block' ng-click="saveAndContinue()"> save and exit </button>
-                  </div>
+                </div>
+                <div class='col-sm-3 col-xs-12'>
+                    <h4> Question {{currentQuestion.questionNum}} of {{totalNumberOfQuestions}} </h4>
+                    <button class='btn btn-primary btn-default btn-block' ng-if="!readyToSubmit" ng-click="nextQuestion()"> Next Question</button>
+                    <button class='btn btn-primary btn-default btn-block' ng-if="readyToSubmit" ng-click="open()"> Submit </button>
+                    <button class='btn btn-primary btn-default btn-block' ng-click="showAll()"> Show All Questions </button>
+                    <button class='btn btn-primary btn-default btn-block' ng-click="saveAndContinue()"> save and exit </button>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-      <script type="text/ng-template" id="myModalContent.html">
-          <div class="modal-header">
-              <h3 class="modal-title">You are about to submit</h3>
-          </div>
-          <div class="modal-body">
-              <p> click ok to send assessment answers, and cancel to edit your answers </p>
-          </div>
-          <div class="modal-footer">
-              <button class="btn btn-primary" type="button" ng-click="ok(finalScore)">OK</button>
-              <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-          </div>
-      </script>
-      <script type="text/ng-template" id="myModalSaveAs.html">
+    </div>
+    </div>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html">
         <div class="modal-header">
             <h3 class="modal-title">You are about to submit</h3>
         </div>
         <div class="modal-body">
             <p> click ok to send assessment answers, and cancel to edit your answers </p>
-        <div class="form-group">
-          <input ng-model='savedAssessment.name'>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="ok(finalScore)">OK</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         </div>
-      </script>
-    </div>
-    <div class='fr' ng-if='showAllQs'>
-      <div class='col-xs-8'>
-        <span ng-repeat='question in list.questions'> 
-          <span ng-if='question.value'> <a href='' ng-click='goToQuestion($index)' style='color:blue;' class='h1'> Q: {{question.questionNum}}  </a></span>
-          <span ng-if='!question.value'>  <a href='' ng-click='goToQuestion($index)' style='color:red;' class='h1'> Q: {{question.questionNum}} </a> </span>
-        </span>
+    </script>
+    <script type="text/ng-template" id="myModalSaveAs.html">
+      <div class="modal-header">
+          <h3 class="modal-title">You are about to submit</h3>
       </div>
+      <div class="modal-body">
+          <p> click ok to send assessment answers, and cancel to edit your answers </p>
+      <div class="form-group">
+        <input ng-model='savedAssessment.name'>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-primary" type="button" ng-click="ok(finalScore)">OK</button>
+          <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+    </script>
+  </div>
+  <div class='fr' ng-if='showAllQs'>
+    <div class='col-xs-8'>
+      <span ng-repeat='question in list.questions'> 
+        <span ng-if='question.value'> <a href='' ng-click='goToQuestion($index)' style='color:blue;' class='h1'> Q: {{question.questionNum}}  </a></span>
+        <span ng-if='!question.value'>  <a href='' ng-click='goToQuestion($index)' style='color:red;' class='h1'> Q: {{question.questionNum}} </a> </span>
+      </span>
     </div>
+  </div>
  </div>
  </div>
  </snap-content>
