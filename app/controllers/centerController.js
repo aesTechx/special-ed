@@ -5,6 +5,7 @@ jwt = require('jwt-simple');
 var Specialist = require('../models/specialist.js');
 var Student = require('../models/student.js');
 
+var updateOneSpecialist = Q.nbind(Specialist.findOneAndUpdate, Specialist);
 var findCenter = Q.nbind(Center.findOne, Center);
 var createCenter = Q.nbind(Center.create, Center);
 var findAllCenters = Q.nbind(Center.find, Center);

@@ -145,13 +145,24 @@ angular.module('SED.services', [])
       return resp.data;
     })
   }
+  var addTeacher=function(id){
+    return $http({
+      method:'POST',
+      url:'/api/student/addstudent',
+      data: id
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
   return {
     getCurrentStudent:getCurrentStudent,
     viewTeachers:viewTeachers,
     viewGames:viewGames,
     viewRecords:viewRecords,
     editProfile:editProfile,
-    getRecords:getRecords
+    getRecords:getRecords,
+    addTeacher:addTeacher
   };
 })
 .factory('Auth', function ($http, $location, $window) {

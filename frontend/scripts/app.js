@@ -17,7 +17,8 @@ var states = [
   { name: 'publicCenters', state: { url: '/publicCenters', templateUrl: 'views/guest/publicCenters.html', controller: 'centersCtr', data: {text: 'publicCenters', visible: true }} },
   { name: 'freeAssessment', state: { url: '/freeAssessment', templateUrl: 'views/guest/freeAssessment.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: true }} },
   { name: 'freePlay', state: { url: '/freePlay', templateUrl: 'views/guest/freeGame.html', controller: 'MainController', data: {text: 'Play Free Game', visible: true }} },
-  { name: 'landingPage', state: { url: '/landingPage', templateUrl: 'views/landingPage.html', controller: 'landingController', data: {text: 'landingPage', visible: true }} }
+  { name: 'landingPage', state: { url: '/landingPage', templateUrl: 'views/landingPage.html', controller: 'landingController', data: {text: 'landingPage', visible: true }} },
+  { name: 'Assign', state: { url: '/studentsTeachers', templateUrl: 'views/assignstudent.html', controller: 'AssignStudentTeacher', data: {text: 'Assign', visible: false }} }
 ];
 angular.module('SED', [
   'ngAnimate',

@@ -37,6 +37,7 @@ module.exports = function (app, express) {
   app.post('/api/students/signup', studentController.signup);
   app.post('/api/students/editProfile', studentController.editStudent);
   app.get('/api/students/requestPass/:email', studentController.requestNewPass);
+  app.post('/api/student/addstudent',studentController.addstudent);
 
   //game routes
   app.get('/api/games', gameController.getAll);
