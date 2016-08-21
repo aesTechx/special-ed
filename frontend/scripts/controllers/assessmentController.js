@@ -2,7 +2,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
 // controller for creating multi form in one view one after one
 .controller('assessmentController', function assessmentController ($scope, $location, $log, $uibModal, Record, Students) {
   $scope.counter = 0;
-  $scope.list = {}
+  $scope.list = {};
   var Qnum;
   var finalScore = { "Social": 0, "Preservation": 0, "SensoryDisturbance": 0, "CommunicationandDevelopment": 0, "AttentionandSafety": 0 };
   var socialQuestionsCategories = [{ Q:"withdrawn, aloof, avoids contact with others, or prefers to play alone rather than with peers", questionNum: 1, category: "Social", value: null}, { Q:"parallel play along side but not with peers", questionNum: 2, category: "Social", value: null}, { Q:"difficulty establishing friendships", questionNum: 3, category: "Social", value: null}, { Q:"limited social smile or eye contact (looks away, looks through people, looks at speaker’s mouth, needs to be prompted to make eye contact, or does not make eye contact when communicating)", questionNum: 4, category: "Social", value: null}, { Q:"limited sharing and showing (e.g., does not show a toy to an adult, seek recognition, or share an experience or accomplishment with others)", questionNum: 5, category: "Social", value: null}, { Q:"excessively rigid play with peers (dictates play according to his/her peculiar and repetitive interests and rules)", questionNum: 6, category: "Social", value: null}, { Q:"enjoys physical or sensory play with others (e.g., tickling, chasing) but has limited reciprocal social interaction (e.g., does not play social games or games involving turn taking)", questionNum: 7, category: "Social", value: null}, { Q:"self-absorbed or in own world (e.g., engages in self-stimulating behaviors, talks to self, or fantasizes excessively about things such as movies or cartoons)", questionNum: 8, category: "Social", value: null}, { Q:"oblivious to the presence of others or unresponsive to the social overtures of others", questionNum: 9, category: "Social", value: null}, { Q:"inappropriately talks to or hugs strangers", questionNum: 10, category: "Social", value: null}, { Q:"invades personal space (gets too close to or touches others)", questionNum: 11, category: "Social", value: null}, { Q:"no stranger/separation anxiety when young (not wary of strangers or upset if separated from parents)", questionNum: 12, category: "Social", value: null}, { Q:"socially inappropriate, insensitive comments or behaviors (picks nose in public, asks personal uestions)", questionNum: 13, category: "Social", value: null}, { Q:"does not appropriately initiate or sustain peer interaction though may interact well with adults", questionNum: 14, category: "Social", value: null}, { Q:"poor social reasoning (difficulty understanding social cues/comments, facial expressions, body language)", questionNum: 15, category: "Social", value: null}, { Q:"wants to have friends but does not know how to make friends", questionNum: 16, category: "Social", value: null}];
@@ -17,16 +17,15 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   $scope.animationsEnabled = true;
   
   $scope.open = function (size) {
-    var modalInstance = $uibModal.open({
+    var modalInstance = $uibModal.open( {
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
-      controller: function($scope, $uibModalInstance, Record) {
+      controller: function ($scope, $location, $uibModalInstance, Record) {
         $scope.ok = function () {
-          console.log($scope)
-          $uibModalInstance.close(finalScore);
+          $uibModalInstance.close (finalScore);
         };
         $scope.cancel = function () {
-          $uibModalInstance.dismiss('cancel');
+          $uibModalInstance.dismiss ('cancel');
         };
       },
       size: size,
@@ -39,13 +38,12 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     modalInstance.result.then(function (finalScore) {
       Record.submitForm(finalScore)
       .then(function(data) {
-        console.log(data);
+        $location.path('#/dashboard/profile')
       })
-      .catch(function(error) {
-        console.error(error);
-      });
+      .catch (function (error) {
+      } );
     }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
+      $log.info ('Modal dismissed at: ' + new Date ());
     });
   };
   $scope.saveAs = function (questions) {
@@ -93,10 +91,10 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   };
   $scope.nextQuestion = function () {
     if ($scope.currentQuestion.value) {
-      finalScore[$scope.currentQuestion.category] += JSON.parse($scope.currentQuestion.value);
+      finalScore[$scope.currentQuestion.category] += JSON.parse ($scope.currentQuestion.value);
     }
     Qnum++;
-    if (Qnum < 76){
+    if (Qnum < 76) {
       $scope.currentQuestion = $scope.list.questions[Qnum];
     } else if (Qnum === 76) {
       $scope.readyToSubmit = true;
@@ -107,8 +105,6 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
       savedAssessmentQs[$scope.list.questions[i].questionNum.toString()] = JSON.parse($scope.list.questions[i].value);
     }
     $scope.saveAs(savedAssessmentQs);
-    console.log($scope)
-    // Students.saveIncompleteAssessment($scope.list.questions);
   };
   $scope.goToQuestion = function (no) {
     Qnum = no;
@@ -122,5 +118,5 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     Qnum = 0;
   };
   $scope.result = [];
-  $scope.initialize();
+  $scope.initialize ();
 });

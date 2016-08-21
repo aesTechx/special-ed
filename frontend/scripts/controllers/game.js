@@ -1,70 +1,70 @@
-"use strict";
+'use strict';
 
-var dragDropSampleApp = angular.module("dragDropSampleApp", []);
+var dragDropSampleApp = angular.module('dragDropSampleApp', []);
 
-dragDropSampleApp.factory("draggableData", function () {
+dragDropSampleApp.factory('draggableData', function () {
   var data = [
     {
-      fruitname: "apple",
-      fruitimg: "apple.png"
+      fruitname: 'apple',
+      fruitimg: 'apple.png'
     }, {
-      fruitname: "banana",
-      fruitimg: "banana.png"
+      fruitname: 'banana',
+      fruitimg: 'banana.png'
     }, {
-      fruitname: "cherry",
-      fruitimg: "cherry.png"
+      fruitname: 'cherry',
+      fruitimg: 'cherry.png'
     }, {
-      fruitname: "greenapple",
-      fruitimg: "greenapple.png"
+      fruitname: 'greenapple',
+      fruitimg: 'greenapple.png'
     }, {
-      fruitname: "kiwi",
-      fruitimg: "kiwi.png"
+      fruitname: 'kiwi',
+      fruitimg: 'kiwi.png'
     }, {
-      fruitname: "peach",
-      fruitimg: "peach.png"
+      fruitname: 'peach',
+      fruitimg: 'peach.png'
     }, {
-      fruitname: "strawberry",
-      fruitimg: "strawberry.png"
+      fruitname: 'strawberry',
+      fruitimg: 'strawberry.png'
     }, {
-      fruitname: "watermelon",
-      fruitimg: "watermelon.png"
-    }
-  ];
-  return data;
-}) //
-
-dragDropSampleApp.factory("droppableData", function () {
-  var data = [
-    {
-      fruitname: "apple",
-      fruitimg: "apple_callout.png"
-    }, {
-      fruitname: "banana",
-      fruitimg: "banana_callout.png"
-    }, {
-      fruitname: "cherry",
-      fruitimg: "cherry_callout.png"
-    }, {
-      fruitname: "greenapple",
-      fruitimg: "greenapple_callout.png"
-    }, {
-      fruitname: "kiwi",
-      fruitimg: "kiwi_callout.png"
-    }, {
-      fruitname: "peach",
-      fruitimg: "peach_callout.png"
-    }, {
-      fruitname: "strawberry",
-      fruitimg: "strawberry_callout.png"
-    }, {
-      fruitname: "watermelon",
-      fruitimg: "watermelon_callout.png"
+      fruitname: 'watermelon',
+      fruitimg: 'watermelon.png'
     }
   ];
   return data;
 });
 
-dragDropSampleApp.controller("MainController", ["$scope", "draggableData", "droppableData","$timeout" ,function ($scope, draggableData, droppableData,$timeout) {
+dragDropSampleApp.factory('droppableData', function () {
+  var data = [
+    {
+      fruitname: 'apple',
+      fruitimg: 'apple_callout.png'
+    }, {
+      fruitname: 'banana',
+      fruitimg: 'banana_callout.png'
+    }, {
+      fruitname: 'cherry',
+      fruitimg: 'cherry_callout.png'
+    }, {
+      fruitname: 'greenapple',
+      fruitimg: 'greenapple_callout.png'
+    }, {
+      fruitname: 'kiwi',
+      fruitimg: 'kiwi_callout.png'
+    }, {
+      fruitname: 'peach',
+      fruitimg: 'peach_callout.png'
+    }, {
+      fruitname: 'strawberry',
+      fruitimg: 'strawberry_callout.png'
+    }, {
+      fruitname: 'watermelon',
+      fruitimg: 'watermelon_callout.png'
+    }
+  ];
+  return data;
+});
+
+dragDropSampleApp.controller('MainController', ['$scope', 'draggableData', 'droppableData', '$timeout', function ($scope, draggableData, droppableData, $timeout) {
   $scope.draggableArray = draggableData;
   $scope.droppableArray = droppableData;
   
@@ -74,12 +74,12 @@ dragDropSampleApp.controller("MainController", ["$scope", "draggableData", "drop
   
   $scope.draggableArrayLength = $scope.draggableArray.length;
   
-  $scope.doraemonStatus = "sleeping";
+  $scope.doraemonStatus = 'sleeping';
   $scope.setDoraemonStatus = function (value) {
     $scope.$apply(function () {
       $scope.doraemonStatus = value;
-    })
-  }
+    });
+  };
   
   $scope.score = 0;
   $scope.setScore = function (value) {
@@ -90,14 +90,14 @@ dragDropSampleApp.controller("MainController", ["$scope", "draggableData", "drop
   
   $scope.$watch(function () {
     return $scope.score;
-    }, function (newVal, oldVal) {
-      if (newVal !== oldVal) {
-        console.log("array length", $scope.draggableArrayLength, "score", newVal)
-        if (newVal == $scope.draggableArrayLength) {
-          console.log("game over");
-          $timeout(function(){
-            $scope.setDoraemonStatus("finish")
-          },2000)
+  }, function (newVal, oldVal) {
+    if (newVal !== oldVal) {
+        console.log('array length', $scope.draggableArrayLength, 'score', newVal)
+        if (newVal === $scope.draggableArrayLength) {
+          console.log ('game over');
+          $timeout (function () {
+            $scope.setDoraemonStatus('finish');
+          }, 2000)
         }
       }       
   });
@@ -106,23 +106,23 @@ dragDropSampleApp.controller("MainController", ["$scope", "draggableData", "drop
     console.log(value);
     angular.forEach($scope.draggableArray, function (arrvalue, arrindex) {
       var fruitname = arrvalue.fruitname;
-      if (fruitname == value) {
+      if (fruitname === value) {
         $scope.matchedIndex = arrindex;
       }
     });
     $scope.$apply(function () {
       $scope.draggableArray.splice($scope.matchedIndex, 1);
-    })
-  }
+    });
+  };
 }]);
 
-dragDropSampleApp.directive("dragme", ["$timeout", function ($timeout) {
+dragDropSampleApp.directive('dragme', ['$timeout', function ($timeout) {
   return {
-    restrict: "A",
+    restrict: 'A',
     replace: true,
     scope: {
-      myindex: "=",
-      setDoraemon: "&"
+      myindex: '=',
+      setDoraemon: '&'
     },
     link: function ($scope, $elem, $attr) {
       var backgroundImage = $attr.backgroundimage;
@@ -130,80 +130,80 @@ dragDropSampleApp.directive("dragme", ["$timeout", function ($timeout) {
       var myBgcolor = $attr.bgcolor;
       var myLeft = parseInt($attr.left);
       
-      $elem.addClass("draggable");
-      $elem.attr("data-answerimage", backgroundImage);
-      $elem.attr("data-answerdata", answerData);
-      $elem.attr("data-myindex", $scope.myindex);
+      $elem.addClass('draggable');
+      $elem.attr('data-answerimage', backgroundImage);
+      $elem.attr('data-answerdata', answerData);
+      $elem.attr('data-myindex', $scope.myindex);
       
       $elem.css({
         left: myLeft,
         float:'left',
-        backgroundImage: "url(img/" + backgroundImage + ")"
+        backgroundImage: 'url(img/' + backgroundImage + ')'
       });
       
       $elem.draggable({
-        helper: "clone",
+        helper: 'clone',
         revert: true,
-        appendTo: "body",
+        appendTo: 'body',
         zIndex: 100,
         drag: function (event, ui) {
-          console.log("drag")
-          $(ui.helper).css("border", "0px");
+          console.log ('drag');
+          $(ui.helper).css('border', '0px');
           $scope.setDoraemon({
-            value: "dragging"
-          })
+            value: 'dragging'
+          });
         }
-      })
+      });
     }
-  }
+  };
 }]); ///
 
-dragDropSampleApp.directive("dropme", ["$timeout", function ($timeout) {
+dragDropSampleApp.directive('dropme', ['$timeout', function ($timeout) {
   return {
-    restrict: "A",
+    restrict: 'A',
     replace: true,
     scope: {
-      setScore: "&",
-      removeArray: "&",
-      setDoraemon: "&"
+      setScore: '&',
+      removeArray: '&',
+      setDoraemon: '&'
     },
     link: function ($scope, $elem, $attr) {
-      console.log("helo");
+      console.log('helo');
       var backgroundImage = $attr.backgroundimage;
       var answerData = $attr.fruitname;
       
-      $elem.addClass("droppable");
-      $elem.attr("data-answerimage", backgroundImage);
-      $elem.attr("data-answerdata", answerData);
-      $elem.css({
-      backgroundImage: "url(img/" + backgroundImage + ")"
+      $elem.addClass('droppable');
+      $elem.attr('data-answerimage', backgroundImage);
+      $elem.attr('data-answerdata', answerData);
+      $elem.css( {
+        backgroundImage: 'url(img/' + backgroundImage + ')'
       });
       
       $elem.droppable({
-        accept: ".draggable",
+        accept: '.draggable',
         drop: function (event, ui) {
           var droppedElem = ui.draggable;
-          var myAnswer = $(this).attr("data-answerdata");
-          if ($(droppedElem).attr("data-answerdata") == myAnswer) { //if both match
-            $(this).css("background-image", "url(img/" + droppedElem.attr("backgroundimage") + ")");
-            $(this).attr("data-isanswered", "yes");
+          var myAnswer = $(this).attr('data-answerdata');
+          if ($(droppedElem).attr('data-answerdata') === myAnswer) { //if both match
+            $(this).css('background-image', 'url(img/' + droppedElem.attr('backgroundimage') + ')');
+            $(this).attr('data-isanswered', 'yes');
             $scope.setScore({
               value: 1
             });
             $scope.removeArray({
-              value: $(droppedElem).attr("data-answerdata")
+              value: $(droppedElem).attr('data-answerdata')
             });
             $scope.setDoraemon({
-              value: "happy"
-            })
+              value: 'happy'
+            });
           } else {
-          // $(this).effect("shake");
+          // $(this).effect('shake');
             $scope.setDoraemon({
-              value: "tease"
-            })
+              value: 'tease'
+            });
           }
         }
-      })
+      });
     }
-  }
-}]); ///
+  };
+}]);

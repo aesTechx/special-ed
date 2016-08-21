@@ -11,12 +11,12 @@ var RecordSchema = new mongoose.Schema({
   communicationAndDevelopment: Number,
   attentionAndSafety: Number,
   studentId: {
- 	type: mongoose.Schema.Types.ObjectId,
-  	ref: 'Student'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Student'
   }
 });
 
 
-var Record = mongoose.model('Record' , RecordSchema);
+var Record = mongoose.model ('Record', RecordSchema);
 
 module.exports = Record;
