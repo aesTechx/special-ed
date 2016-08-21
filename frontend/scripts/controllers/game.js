@@ -137,6 +137,7 @@ dragDropSampleApp.directive("dragme", ["$timeout", function ($timeout) {
       
       $elem.css({
         left: myLeft,
+        float:'left',
         backgroundImage: "url(img/" + backgroundImage + ")"
       });
       
