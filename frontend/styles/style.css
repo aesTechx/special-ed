@@ -280,22 +280,22 @@ snap-content .menutoggle .fa1 {
 
 .minion{
     width: 30%;
-    height: 300px;
+    min-height: 300px;
     float: left;
     
 }
 
 .circles{
-    width: 500px;
+    width: 70%px;
     height: 200px;
-    margin: 10px auto;
-    background-color: white;
+    margin: 5px 10%;
+    /*background-color: white;*/
 }
 
 
 .circle {
-    width: 100px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     float:left; 
     margin-left: 10px;
     margin-top: 40px; 
@@ -303,11 +303,14 @@ snap-content .menutoggle .fa1 {
     -o-transition: all .2s;
     -moz-transition: all .2s;
     -webkit-transition: all .2s;
+    text-align: center;
 }
 
+
+
 .circle img{
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -378,19 +381,30 @@ transition: all .2s;
     background-size: 100%;
 }
 
-}
-
 .item:nth-child(2) {
-    background-color: white;
-    background-image: url('../images/slide04.jpg');
+    background-color: red;
+    background-image: url('../images/slide02.jpg');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;   
+    background-size: 100%;
 }
 
 .item:nth-child(3) {
     background-color: white;
-    background-image: url('../images/slide03.jpg');
+    background-image: url('../images/slide05.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.item:nth-child(4) {
+    background-image: url('../images/slide04.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+.item:nth-child(5) {
+    background-image: url('../images/slide04.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
@@ -398,8 +412,22 @@ transition: all .2s;
 
 
 
-
-
 #mainContainer{
     overflow-y: scroll;
 }
+
+
+
+.glyphicon.glyphicon-home{
+    font-size: 0.8em;
+    color: #232c4b;
+}
+
+.glyphicon.glyphicon-home:hover{
+    color: #ffdf75;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+
+
+
