@@ -3,62 +3,44 @@ var App = angular.module('drag-and-drop', ['ngDragDrop']);
       App.controller('oneCtrl', function($scope, $timeout) {
         $scope.images = [{'thumb': '1.png'},{'thumb': '2.png'},{'thumb': '3.png'},{'thumb': '4.png'}]
         $scope.list1 = [];
-        $scope.right=["Fish","Rabbit","Lion","Dog"]
+        $scope.ch=false;
+        $scope.true1=false;
+        $scope.false1=false;
+        $scope.right=["Fish","Rabbit","Tiger","Dog"];
         angular.forEach($scope.images, function(val, key) {
           $scope.list1.push({});
         });
         $scope.list2 = [
           { 'title': 'Dog', 'drag': true },
-          { 'title': 'Lion', 'drag': true },
+          { 'title': 'Tiger', 'drag': true },
           { 'title': 'Rabbit', 'drag': true },
           { 'title': 'Fish', 'drag': true }
         ];
 
         $scope.startCallback = function(event, ui, title) {
-          //console.log('You started draggin: ' + title.title);
           $scope.draggedTitle = title.title;
         };
 
-        $scope.stopCallback = function(event, ui) {
-          //console.log('Why did you stop draggin me?');
-          //console.log($scope.list1[0].title);
-          // for(var i=0;i<$scope.list1.length;i++){
-          //   if($scope.list1[i].title!==undefined){
-          //    // console.log("not undefined")
-          //     if($scope.list1[i].title!==$scope.right[i]){
-          //       console.log($scope.list1[i].title);
-          //       //event.originalPosition={"left":0,"top":0};
-          //       //ui('option','revert',true);
-          //     }
-          //   }
-          // }
-         // console.log(ui);
-        };
-
-        $scope.dragCallback = function(event, ui) {
-          //console.log('hey, look I`m flying');
-        };
-
         $scope.dropCallback = function(event, ui) {
-          //console.log('hey, you dumped me :-(' , $scope.draggedTitle);
-         // $scope=
+            if($scope.list1[0].title!==undefined && $scope.list1[1].title!==undefined && $scope.list1[2].title!==undefined && $scope.list1[3].title!==undefined){
+              console.log($scope.list1);
+              $scope.ch=true;
+            }
         };
 
-        $scope.overCallback = function(event, ui) {
-          //console.log('Look, I`m over you');
-        };
-
-        $scope.outCallback = function(event, ui) {
-          //console.log('I`m not, hehe');
-        };
         $scope.check=function(){
-          // var Answer=true;
-          // for (var i=0;i<$scope.list1.length;i++){
-          //   if($scope.list1[i]!==$scope.right){
-          //     Answer=false;
-          //   }
-          // }
-          // console.log(Answer)
-          // return Answer;
+          $scope.ch=false;
+          var Answer=true;
+          for (var i=0;i<$scope.list1.length;i++){
+            if($scope.list1[i].title!==$scope.right[i]){
+              Answer=false;
+            }
+          }
+          if(Answer===true){
+            $scope.true1=true;
+          }else{
+            $scope.false1=true;
+          }
+          return Answer;
         }
       });

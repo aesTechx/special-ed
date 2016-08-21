@@ -16,8 +16,8 @@
                 <div class="thumbnail">
                   <div class="caption">
                     <div class='emage'><img ng-src="img/{{image.thumb}}"/></div>
-                    <p><div class="btn-droppable" data-drop="true" ng-model='list1' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback',onOver: 'overCallback', onOut: 'outCallback'}">
-                      <div class="btn btn-info btn-draggable" ng-show="list1[$index].title" data-drag="{{list1[$index].drag}}" data-jqyoui-options="{revert: 'true'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{list1[$index].title}}</div>
+                    <p><div class="btn-droppable"  data-drop="true" ng-model='list1' jqyoui-droppable="{index: {{$index}}, onDrop:'dropCallback'}">
+                      <div class="btn btn-draggable" data-drag="false" id="red" ng-show="list1[$index].title" data-drag="{{list1[$index].drag}}" data-jqyoui-options="{revert: 'true'}" ng-model="list1" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}">{{list1[$index].title}}</div>
                     </div></p>
                   </div>
                 </div>
@@ -29,9 +29,15 @@
       <div class="">
         <div class="container form-inline" style="text-align: center;">
           <div class=" btn-droppable" ng-repeat="item in list2" data-drop="true" ng-model='list2' jqyoui-droppable="{index: {{$index}}}">
-            <div class="btn  btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list2" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)', onStop: 'stopCallback', onDrag: 'dragCallback'}" ng-hide="!item.title">{{item.title}}</div>
+            <div class="btn btn-draggable" data-drag="{{item.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list2" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true, onStart:'startCallback(item, $index)'}" ng-hide="!item.title">{{item.title}}</div>
           </div>
         </div>
       </div>
-      <!-- <button class="btn" ng-click="check()">Check</button> -->
+        <button ng-if="ch"  class="btn btn-success center-block"  ng-click="check()">Check</button>
+      <div ng-if="false1" class="alert alert-warning">
+        <strong>Wrong!</strong> Answer Play Again.
+      </div>
+      <div ng-if="true1" class="alert alert-success">
+        <strong>congratulations!</strong> Correct Answer.
+      </div>
     </div>

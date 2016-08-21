@@ -3,7 +3,7 @@ var states = [
   { name: 'login', state: { url: '/login', parent: 'base', templateUrl: 'views/login.html', controller: 'LoginCtrl', data: {text: 'Login', visible: false } } },
   { name: 'dashboard', state: { url: '/dashboard', parent: 'base', templateUrl: 'views/dashboard.html', controller: 'DashboardCtrl', data: {text: 'Dashboard', visible: false } } },
   { name: 'overview', state: { url: '/overview', parent: 'dashboard', templateUrl: 'views/dashboard/overview.html', controller: 'OverviewCtrl', data: {text: 'Overview', visible: true } } },
-  { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html', data: {text: 'Reports', visible: true } } },
+  { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html',controller:'report' , data: {text: 'Reports', visible: true } } },
   { name: 'logout', state: { url: '/logout', templateUrl: 'views/logout.html', controller: 'LogoutCtrl', data: {text: 'Logout', visible: true }} },
   { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html', controller: 'SignupCtrl', data: {text: 'SignUp', visible: false }} },
   { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html', controller: 'MainController', data: {text: 'Play Game', visible: true }} },
@@ -18,9 +18,11 @@ var states = [
   { name: 'freeAssessment', state: { url: '/freeAssessment', templateUrl: 'views/guest/freeAssessment.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: true }} },
   { name: 'freePlay', state: { url: '/freePlay', templateUrl: 'views/guest/freeGame.html', controller: 'MainController', data: {text: 'Play Free Game', visible: true }} },
   { name: 'landingPage', state: { url: '/landingPage', templateUrl: 'views/landingPage.html', controller: 'landingController', data: {text: 'landingPage', visible: true }} },
-  { name: 'Assign', state: { url: '/studentsTeachers', templateUrl: 'views/assignstudent.html', controller: 'AssignStudentTeacher', data: {text: 'Assign', visible: false }} }
+  { name: 'YOUTUBE', state: { url: '/YOUTUBE', templateUrl: 'views/dashboard/youtubeAPI.html', controller: 'youtube', data: {text: 'Youtube', visible: true }} },
 ];
 angular.module('SED', [
+  'SED.youtube',
+  'SED.report',
   'ngAnimate',
   'ngTouch',
   'ngResource',
