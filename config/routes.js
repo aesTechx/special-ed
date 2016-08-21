@@ -53,4 +53,6 @@ module.exports = function (app, express) {
   app.post('/api/forms/submitForm', recordController.addRecord);
 
   app.get('/api/assessments/cars/new', carsAssessmentController.getNewAssessment);
-};
+  app.post('/api/assessments/cars/save', carsAssessmentController.saveAssessment);
+  app.get('/api/assessments/cars/assessments', carsAssessmentController.getAssessments);
+};  

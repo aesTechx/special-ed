@@ -5,12 +5,9 @@ var Schema = mongoose.Schema;
 
 
 var CarsAssessmentSchema = new mongoose.Schema({
-	Name: String,
-	Questions: {},
-	studentId: { 
-  		type: Schema.Types.ObjectId,
-  		ref: 'Student'
-  	}
+	name: String,
+	questions: {},
+	studentId: String
 });
 
 
