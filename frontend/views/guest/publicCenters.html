@@ -1,5 +1,21 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize"></script><script src="{{gmapAPI}}"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize">
+<script>
+var directionsDisplay,
+    directionsService,
+    map;
+
+function initialize() {
+  var directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+  var mapOptions = { zoom:7, mapTypeId: google.maps.MapTypeId.ROADMAP, center: Amman }
+  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  directionsDisplay.setMap(map);
+}
+
+</script> -->
+<script src=""https://maps.googleapis.com/maps/api/js?key=s{{gmapAPI}}&libraries=geometry"></script>
 <div>
     <div class="fr">
       <div style="height: 70px;">
