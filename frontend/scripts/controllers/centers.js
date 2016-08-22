@@ -5,7 +5,7 @@ angular.module('SED.centers', [])
     ApiKeys.getGmapApi()
     .then(function (resp) {
       console.log(resp)
-      $scope.gmapAPI = resp;
+      $scope.gmapAPI = "https://maps.googleapis.com/maps/api/js?key=" + resp + "&libraries=geometry";
     })
 		Centers.getAllCenters()
 			.then(function(resp){
