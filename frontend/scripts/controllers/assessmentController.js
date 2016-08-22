@@ -4,7 +4,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   $scope.counter = 0;
   $scope.list = {};
   var Qnum;
-  var finalScore = { "social": 0, "preservation": 0, "sensoryDisturbance": 0, "communicationAndDevelopment": 0, "attentionAndSafety": 0 };
+git checkout master  var finalScore = { "social": 0, "preservation": 0, "sensoryDisturbance": 0, "communicationAndDevelopment": 0, "attentionAndSafety": 0 };
   var savedAssessmentQs = {};
   $scope.showSavedAs = false;
   $scope.totalNumberOfQuestions = 76;
@@ -143,7 +143,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     $scope.readyToSubmit = false;
     $scope.readyToStart = true;
     Assessment.getNew()
-    .then(function (data) {
+    .then(function (data) {git checkout master
       $scope.list.questions = data;
     })
     Qnum = 0;

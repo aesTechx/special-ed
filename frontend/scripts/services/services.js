@@ -29,7 +29,7 @@ angular.module('SED.services', [])
   getImgurApi = function () {
     return $http ({
       method:'GET',
-      url: '/api/imgurKey',
+      url: '/api/imgurKey'
     })
     .then(function (resp) {
       return resp.data;
@@ -38,9 +38,10 @@ angular.module('SED.services', [])
   getGmapApi = function () {
     return $http ({
       method:'GET',
-      url: '/api/gmapKey',
+      url: '/api/gmapKey'
     })
     .then(function (resp) {
+      console.log(resp)
       return resp.data;
     })
   }
