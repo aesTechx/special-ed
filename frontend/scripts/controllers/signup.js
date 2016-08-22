@@ -35,32 +35,60 @@ angular.module('SED.Signup', [])
       $scope.centerSelected = true;
     }
   };
-  $scope.changeProfilePic = function() {
-    var uploadToIMGUR = window.uploadToIMGUR; 
+$scope.changeProfilePic = function() {
+    var uploadToIMGUR = window.uploadToIMGUR;
     var fileBt = $('<input>').attr('type', 'file');
+    console.log(fileBt)
     fileBt.on('change', function () {
+      console.log("change")
       var file = fileBt[0].files[0];
+      console.log("file",file)
       var reader = new FileReader();
       reader.addEventListener('load', function () {
         var imgData = reader.result.split(',');
-        ApiKeys.getImgurApi()
+        // sending the decoded image to IMGUR to get a link for that image
+      ApiKeys.getImgurApi()
         .then(function (resp) {
-          console.log(resp)
-          $scope.imgurApi = resp;
-          var IMGUR_CLIENT_ID = $scope.imgurApi;
-          uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result) {
-            $scope.user.profilePicture = result.link;
-            console.log($scope.user.profilePicture)
-            $scope.changedFlag = true;
-          });
-        })
-        // sending the decoded image to IMGUR to get a link for that image      
+          var IMGUR_CLIENT_ID = resp
+        uploadToIMGUR(IMGUR_CLIENT_ID, imgData[1], function(result) {
+          console.log(result)
+          $scope.user.profilePicture = result.link;
+          console.log($scope.user.profilePicture);
+          $scope.changedFlag = true;
+        });
+      })
       });
       // using the reader to decode the image to base64
       reader.readAsDataURL(file);
     });
     fileBt.click();
   };
+  // $scope.changeProfilePic = function() {
+  //   var uploadToIMGUR = window.uploadToIMGUR; 
+  //   var fileBt = $('<input>').attr('type', 'file');
+  //   fileBt.on('change', function () {
+  //     var file = fileBt[0].files[0];
+  //     var reader = new FileReader();
+  //     reader.addEventListener('load', function () {
+  //       var imgData = reader.result.split(',');
+  //       // ApiKeys.getImgurApi()
+  //       // .then(function (resp) {
+  //         // console.log(resp)
+  //         // $scope.imgurApi = resp;
+  //         var IMGUR_CLIENT_ID = '10b47f91dd466c7';
+  //         uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result) {
+  //           $scope.user.profilePicture = result.link;
+  //           console.log($scope.user.profilePicture)
+  //           $scope.changedFlag = true;
+  //         });
+  //       // })
+  //       // sending the decoded image to IMGUR to get a link for that image      
+  //     });
+  //     // using the reader to decode the image to base64
+  //     reader.readAsDataURL(file);
+  //   });
+  //   fileBt.click();
+  // };
   $scope.submit = function() {
     var option = $scope.option;
     $scope.user.center = $scope.center;
