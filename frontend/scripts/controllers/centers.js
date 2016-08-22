@@ -1,4 +1,11 @@
 angular.module('SED.centers', [])
+  .config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'https://maps.googleapis.com/maps/api/**']);
+  })
 	.controller('centersCtr', function centersCtr ($scope, Centers, ApiKeys) {
     $scope.data = {};
     $scope.markers = [];
