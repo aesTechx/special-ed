@@ -17,7 +17,7 @@ var states = [
   { name: 'freeAssessment', state: { url: '/freeAssessment', templateUrl: 'views/guest/freeAssessment.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: false }} },
   { name: 'freePlay', state: { url: '/freePlay', templateUrl: 'views/guest/freeGame.html', controller: 'MainController', data: {text: 'Play Free Game', visible: false }} },
   { name: 'landingPage', state: { url: '/landingPage', templateUrl: 'views/landingPage.html', controller: 'landingController', data: {text: 'landingPage', visible: false }} },
-  { name: 'logout', state: { url: '/logout', data: {text: 'Logout', visible: false }} }
+  { name: 'logout', state: { url: '/logout', data: {text: 'Logout', visible: false }} },
   { name: 'Memory', state: { url: '/Memory', parent: 'dashboard', templateUrl: 'views/dashboard/memoryGame.html', controller: 'GameCtrl', data: {text: 'Memory Game', visible: true }} },
 ];
 angular.module('SED', [
