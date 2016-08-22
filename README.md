@@ -98,3 +98,6 @@ Travis
 
 ## Contributing
 To contribute to this project please visit our [Contributing.md] (https://github.com/aesTechx/special-ed/blob/master/CONTRIBUTING.md)
+
+## Deploied Link:
+http://special-ed.herokuapp.com/#/dashboard/game
