@@ -143,7 +143,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     $scope.readyToSubmit = false;
     $scope.readyToStart = true;
     Assessment.getNew()
-    .then(function (data) {git checkout master
+    .then(function (data) {
       $scope.list.questions = data;
     })
     Qnum = 0;
