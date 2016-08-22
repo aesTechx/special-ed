@@ -1,5 +1,5 @@
 angular.module('SED.centers', [])
-	.controller('centersCtr', function centersCtr ($scope, Centers) {
+	.controller('centersCtr', function centersCtr ($scope, Centers, ApiKeys) {
     $scope.data = {};
     $scope.markers = [];
     ApiKeys.getGmapApi()

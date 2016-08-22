@@ -1,6 +1,6 @@
 'use strict';
 angular.module('SED.Signup', [])
-.controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, Auth, Centers) {
+.controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, ApiKeys, Auth, Centers) {
   $scope.data={};
   $scope.option1 = {};
   $scope.option1.center = 'Select Center';
