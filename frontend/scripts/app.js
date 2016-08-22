@@ -13,16 +13,15 @@ var states = [
   { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'teacherCtrl', data: {text: 'teacherProfile', visible: false }} },
   { name: 'studentProfile', state: { url: '/studentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'studentProfile', visible: false }} },
   { name: 'centerProfile', state: { url: '/centerProfile', parent: 'dashboard', templateUrl: 'views/dashboard/centerProfile.html', controller: 'centerCtrl', data: {text: 'centerProfile', visible: false }} },
-  { name: 'YOUTUBE', state: { url: '/YOUTUBE', templateUrl: 'views/dashboard/youtubeAPI.html', controller: 'youtube', data: {text: 'Youtube', visible: false }} },
   { name: 'publicCenters', state: { url: '/publicCenters', templateUrl: 'views/guest/publicCenters.html', controller: 'centersCtr', data: {text: 'publicCenters', visible: false }} },
   { name: 'freeAssessment', state: { url: '/freeAssessment', templateUrl: 'views/guest/freeAssessment.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: false }} },
   { name: 'freePlay', state: { url: '/freePlay', templateUrl: 'views/guest/freeGame.html', controller: 'MainController', data: {text: 'Play Free Game', visible: false }} },
   { name: 'landingPage', state: { url: '/landingPage', templateUrl: 'views/landingPage.html', controller: 'landingController', data: {text: 'landingPage', visible: false }} },
-  { name: 'Assign', state: { url: '/studentsTeachers', templateUrl: 'views/assignstudent.html', controller: 'AssignStudentTeacher', data: {text: 'Assign', visible: false }} },
   { name: 'logout', state: { url: '/logout', data: {text: 'Logout', visible: false }} }
+  { name: 'Memory', state: { url: '/Memory', parent: 'dashboard', templateUrl: 'views/dashboard/memoryGame.html', controller: 'GameCtrl', data: {text: 'Memory Game', visible: true }} },
 ];
 angular.module('SED', [
-  'SED.youtube',
+  'memoryGameApp',
   'SED.report',
   'ngAnimate',
   'ngTouch',
