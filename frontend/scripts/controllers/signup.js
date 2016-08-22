@@ -42,15 +42,15 @@ angular.module('SED.Signup', [])
       var file = fileBt[0].files[0];
       var reader = new FileReader();
       reader.addEventListener('load', function () {
-        var imgData = reader.result.slice(23);
+        var imgData = reader.result.split(',');
         ApiKeys.getImgurApi()
         .then(function (resp) {
           console.log(resp)
           $scope.imgurApi = resp;
           var IMGUR_CLIENT_ID = $scope.imgurApi;
           uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result) {
-            $scope.profilePicture = result.link;
-            console.log($scope.profilePicture)
+            $scope.user.profilePicture = result.link;
+            console.log($scope.user.profilePicture)
             $scope.changedFlag = true;
           });
         })
