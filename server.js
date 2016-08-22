@@ -3,9 +3,6 @@ var app 		= express();
 var server 		= require('http').createServer(app);
 var io 			= require('socket.io')(server);
 var mongoose = require('mongoose');
-// var models 		= require('./app/models');
-var imgur_api = process.env.imgur_key;
-var gmap_api = process.ENV.googlemap;
 var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/SpecialEd';
 mongoose.connect(mongoURI);
 db = mongoose.connection;
@@ -42,6 +39,4 @@ app.on('exit', function() {
 });
 
 module.exports = app;
-module.exports.imgur_key = imgur_key;
-module.exports.gmap_api = gmap_api;
 
