@@ -5,6 +5,12 @@ angular.module('SED.Signup', [])
   $scope.option1 = {};
   $scope.option1.center = 'Select Center';
   $scope.option = 'Select Type of User';
+
+  ApiKeys.getImgurApi()
+  .then(function (resp) {
+    console.log(resp)
+    $scope.imgurApi = resp;
+  })
   Centers.getAllCenters()
   .then(function(centers){
     console.log(centers);
@@ -37,7 +43,7 @@ angular.module('SED.Signup', [])
   };
   $scope.changeProfilePic = function() {
     var uploadToIMGUR = window.uploadToIMGUR;
-    var IMGUR_CLIENT_ID = window.IMGUR_CLIENT_ID;
+    var IMGUR_CLIENT_ID = $scope.imgurApi;
     
     var fileBt = $('<input>').attr('type', 'file');
     fileBt.on('change', function () {

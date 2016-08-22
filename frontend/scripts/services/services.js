@@ -25,6 +25,30 @@ angular.module('SED.services', [])
     getAll:getAll
   };
 })
+.factory('ApiKeys', function ($http) {
+  getImgurApi = function () {
+    return $http ({
+      method:'GET',
+      url: '/api/imgurKey',
+    })
+    .then(function (resp) {
+      return resp.data;
+    })
+  }
+  getGmapApi = function () {
+    return $http ({
+      method:'GET',
+      url: '/api/gmapKey',
+    })
+    .then(function (resp) {
+      return resp.data;
+    })
+  }
+  return {
+    getImgurApi: getImgurApi,
+    getGmapApi: getGmapApi
+  }
+})
 .factory('Assessment', function ($http) {
   var getNew = function () {
     return $http({

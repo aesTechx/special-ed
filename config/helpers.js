@@ -16,5 +16,7 @@ module.exports = {
     } catch (error) {
       return next(error);
     }
-  }
+  },
+  imgur_api: process.env.imgur_key,
+  gmap_api: process.ENV.googlemap
 };

@@ -55,4 +55,11 @@ module.exports = function (app, express) {
   app.get('/api/assessments/cars/new', carsAssessmentController.getNewAssessment);
   app.post('/api/assessments/cars/save', carsAssessmentController.saveAssessment);
   app.get('/api/assessments/cars/assessments', carsAssessmentController.getAssessments);
+
+  app.get('/api/imgurKey', function (req, res) {
+    res.json(helpers.imgur_api);
+  });
+  app.get('/api/gmapKey', function (req, res) {
+    res.json(helpers.gmap_api);
+  })
 };  
