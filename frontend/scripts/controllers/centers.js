@@ -14,9 +14,9 @@ angular.module('SED.centers', [])
       $scope.data.centers = resp;
       $scope.data.lat= 0;
       $scope.data.lng=0;
-      for (var i = 0; i < $scope.data.centers.length; i++) {
-        $scope.data.centers[i].image = $scope.data.centers[i].profilePicture || "../../images/school-minions.jpg";
-      }
+      // for (var i = 0; i < $scope.data.centers.length; i++) {
+      //   $scope.data.centers[i].image = $scope.data.centers[i].profilePicture || "../../images/school-minions.jpg";
+      // }
       //create a marker function will be called for each center to dispalay center info on map
       $scope.createMarker = function (center) {
         var marker = new google.maps.Marker ( {
