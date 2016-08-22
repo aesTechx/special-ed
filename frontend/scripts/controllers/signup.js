@@ -1,18 +1,13 @@
 'use strict';
 angular.module('SED.Signup', [])
-.controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, ApiKeys, Auth, Centers) {
+.controller('SignupCtrl', function SignupCtrl ($scope, $location, $window, Auth, Centers, ApiKeys) {
   $scope.data={};
   $scope.option1 = {};
   $scope.option1.center = 'Select Center';
   $scope.option = 'Select Type of User';
-
-  ApiKeys.getImgurApi()
-  .then(function (resp) {
-    console.log(resp)
-    $scope.imgurApi = resp;
-  })
   Centers.getAllCenters()
   .then(function(centers){
+    console.log(centers);
     $scope.data.centers=centers;
   });
   $scope.user = {};
@@ -41,26 +36,24 @@ angular.module('SED.Signup', [])
     }
   };
   $scope.changeProfilePic = function() {
-    console.log("changeProfilePic");
-    var uploadToIMGUR = window.uploadToIMGUR;
-    var IMGUR_CLIENT_ID = $scope.imgurApi;
-
+    var uploadToIMGUR = window.uploadToIMGUR; 
     var fileBt = $('<input>').attr('type', 'file');
-    console.log(fileBt)
     fileBt.on('change', function () {
-      console.log("change")
       var file = fileBt[0].files[0];
-      console.log("file",file)
       var reader = new FileReader();
       reader.addEventListener('load', function () {
-        var imgData = reader.result.split(',');
-        // sending the decoded image to IMGUR to get a link for that image
-        uploadToIMGUR(IMGUR_CLIENT_ID, imgData[1], function(result) {
-          console.log(result)
-          $scope.user.profilePicture = result.link;
-          console.log($scope.user.profilePicture);
-          $scope.changedFlag = true;
-        });
+        var imgData = reader.result.slice(23);
+        ApiKeys.getImgurApi()
+        .then(function (resp) {
+          console.log(resp)
+          $scope.imgurApi = resp;
+          var IMGUR_CLIENT_ID = $scope.imgurApi;
+          uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result) {
+            $scope.profilePicture = result.link;
+            $scope.changedFlag = true;
+          });
+        })
+        // sending the decoded image to IMGUR to get a link for that image      
       });
       // using the reader to decode the image to base64
       reader.readAsDataURL(file);
@@ -68,8 +61,6 @@ angular.module('SED.Signup', [])
     fileBt.click();
   };
   $scope.submit = function() {
-    //console.log($scope.user);
-    console.log($scope.user.profilePicture)
     var option = $scope.option;
     $scope.user.center = $scope.center;
     var sendRequest = function () {

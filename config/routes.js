@@ -60,7 +60,7 @@ module.exports = function (app, express) {
   app.get('/api/imgurKey', function (req, res) {
     res.json(helpers.imgur_api);
   });
-  app.get('/api/gmapKey', function (req, res) {
-    res.json(helpers.gmap_api);
-  })
+  // app.get('/api/gmapKey', function (req, res) {
+  //   res.json(helpers.gmap_api);
+  // })
 };  
