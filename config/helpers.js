@@ -18,5 +18,5 @@ module.exports = {
     }
   },
   imgur_api: process.env.imgur_key,
-  gmap_api: process.ENV.googlemap
+  gmap_api: process.env.googlemap
 };
