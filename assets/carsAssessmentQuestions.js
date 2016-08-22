@@ -58,7 +58,7 @@ module.exports.carsQuestions = [{ Q:"withdrawn, aloof, avoids contact with other
 { Q: "screeches or makes other odd noises (e.g., growls, hums, etc.)", questionNum: 58, category: "Communication and Development", value: null }, 
 { Q: "unusual repetitive vocalizations and sounds", questionNum: 59, category: "Communication and Development", value: null }, 
 { Q: "idiosyncratic jargon as if talking in own language", questionNum: 60, category: "Communication and Development", value: null }, 
-{ Q: "echolalia (inappropriately mimics what others say, such as repeating instead of answering a COMMUNICATIONuestion)", questionNum: 61, category: "Communication and Development", value: null }, 
+{ Q: "echolalia (inappropriately mimics what others say, such as repeating instead of answering a Question)", questionNum: 61, category: "Communication and Development", value: null }, 
 { Q: "sporadic speech (says a word or phrase once and rarely or never says it again)", questionNum: 62, category: "Communication and Development", value: null }, 
 { Q: "excessively recites from movies, cartoons, commercials, etc.", questionNum: 63, category: "Communication and Development", value: null }, 
 { Q: "uses rote or memorized phrases that are excessive, out of context, or not relevant ", questionNum: 64, category: "Communication and Development", value: null }, 

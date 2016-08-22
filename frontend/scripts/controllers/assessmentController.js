@@ -1,6 +1,6 @@
 angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
 // controller for creating multi form in one view one after one
-.controller('assessmentController', function assessmentController ($scope, $location, $log, $uibModal, Record, Students) {
+.controller('assessmentController', function assessmentController ($scope, $location, $log, $uibModal, Assessment, Record, Students) {
   $scope.counter = 0;
   $scope.list = {};
   var Qnum;
@@ -11,18 +11,22 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   var communicationAndDevelopmentCategories = [{ Q: "Language regression or slowing at approximately 1 to 2 years of age (e.g., speaking a few words at one year but then losing speech or normal early language development and later language is delayed)", questionNum: 52, category: "Communication and Development", value: null }, { Q: "Visual-motor skills (e.g., assembling puzzles, building with Legos, operating the VCR) significantly higher than language skills during the preschool years or walking at a much earlier age than talking", questionNum: 53, category: "Communication and Development", value: null }, { Q: "absent or limited communicative speech but gestures to communicate (e.g., pulls an adult by the hand and leads to what wants, hands an object to an adult for assistance, brings a cup to an adult for a drink)", questionNum: 54, category: "Communication and Development", value: null }, { Q: "communicates verbally with others only when stressed or needing something", questionNum: 55, category: "Communication and Development", value: null }, { Q: "difficulty with reciprocal conversational speech (initiating and sustaining conversations, listening and responding to what others say), talks at people, or one-sided conversations on topics of interest to self", questionNum: 56, category: "Communication and Development", value: null }, { Q: "unusual voice quality or modulation (e.g., high pitch, sing song voice, lack of intonation, etc.)", questionNum: 57, category: "Communication and Development", value: null }, { Q: "screeches or makes other odd noises (e.g., growls, hums, etc.)", questionNum: 58, category: "Communication and Development", value: null }, { Q: "unusual repetitive vocalizations and sounds", questionNum: 59, category: "Communication and Development", value: null }, { Q: "idiosyncratic jargon as if talking in own language", questionNum: 60, category: "Communication and Development", value: null }, { Q: "echolalia (inappropriately mimics what others say, such as repeating instead of answering a COMMUNICATIONuestion)", questionNum: 61, category: "Communication and Development", value: null }, { Q: "sporadic speech (says a word or phrase once and rarely or never says it again)", questionNum: 62, category: "Communication and Development", value: null }, { Q: "excessively recites from movies, cartoons, commercials, etc.", questionNum: 63, category: "Communication and Development", value: null }, { Q: "uses rote or memorized phrases that are excessive, out of context, or not relevant ", questionNum: 64, category: "Communication and Development", value: null }, { Q: "makes pronoun substitutions (e.g., says “you” when meaning “I”)", questionNum: 65, category: "Communication and Development", value: null }, { Q: "excessively repetitive speech and COMMUNICATIONuestions", questionNum: 66, category: "Communication and Development", value: null }, { Q: "idiosyncratic thoughts and speech (makes up words, nonsensical speech, uniCOMMUNICATIONue views and perceptions)", questionNum: 67, category: "Communication and Development", value: null }, { Q: "exceptional rote memory (e.g., at an unusually young age, identifies numbers, letters, shapes, logos, and colors; sings or hums tunes; memorizes car routes; counts; recites the alphabet; reads; spells; etc.)", questionNum: 68, category: "Communication and Development", value: null }, { Q: "phenomenal vocabulary or ability to memorize movies, books, or factual information", questionNum: 69, category: "Communication and Development", value: null }, { Q: "remarkable ability to mimic movie or cartoon characters", questionNum: 70, category: "Communication and Development", value: null }, { Q: "outstanding visual-mechanical skills (e.g., at an unusually young age, assembles puzzles, matches shapes, operates a computer or VCR, figures out how things work, complex constructions with Legos)", questionNum: 71, category: "Communication and Development", value: null }, { Q: "remarkable artistic or musical talent", questionNum: 72, category: "Communication and Development", value: null }, { Q: "extremely well-developed gross motor skills with delayed development in other areas (in contrast to highfunctioning children with autism who often have writing or coordination problems)", questionNum: 73, category: "Communication and Development", value: null }, { Q: "Overreactivity, irritability, low frustration tolerance, agitation, tantrums, meltdowns, explosiveness, aggression, or self-injurious behavior (distressed by minor events or occurrences most children can tolerate, such as intrusions, activity interruptions, proximity, confinement, performance demands, writing tasks, or when things are not the way the child thinks they should be)", questionNum: 74, category: "Communication and Development", value: null }];
   var attentionAndSafetyCategories = [{ Q: "Selective attention, ability to hyperfocus on activities, objects, or topics of interest to self (e.g., lines up toys, spins wheels, watches the same movie, assembles puzzles, builds with Legos, or draws pictures for long periods of time), but is inattentive, impulsive, and fidgety at other times", questionNum: 75, category: "Attention and Safety", value: null }, { Q: "Limited safety awareness, fearless, or oblivious to danger (e.g., unsafe climbing, wanders about house at night, runs off by self, goes into traffic or water, walks off with strangers)", questionNum: 76, category: "Attention and Safety", value: null }];
   var savedAssessmentQs = {};
-  
+  $scope.showSavedAs = false;
   $scope.totalNumberOfQuestions = 76;
   $scope.showAllQs = false;
   $scope.animationsEnabled = true;
-  
+  $scope.data = {}
   $scope.open = function (size) {
     var modalInstance = $uibModal.open( {
       animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
       controller: function ($scope, $location, $uibModalInstance, Record) {
         $scope.ok = function () {
+<<<<<<< ed30646f2a47216ee375c8e4499eb03248398f30
           $uibModalInstance.close (finalScore);
+=======
+          $uibModalInstance.close(finalScore);
+>>>>>>> Restyling
         };
         $scope.cancel = function () {
           $uibModalInstance.dismiss ('cancel');
@@ -53,7 +57,6 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
       controller: function($scope, $uibModalInstance, $location) {
         $scope.savedAssessment = {};
         $scope.ok = function () {
-          console.log($scope.savedAssessment.name, 2)
           $scope.savedAssessment.questions = savedAssessmentQs;
           $uibModalInstance.close($scope.savedAssessment);
         };
@@ -63,21 +66,19 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
       },
       resolve: {
         savedAssessment: function () {
-          console.log($scope.savedAssessment, 1)
           return $scope.savedAssessment;
         }
       }
     });
     modalInstance.result.then(function (savedAssessment) {
-      console.log(savedAssessment, 3)
       $location.path('/dashboard/overview')
-      // Record.submitForm(finalScore)
-      // .then(function(data) {
-      //   console.log(data);
-      // })
-      // .catch(function(error) {
-      //   console.error(error);
-      // });
+      Assessment.save(savedAssessment)
+      .then(function (resp) {
+        $location.path('/dashboard/assessment')
+      })
+      .catch(function (err) {
+        alert('error occured, please contact admin')
+      })
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
     });
@@ -97,9 +98,29 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     if (Qnum < 76) {
       $scope.currentQuestion = $scope.list.questions[Qnum];
     } else if (Qnum === 76) {
-      $scope.readyToSubmit = true;
+      var j = 0;
+      for (var i = 0; i < $scope.list.questions.length; i++) {
+        if ($scope.list.questions.value) {
+          j++;
+        }
+      }
+      if (j === 76) {
+        $scope.readyToSubmit = true;
+      } else {
+        alert('Please complete all questions before you can submit')
+      }
     }
   };
+  $scope.showSaved = function () {
+    Assessment.getAssessments()
+    .then(function (resp) {
+      $scope.data.savedAssessments = resp
+      $scope.showSavedAs = true;
+    })
+    .catch(function (error) {
+      alert('error occured, please contact admin')
+    })
+  }
   $scope.saveAndContinue = function () {
     for (var i = 0; i < $scope.list.questions.length; i++) {
       savedAssessmentQs[$scope.list.questions[i].questionNum.toString()] = JSON.parse($scope.list.questions[i].value);
@@ -111,10 +132,27 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     $scope.showAllQs = !$scope.showAllQs;
     $scope.currentQuestion = $scope.list.questions[no];
   };
+  $scope.showSelectedAssessment = function (assessment) {
+    var j = 0;
+    for (var i in assessment.questions){
+      $scope.list.questions[j].value = assessment.questions[i]
+      j++;
+    }
+    $scope.showSavedAs = false;
+    $scope.start();
+  };
+  $scope.backHome = function () {
+    $scope.readyToStart = true;
+    $scope.showAllQs = false;
+    $scope.showSavedAs = false;
+  }
   $scope.initialize = function () {
     $scope.readyToSubmit = false;
     $scope.readyToStart = true;
-    $scope.list.questions = socialQuestionsCategories.concat(preservationCategories, somatoSensoryDisturbanceCategories, communicationAndDevelopmentCategories, attentionAndSafetyCategories);
+    Assessment.getNew()
+    .then(function (data) {
+      $scope.list.questions = data;
+    })
     Qnum = 0;
   };
   $scope.result = [];

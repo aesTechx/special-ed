@@ -54,7 +54,7 @@ body{
     margin-bottom: 20px;
 }
 
-.thumbnail { height: 280px !important; }
+.thumbnail { height: 280px;}
 .btn-droppable { width: 180px; height: 30px; padding-left: 4px; }
 .btn-draggable { width: 160px; }
 .emage { height: 215px; }
@@ -316,7 +316,18 @@ snap-content .menutoggle .fa1:hover{
     -webkit-transition: all .2s;
     text-align: center;
 }
-
+.circle2 {
+    width: 100px;
+    height: 100px;
+    float:left; 
+    margin-left: 10px;
+    margin-top: 40px; 
+    transition: all .2s;
+    -o-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-transition: all .2s;
+    text-align: center;
+}
 
 
 .circle img{
@@ -324,6 +335,11 @@ snap-content .menutoggle .fa1:hover{
     height: 100%;
 }
 
+
+.circle2 img{
+    width: 100%;
+    height: 100%;
+}
 
 
 
@@ -334,7 +350,13 @@ transition: all .2s;
 -moz-transition: all .2s;
 -webkit-transition: all .2s;
 }
-
+.circle2 img:hover {
+margin-top: -20px;
+transition: all .2s;
+-o-transition: all .2s;
+-moz-transition: all .2s;
+-webkit-transition: all .2s;
+}
 
 
 

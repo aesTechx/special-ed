@@ -5796,10 +5796,8 @@ button.close {
 }
 .modal-content {
   position: relative;
-  background-color: #232c4b;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
+  background-color: #fff;
+  border-radius: 30px;
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
   outline: 0;
@@ -5822,8 +5820,11 @@ button.close {
   filter: alpha(opacity=50);
 }
 .modal-header {
+  border-top-left-radius:30px;
+  border-top-right-radius:30px;
   padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  color:#232c4b;
+  background:#ffdf75;
   min-height: 16.42857143px;
 }
 .modal-header .close {
@@ -5840,7 +5841,6 @@ button.close {
 .modal-footer {
   padding: 15px;
   text-align: right;
-  border-top: 1px solid #e5e5e5;
 }
 .modal-footer .btn + .btn {
   margin-left: 5px;

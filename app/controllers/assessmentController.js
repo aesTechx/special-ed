@@ -36,6 +36,7 @@ module.exports = {
     findAllAssessments({studentId: student._id})
     .then(function(found) {
       if (found) {
+        console.log(found)
         res.json(found)
       } else {
         next(new Error('not found'));

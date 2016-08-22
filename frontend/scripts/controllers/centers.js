@@ -1,13 +1,13 @@
 angular.module('SED.centers', [])
 	.controller('centersCtr', function centersCtr ($scope, Centers) {
-  $scope.data = {};
-  $scope.markers = [];
-
-  Centers.getAllCenters()
-      .then (function (resp) {
-        $scope.data.centers = resp;
-        $scope.data.lat = 0;
-        $scope.data.lng = 0;
+		$scope.data={};
+    $scope.markers = [];
+    $scope.gmapAPI = process.ENV.googlemap;
+		Centers.getAllCenters()
+			.then(function(resp){
+				$scope.data.centers = resp;
+				$scope.data.lat= 0;
+        $scope.data.lng=0;
 
         //create a marker function will be called for each center to dispalay center info on map
         $scope.createMarker = function (center) {

@@ -2,7 +2,6 @@ angular.module('SED.services', [])
 
 .factory ('Record', function ($http) {
   var submitForm = function(form) {
-    console.log(form);
     return $http({
       method: 'POST',
       url: '/api/forms/submitForm',
@@ -26,7 +25,41 @@ angular.module('SED.services', [])
     getAll:getAll
   };
 })
-
+.factory('Assessment', function ($http) {
+  var getNew = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/assessments/cars/new',
+    })
+    .then(function (resp) {
+      return resp.data;
+    })
+  };
+  var save = function (assessment) {
+    return $http({
+      method: 'POST',
+      url: '/api/assessments/cars/save',
+      data: assessment
+    })
+    .then(function (resp) {
+      return resp;
+    })
+  }
+  var getAssessments = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/assessments/cars/assessments'
+    })
+    .then(function (resp) {
+      return resp.data;
+    })
+  }
+  return {
+    getNew: getNew,
+    save: save,
+    getAssessments: getAssessments
+  }
+})
 .factory('Centers', function ($http) {
   var editProfile=function(user){
      return $http({
