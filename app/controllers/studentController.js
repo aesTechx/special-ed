@@ -27,6 +27,7 @@ module.exports = {
     })
   },
   getStudent : function (req,res,next) {
+    console.log("getStudent function");
     var token = req.headers['x-access-token'];
     user = jwt.decode(token, 'secret');
     Student.findOne({username: user.username}, function (err , user) {
@@ -91,11 +92,9 @@ module.exports = {
     var birthdate = req.body.birthdate;
     var profilePicture = req.body.profilePicture;
     var center = req.body.center;
-
-
+    
     findOneCenter({centername:center})
     .then(function(center){
-      console.log(center)
     Student.findOne({ username: username })
       .exec(function(err, user) {
         if (!user) {
@@ -103,6 +102,7 @@ module.exports = {
             password: password,
             username: username,
             fullname: fullname,
+            birthdate:birthdate,
             email: email,
             profilePicture: profilePicture,
             centerId: center._id

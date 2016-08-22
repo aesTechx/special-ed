@@ -13,7 +13,6 @@ angular.module('SED.Signup', [])
   })
   Centers.getAllCenters()
   .then(function(centers){
-    console.log(centers);
     $scope.data.centers=centers;
   });
   $scope.user = {};
@@ -42,18 +41,24 @@ angular.module('SED.Signup', [])
     }
   };
   $scope.changeProfilePic = function() {
+    console.log("changeProfilePic");
     var uploadToIMGUR = window.uploadToIMGUR;
     var IMGUR_CLIENT_ID = $scope.imgurApi;
-    
+
     var fileBt = $('<input>').attr('type', 'file');
+    console.log(fileBt)
     fileBt.on('change', function () {
+      console.log("change")
       var file = fileBt[0].files[0];
+      console.log("file",file)
       var reader = new FileReader();
       reader.addEventListener('load', function () {
-        var imgData = reader.result.slice(23);
+        var imgData = reader.result.split(',');
         // sending the decoded image to IMGUR to get a link for that image
-        uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result) {
-          $scope.profilePicture = result.link;
+        uploadToIMGUR(IMGUR_CLIENT_ID, imgData[1], function(result) {
+          console.log(result)
+          $scope.user.profilePicture = result.link;
+          console.log($scope.user.profilePicture);
           $scope.changedFlag = true;
         });
       });
@@ -63,6 +68,8 @@ angular.module('SED.Signup', [])
     fileBt.click();
   };
   $scope.submit = function() {
+    //console.log($scope.user);
+    console.log($scope.user.profilePicture)
     var option = $scope.option;
     $scope.user.center = $scope.center;
     var sendRequest = function () {

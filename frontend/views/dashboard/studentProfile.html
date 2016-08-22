@@ -18,12 +18,11 @@
   		    <div class="container-fluid">
             <div class="photo text-center col-sm-3 col-xs-12">
               <div class="img-container">
-                <img src="../images/teacher-avatar.jpg" class="user-avatar img-circle img-responsive" style='border:#232c4b solid 2px;display:inline-block;width:250px;height:250px;overflow:hidden;vertical-align:top'/>
+                <img src={{data.student.profilePicture}} class="user-avatar img-circle img-responsive" style='border:#232c4b solid 2px;display:inline-block;width:250px;height:250px;overflow:hidden;vertical-align:top'/>
                 <h3><button style='border:none; background:none;' ng-click="editflag()"></span> MY Profile <sup><span class='glyphicon glyphicon-edit'></span></sup> </button></h3>
               </div>
-              <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="viewTeachers()"></span><i class="fa fa-user"></i> My Teachers</button>
-              <button class="btn btn-login-hover btn-block profile-btn-new" type='submit' ng-click="viewGames()"></span><i class='glyphicon glyphicon-play'></i> Play Games </button>
-              <button class="btn btn-login-hover btn-block profile-btn-new" type='submit'></span><i class='glyphicon glyphicon-glass'></i> My Trophies </button>
+              <button ng-click="viewTeachers()" class="btn btn-login-hover btn-block profile-btn-new" ></span><i class="fa fa-user"></i> My Teachers</button>
+              <button ng-click="hello()" class="btn btn-login-hover btn-block profile-btn-new" type='submit'></span><i class='glyphicon glyphicon-glass'></i> My Center </button>
             </div>
           <div ng-if="!edit" class="col-sm-9">
             <h2 >{{data.student.fullname}}
@@ -50,7 +49,7 @@
             <button ng-click="editProfile()">Edit</button>
           </div>
         </div>
-        <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
+        <div class='row' ng-if="!teachers" style="background:#232c4b; padding:10px; color:#fff;">
           <div class="container text-center">
             <div class='col-sm-2 col-xs-12'>
               <svg id="fillgauge0" width="97%"><h4> OVERALL </h4></svg>
@@ -72,6 +71,9 @@
             </div>
           </div>
         </div>
+        <ul>
+          <a href="#/dashboard/teacherProfile" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</a>
+        </ul>
       </div>
     </div>
   </snap-content>	
