@@ -50,6 +50,7 @@ angular.module('SED.Signup', [])
           var IMGUR_CLIENT_ID = $scope.imgurApi;
           uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result) {
             $scope.profilePicture = result.link;
+            console.log($scope.profilePicture)
             $scope.changedFlag = true;
           });
         })
@@ -64,7 +65,7 @@ angular.module('SED.Signup', [])
     var option = $scope.option;
     $scope.user.center = $scope.center;
     var sendRequest = function () {
-      Auth['signup'+$scope.option]($scope.user)
+      Auth['signup' + $scope.option]($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.SEDuser', token);
         $window.localStorage.setItem('typeOfUser', $scope.option.toLowerCase());
