@@ -3,6 +3,7 @@ angular.module('SED.studentProfile', [])
  $scope.edit=false;
  $scope.data={};
  $scope.user={};
+ $scope.teachers=false;
  $scope.record={ social: 0, preservation: 0, communicationAndDevelopment: 0, sensoryDisturbance: 0, attentionAndSafety: 0 };
   Centers.getAllCenters()
   .then(function(centers){
@@ -16,7 +17,12 @@ angular.module('SED.studentProfile', [])
       $scope.data.student.birthdate = $scope.data.student.birthdate.substr(0,10);
     } 
   });
+  $scope.center=function(){
+    console.log("hello")
+  }
   $scope.viewTeachers=function(){
+    $scope.teachers=true;
+    console.log("viewTeachers")
   	Students.viewTeachers()
   	.then(function(resp){
   		$scope.data.teachers=resp;
@@ -63,10 +69,8 @@ angular.module('SED.studentProfile', [])
     }
   }
       $scope.initialize();
-    console.log($scope.record)
    })
     $scope.initialize = function () {
-      console.log($scope.record);
     var loadLiquidFillGauge = window.loadLiquidFillGauge;
     var overall = ((($scope.record.social + 
                   $scope.record.preservation + 

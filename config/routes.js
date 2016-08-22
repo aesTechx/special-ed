@@ -16,8 +16,9 @@ module.exports = function (app, express) {
   app.post('/api/centers/signup', centerController.signup);
   app.post('/api/centers/editProfile', centerController.editCenter);
   app.get('/api/centers/requestPass/:email', centerController.requestNewPass);
-  app.get('/api/center/teachers', centerController.getTeachers);
-  app.get('/api/center/students', centerController.getStudents);
+  app.get('/api/center/teachers',centerController.getTeachers);
+  app.get('/api/center/students',centerController.getStudents);
+
   
   //specialist routes
   app.get('/api/specialists', specialistController.getAll);
@@ -32,7 +33,7 @@ module.exports = function (app, express) {
   app.get('/api/students/games', studentController.getGames);
   app.get('/api/students/specialists', studentController.getTeachers);
   app.get('/api/students', studentController.getAll);
-  app.get('/api/students/:id', studentController.getStudent);
+  app.get('/api/students/currentStudent', studentController.getStudent);
   app.get('/api/student/signedin', studentController.checkAuth);
   app.post('/api/students/signin', studentController.signin);
   app.post('/api/students/signup', studentController.signup);

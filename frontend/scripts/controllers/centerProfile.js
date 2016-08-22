@@ -11,7 +11,6 @@ angular.module('SED.centerProfile', [])
   $scope.center = {};
   Centers.getCurrentCenter()
   .then(function(resp){
-    console.log(resp)
     $scope.data.center=resp;
     if ($scope.data.foundationDate !== undefined) {
        $scope.data.center.foundationDate.toString();

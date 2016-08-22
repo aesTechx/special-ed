@@ -1,8 +1,9 @@
 var uploadToIMGUR = function(clientId, imgData, callback) {
+  console.log(clientId);
   $.ajax({
     url: 'https://api.imgur.com/3/upload',
     headers: {
-      'Authorization': 'Client-ID' + clientId,
+      'Authorization': 'Client-ID ' + clientId,
       'Accept': 'application/json'
     },
     type: 'POST',
@@ -12,6 +13,7 @@ var uploadToIMGUR = function(clientId, imgData, callback) {
     },
     success: function success(res) {
       if (callback) {
+        console.log(res);
         callback(res.data);
       }
     }

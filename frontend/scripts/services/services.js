@@ -165,6 +165,7 @@ angular.module('SED.services', [])
       url:'/api/students/currentStudent'
     })
     .then(function(resp){
+      console.log(resp.data);
       return resp.data;
     })
   }
@@ -255,7 +256,6 @@ angular.module('SED.services', [])
   };
 
   var signinTeacher = function (user) {
-    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/specialists/signin',
@@ -271,7 +271,6 @@ angular.module('SED.services', [])
   };
 
   var signinCenter = function (user) {
-    console.log(user);
     return $http ({
       method: 'POST',
       url: '/api/centers/signin',
@@ -283,7 +282,6 @@ angular.module('SED.services', [])
   };
 
   var signupStudent = function (user) {
-    console.log('sending to api')
     return $http({
       method: 'POST',
       url: '/api/students/signup',

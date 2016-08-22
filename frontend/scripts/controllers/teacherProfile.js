@@ -4,16 +4,11 @@ angular.module('SED.teacherProfile', [])
   $scope.data={};
   $scope.user={};
   
-  // Centers.getAllCenters()
-  // .then(function(centers){
-  //   $scope.data.centers=centers;
-  // });
-  // Students.getCurrentStudent()
-  // .then(function(resp){
-  //   $scope.data.student=resp;
-  //   $scope.data.student.birthdate.toString();
-  //   $scope.data.student.birthdate=$scope.data.student.birthdate.substr(0,10);
-  // });
+
+  Teachers.getCurrentTeacher()
+  .then(function(resp){
+    $scope.data.teacher=resp;
+  });
   // $scope.viewTeachers=function(){
   // 	Students.viewTeachers()
   // 	.then(function(resp){
