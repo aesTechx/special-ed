@@ -22,11 +22,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
       templateUrl: 'myModalContent.html',
       controller: function ($scope, $location, $uibModalInstance, Record) {
         $scope.ok = function () {
-<<<<<<< ed30646f2a47216ee375c8e4499eb03248398f30
-          $uibModalInstance.close (finalScore);
-=======
           $uibModalInstance.close(finalScore);
->>>>>>> Restyling
         };
         $scope.cancel = function () {
           $uibModalInstance.dismiss ('cancel');
