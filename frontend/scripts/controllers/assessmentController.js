@@ -22,7 +22,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
       templateUrl: 'myModalContent.html',
       controller: function ($scope, $location, $uibModalInstance, Record) {
         $scope.ok = function () {
-          $uibModalInstance.close(finalScore);
+          $uibModalInstance.close (finalScore);
         };
         $scope.cancel = function () {
           $uibModalInstance.dismiss ('cancel');
@@ -76,7 +76,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
         alert('error occured, please contact admin')
       })
     }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
+      $log.info ('Modal dismissed at: ' + new Date ());
     });
   };
   $scope.start = function () {
