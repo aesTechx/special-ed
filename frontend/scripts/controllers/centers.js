@@ -9,10 +9,6 @@ angular.module('SED.centers', [])
 	.controller('centersCtr', function centersCtr ($scope, Centers, ApiKeys) {
     $scope.data = {};
     $scope.markers = [];
-    ApiKeys.getGmapApi()
-    .then(function (resp) {
-      $scope.gmapAPI = resp;
-    })
     Centers.getAllCenters()
     .then(function(resp){
       $scope.data.centers = resp;
