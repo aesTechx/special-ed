@@ -1,7 +1,11 @@
+<div class='fr'>
+  <div class='jumbotron col-xs-12' style='padding:0px; margin-top:0px;'>
+      <a class='btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center' style='background:none; border:none; margin-top:0px; margin-bottom:0px;padding:0px;' href='#/dashboard/games'><i class='glyphicon glyphicon-arrow-left'></i> Back to play zone</a>
+  </div>
+  </div>
   <link rel="stylesheet" href="../assets/css/app.css">
   <div>Pairs left to match: {{game.unmatchedPairs}}</div>
   <div>Matching: {{game.firstPick.title}}</div>
-
   <table>
     <tr ng-repeat="row in game.grid">
       <td ng-repeat="tile in row" ng-click="game.flipTile(tile)">

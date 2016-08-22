@@ -34,11 +34,11 @@ module.exports = {
     console.log(req.body)
     //"Social": 0, "Preservation": 0, "SensoryDisturbance": 0, "CommunicationandDevelopment": 0, "AttentionandSafety": 0
     var studentId=user._id;
-    var social = req.body.Social;
-    var preservation = req.body.Preservation;
-    var sensoryDisturbance = req.body.SensoryDisturbance;
-    var communicationAndDevelopment = req.body.CommunicationandDevelopment;
-    var attentionAndSafety = req.body.AttentionandSafety;
+    var social = req.body.social;
+    var preservation = req.body.preservation;
+    var sensoryDisturbance = req.body.sensoryDisturbance;
+    var communicationAndDevelopment = req.body.communicationAndDevelopment;
+    var attentionAndSafety = req.body.attentionAndSafety;
     //var centerId = req.body.centerId;
     console.log(attentionAndSafety)
     var newRecord = new Record({

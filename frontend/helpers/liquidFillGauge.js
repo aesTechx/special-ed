@@ -26,7 +26,7 @@ var liquidFillGaugeDefaultSettings = function () {
     valueCountUp: true, // If true, the displayed value counts up from 0 to it's final value upon loading. If false, the final value is displayed.
     displayPercent: true, // If true, a % symbol is displayed after the value.
     textColor: '#fff', // The color of the value text when the wave does not overlap it.
-    waveTextColor: '#fff' // The color of the value text when the wave overlaps it.
+    waveTextColor: '#232c4b' // The color of the value text when the wave overlaps it.
   };
 };
 

@@ -5,11 +5,11 @@ var states = [
   { name: 'overview', state: { url: '/overview', parent: 'dashboard', templateUrl: 'views/dashboard/overview.html', controller: 'OverviewCtrl', data: {text: 'Overview', visible: true } } },
   { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html', data: {text: 'Reports', visible: true } } },
   { name: 'signup', state: { url: '/signup', parent: 'base', templateUrl: 'views/signup.html', controller: 'SignupCtrl', data: {text: 'SignUp', visible: false }} },
-  { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html', controller: 'MainController', data: {text: 'Play Game', visible: true }} },
+  { name: 'play', state: { url: '/play', parent: 'dashboard', templateUrl: 'views/dashboard/game.html', controller: 'MainController', data: {text: 'Play Game', visible: false }} },
   { name: 'assessment', state: { url: '/assessment', parent: 'dashboard', templateUrl: 'views/dashboard/assessmentForm.html', controller: 'assessmentController', data: {text: 'Assessments', visible: true }} },
   { name: 'profile', state: { url: '/profile', parent: 'dashboard', data: {text: 'Profile page', visible: false }} },
   { name: 'centers', state: { url: '/centers', parent: 'dashboard', templateUrl: 'views/dashboard/centers.html', controller: 'centersCtr', data: {text: 'Nearby Centers', visible: true }} },
-  { name: 'game', state: { url: '/game', parent: 'dashboard', templateUrl: 'views/dashboard/picGame.html', controller: 'oneCtrl', data: {text: 'PIC Game', visible: true }} },
+  { name: 'game', state: { url: '/game', parent: 'dashboard', templateUrl: 'views/dashboard/picGame.html', controller: 'oneCtrl', data: {text: 'PIC Game', visible: false }} },
   { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'teacherCtrl', data: {text: 'teacherProfile', visible: false }} },
   { name: 'studentProfile', state: { url: '/studentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'studentProfile', visible: false }} },
   { name: 'centerProfile', state: { url: '/centerProfile', parent: 'dashboard', templateUrl: 'views/dashboard/centerProfile.html', controller: 'centerCtrl', data: {text: 'centerProfile', visible: false }} },
@@ -18,7 +18,8 @@ var states = [
   { name: 'freePlay', state: { url: '/freePlay', templateUrl: 'views/guest/freeGame.html', controller: 'MainController', data: {text: 'Play Free Game', visible: false }} },
   { name: 'landingPage', state: { url: '/landingPage', templateUrl: 'views/landingPage.html', controller: 'landingController', data: {text: 'landingPage', visible: false }} },
   { name: 'logout', state: { url: '/logout', data: {text: 'Logout', visible: false }} },
-  { name: 'Memory', state: { url: '/Memory', parent: 'dashboard', templateUrl: 'views/dashboard/memoryGame.html', controller: 'GameCtrl', data: {text: 'Memory Game', visible: true }} },
+  { name: 'Memory', state: { url: '/Memory', parent: 'dashboard', templateUrl: 'views/dashboard/memoryGame.html', controller: 'GameCtrl', data: {text: 'Memory Game', visible: false }} },
+  { name: 'games', state: { url: '/games', parent: 'dashboard', templateUrl: 'views/dashboard/games.html', data: {text: 'Play Zone', visible: true }} }
 ];
 angular.module('SED', [
   'memoryGameApp',
@@ -28,7 +29,7 @@ angular.module('SED', [
   'ngResource',
   'ui.bootstrap',
   'ui.router',
-  'snap',
+  'snap', 
   'drag-and-drop',
   'SED.services',
   'dragDropSampleApp',

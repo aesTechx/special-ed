@@ -72,13 +72,13 @@ angular.module('SED.studentProfile', [])
                   $scope.record.preservation + 
                   $scope.record.communicationAndDevelopment + 
                   $scope.record.sensoryDisturbance + 
-                  $scope.record.attentionAndSafety) / 35) * 10);
+                  $scope.record.attentionAndSafety)));
     var gauge0 = loadLiquidFillGauge('fillgauge0', overall);
-    var gauge1 = loadLiquidFillGauge('fillgauge1', $scope.record.social*10);
-    var gauge2 = loadLiquidFillGauge('fillgauge2', $scope.record.preservation*10);
-    var gauge3 = loadLiquidFillGauge('fillgauge3', $scope.record.communicationAndDevelopment*10);
-    var gauge4 = loadLiquidFillGauge('fillgauge4', $scope.record.sensoryDisturbance*10);
-    var gauge5 = loadLiquidFillGauge('fillgauge5', $scope.record.attentionAndSafety*10);
+    var gauge1 = loadLiquidFillGauge('fillgauge1', ((($scope.record.social)/20)*100));
+    var gauge2 = loadLiquidFillGauge('fillgauge2', ((($scope.record.preservation)/20)*100));
+    var gauge3 = loadLiquidFillGauge('fillgauge3', ((($scope.record.communicationAndDevelopment)/20)*100));
+    var gauge4 = loadLiquidFillGauge('fillgauge4', ((($scope.record.sensoryDisturbance)/20)*100));
+    var gauge5 = loadLiquidFillGauge('fillgauge5', ((($scope.record.attentionAndSafety)/20)*100));
   };
 
  });

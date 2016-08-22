@@ -20,11 +20,11 @@
           <div id="centersList" class="row list-group" style="height: 500px; overflow: scroll">
             <div  ng-repeat="center in data.centers">
               <div class="thumbnail" style="margin: 20px; border-radius: 0px 40px 40px 0px; height: 100px; background-color: white;">
-                <img class="group list-group-image" src="../../images/school-minions.jpg" alt="" width="90" height="90" style="float: left;" />
+                <img class="group list-group-image" src={{center.image}} alt="" width="90" height="90" style="float: left;" />
                 <div class="caption">
                   <p class="group inner list-group-item-heading">{{center.centername}}</p>
                   <div class="col-xs-12 col-md-6" ng-repeat="marker in markers" style="float:left;">
-                    <a class="btn btn-success" ng-if="marker.centerName === center.centername" ng-click="openInfoWindow($event, marker)">Show</a>
+                    <a class="btn btn-login-hover btn-block login-btn-new" ng-if="marker.centerName === center.centername" ng-click="openInfoWindow($event, marker)">Show</a>
                   </div>
                 </div>
               </div>
