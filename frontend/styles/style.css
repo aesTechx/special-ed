@@ -54,8 +54,16 @@ body{
     margin-bottom: 20px;
 }
 
-.thumbnail { height: 280px;}
-.btn-droppable { width: 180px; height: 30px; padding-left: 4px; }
+.thumbnail { 
+    height: 280px;
+    background-color: white;
+}
+
+.thumbnail:hover{
+    background-color: #ffdf75;
+}
+
+.btn-droppable { width: 180px; height: 30px; padding-left: 4px;}
 .btn-draggable { width: 160px; }
 .emage { height: 215px; }
 
@@ -462,4 +470,6 @@ transition: all .2s;
 .logo{
     margin-top: 0px;
     padding-top: 0px;
+    border-right-color: white;
 }
+
