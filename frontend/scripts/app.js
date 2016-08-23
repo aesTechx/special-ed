@@ -14,6 +14,7 @@ var states = [
   { name: 'teacherProfile', state: { url: '/teacherProfile', parent: 'dashboard', templateUrl: 'views/dashboard/teacherProfile.html', controller: 'teacherCtrl', data: {text: 'teacherProfile', visible: false }} },
   { name: 'studentProfile2', state: { url: '/studentProfile/:id', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'studentProfile', visible: false }} },
   { name: 'studentProfile', state: { url: '/studentProfile', parent: 'dashboard', templateUrl: 'views/dashboard/studentProfile.html', controller: 'studentCtrl', data: {text: 'studentProfile', visible: false }} },
+  { name: 'centerProfile2', state: { url: '/centerProfile/:id', parent: 'dashboard', templateUrl: 'views/dashboard/centerProfile.html', controller: 'centerCtrl', data: {text: 'centerProfile', visible: false }} },
   { name: 'centerProfile', state: { url: '/centerProfile', parent: 'dashboard', templateUrl: 'views/dashboard/centerProfile.html', controller: 'centerCtrl', data: {text: 'centerProfile', visible: false }} },
   { name: 'publicCenters', state: { url: '/publicCenters', templateUrl: 'views/guest/publicCenters.html', controller: 'centersCtr', data: {text: 'publicCenters', visible: false }} },
   { name: 'freeAssessment', state: { url: '/freeAssessment', templateUrl: 'views/guest/freeAssessment.html', controller: 'assessmentController', data: {text: 'C.A.R.S Assessment', visible: false }} },

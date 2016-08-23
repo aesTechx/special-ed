@@ -23,14 +23,23 @@ module.exports = {
     });
   },
   getCenter: function (req, res, next) {
-    var token = req.headers['x-access-token'];
-    var center = jwt.decode(token, 'secret');
-    Center.findOne({_id: center._id}, function (err, user) {
-      if (err) {
-        res.status(500).send(err);
-      }
-      res.json(user);
-    });
+    if (req.params.id) {
+      Center.findOne({_id: req.params.id}, function (err , user) {
+        if(err)
+          res.status(500).send(err);
+        res.json(user);
+      })
+    } else {
+      var token = req.headers['x-access-token'];
+      var center = jwt.decode(token, 'secret');
+      Center.findOne({_id: center._id}, function (err, user) {
+        if (err) {
+          res.status(500).send(err);
+        }
+        res.json(user);
+      });
+    }
+   
   },
   getTeachers: function(req, res, next) {
     var token = req.headers ['x-access-token'];

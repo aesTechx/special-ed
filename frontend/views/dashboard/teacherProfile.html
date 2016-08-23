@@ -21,6 +21,7 @@
                 <h3><button style='border:none; background:none;' ng-click="editflag()"></span> MY Profile <sup><span class='glyphicon glyphicon-edit'></span></sup> </button></h3>
               </div>
               <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="viewStudents()"></span><i class="fa fa-user"></i> My Students</button>
+              <a class="btn btn-login-hover btn-block profile-btn-new" href="#/dashboard/centerProfile/{{data.teacher.centerid}}"></span><i class="fa fa-user"></i> My Center</a>
             </div>
           <div ng-if="!edit" class="col-sm-9">
             <h2 >{{data.teacher.fullname}}

@@ -18,7 +18,7 @@ var SpecialistSchema = new mongoose.Schema({
     required: true
   },
   centerId: { 
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Center',
   },
   specialty: {

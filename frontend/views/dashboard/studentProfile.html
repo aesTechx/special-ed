@@ -23,7 +23,7 @@
               </div>
               <button ng-click="viewTeachers()" class="btn btn-login-hover btn-block profile-btn-new" ></span><i class="fa fa-user"></i> My Teachers</button>
                <button ng-click="teacherflag()" class="btn btn-login-hover btn-block profile-btn-new" ></span><i class="fa fa-user"></i> My Stats</button>
-              <button ng-click="hello()" class="btn btn-login-hover btn-block profile-btn-new" type='submit'></span><i class='glyphicon glyphicon-glass'></i> My Center </button>
+              <a ng-click="hello()" class="btn btn-login-hover btn-block profile-btn-new" href='#/dashboard/centerProfile/{{data.student.centerId}}'></span><i class='glyphicon glyphicon-glass'></i> My Center </a>
             </div>
           <div ng-if="!edit" class="col-sm-9">
             <h2 >{{data.student.fullname}}

@@ -1,5 +1,5 @@
 angular.module('SED.centerProfile', [])
-.controller('centerCtrl', function($scope, $state, Auth, Centers, Students) {
+.controller('centerCtrl', function($scope, $state, Auth, Centers, Students, $stateParams) {
   $scope.edit=false;
   $scope.assignFlag=false;
   $scope.selectedTeacher="";
@@ -9,14 +9,25 @@ angular.module('SED.centerProfile', [])
   $scope.teacherselected=false;
   $scope.data = {};
   $scope.center = {};
-  Centers.getCurrentCenter()
-  .then(function(resp){
-    $scope.data.center=resp;
-    if ($scope.data.foundationDate !== undefined) {
-       $scope.data.center.foundationDate.toString();
-       $scope.data.center.foundationDate = $scope.data.center.foundationDate.substr(0,10);
-    }
-  });
+  if ($stateParams.id) {
+    Centers.getCenter($stateParams.id)
+    .then(function(resp){
+      $scope.data.center = resp;
+      if ($scope.data.foundationDate !== undefined) {
+         $scope.data.center.foundationDate.toString();
+         $scope.data.center.foundationDate = $scope.data.center.foundationDate.substr(0,10);
+      }
+    })
+  } else {
+    Centers.getCurrentCenter()
+    .then(function(resp){
+      $scope.data.center=resp;
+      if ($scope.data.foundationDate !== undefined) {
+         $scope.data.center.foundationDate.toString();
+         $scope.data.center.foundationDate = $scope.data.center.foundationDate.substr(0,10);
+      }
+    });
+  };
   $scope.viewTeachers = function () {
     Centers.getTeachers()
     .then(function(resp){

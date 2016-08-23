@@ -10,6 +10,7 @@ module.exports = function (app, express) {
   //center routes
   app.get('/api/centers/requestPass/:email', centerController.requestNewPass);
   app.get('/api/centers', centerController.getAll);
+  app.get('/api/center/:id', centerController.getCenter);
   app.get('/api/center', centerController.getCenter);
   app.get('/api/center/signedin', centerController.checkAuth);
   app.post('/api/centers/signin', centerController.signin);

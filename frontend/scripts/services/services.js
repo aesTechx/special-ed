@@ -113,6 +113,15 @@ angular.module('SED.services', [])
       return resp.data;
     })
   }
+  var getCenter=function(id){
+    return $http({
+      method:'GET',
+      url:'/api/center/' + id
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
   var getTeachers=function(){
     return $http({
       method:'GET',
@@ -136,7 +145,8 @@ angular.module('SED.services', [])
     getStudents:getStudents,
     getTeachers:getTeachers,
     getCurrentCenter: getCurrentCenter,
-    getAllCenters:getAllCenters
+    getAllCenters:getAllCenters,
+    getCenter: getCenter
   };
 })
 .factory('Teachers', function($http){
