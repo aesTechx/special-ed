@@ -5,6 +5,14 @@ angular.module('SED.studentProfile', [])
  $scope.user = {};
  $scope.teachers = false;
  $scope.record = { social: 0, preservation: 0, communicationAndDevelopment: 0, sensoryDisturbance: 0, attentionAndSafety: 0 };
+ var loadLiquidFillGauge;
+  var overall;
+  var gauge0;
+var gauge1;
+var gauge2;
+var gauge3;
+var gauge4;
+var gauge5;
   Centers.getAllCenters()
   .then(function(centers){
     $scope.data.centers = centers;
@@ -42,6 +50,10 @@ angular.module('SED.studentProfile', [])
   $scope.editflag=function(){
     $scope.edit=true;
   }
+  $scope.teacherflag=function(){
+    $scope.teachers=false;
+    $scope.loadGauges
+  }
   $scope.editProfile=function(){
     Students.editProfile($scope.user)
       .then(function(resp){
@@ -71,12 +83,11 @@ angular.module('SED.studentProfile', [])
                   $scope.record.communicationAndDevelopment + 
                   $scope.record.sensoryDisturbance + 
                   $scope.record.attentionAndSafety)));
-    var gauge0 = loadLiquidFillGauge('fillgauge0', overall);
-    var gauge1 = loadLiquidFillGauge('fillgauge1', ((($scope.record.social)/20)*100));
-    var gauge2 = loadLiquidFillGauge('fillgauge2', ((($scope.record.preservation)/20)*100));
-    var gauge3 = loadLiquidFillGauge('fillgauge3', ((($scope.record.communicationAndDevelopment)/20)*100));
-    var gauge4 = loadLiquidFillGauge('fillgauge4', ((($scope.record.sensoryDisturbance)/20)*100));
-    var gauge5 = loadLiquidFillGauge('fillgauge5', ((($scope.record.attentionAndSafety)/20)*100));
-  };
-
+      gauge0 = loadLiquidFillGauge('fillgauge0', overall);
+      gauge1 = loadLiquidFillGauge('fillgauge1', ((($scope.record.social)/20)*100));
+      gauge2 = loadLiquidFillGauge('fillgauge2', ((($scope.record.preservation)/20)*100));
+      gauge3 = loadLiquidFillGauge('fillgauge3', ((($scope.record.communicationAndDevelopment)/20)*100));
+      gauge4 = loadLiquidFillGauge('fillgauge4', ((($scope.record.sensoryDisturbance)/20)*100));
+      gauge5 = loadLiquidFillGauge('fillgauge5', ((($scope.record.attentionAndSafety)/20)*100));
+    };
  });
