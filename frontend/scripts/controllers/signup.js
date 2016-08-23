@@ -37,6 +37,7 @@ angular.module('SED.Signup', [])
   };
 $scope.changeProfilePic = function() {
     var uploadToIMGUR = window.uploadToIMGUR;
+
     var fileBt = $('<input>').attr('type', 'file');
     console.log(fileBt)
     fileBt.on('change', function () {

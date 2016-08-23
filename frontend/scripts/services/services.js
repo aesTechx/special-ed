@@ -145,10 +145,19 @@ angular.module('SED.services', [])
 })
 .factory('Teachers', function($http){
   var getCurrentTeacher=function(){
-    console.log("here")
     return $http({
       method:'GET',
-      url:'/api/teachers/currentteacher'
+      url:'/api/specialists/currentteacher'
+    })
+    .then(function(resp){
+      console.log(resp.data);
+      return resp.data;
+    })
+  }
+  var viewStudents=function(){
+    return $http({
+      method:'GET',
+      url:'/api/specialists/students'
     })
     .then(function(resp){
       console.log(resp.data);
@@ -156,7 +165,8 @@ angular.module('SED.services', [])
     })
   }
   return{
-    getCurrentTeacher:getCurrentTeacher
+    getCurrentTeacher:getCurrentTeacher,
+    viewStudents:viewStudents
   }
 })
 .factory('Students', function($http) {

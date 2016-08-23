@@ -3,7 +3,9 @@ var Specialist = require('../models/specialist.js');
 Q = require('q');
 jwt = require('jwt-simple');
 var Center = require('../models/center.js');
+var Student = require('../models/student.js');
 
+var findAllStudent = Q.nbind(Student.find, Student);
 var findOneCenter= Q.nbind(Center.findOne,Center);
 var updateOneCenter = Q.nbind(Center.findOneAndUpdate, Center);
 var findSpecialist = Q.nbind(Specialist.findOne, Specialist);
@@ -20,7 +22,9 @@ module.exports = {
     })
   },
   getSpecialist : function (req,res,next) {
-    Specialist.findOne({username: req.params.username}, function (err , user) {
+    var token = req.headers['x-access-token'];
+    user = jwt.decode(token, 'secret');
+    Specialist.findOne({username: user.username}, function (err , user) {
       if(err)
         res.status(500).send(err);
       res.json(user);
@@ -144,6 +148,24 @@ module.exports = {
         });
       }
     })
+  },
+  getStudents: function(req,res){
+    var token = req.headers['x-access-token'];
+    var token = jwt.encode(user, 'secret');
+    findSpecialist({username:user.username})
+    .then(function(user){
+      return user.students
+    })
+    .then(function(students){
+        findAllStudent({'_id': { $in: students }})
+        .then(function(students){
+          console.log(students);
+          res.json(students)
+        })
+        .fail(function(err){
+          res.send(204)
+        })
+      })
   },
   requestNewPass : function(req,res){
     Specialist.findOne({email: req.params.email}, function (err , user) {
