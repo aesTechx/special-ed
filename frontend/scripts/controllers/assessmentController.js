@@ -12,6 +12,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   $scope.animationsEnabled = true;
   $scope.data = {};
   $scope.submit = function () {
+    finalScore = { "social": 0, "preservation": 0, "sensoryDisturbance": 0, "communicationAndDevelopment": 0, "attentionAndSafety": 0 };
     for (var i = 0; i < $scope.list.questions.length; i++) {
       if ($scope.list.questions[i].value) {
         finalScore[$scope.list.questions[i].field] += ((JSON.parse($scope.list.questions[i].value) * (20 / JSON.parse($scope.list.questions[i].Weight))));
