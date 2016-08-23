@@ -18,8 +18,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
       }
     }
     $scope.open();
-  }
-
+  };
   $scope.open = function (size) {
     var modalInstance = $uibModal.open( {
       animation: $scope.animationsEnabled,
