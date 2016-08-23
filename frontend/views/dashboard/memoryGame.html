@@ -1,27 +1,39 @@
-<div class='fr'>
+<div>
+  <div ng-include="'menu.html'"></div>
+  <snap-dragger></snap-dragger>
+  <snap-content snap-opt-tap-to-close="false">
+  <a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+    <span class="menutoggle">
+      <i ng-hide="menuOpen" class="fa1 glyphicon glyphicon-menu-hamburger fa-2x"></i>
+      <i ng-show="menuOpen" class="fa1 glyphicon glyphicon-remove fa-2x"></i>
+    </span>
+  </a>
+  <a href="#/logout" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" style='float:right;'>Logout</a>
+  <div class="fr">
+    <h2> SPECIAL ED <small> Games</small></h2>
+  </div>
   <div class='jumbotron col-xs-12' style='padding:0px; margin-top:0px;'>
+  <link rel="stylesheet" href="../assets/css/app.css">
       <a class='btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center' style='background:none; border:none; margin-top:0px; margin-bottom:0px;padding:0px;' href='#/dashboard/games'><i class='glyphicon glyphicon-arrow-left'></i> Back to play zone</a>
   </div>
-  </div>
-  <link rel="stylesheet" href="../assets/css/app.css">
-  <div>Pairs left to match: {{game.unmatchedPairs}}</div>
-  <div>Matching: {{game.firstPick.title}}</div>
-  <table>
-    <tr ng-repeat="row in game.grid">
-      <td ng-repeat="tile in row" ng-click="game.flipTile(tile)">
-
-        <!-- this entire block can be replaced with our custom component mgCard:
-          <mg-card tile="tile"></mg-card>
-        -->
-        <div class="container">
-          <div class="card" ng-class="{flipped: tile.flipped}">
-              <img class="front" ng-src="img/back.png">
-              <img class="back" ng-src="img/{{tile.title}}.png">
-          </div>
+  <div class="fr">
+  <div class='jumbotron'>
+    <div>Pairs left to match: {{game.unmatchedPairs}}</div>
+      <div>Matching: {{game.firstPick.title}}</div>
+        <div class="message">{{game.message}}</div>
+          <table>
+            <tr ng-repeat="row in game.grid">
+              <td ng-repeat="tile in row" ng-click="game.flipTile(tile)">
+                <div class="container">
+                  <div class="card" ng-class="{flipped: tile.flipped}">
+                    <img class="front" ng-src="img/back.png">
+                    <img class="back" ng-src="img/{{tile.title}}.png">
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
         </div>
-
-      </td>
-    </tr>
-  </table>
-
-  <div class="message">{{game.message}}</div>
+    </div>
+  </snap-content>
+</div>

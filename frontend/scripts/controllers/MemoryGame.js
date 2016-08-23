@@ -17,11 +17,7 @@ angular.module('SED.youtube', [])
     }else{
     	console.log(data.items);
     }
-    // VideosService.listResults(data, $scope.nextPageToken);
-    // $scope.nextPageToken = data.nextPageToken;
-    // $log.info(data);
   })
   .error( function () {
-    //$log.info('Search error');
   })
 });
