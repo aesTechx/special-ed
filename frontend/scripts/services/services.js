@@ -41,7 +41,6 @@ angular.module('SED.services', [])
       url: '/api/gmapKey'
     })
     .then(function (resp) {
-      console.log(resp)
       return resp.data;
     })
   }
@@ -111,7 +110,6 @@ angular.module('SED.services', [])
       url:'/api/center'
     })
     .then(function(resp){
-      console.log(resp.data);
       return resp.data;
     })
   }
@@ -121,7 +119,6 @@ angular.module('SED.services', [])
       url:'/api/center/teachers'
     })
     .then(function(resp){
-      console.log(resp.data)
       return resp.data;
     })
   }
@@ -131,7 +128,6 @@ angular.module('SED.services', [])
       url:'/api/center/students'
     })
     .then(function(resp){
-      console.log(resp.data)
       return resp.data;
     })
   }
@@ -150,7 +146,6 @@ angular.module('SED.services', [])
       url:'/api/specialists/currentteacher'
     })
     .then(function(resp){
-      console.log(resp.data);
       return resp.data;
     })
   }
@@ -160,7 +155,6 @@ angular.module('SED.services', [])
       url:'/api/specialists/students'
     })
     .then(function(resp){
-      console.log(resp.data);
       return resp.data;
     })
   }
@@ -176,7 +170,6 @@ angular.module('SED.services', [])
       url:'/api/students/currentStudent'
     })
     .then(function(resp){
-      console.log(resp.data);
       return resp.data;
     })
   }
@@ -255,7 +248,6 @@ angular.module('SED.services', [])
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signinStudent = function (user) {
-    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/students/signin',
@@ -273,7 +265,6 @@ angular.module('SED.services', [])
       data: user
     })
     .then(function (resp) {
-      console.log(resp.data.token)
       return resp.data.token;
     })
     .catch(function(error) {
@@ -313,14 +304,12 @@ angular.module('SED.services', [])
     });
   };
   var signupCenter = function (user) {
-    console.log(user)
     return $http({
       method: 'POST',
       url: '/api/centers/signup',
       data: user
     })
     .then(function (resp) {
-      console.log(resp.data);
       return resp.data.token;
     });
   };
