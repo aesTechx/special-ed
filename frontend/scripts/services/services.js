@@ -326,7 +326,33 @@ angular.module('SED.services', [])
   var isAuthcenter = function () {
     return !!$window.localStorage.getItem('com.SEDcenter');
   };
-
+  var requestPassStudent = function(email){
+    return $http({
+      method : 'GET',
+      url : '/api/students/requestPass/' + email
+    })
+    .then(function(res){
+      return res;
+    })
+  };
+  var requestPassTeacher = function(email){
+    return $http({
+      method : 'GET',
+      url : '/api/specialists/requestPass/' + email
+    })
+    .then(function(res){
+      return res;
+    })
+  }
+  var requestPassCenter = function(email){
+    return $http({
+      method : 'GET',
+      url : '/api/centers/requestPass/' + email
+    })
+    .then(function(res){
+      return res;
+    })
+  }
   return {
     signinStudent: signinStudent,
     signinCenter: signinCenter,
@@ -336,6 +362,9 @@ angular.module('SED.services', [])
     signupTeacher: signupTeacher,
     isAuthuser: isAuthuser,
     isAuthcenter: isAuthcenter,
-    isAuthteacher: isAuthteacher  
+    isAuthteacher: isAuthteacher,
+    requestPassStudent: requestPassStudent,
+    requestPassTeacher: requestPassTeacher,
+    requestPassCenter: requestPassCenter
   };
 });

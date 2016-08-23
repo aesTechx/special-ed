@@ -13,31 +13,37 @@
 	<div class="form-content">
 		<h1 style='color:#232c4b;'> HELLO </h1>
 		<p style='color:#232c4b;'> Please sign in </p>
-		<form role="form" class="bottom-75" ng-submit="submit()">
+		<form role="form" class="bottom-75">
 			<div class="table-form">
 				<div class="form-groups">
 					<div class='select-wrapper form-control input-lg-wrapper' style='margin-bottom: 10px;'>
-			      <select id="sel1" class='form-control2 input-lg2' ng-model="option"  ng-change="changeSelect()">
+			      <select id="sel1" class='form-control2 input-lg2' ng-model="option">
 			      	<option value='Select Type of User' selected="selected">Select Type of User </option>
 			        <option value='Student'>Student</option>
 			        <option value='Teacher'>Teacher</option>
 			        <option value='Center'>Center</option>
 			      </select>
 			    </div> 
-				<div class="form-group">
+				<div class="form-group" ng-if='!resetPass'>
 					<input type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
 				</div>
-				<div class="form-group">
+				<div class="form-group" ng-if='!resetPass'>
 					<input type="password" class="form-control input-lg"  id="" placeholder="PASSWORD" ng-model='user.password' class='glyphicon'>
 				</div>
-        <button class="btn btn-login-hover btn-block login-btn-new" type='submit'></span> Login <i class='glyphicon glyphicon-log-in'></i></button>
-        <div class="remember">
+        <button class="btn btn-login-hover btn-block login-btn-new" type='submit'ng-if='!resetPass' ng-click='submit()'></span> Login <i class='glyphicon glyphicon-log-in' ></i></button>
+        <div class="remember" ng-if='!resetPass'>
   				<label class="checkbox1" for="Option"> 
   					<input id="Option" type="checkbox" class="">
   					<span></span>
   				</label>
   			  remember me
-  			  <span class="pass"> forgot password?</span>
+  			  <span class="pass"><button ng-click='forgotPass()' style="background:none; border:none;">Forgot your password? <strong>Reset</strong> ...</button></span>
+        </div>
+        <div class="form-group" ng-if='resetPass'>
+          <input type="text" class="form-control input-lg" id="" placeholder="Email" ng-model='reset.email'>
+          <button class="btn btn-login-hover btn-block login-btn-new" ng-click='resetPassword()'></span> Reset <i class='glyphicon glyphicon-log-in'></i></button>
+          <span class="pass"><button ng-click='forgotPass()' style="background:none; border:none;"><strong><i class='glyphicon glyphicon-arrow-left'></i>Back to login</strong></button></span>
+          <br><p style="color: red;">{{msg}}</p>
         </div>
       </div>			
 		</form>

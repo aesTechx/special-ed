@@ -3,13 +3,13 @@ var smtpTransport = require('nodemailer-smtp-transport');
 var transporter = nodemailer.createTransport(smtpTransport ({
   service: "service provide",
   auth: {
-        user: 'email@example.com',
-        pass: process.env.outlookPass
+        user: 'aestechx@gmail.com',
+        pass: process.env.gmailPass
   }
 }));
 
 module.exports = function(mailOptions){
-  mailOptions.from =  mailOptions.from || 'Name <mail@example.com>';
+  mailOptions.from =  mailOptions.from || 'Name <aesTechx@gmail.com>';
   transporter.sendMail(mailOptions, function(error, info){
     if(error){
        console.log(error);
