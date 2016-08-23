@@ -4,7 +4,7 @@ angular.module('SED.studentProfile', [])
  $scope.data={};
  $scope.user={};
  $scope.teachers=false;
- $scope.record={ social: 0, preservation: 0, communicationAndDevelopment: 0, sensoryDisturbance: 0, attentionAndSafety: 0 };
+ $scope.record = { social: 0, preservation: 0, communicationAndDevelopment: 0, sensoryDisturbance: 0, attentionAndSafety: 0 };
   Centers.getAllCenters()
   .then(function(centers){
     $scope.data.centers=centers;
@@ -61,11 +61,11 @@ angular.module('SED.studentProfile', [])
    .then(function(resp){
     for(var i=0;i<resp.length;i++){
       if(resp[i].social !== undefined && resp[i].preservation !== undefined && resp[i].communicationAndDevelopment!==undefined && resp[i].sensoryDisturbance!== undefined && resp[i].attentionAndSafety !== undefined){
-          $scope.record.social=$scope.record.social+resp[i].social;
-          $scope.record.preservation=$scope.record.preservation+resp[i].preservation;
-          $scope.record.communicationAndDevelopment=$scope.record.communicationAndDevelopment+resp[i].communicationAndDevelopment;
-          $scope.record.sensoryDisturbance=$scope.record.sensoryDisturbance+resp[i].sensoryDisturbance;
-          $scope.record.attentionAndSafety=$scope.record.attentionAndSafety+resp[i].attentionAndSafety;
+          $scope.record.social = resp[i].social;
+          $scope.record.preservation = resp[i].preservation;
+          $scope.record.communicationAndDevelopment = resp[i].communicationAndDevelopment;
+          $scope.record.sensoryDisturbance = resp[i].sensoryDisturbance;
+          $scope.record.attentionAndSafety = resp[i].attentionAndSafety;
     }
   }
       $scope.initialize();

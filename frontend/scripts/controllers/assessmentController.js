@@ -32,6 +32,7 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
       }
     });
     modalInstance.result.then(function (finalScore) {
+      console.log(finalScore)
       Record.submitForm(finalScore)
       .then(function(data) {
         $location.path('/dashboard/profile')
@@ -75,9 +76,19 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
       $log.info ('Modal dismissed at: ' + new Date ());
     });
   };
-  $scope.start = function () {
+  $scope.start = function (flag) {
+    if (flag === 'saved') {
+      Qnum = 0;
+      $scope.currentQuestion = $scope.list.questions[Qnum];      
+    } else {
+      Assessment.getNew()
+      .then(function (data) {
+        $scope.list.questions = data;
+        Qnum = 0;
+        $scope.currentQuestion = $scope.list.questions[Qnum];
+      })
+    }
     $scope.readyToStart = false;
-    $scope.currentQuestion = $scope.list.questions[Qnum];
   };
   $scope.showAll = function () {
     $scope.showAllQs = !$scope.showAllQs;
@@ -126,13 +137,22 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     $scope.currentQuestion = $scope.list.questions[no];
   };
   $scope.showSelectedAssessment = function (assessment) {
-    var j = 0;
-    for (var i in assessment.questions){
-      $scope.list.questions[j].value = assessment.questions[i]
-      j++;
-    }
-    $scope.showSavedAs = false;
-    $scope.start();
+    Assessment.getNew()
+    .then(function (data) {
+      $scope.list.questions = data;
+      Qnum = 0;
+      $scope.currentQuestion = $scope.list.questions[Qnum];
+      var j = 0;
+      for (var i in assessment.questions){
+        $scope.list.questions[j].value = (assessment.questions[i] === null) ? assessment.questions[i] : JSON.stringify(assessment.questions[i]);
+        if ($scope.currentQuestion.value) {
+          finalScore[$scope.list.questions[j].field] += (JSON.parse($scope.list.questions[j].value) * (20 / JSON.parse($scope.list.questions[j].Weight)));
+        }
+        j++;
+      }
+      $scope.showSavedAs = false;
+      $scope.start('saved');
+    })    
   };
   $scope.backHome = function () {
     $scope.readyToStart = true;
@@ -142,11 +162,6 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   $scope.initialize = function () {
     $scope.readyToSubmit = false;
     $scope.readyToStart = true;
-    Assessment.getNew()
-    .then(function (data) {
-      $scope.list.questions = data;
-    })
-    Qnum = 0;
   };
   $scope.result = [];
   $scope.initialize ();
