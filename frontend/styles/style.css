@@ -425,7 +425,7 @@ transition: all .2s;
 }
 
 .item:nth-child(3) {
-    background-color: white;
+    background-color: yellow;
     background-image: url('../images/slide03.png');
     background-repeat: no-repeat;
     background-position: center;
