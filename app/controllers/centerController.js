@@ -133,7 +133,6 @@ module.exports = {
             longitude: longitude,
             latitude: latitude,
             address: address,
-            mobile: mobile,
             phone: phone
           });
           newCenter.save(function(err, newCenter) {

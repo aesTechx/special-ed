@@ -1,12 +1,23 @@
 angular.module('SED.teacherProfile', [])
-.controller('teacherCtrl', function($scope, $state, Teachers, Students) {
+.controller('teacherCtrl', function($scope, $state, Teachers, Students, $stateParams) {
   $scope.edit=false;
   $scope.data={};
   $scope.user={};
-  Teachers.getCurrentTeacher()
-  .then(function(resp){
-    $scope.data.teacher=resp;
-  });
+  $scope.initialize = function () {
+    console.log($stateParams)
+    if ($stateParams.id) {
+      Teachers.getTeacher($stateParams.id)
+      .then(function(resp){
+        $scope.data.teacher = resp;
+      })
+    } else {
+      Teachers.getCurrentTeacher()
+      .then(function(resp){
+        $scope.data.teacher = resp;
+      });
+    }
+  }
+  $scope.initialize();
   $scope.viewStudents=function(){
   	Teachers.viewStudents()
   	.then(function(resp){

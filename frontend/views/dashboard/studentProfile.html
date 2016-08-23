@@ -73,7 +73,7 @@
           </div>
         </div>
         <ul>
-          <a ng-if="teachers" href="#/dashboard/teacherProfile" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</a>
+          <a ng-if="teachers" href="#/dashboard/teacherProfile/{{teacher._id}}" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</a>
         </ul>
       </div>
     </div>

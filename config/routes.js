@@ -22,6 +22,7 @@ module.exports = function (app, express) {
   app.get('/api/specialists/requestPass/:email', specialistController.requestNewPass);
   app.get('/api/specialists', specialistController.getAll);
   app.get('/api/specialists/students',specialistController.getStudents)
+  app.get('/api/specialists/teacher/:id', specialistController.getSpecialist);
   app.get('/api/specialists/currentteacher', specialistController.getSpecialist);
   app.get('/api/specialist/signedin', specialistController.checkAuth);
   app.post('/api/specialists/signin', specialistController.signin);

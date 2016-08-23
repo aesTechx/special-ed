@@ -149,6 +149,15 @@ angular.module('SED.services', [])
       return resp.data;
     })
   }
+  var getTeacher=function(id){
+    return $http({
+      method:'GET',
+      url:'/api/specialists/teacher/' + id
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
   var viewStudents=function(){
     return $http({
       method:'GET',
@@ -159,8 +168,9 @@ angular.module('SED.services', [])
     })
   }
   return{
-    getCurrentTeacher:getCurrentTeacher,
-    viewStudents:viewStudents
+    getCurrentTeacher: getCurrentTeacher,
+    viewStudents: viewStudents,
+    getTeacher: getTeacher
   }
 })
 .factory('Students', function($http) {

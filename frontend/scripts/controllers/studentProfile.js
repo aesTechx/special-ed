@@ -5,14 +5,14 @@ angular.module('SED.studentProfile', [])
  $scope.user = {};
  $scope.teachers = false;
  $scope.record = { social: 0, preservation: 0, communicationAndDevelopment: 0, sensoryDisturbance: 0, attentionAndSafety: 0 };
- var loadLiquidFillGauge;
+  var loadLiquidFillGauge;
   var overall;
   var gauge0;
-var gauge1;
-var gauge2;
-var gauge3;
-var gauge4;
-var gauge5;
+  var gauge1;
+  var gauge2;
+  var gauge3;
+  var gauge4;
+  var gauge5;
   Centers.getAllCenters()
   .then(function(centers){
     $scope.data.centers = centers;
