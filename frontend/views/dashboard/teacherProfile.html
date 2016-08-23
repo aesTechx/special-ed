@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
-         <a href="#/dashboard/teacherProfile" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="teacher in data.students">{{teacher.fullname}}</a>
+         <a href="#/dashboard/studentProfile/{{student._id}}" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="student in data.students">{{student.fullname}}</a>
         </div>
       </div>
     </div>

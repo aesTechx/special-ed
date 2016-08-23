@@ -183,6 +183,15 @@ angular.module('SED.services', [])
       return resp.data;
     })
   }
+  var getStudent = function(id){
+    return $http({
+      method:'GET',
+      url:'/api/students/currentStudent/' + id
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+  }
   var viewTeachers=function(){
      return $http({
       method:'GET',
@@ -246,7 +255,8 @@ angular.module('SED.services', [])
     viewRecords:viewRecords,
     editProfile:editProfile,
     getRecords:getRecords,
-    addTeacher:addTeacher
+    addTeacher:addTeacher,
+    getStudent: getStudent
   };
 })
 .factory('Auth', function ($http, $location, $window) {

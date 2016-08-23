@@ -4,7 +4,6 @@ angular.module('SED.teacherProfile', [])
   $scope.data={};
   $scope.user={};
   $scope.initialize = function () {
-    console.log($stateParams)
     if ($stateParams.id) {
       Teachers.getTeacher($stateParams.id)
       .then(function(resp){

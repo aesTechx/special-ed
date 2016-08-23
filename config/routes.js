@@ -34,6 +34,7 @@ module.exports = function (app, express) {
   app.get('/api/students/games', studentController.getGames);
   app.get('/api/students/specialists', studentController.getTeachers);
   app.get('/api/students', studentController.getAll);
+  app.get('/api/students/currentStudent/:id', studentController.getStudent);
   app.get('/api/students/currentStudent', studentController.getStudent);
   app.get('/api/student/signedin', studentController.checkAuth);
   app.post('/api/students/signin', studentController.signin);

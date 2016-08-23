@@ -27,15 +27,21 @@ module.exports = {
     })
   },
   getStudent : function (req,res,next) {
-    console.log("getStudent function");
-    var token = req.headers['x-access-token'];
-    user = jwt.decode(token, 'secret');
-    Student.findOne({username: user.username}, function (err , user) {
-      if(err)
-        res.status(500).send(err);
-      console.log(user);
-      res.json(user);
-    })
+    if (req.params.id) {
+      Student.findOne({_id: req.params.id}, function (err , user) {
+        if(err)
+          res.status(500).send(err);
+        res.json(user);
+      })
+    } else {
+      var token = req.headers['x-access-token'];
+      user = jwt.decode(token, 'secret');
+      Student.findOne({username: user.username}, function (err , user) {
+        if(err)
+          res.status(500).send(err);
+        res.json(user);
+      })
+    }    
   },
   checkAuth: function (req, res, next) {
     // checking to see if the user is authenticated

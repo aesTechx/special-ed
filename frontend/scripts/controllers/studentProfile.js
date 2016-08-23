@@ -1,5 +1,5 @@
 angular.module('SED.studentProfile', [])
-.controller('studentCtrl', function($scope, $state, Auth, Centers, Students) {
+.controller('studentCtrl', function($scope, $state, Auth, Centers, Students, $stateParams) {
  $scope.edit = false;
  $scope.data = {};
  $scope.user = {};
@@ -17,14 +17,25 @@ angular.module('SED.studentProfile', [])
   .then(function(centers){
     $scope.data.centers = centers;
   });
-  Students.getCurrentStudent()
-  .then(function(resp){
-    $scope.data.student = resp;
-    if ($scope.data.student.birthdate) {
-      $scope.data.student.birthdate.toString();
-      $scope.data.student.birthdate = $scope.data.student.birthdate.substr(0,10);
-    } 
-  });
+  if ($stateParams.id) {
+    Students.getStudent($stateParams.id)
+    .then(function(resp) {
+      $scope.data.student = resp;
+      if ($scope.data.student.birthdate) {
+        $scope.data.student.birthdate.toString();
+        $scope.data.student.birthdate = $scope.data.student.birthdate.substr(0,10);
+      } 
+    })
+  } else {
+    Students.getCurrentStudent()
+    .then(function(resp) {
+      $scope.data.student = resp;
+      if ($scope.data.student.birthdate) {
+        $scope.data.student.birthdate.toString();
+        $scope.data.student.birthdate = $scope.data.student.birthdate.substr(0,10);
+      } 
+    });
+  }
   $scope.center = function() {
     console.log("hello")
   }
