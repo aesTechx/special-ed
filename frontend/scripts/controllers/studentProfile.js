@@ -74,7 +74,6 @@ var gauge5;
         $scope.record.attentionAndSafety = resp[i].attentionAndSafety;
       }
     }
-<<<<<<< 5030a930a153aafd9e3520109f6cd1caed9798b5
     $scope.initialize();
   })
   $scope.initialize = function () {
