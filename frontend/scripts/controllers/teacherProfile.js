@@ -1,5 +1,5 @@
 angular.module('SED.teacherProfile', [])
-.controller('teacherCtrl', function($scope, $state) {
+.controller('teacherCtrl', function($scope, $state, Teachers, Students) {
   $scope.edit=false;
   $scope.data={};
   $scope.user={};
@@ -8,14 +8,15 @@ angular.module('SED.teacherProfile', [])
   Teachers.getCurrentTeacher()
   .then(function(resp){
     $scope.data.teacher=resp;
+    console.log($scope.data.teacher);
   });
-  // $scope.viewTeachers=function(){
-  // 	Students.viewTeachers()
-  // 	.then(function(resp){
-  // 		$scope.data.teachers=resp;
-  // 		console.log(resp);
-  // 	});
-  // }
+  $scope.viewStudents=function(){
+  	Teachers.viewStudents()
+  	.then(function(resp){
+  		$scope.data.students=resp;
+  		console.log(resp);
+  	});
+  }
   //  $scope.viewGames=function(){
   //   Students.viewGames()
   // 	.then(function(resp){
