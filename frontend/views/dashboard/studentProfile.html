@@ -22,6 +22,7 @@
                 <h3><button style='border:none; background:none;' ng-click="editflag()"></span> MY Profile <sup><span class='glyphicon glyphicon-edit'></span></sup> </button></h3>
               </div>
               <button ng-click="viewTeachers()" class="btn btn-login-hover btn-block profile-btn-new" ></span><i class="fa fa-user"></i> My Teachers</button>
+               <button ng-click="teacherflag()" class="btn btn-login-hover btn-block profile-btn-new" ></span><i class="fa fa-user"></i> My Stats</button>
               <button ng-click="hello()" class="btn btn-login-hover btn-block profile-btn-new" type='submit'></span><i class='glyphicon glyphicon-glass'></i> My Center </button>
             </div>
           <div ng-if="!edit" class="col-sm-9">
@@ -49,7 +50,7 @@
             <button ng-click="editProfile()">Edit</button>
           </div>
         </div>
-        <div class='row' ng-if="!teachers" style="background:#232c4b; padding:10px; color:#fff;">
+        <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
           <div class="container text-center">
             <div class='col-sm-2 col-xs-12'>
               <svg id="fillgauge0" width="97%"><h4> OVERALL </h4></svg>
@@ -72,7 +73,7 @@
           </div>
         </div>
         <ul>
-          <a href="#/dashboard/teacherProfile" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</a>
+          <a ng-if="teachers" href="#/dashboard/teacherProfile" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</a>
         </ul>
       </div>
     </div>
