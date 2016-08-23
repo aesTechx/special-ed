@@ -7,7 +7,6 @@ angular.module('SED.Signup', [])
   $scope.option = 'Select Type of User';
   Centers.getAllCenters()
   .then(function(centers){
-    console.log(centers);
     $scope.data.centers=centers;
   });
   $scope.user = {};
@@ -35,15 +34,12 @@ angular.module('SED.Signup', [])
       $scope.centerSelected = true;
     }
   };
-$scope.changeProfilePic = function() {
+  $scope.changeProfilePic = function() {
     var uploadToIMGUR = window.uploadToIMGUR;
 
     var fileBt = $('<input>').attr('type', 'file');
-    console.log(fileBt)
     fileBt.on('change', function () {
-      console.log("change")
       var file = fileBt[0].files[0];
-      console.log("file",file)
       var reader = new FileReader();
       reader.addEventListener('load', function () {
         var imgData = reader.result.split(',');
@@ -51,10 +47,8 @@ $scope.changeProfilePic = function() {
       ApiKeys.getImgurApi()
         .then(function (resp) {
           var IMGUR_CLIENT_ID = resp
-        uploadToIMGUR(IMGUR_CLIENT_ID, imgData[1], function(result) {
-          console.log(result)
+          uploadToIMGUR(IMGUR_CLIENT_ID, imgData[1], function(result) {
           $scope.user.profilePicture = result.link;
-          console.log($scope.user.profilePicture);
           $scope.changedFlag = true;
         });
       })
@@ -64,32 +58,6 @@ $scope.changeProfilePic = function() {
     });
     fileBt.click();
   };
-  // $scope.changeProfilePic = function() {
-  //   var uploadToIMGUR = window.uploadToIMGUR; 
-  //   var fileBt = $('<input>').attr('type', 'file');
-  //   fileBt.on('change', function () {
-  //     var file = fileBt[0].files[0];
-  //     var reader = new FileReader();
-  //     reader.addEventListener('load', function () {
-  //       var imgData = reader.result.split(',');
-  //       // ApiKeys.getImgurApi()
-  //       // .then(function (resp) {
-  //         // console.log(resp)
-  //         // $scope.imgurApi = resp;
-  //         var IMGUR_CLIENT_ID = '10b47f91dd466c7';
-  //         uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result) {
-  //           $scope.user.profilePicture = result.link;
-  //           console.log($scope.user.profilePicture)
-  //           $scope.changedFlag = true;
-  //         });
-  //       // })
-  //       // sending the decoded image to IMGUR to get a link for that image      
-  //     });
-  //     // using the reader to decode the image to base64
-  //     reader.readAsDataURL(file);
-  //   });
-  //   fileBt.click();
-  // };
   $scope.submit = function() {
     var option = $scope.option;
     $scope.user.center = $scope.center;
@@ -119,11 +87,9 @@ $scope.changeProfilePic = function() {
     } else {
       sendRequest();
     }
-  }
+  };
   $scope.changeSelect1=function(){
-    console.log($scope.option1);
     $scope.center=$scope.option1.center;
-    console.log($scope.center)
-  }
+  };
 });
 

@@ -120,6 +120,7 @@ module.exports = {
     var longitude = req.body.longitude;
     var latitude = req.body.latitude;
     var address = req.body.address;
+    var phone = req.body.phone
     Center.findOne({username: username})
       .exec(function(err, user) {
         if (!user) {
@@ -131,7 +132,9 @@ module.exports = {
             profilePicture: profilePicture,
             longitude: longitude,
             latitude: latitude,
-            address: address
+            address: address,
+            mobile: mobile,
+            phone: phone
           });
           newCenter.save(function(err, newCenter) {
             var token = jwt.encode(newCenter, 'secret');

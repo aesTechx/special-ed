@@ -7,9 +7,10 @@
 <div class="login-page">
 	<div class="img-container">
 		<div class="text-center pull-right photo">
-    		<button ng-click="changeProfilePic()" class="btn btn-white btn-primary" value="Change Profile Picture" style='border:none;'>
-				<img src={{user.profilePicture}} class="user-avatar img-circle img-responsive" style='min-width:200px;min-height:200px;'/>		
-    	    </button>
+  		<button ng-click="changeProfilePic()" class="btn btn-white btn-primary" value="Change Profile Picture" style='border:none;'>
+        <img src={{user.profilePicture}} class="user-avatar img-circle img-responsive" style='min-width:200px;min-height:200px;'/>	
+        Click ^ to upload	
+      </button>
 		</div>
 	</div>
 	<div class="form-content">
@@ -33,58 +34,38 @@
 			      </select>
 			    </div>
 			    <div class="form-group" ng-if="studentSelected || teacherSelected || centerSelected">
-						<input ng-if="studentSelected || teacherSelected" type="text" class="form-control input-lg" id="" placeholder="FULLNAME" ng-model='user.fullname'>
-						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER NAME" ng-model='user.centername'>
-					</div>
-<!-- =======
-          <div class='select-wrapper form-control input-lg-wrapper' style='margin-bottom: 10px;'>
-            <select id="sel1" class='form-control2 input-lg2' ng-model="option"  ng-change="changeSelect()">
-              <option value='Select Type of User' selected="selected">Select Type of User </option>
-              <option value='Student'>Student</option>
-              <option value='Teacher'>Teacher</option>
-              <option value='Center'>Center</option>
-            </select>
-          </div>
-			    <div class="form-group" ng-if="studentSelected || teacherSelected || centerSelected">
-				    <input ng-if="studentSelected || teacherSelected" type="text" class="form-control input-lg" id="" placeholder="FULLNAME" ng-model='user.fullname'>
+            <input ng-if="studentSelected || teacherSelected" type="text" class="form-control input-lg" id="" placeholder="FULLNAME" ng-model='user.fullname'>
             <input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER NAME" ng-model='user.centername'>
-				  </div>
->>>>>>> Apply style to signup html -->
-					<div class="form-group">
-						<input type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
-					</div>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
+				</div>
 					<!-- center location: -->
-					<div class="form-group" ng-if="centerSelected">
-						<input type="text" class="form-control input-lg" id="" placeholder="CENTER email" ng-model='user.email'>
-          </div>
-          <div class="form-group" ng-if="centerSelected">
-						<input type="text" class="form-control input-lg" id="" placeholder="CENTER address" ng-model='user.address'>
-          </div>
-						<!-- <input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER phone" ng-model='user.longitude'>
-						<br/>
-						<br/>
-						<input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER address" ng-model='user.address'>
-						<br/>
-						<!-- <input ng-if="centerSelected" type="text" class="form-control input-lg" id="" placeholder="CENTER phone" ng-model='user.longitude'>
-						<br/>
-						<button ng-if="centerSelected">choose location</button> -->
-					<!-- end center location -->
-
-					<div class="form-group">
-						<input type="password" class="form-control input-lg" id="" placeholder="PASSWORD" ng-model='user.password'>
-					</div>
-					<div class="form-group" ng-if="studentSelected" >
-						<input ng-if="studentSelected" class='form-control input-lg' type="date" id="dateOfBirth" ng-model="user.birthdate" placeholder="Date of Birth">
-					</div>					
+				<div class="form-group">
+					<input type="email" class="form-control input-lg" id="" placeholder="EMAIL" ng-model='user.email' required>
+        </div>
+        <div class="form-group" ng-if="centerSelected">
+          <input type="text" class="form-control input-lg" id="" placeholder="CENTER address" ng-model='user.address'>
+        </div>
+        <div class="form-group" ng-if="centerSelected">
+          <input type="number" class="form-control input-lg" id="" placeholder="CENTER phone" ng-model='user.phone'>
+        </div>
+		    <div class="form-group">
+          <input type="password" class="form-control input-lg" id="" placeholder="PASSWORD" ng-model='user.password'>
+		    </div>
+		    <div class="form-group" ng-if="studentSelected" >
+          <h4> <b>Date of Birth </b></h4>
+          <input ng-if="studentSelected" class='form-control input-lg' type="date" id="dateOfBirth" ng-model="user.birthdate" placeholder="Date of Birth">
+  		</div>					
         <button class="btn btn-login-hover btn-block login-btn-new" type='submit'></span> Sign Up <i class='glyphicon glyphicon-ok-circle'></i></button>
-        </div>  
-      </div>
-			<div class="remember">
-				<span class='col-xs-6'><label class="checkbox1" for="Option"> 
-					<input id="Option" type="checkbox" class="">
-					<span></span>
-				</label>remember me</span>
-			</div>			
-		</form>
-	</div>			
+      </div>        
+    </div>
+		<div class="remember">
+			<span class='col-xs-6'><label class="checkbox1" for="Option"> 
+				<input id="Option" type="checkbox" class="">
+        <span></span>
+			</label>remember me</span>
+		</div>			
+	</form>
+</div>			
 </div>
