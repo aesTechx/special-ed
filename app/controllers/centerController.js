@@ -38,8 +38,7 @@ module.exports = {
         }
         res.json(user);
       });
-    }
-   
+    }   
   },
   getTeachers: function(req, res, next) {
     var token = req.headers ['x-access-token'];

@@ -116,7 +116,7 @@ angular.module('SED.services', [])
   var getCenter=function(id){
     return $http({
       method:'GET',
-      url:'/api/center/' + id
+      url:'/api/center/else/' + id
     })
     .then(function(resp){
       return resp.data;
@@ -162,7 +162,7 @@ angular.module('SED.services', [])
   var getTeacher=function(id){
     return $http({
       method:'GET',
-      url:'/api/specialists/teacher/' + id
+      url:'/api/specialists/teacher/else' + id
     })
     .then(function(resp){
       return resp.data;
@@ -196,7 +196,7 @@ angular.module('SED.services', [])
   var getStudent = function(id){
     return $http({
       method:'GET',
-      url:'/api/students/currentStudent/' + id
+      url:'/api/students/currentStudent/else/' + id
     })
     .then(function(resp){
       return resp.data;

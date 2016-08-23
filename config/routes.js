@@ -10,7 +10,7 @@ module.exports = function (app, express) {
   //center routes
   app.get('/api/centers/requestPass/:email', centerController.requestNewPass);
   app.get('/api/centers', centerController.getAll);
-  app.get('/api/center/:id', centerController.getCenter);
+  app.get('/api/center/else/:id', centerController.getCenter);
   app.get('/api/center', centerController.getCenter);
   app.get('/api/center/signedin', centerController.checkAuth);
   app.post('/api/centers/signin', centerController.signin);
@@ -23,7 +23,7 @@ module.exports = function (app, express) {
   app.get('/api/specialists/requestPass/:email', specialistController.requestNewPass);
   app.get('/api/specialists', specialistController.getAll);
   app.get('/api/specialists/students',specialistController.getStudents)
-  app.get('/api/specialists/teacher/:id', specialistController.getSpecialist);
+  app.get('/api/specialists/teacher/else/:id', specialistController.getSpecialist);
   app.get('/api/specialists/currentteacher', specialistController.getSpecialist);
   app.get('/api/specialist/signedin', specialistController.checkAuth);
   app.post('/api/specialists/signin', specialistController.signin);
@@ -35,7 +35,7 @@ module.exports = function (app, express) {
   app.get('/api/students/games', studentController.getGames);
   app.get('/api/students/specialists', studentController.getTeachers);
   app.get('/api/students', studentController.getAll);
-  app.get('/api/students/currentStudent/:id', studentController.getStudent);
+  app.get('/api/students/currentStudent/else/:id', studentController.getStudent);
   app.get('/api/students/currentStudent', studentController.getStudent);
   app.get('/api/student/signedin', studentController.checkAuth);
   app.post('/api/students/signin', studentController.signin);
