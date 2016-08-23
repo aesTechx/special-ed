@@ -11,7 +11,15 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   $scope.showAllQs = false;
   $scope.animationsEnabled = true;
   $scope.data = {};
-  
+  $scope.submit = function () {
+    for (var i = 0; i < $scope.list.questions.length; i++) {
+      if ($scope.list.questions[i].value) {
+        finalScore[$scope.list.questions[i].field] += ((JSON.parse($scope.list.questions[i].value) * (20 / JSON.parse($scope.list.questions[i].Weight))));
+      }
+    }
+    $scope.open();
+  }
+
   $scope.open = function (size) {
     var modalInstance = $uibModal.open( {
       animation: $scope.animationsEnabled,
@@ -92,27 +100,16 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
   };
   $scope.showAll = function () {
     $scope.showAllQs = !$scope.showAllQs;
+    $scope.readyToSubmit = false;
   };
-  $scope.nextQuestion = function () {
-    console.log($scope.currentQuestion)
-    if ($scope.currentQuestion.value) {
-      finalScore[$scope.currentQuestion.field] += (JSON.parse($scope.currentQuestion.value) * (20 / JSON.parse($scope.currentQuestion.Weight)));
-    }
+  $scope.nextQuestion = function (done) {
     Qnum++;
     if (Qnum < 76) {
       $scope.currentQuestion = $scope.list.questions[Qnum];
-    } else if (Qnum === 76) {
+    } 
+    if (Qnum === 75) {
       var j = 0;
-      for (var i = 0; i < $scope.list.questions.length; i++) {
-        if ($scope.list.questions.value) {
-          j++;
-        }
-      }
-      // if (j === 76) {
-        $scope.readyToSubmit = true;
-      // } else {
-      //   alert('Please complete all questions before you can submit')
-      // }
+      $scope.readyToSubmit = true;
     }
   };
   $scope.showSaved = function () {
@@ -135,6 +132,9 @@ angular.module('SED.multiForms', ['ngAnimate', 'ui.bootstrap'])
     Qnum = no;
     $scope.showAllQs = !$scope.showAllQs;
     $scope.currentQuestion = $scope.list.questions[no];
+    if (Qnum === 75) {
+      $scope.readyToSubmit = true;
+    }
   };
   $scope.showSelectedAssessment = function (assessment) {
     Assessment.getNew()
