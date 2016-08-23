@@ -162,7 +162,7 @@ angular.module('SED.services', [])
   var getTeacher=function(id){
     return $http({
       method:'GET',
-      url:'/api/specialists/teacher/else' + id
+      url:'/api/specialists/teacher/else/' + id
     })
     .then(function(resp){
       return resp.data;
