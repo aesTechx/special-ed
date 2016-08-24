@@ -1,7 +1,7 @@
 angular.module('SED.services', [])
-
 .factory ('Record', function ($http) {
   var submitForm = function(form) {
+    //Submit final assessment result
     return $http({
       method: 'POST',
       url: '/api/forms/submitForm',
@@ -9,57 +9,62 @@ angular.module('SED.services', [])
     })
     .then(function (resp) {
       return resp.data;
-    })
-  }
-  var getAll = function(){
+    });
+  };
+  var getAll = function () {
+    //Get all assessments
     return $http({
-      method:'GET',
-      url:'/api/forms'
+      method: 'GET',
+      url: '/api/forms'
     })
-    .then(function(resp){
-      return resp.data
-    })
-  }
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
   return {
     submitForm: submitForm,
-    getAll:getAll
+    getAll: getAll
   };
 })
 .factory('ApiKeys', function ($http) {
   getImgurApi = function () {
+    //Get imgur API key from backend
     return $http ({
-      method:'GET',
+      method: 'GET',
       url: '/api/imgurKey'
     })
     .then(function (resp) {
       return resp.data;
-    })
-  }
+    });
+  };
   getGmapApi = function () {
+    //Get google map API from backend
     return $http ({
-      method:'GET',
+      method: 'GET',
       url: '/api/gmapKey'
     })
     .then(function (resp) {
       return resp.data;
-    })
-  }
+    });
+  };
   return {
     getImgurApi: getImgurApi,
     getGmapApi: getGmapApi
-  }
+  };
 })
 .factory('Assessment', function ($http) {
   var getNew = function () {
+    // Load a new assessment form with empty answers
     return $http({
       method: 'GET',
       url: '/api/assessments/cars/new',
     })
     .then(function (resp) {
       return resp.data;
-    })
+    });
   };
   var save = function (assessment) {
+    // Save assessment answers to view later
     return $http({
       method: 'POST',
       url: '/api/assessments/cars/save',
@@ -67,205 +72,223 @@ angular.module('SED.services', [])
     })
     .then(function (resp) {
       return resp;
-    })
-  }
+    });
+  };
   var getAssessments = function () {
+    // Get saved assessments
     return $http({
       method: 'GET',
       url: '/api/assessments/cars/assessments'
     })
     .then(function (resp) {
       return resp.data;
-    })
-  }
+    });
+  };
   return {
     getNew: getNew,
     save: save,
     getAssessments: getAssessments
-  }
+  };
 })
 .factory('Centers', function ($http) {
-  var editProfile=function(user){
-     return $http({
-      method:'POST',
-      url:'/api/centers/editProfile',
+  var editProfile = function(user) {
+    //Edit center profile
+    return $http({
+      method: 'POST',
+      url: '/api/centers/editProfile',
       data: user
     })
-    .then(function(resp){
+    .then(function (resp) {
       return resp.data;
-    })
-  }
-  var getAllCenters=function(){
+    });
+  };
+  var getAllCenters = function() {
+    //Get all centers from database
     return $http({
-      method:'GET',
+      method: 'GET',
       url: '/api/centers',
     })
-    .then(function(resp){
+    .then(function (resp) {
       return resp.data;
-    })
-  }
-  var getCurrentCenter=function(){
+    });
+  };
+  var getCurrentCenter = function () {
+    //Get logged in center information from DB
     return $http({
-      method:'GET',
-      url:'/api/center'
+      method: 'GET',
+      url: '/api/center'
     })
-    .then(function(resp){
+    .then(function (resp) {
       return resp.data;
-    })
-  }
-  var getCenter=function(id){
+    });
+  };
+  var getCenter = function (id) {
+    //Get center with id from database
     return $http({
-      method:'GET',
-      url:'/api/center/else/' + id
+      method: 'GET',
+      url: '/api/center/else/' + id
     })
-    .then(function(resp){
+    .then(function (resp) {
       return resp.data;
-    })
-  }
-  var getTeachers=function(){
+    });
+  };
+  var getTeachers = function () {
+    //Get center's teachers
     return $http({
-      method:'GET',
-      url:'/api/center/teachers'
+      method: 'GET',
+      url: '/api/center/teachers'
     })
-    .then(function(resp){
+    .then(function (resp) {
       return resp.data;
+    });
+  };
+  var getStudents = function () {
+    //Get center's students
+    return $http({
+      method: 'GET',
+      url: '/api/center/students'
     })
-  }
-  var getStudents=function(){
-     return $http({
-      method:'GET',
-      url:'/api/center/students'
-    })
-    .then(function(resp){
+    .then(function (resp) {
       return resp.data;
-    })
-  }
+    });
+  };
   return {
-    editProfile:editProfile,
-    getStudents:getStudents,
-    getTeachers:getTeachers,
+    editProfile: editProfile,
+    getStudents: getStudents,
+    getTeachers: getTeachers,
     getCurrentCenter: getCurrentCenter,
-    getAllCenters:getAllCenters,
+    getAllCenters: getAllCenters,
     getCenter: getCenter
   };
 })
-.factory('Teachers', function($http){
-  var getCurrentTeacher=function(){
+.factory ('Teachers', function ($http) {
+  var getCurrentTeacher = function () {
+    //Get current teacher's profile info
     return $http({
-      method:'GET',
-      url:'/api/specialists/currentteacher'
+      method: 'GET',
+      url: '/api/specialists/currentteacher'
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
-  var getTeacher=function(id){
+    });
+  };
+  var getTeacher = function (id) {
+    //Get selected teacher's profile info
     return $http({
-      method:'GET',
-      url:'/api/specialists/teacher/else/' + id
+      method: 'GET',
+      url: '/api/specialists/teacher/else/' + id
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
-  var viewStudents=function(){
+    });
+  };
+  var viewStudents = function () {
+    //Get teacher's students
     return $http({
-      method:'GET',
-      url:'/api/specialists/students'
+      method: 'GET',
+      url: '/api/specialists/students'
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
-  return{
+    });
+  };
+  return {
     getCurrentTeacher: getCurrentTeacher,
     viewStudents: viewStudents,
     getTeacher: getTeacher
-  }
+  };
 })
-.factory('Students', function($http) {
-  var getCurrentStudent=function(){
+.factory ('Students', function ($http) {
+  var getCurrentStudent = function () {
+    //get current students
     return $http({
-      method:'GET',
-      url:'/api/students/currentStudent'
+      method: 'GET',
+      url: '/api/students/currentStudent'
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
-  var getStudent = function(id){
+    });
+  };
+  var getStudent = function (id) {
+    //get student's profile info
     return $http({
-      method:'GET',
-      url:'/api/students/currentStudent/else/' + id
+      method: 'GET',
+      url: '/api/students/currentStudent/else/' + id
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
-  var viewTeachers=function(){
-     return $http({
-      method:'GET',
-      url:'/api/students/specialists'
-    })
-    .then(function(resp){
-      return resp.data;
-    })
-  }
-  var viewGames=function(){
+    });
+  };
+  var viewTeachers = function () {
+    //get student's teachers
     return $http({
-      method:'GET',
-      url:'/api/students/games'
+      method: 'GET',
+      url: '/api/students/specialists'
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
-  var viewRecords=function(){
+    });
+  };
+  var viewGames = function () {
+    //get student's games
     return $http({
-      method:'GET',
-      url:'/api/students/records'
+      method: 'GET',
+      url: '/api/students/games'
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
+    });
+  };
+  var viewRecords = function () {
+    //get student's records (assessment's results)
+    return $http({
+      method: 'GET',
+      url: '/api/students/records'
     })
-  }
-  var editProfile=function(user){
-     return $http({
-      method:'POST',
-      url:'/api/students/editProfile',
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+  var editProfile = function (user) {
+    //Edit student's profile
+    return $http({
+      method: 'POST',
+      url: '/api/students/editProfile',
       data: user
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
-  var getRecords=function(){
+    });
+  };
+  var getRecords = function () {
+    //Get all students records
     return $http({
-      method:'GET',
-      url:'/api/form/student'
+      method: 'GET',
+      url: '/api/form/student'
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
-  var addTeacher=function(id){
+    });
+  };
+  var addTeacher = function (id) {
+    //Add teacher to student
     return $http({
-      method:'POST',
-      url:'/api/student/addstudent',
+      method: 'POST',
+      url: '/api/student/addstudent',
       data: id
     })
-    .then(function(resp){
+    .then(function(resp) {
       return resp.data;
-    })
-  }
+    });
+  };
   return {
-    getCurrentStudent:getCurrentStudent,
-    viewTeachers:viewTeachers,
-    viewGames:viewGames,
-    viewRecords:viewRecords,
-    editProfile:editProfile,
-    getRecords:getRecords,
-    addTeacher:addTeacher,
+    getCurrentStudent: getCurrentStudent,
+    viewTeachers: viewTeachers,
+    viewGames: viewGames,
+    viewRecords: viewRecords,
+    editProfile: editProfile,
+    getRecords: getRecords,
+    addTeacher: addTeacher,
     getStudent: getStudent
   };
 })
@@ -274,7 +297,7 @@ angular.module('SED.services', [])
   // it is responsible for authenticating our user
   // by exchanging the user's username and password
   // for a JWT from the server
-  // that JWT is then stored in localStorage as 'com.shortly'
+  // that JWT is then stored in localStorage as 'com.SEDuser'
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signinStudent = function (user) {
@@ -349,39 +372,42 @@ angular.module('SED.services', [])
   };
 
   var isAuthteacher = function () {
-    return !!$window.localStorage.getItem('com.SEDteacher');
+    return !!$window.localStorage.getItem('com.SEDuser');
   };
 
   var isAuthcenter = function () {
-    return !!$window.localStorage.getItem('com.SEDcenter');
+    return !!$window.localStorage.getItem('com.SEDuser');
   };
-  var requestPassStudent = function(email){
+  var requestPassStudent = function(email) {
+    //Request new password
     return $http({
-      method : 'GET',
-      url : '/api/students/requestPass/' + email
+      method: 'GET',
+      url: '/api/students/requestPass/' + email
     })
-    .then(function(res){
+    .then(function(res) {
       return res;
-    })
+    });
   };
-  var requestPassTeacher = function(email){
+  var requestPassTeacher = function(email) {
+    //Request new password
     return $http({
-      method : 'GET',
-      url : '/api/specialists/requestPass/' + email
+      method: 'GET',
+      url: '/api/specialists/requestPass/' + email
     })
-    .then(function(res){
+    .then(function(res) {
       return res;
-    })
-  }
-  var requestPassCenter = function(email){
+    });
+  };
+  var requestPassCenter = function(email) {
+    //Request new password
     return $http({
-      method : 'GET',
-      url : '/api/centers/requestPass/' + email
+      method: 'GET',
+      url: '/api/centers/requestPass/' + email
     })
-    .then(function(res){
+    .then(function(res) {
       return res;
-    })
-  }
+    });
+  };
   return {
     signinStudent: signinStudent,
     signinCenter: signinCenter,
