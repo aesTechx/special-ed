@@ -1,7 +1,7 @@
 <div>
-	<div ng-include="'menu.html'"></div>
-	<snap-dragger></snap-dragger>
-	<snap-content snap-opt-tap-to-close="false" class="bg-dark">
+<div ng-include="'menu.html'"></div>
+<snap-dragger></snap-dragger>
+<snap-content snap-opt-tap-to-close="false" class="bg-dark">
   <a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
     <span class="menutoggle">
       <i ng-hide="menuOpen" class="fa1 glyphicon glyphicon-menu-hamburger fa-2x"></i>
@@ -9,19 +9,20 @@
     </span>
   </a>
   <a href="#/logout" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" style='float:right;'>Logout</a>
-  <div class="fr" >
-    <h2> SPECIAL ED <small> Overview</small></h2>
-  </div>
-		<div class="fr">
-    <span class="glyphicon glyphicon-dashboard bg-fade"></span>
-  	<div class="jumbotron">
-  		<div class="container">
-  			<h1>Add Charts here</h1>
-  			<p>You can use C3.js or Chart.js</p>
-  			<p>
-  				<a class="btn btn-primary btn-lg btn-white" ui-sref="overview">Back to Overview</a>
-  			</p>
-  		</div>
-		</div>
-	</snap-content>	
+    <div class="fr" >
+      <h2> SPECIAL ED <small> Overview</small></h2>
+    </div>
+    <div class="fr">
+      <span class="glyphicon glyphicon-dashboard bg-fade"></span>
+      <div class="jumbotron">
+        <div class="container">
+          <h1>Add Charts here</h1>
+          <p>You can use C3.js or Chart.js</p>
+          <p>
+            <a class="btn btn-primary btn-lg btn-white" ui-sref="overview">Back to Overview</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </snap-content>	
 </div>
