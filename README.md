@@ -1,7 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/aesTechx/special-ed.png?label=ready&title=Ready)](https://waffle.io/aesTechx/special-ed)
 [Visit Page](http://special-ed.herokuapp.com/)
 
-# Special Ed
+# Special Ed http://special-ed.herokuapp.com/
 A portal/app for helping those with learning disabilities and autism to connect to their facilitators and rehab centers, in a move to make it possible to learn from home and monitor progress
 
 ## Special features
@@ -30,6 +30,9 @@ Development Engineer: Aws Ahmed
 
 ## Database
 This project uses Mongo DB, therefore, mongo must be installed on your PC, follow the instructions [here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) for OS
+
+### Schema mockup
+![alt tag](special-ed/schemaFinalProject.png)
 
 ## Start the app
 After cloning the project into your local do from the root repository
@@ -100,9 +103,6 @@ Travis
 
 ## Contributing
 To contribute to this project please visit our [Contributing.md] (https://github.com/aesTechx/special-ed/blob/master/CONTRIBUTING.md)
-
-## Deployed Link:
-http://special-ed.herokuapp.com/#/dashboard/game
 
 ## Folder Hierarchy
 
