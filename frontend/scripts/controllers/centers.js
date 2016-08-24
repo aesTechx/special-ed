@@ -23,7 +23,7 @@ angular.module('SED.centers', [])
           address: center.address,
           icon: '../../images/marker.png'
         });
-        marker.content = '<div class="infoWindowContent">' + center.centername + '<br>' + center.address + '<br>' + '</div>';
+        marker.content = '<div class="infoWindowContent"> ' + center.centername + '<br>' + center.address + '<br>' + '</div>';
         google.maps.event.addListener (marker, 'click', function () {
           infoWindow.setContent ('<h2 style="color:green;">' + marker.centerName + '</h2>' + marker.content );
           infoWindow.open ($scope.map, marker);
