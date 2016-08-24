@@ -10,27 +10,28 @@ var findAllGames = Q.nbind(Game.find, Game);
 var findStudent = Q.nbind(Student.findOne, Student);
 
 module.exports = {
-  getAll : function (req, res, next){
+  getAll: function (req, res, next) {
     Game.find({}, function(err, games) {
-      if(err){
+      if (err) {
         res.status(500).send(err);
       }
-        res.json(games)
-    })
+      res.json(games);
+    });
   },
-  getGame : function (req, res, next) {
-    Game.findOne({game: req.params.game}, function (err , user) {
-      if(err)
+  getGame: function (req, res, next) {
+    Game.findOne({game: req.params.game}, function (err, user) {
+      if (err) {
         res.status(500).send(err);
+      }
       res.json(user);
-    })
+    });
   },
   getUserGames: function (req, res, next) {
     var userId = req.params.userId.toString();
     findAllGames({userId: req.params.userId})
     .then(function (games) {
       res.json(games);
-    })
+    });
     res.status(500).send(err);
   },
   getUserGame: function (req, res, next) {
@@ -38,11 +39,11 @@ module.exports = {
     findAllGames({userId: userId, game: req.params.game.toString()})
     .then(function (games) {
       res.json(games);
-    })
+    });
     res.status(500).send(err);
   },
-  playGame : function(req, res, next) {
-  	var studentId = req.params.studentId.toString();
+  playGame: function(req, res, next) {
+    var studentId = req.params.studentId.toString();
     var level = req.body.level;
     var game = req.params.game.toString();
     var newtiming = req.body.newtiming;
@@ -64,21 +65,21 @@ module.exports = {
       if (err) {
         res.json(err);
       } else {
-        findStudent ( { "_id":studentId } )
+        findStudent ( { '_id': studentId } )
         .then(function (student) {
-          if(!student) {
+          if (!student) {
             next(new Error('student does not exist'));
           } else {
-            student.gameRecords.push(newGame._id)
+            student.gameRecords.push(newGame._id);
             student.save();
-            res.send(200,'done')
+            res.send(200, 'done');
           }
         })
         .fail(function (err) {
-          res.json(newGame)
-        })
+          res.json(newGame);
+        });
       }
     });
   }
-}   
+};
 

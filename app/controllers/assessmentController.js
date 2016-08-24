@@ -7,7 +7,7 @@ var emptyAssessment = require('../../assets/carsAssessmentQuestions.js');
 var findAssessment = Q.nbind(CarsAssessment.findOne, CarsAssessment);
 var createAssessment = Q.nbind(CarsAssessment.create, CarsAssessment);
 var findAllAssessments = Q.nbind(CarsAssessment.find, CarsAssessment);
-var findAllStudent =Q.nbind(Student.find, Student)
+var findAllStudent = Q.nbind(Student.find, Student);
 
 module.exports = {
   getNewAssessment: function (req, res, next) {
@@ -36,8 +36,8 @@ module.exports = {
     findAllAssessments({studentId: student._id})
     .then(function(found) {
       if (found) {
-        console.log(found)
-        res.json(found)
+        console.log(found);
+        res.json(found);
       } else {
         next(new Error('not found'));
       }
@@ -52,11 +52,11 @@ module.exports = {
       if (found) {
         res.json(found);
       } else {
-        next(new Error('not found'))
+        next(new Error('not found'));
       }
     })
     .catch(function (err) {
       next(err);
     });
   }
-}
+};

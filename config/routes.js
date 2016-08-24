@@ -16,13 +16,13 @@ module.exports = function (app, express) {
   app.post('/api/centers/signin', centerController.signin);
   app.post('/api/centers/signup', centerController.signup);
   app.post('/api/centers/editProfile', centerController.editCenter);
-  app.get('/api/center/teachers',centerController.getTeachers);
-  app.get('/api/center/students',centerController.getStudents);
+  app.get('/api/center/teachers', centerController.getTeachers);
+  app.get('/api/center/students', centerController.getStudents);
 
   //specialist routes
   app.get('/api/specialists/requestPass/:email', specialistController.requestNewPass);
   app.get('/api/specialists', specialistController.getAll);
-  app.get('/api/specialists/students',specialistController.getStudents)
+  app.get('/api/specialists/students', specialistController.getStudents);
   app.get('/api/specialists/teacher/else/:id', specialistController.getSpecialist);
   app.get('/api/specialists/currentteacher', specialistController.getSpecialist);
   app.get('/api/specialist/signedin', specialistController.checkAuth);
@@ -41,7 +41,7 @@ module.exports = function (app, express) {
   app.post('/api/students/signin', studentController.signin);
   app.post('/api/students/signup', studentController.signup);
   app.post('/api/students/editProfile', studentController.editStudent);
-  app.post('/api/student/addstudent',studentController.addstudent);
+  app.post('/api/student/addstudent', studentController.addstudent);
 
   //game routes
   app.get('/api/games', gameController.getAll);
@@ -60,9 +60,9 @@ module.exports = function (app, express) {
   app.get('/api/assessments/cars/assessments', carsAssessmentController.getAssessments);
 
   app.get('/api/imgurKey', function (req, res) {
-    res.json(helpers.imgur_api);
+    res.json(helpers.imgurApi);
   });
   // app.get('/api/gmapKey', function (req, res) {
-  //   res.json(helpers.gmap_api);
+  //   res.json(helpers.gmapApi);
   // })
 };  

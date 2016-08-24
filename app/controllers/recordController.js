@@ -10,37 +10,35 @@ var findAllRecords = Q.nbind(Record.find, Record);
 var findStudent = Q.nbind(Student.findOne, Student);
 
 module.exports = {
-  getAll : function (req, res, next){
+  getAll: function (req, res, next) {
 
     Record.find({}, function(err, users) {
-      if(err){
+      if (err) {
         res.status(500).send(err);
       }
-        res.json(users)
-    })
+      res.json(users);
+    });
   },
-  getRecord : function (req,res,next) {
+  getRecord: function (req, res, next) {
     var token = req.headers['x-access-token'];
     var user = jwt.decode(token, 'secret');
-    Record.find({studentId: user._id}, function (err , records) {
-      if(err)
+    Record.find({studentId: user._id}, function (err, records) {
+      if (err) {
         res.status(500).send(err);
+      }
       res.json(records);
-    })
+    });
   },
-  addRecord : function(req, res, next) {
-  	var token = req.headers['x-access-token'];
+  addRecord: function(req, res, next) {
+    var token = req.headers['x-access-token'];
     var user = jwt.decode(token, 'secret');
-    console.log(req.body)
     //"Social": 0, "Preservation": 0, "SensoryDisturbance": 0, "CommunicationandDevelopment": 0, "AttentionandSafety": 0
-    var studentId=user._id;
+    var studentId = user._id;
     var social = req.body.social;
     var preservation = req.body.preservation;
     var sensoryDisturbance = req.body.sensoryDisturbance;
     var communicationAndDevelopment = req.body.communicationAndDevelopment;
     var attentionAndSafety = req.body.attentionAndSafety;
-    //var centerId = req.body.centerId;
-    console.log(attentionAndSafety)
     var newRecord = new Record({
       social: social,
       preservation: preservation,
@@ -53,21 +51,21 @@ module.exports = {
       if (err) {
         res.json(err);
       } else {
-        findStudent ( { "_id":studentId } )
+        findStudent ( { '_id': studentId } )
         .then(function (student) {
-          if(!student) {
+          if (!student) {
             next(new Error('student does not exist'));
           } else {
-            student.records.push(newRecord._id)
+            student.records.push(newRecord._id);
             student.save();
-            res.send(200,'done')
+            res.send(200, 'done');
           }
         })
         .fail(function (err) {
-          res.json(newRecord)
-        })
+          res.json(newRecord);
+        });
       }
     });
   }
-}   
+};
 
