@@ -3,6 +3,7 @@
 var dragDropSampleApp = angular.module('dragDropSampleApp', []);
 
 dragDropSampleApp.factory('draggableData', function () {
+  //Data to be dragged
   var data = [
     {
       fruitname: 'apple',
@@ -34,6 +35,7 @@ dragDropSampleApp.factory('draggableData', function () {
 });
 
 dragDropSampleApp.factory('droppableData', function () {
+  //Where pictures are to be dropped
   var data = [
     {
       fruitname: 'apple',
@@ -76,6 +78,7 @@ dragDropSampleApp.controller('MainController', ['$scope', 'draggableData', 'drop
   
   $scope.doraemonStatus = 'sleeping';
   $scope.setDoraemonStatus = function (value) {
+    //Set the status of teh doraemon according to game scoring
     $scope.$apply(function () {
       $scope.doraemonStatus = value;
     });
@@ -83,6 +86,7 @@ dragDropSampleApp.controller('MainController', ['$scope', 'draggableData', 'drop
   
   $scope.score = 0;
   $scope.setScore = function (value) {
+    //Update score
     $scope.$apply(function () {
       $scope.score = $scope.score + value;
     });
@@ -92,18 +96,17 @@ dragDropSampleApp.controller('MainController', ['$scope', 'draggableData', 'drop
     return $scope.score;
   }, function (newVal, oldVal) {
     if (newVal !== oldVal) {
-        console.log('array length', $scope.draggableArrayLength, 'score', newVal)
-        if (newVal === $scope.draggableArrayLength) {
-          console.log ('game over');
-          $timeout (function () {
-            $scope.setDoraemonStatus('finish');
-          }, 2000)
-        }
-      }       
+      //If the game is finished
+      if (newVal === $scope.draggableArrayLength) {
+        $timeout (function () {
+          $scope.setDoraemonStatus('finish');
+        }, 2000);
+      }
+    }       
   });
   
   $scope.removeFromArray = function (value) {
-    console.log(value);
+    //Update draggable array as items are dragged and dropped
     angular.forEach($scope.draggableArray, function (arrvalue, arrindex) {
       var fruitname = arrvalue.fruitname;
       if (fruitname === value) {
@@ -135,9 +138,10 @@ dragDropSampleApp.directive('dragme', ['$timeout', function ($timeout) {
       $elem.attr('data-answerdata', answerData);
       $elem.attr('data-myindex', $scope.myindex);
       
+      //Set draggable components
       $elem.css({
         left: myLeft,
-        float:'left',
+        float: 'left',
         backgroundImage: 'url(img/' + backgroundImage + ')'
       });
       
@@ -147,7 +151,6 @@ dragDropSampleApp.directive('dragme', ['$timeout', function ($timeout) {
         appendTo: 'body',
         zIndex: 100,
         drag: function (event, ui) {
-          console.log ('drag');
           $(ui.helper).css('border', '0px');
           $scope.setDoraemon({
             value: 'dragging'
@@ -168,10 +171,10 @@ dragDropSampleApp.directive('dropme', ['$timeout', function ($timeout) {
       setDoraemon: '&'
     },
     link: function ($scope, $elem, $attr) {
-      console.log('helo');
       var backgroundImage = $attr.backgroundimage;
       var answerData = $attr.fruitname;
       
+      //set droppable area
       $elem.addClass('droppable');
       $elem.attr('data-answerimage', backgroundImage);
       $elem.attr('data-answerdata', answerData);
@@ -193,11 +196,12 @@ dragDropSampleApp.directive('dropme', ['$timeout', function ($timeout) {
             $scope.removeArray({
               value: $(droppedElem).attr('data-answerdata')
             });
+            //If answer is correct
             $scope.setDoraemon({
               value: 'happy'
             });
           } else {
-          // $(this).effect('shake');
+            // If answer is incorrect
             $scope.setDoraemon({
               value: 'tease'
             });
