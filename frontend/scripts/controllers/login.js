@@ -8,29 +8,29 @@ angular.module('SED.Login', [])
   $scope.submit = function() {
     var option = $scope.option;
     Auth['signin' + $scope.option]($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.SEDuser', token);
-        $window.localStorage.setItem('typeOfUser', $scope.option.toLowerCase());
-        $location.path('/dashboard');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-    }
+    .then(function (token) {
+      $window.localStorage.setItem('com.SEDuser', token);
+      $window.localStorage.setItem('typeOfUser', $scope.option.toLowerCase());
+      $location.path('/dashboard');
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  };
   $scope.forgotPass = function () {
     $scope.resetPass = !$scope.resetPass;
-  }
+  };
   $scope.resetPassword = function () {
     Auth['requestPass' + $scope.option]($scope.reset.email)
-    .then(function(result){
-      if(result.status === 201){
+    .then(function(result) {
+      if (result.status === 201) {
         $scope.msg = 'Please Check Your Email!';
       } else {
         $scope.msg = 'Wrong Email!';
       }
     })
-    .catch(function(error){
+    .catch(function(error) {
       $scope.msg = 'Wrong Email!';
     });    
-  }
+  };
 });
