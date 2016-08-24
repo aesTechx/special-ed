@@ -1,4 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/aesTechx/special-ed.png?label=ready&title=Ready)](https://waffle.io/aesTechx/special-ed)
+[![Visit Page](https://www.herokucdn.com/deploy/button.svg)](http://special-ed.herokuapp.com/#/dashboard/game)
+
 # Special Ed
 A portal/app for helping those with learning disabilities and autism to connect to their facilitators and rehab centers, in a move to make it possible to learn from home and monitor progress
 
