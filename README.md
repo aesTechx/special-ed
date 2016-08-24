@@ -99,5 +99,109 @@ Travis
 ## Contributing
 To contribute to this project please visit our [Contributing.md] (https://github.com/aesTechx/special-ed/blob/master/CONTRIBUTING.md)
 
-## Deploied Link:
+## Deployed Link:
 http://special-ed.herokuapp.com/#/dashboard/game
+
+## Folder Hierarchy
+
+```
+special-ed
+├── app  // Database configuration
+│   ├── controllers
+│   │   ├── assessmentController.js // Controls assessment saving and retrieval from database
+│   │   ├── centerController.js // Controls center schema for authentication, retrieval, parsing in database, etc
+│   │   ├── gameController.js // Controls game records for users
+│   │   ├── recordController.js // Controls records schema for storing assessment results
+│   │   ├── specialistController.js // Controls specialist schema (similar to center schema)
+│   │   └── studentController.js // similar to specialist and center controllers
+│   └── models // Schemas
+│       ├── assessment.js
+│       ├── center.js
+│       ├── game.js
+│       ├── record.js
+│       ├── specialist.js
+│       └── student.js
+├── assets
+│   └── carsAssessmentQuestions.js
+├── config
+│   ├── helpers.js //helper functions
+│   ├── middleware.js //Express middleware functions for piping
+│   ├── routes.js //handle requests and responses and route them inside backend
+│   └── socket.handler.js //handle socket.io configuration
+├── frontend
+│   ├── assets //Assets for picGame
+│   │   └── ...
+│   ├── fonts
+│   │   └── ...
+│   ├── helpers
+│   │   ├── liquidFillGauge.js //d3 function to control water gauges in student profiles
+│   │   └── uploadToImgur.js //function to upload to imgur
+│   ├── images //images used throughout application 
+│   │   └── ...
+│   ├── img //images used throughout application 
+│   │   └── ...
+│   ├── js
+│   │   ├── app.js //angular module and controller to control html of game
+│   │   └── game.js //function to handle game logic
+│   ├── lib //Frontend dependancies
+│   │   └── ...
+│   ├── scripts
+│   │   ├── controllers //Angular module controllers for corresponding views
+│   │   │   ├── assessmentController.js //controls assessment
+│   │   │   ├── centerProfile.js 
+│   │   │   ├── centers.js // All centers map view
+│   │   │   ├── dashboard.js //backbone of frontend
+│   │   │   ├── game.js // controls dragAndDrop game
+│   │   │   ├── landingController.js // Landing page controller
+│   │   │   ├── login.js 
+│   │   │   ├── overview.js // Overview page controller
+│   │   │   ├── picGame.js 
+│   │   │   ├── report.js // Disabled for now
+│   │   │   ├── studentProfile.js 
+│   │   │   ├── teacherProfile.js
+│   │   │   └── signup.js
+│   │   ├── services 
+│   │   │   └── services.js //handle http communications with backend for all controllers
+│   │   └── app.js //Main app module, http interceptors, and frontend state routing
+│   ├── src //angular drag and drop dependancies
+│   │   └── ...
+│   ├── styles //CSS and .LESS styling libraries
+│   │   └── ...
+│   ├── views 
+│   │   ├── dashboard // Member area dashboard views
+│   │   │   ├── assessmentForm.html 
+│   │   │   ├── centerProfile.html 
+│   │   │   ├── centers.html 
+│   │   │   ├── game.html //  dragAndDrop game
+│   │   │   ├── games.html // Play zone
+│   │   │   ├── memoryGame.html
+│   │   │   ├── overview.html
+│   │   │   ├── picGame.html 
+│   │   │   ├── report.html 
+│   │   │   ├── studentProfile.html 
+│   │   │   └── teacherProfile.html
+│   │   ├── guest // Public area
+│   │   │   ├── freeAssessment.html 
+│   │   │   ├── freeGame.html 
+│   │   │   └── publicCenters.html 
+│   │   ├── base.html
+│   │   ├── dashboard.js 
+│   │   ├── game.html
+│   │   ├── landingPage.html
+│   │   ├── login.html
+│   │   └── signup.html
+│   ├── 404.html // not found 404 page
+│   ├── index.html //main app page
+│   ├── menu.html //left snap drawer menu for inside navigation
+│   └── favicon.ico //icon that appears on browser tab
+├── spec // tests
+├── emailComms.js // handle smtp email communications
+.
+.
+.
+├── .travis.yml // integration server configuration
+├── karma.conf.js // karma testing configuration
+├── package.json // handle dependancies
+└── server.js // gateway of backend and express server configuration
+
+```
