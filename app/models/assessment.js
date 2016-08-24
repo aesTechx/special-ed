@@ -5,12 +5,12 @@ var Schema = mongoose.Schema;
 
 
 var CarsAssessmentSchema = new mongoose.Schema({
-	name: String,
-	questions: {},
-	studentId: String
+  name: String,
+  questions: {},
+  studentId: String
 });
 
 
-var CarsAssessment = mongoose.model('CarsAssessment' , CarsAssessmentSchema);
+var CarsAssessment = mongoose.model('CarsAssessment', CarsAssessmentSchema);
 
 module.exports = CarsAssessment;

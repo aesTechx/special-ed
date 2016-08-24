@@ -114,4 +114,4 @@ describe('ControllersSpecs', function () {
         });
     });
   });  
-})
+});
