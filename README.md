@@ -32,7 +32,7 @@ Development Engineer: Aws Ahmed
 This project uses Mongo DB, therefore, mongo must be installed on your PC, follow the instructions [here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) for OS
 
 ### Schema mockup
-![alt tag](special-ed/schemaFinalProject.png)
+![alt tag](https://github.com/aesTechx/special-ed/blob/master/schemaFinalProject.png)
 
 ## Start the app
 After cloning the project into your local do from the root repository
