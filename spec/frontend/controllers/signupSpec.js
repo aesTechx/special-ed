@@ -4,10 +4,7 @@ describe('SignUp Controller', function() {
     module('SED.Signup');
   });
 
-  var $controller;
-  var Auth;
-  var controller;
-  var $q;
+  var $controller, Auth, controller, $q;
   beforeEach(inject(function(_$controller_, _Auth_, _$q_) {
     // The injector unwraps the underscores (_) from around the parameter names when matching
     $q = _$q_;

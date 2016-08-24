@@ -24,11 +24,12 @@ module.exports = {
   },
   getCenter: function (req, res, next) {
     if (req.params.id) {
-      Center.findOne({_id: req.params.id}, function (err , user) {
-        if(err)
+      Center.findOne({_id: req.params.id}, function (err, user) {
+        if (err) {
           res.status(500).send(err);
+        }
         res.json(user);
-      })
+      });
     } else {
       var token = req.headers['x-access-token'];
       var center = jwt.decode(token, 'secret');

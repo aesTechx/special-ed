@@ -28,13 +28,13 @@ module.exports = {
   },
   getStudent: function (req, res, next) {
     if (req.params.id) {
-      Student.findOne( {_id: req.params.id}, function (err , user) {
+      Student.findOne( {_id: req.params.id}, function (err, user) {
         if (err) {
           res.status(500).send(err);
         } else {
           res.json(user);
         }
-      })
+      });
     } else {
       var token = req.headers['x-access-token'];
       user = jwt.decode(token, 'secret');
