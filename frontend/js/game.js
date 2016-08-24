@@ -1,7 +1,7 @@
 'use strict';
 /* Memory Game Models and Business Logic */
 
-var Title = function (title) {
+var Tile = function(title) {
   this.title = title;
   this.flipped = false;
 };
@@ -9,8 +9,6 @@ var Title = function (title) {
 Tile.prototype.flip = function() {
   this.flipped = !this.flipped;
 };
-
-
 
 var Game = function (tileNames) {
   var tileDeck = makeDeck(tileNames);
@@ -58,11 +56,10 @@ Game.MESSAGE_MATCH = 'Good job! Keep going.';
 Game.MESSAGE_WON = 'You win!';
 
 
-
 /* Create an array with two of each tileName in it */
 var makeDeck = function (tileNames) {
   var tileDeck = [];
-  tileNames.forEach(function(name) {
+  tileNames.forEach( function(name) {
     tileDeck.push(new Tile(name));
     tileDeck.push(new Tile(name));
   });
@@ -70,8 +67,8 @@ var makeDeck = function (tileNames) {
   return tileDeck;
 };
 
-
 var makeGrid = function (tileDeck) {
+
   var gridDimension = Math.sqrt(tileDeck.length);
   var grid = [];
 
@@ -81,10 +78,8 @@ var makeGrid = function (tileDeck) {
       grid[row][col] = removeRandomTile(tileDeck);
     }
   }
-
   return grid;
 };
-
 
 var removeRandomTile = function (tileDeck) {
   var i = Math.floor(Math.random() * tileDeck.length);

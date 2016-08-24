@@ -12,8 +12,8 @@ var StudentSchema = new mongoose.Schema({
     required: true
   },
   centerId: { 
-  	type: Schema.Types.ObjectId,
-  	ref: 'Center'
+    type: Schema.Types.ObjectId,
+    ref: 'Center'
   },
   password: {
     type: String,
@@ -31,8 +31,8 @@ var StudentSchema = new mongoose.Schema({
     ref: 'CarsAssessment'
   },
   todos: { 
-    type : Array, 
-    "default" : [] 
+    type: Array,
+    'default': []
   },
   teachers: [{ 
     type: Schema.Types.ObjectId, 

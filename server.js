@@ -3,11 +3,11 @@ var app 		= express();
 var server 		= require('http').createServer(app);
 var io 			= require('socket.io')(server);
 var mongoose = require('mongoose');
-var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/SpecialEd';
+var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/SpecialEd';
 mongoose.connect(mongoURI);
 db = mongoose.connection;
 
-db.once('open',function () {
+db.once('open', function () {
   console.log('mongoDB is open');
 });
 
