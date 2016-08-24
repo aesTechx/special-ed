@@ -11,6 +11,7 @@ Tile.prototype.flip = function() {
 };
 
 var Game = function (tileNames) {
+
   var tileDeck = makeDeck(tileNames);
 
   this.grid = makeGrid(tileDeck);
@@ -58,6 +59,7 @@ Game.MESSAGE_WON = 'You win!';
 
 /* Create an array with two of each tileName in it */
 var makeDeck = function (tileNames) {
+
   var tileDeck = [];
   tileNames.forEach( function(name) {
     tileDeck.push(new Tile(name));
