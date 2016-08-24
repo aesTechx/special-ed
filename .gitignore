@@ -18,6 +18,7 @@ iisnode.yml
 .Spotlight-V100
 .Trashes
 *.sqlite
+./frontend/lib/**/*
 frontend/lib/**/*
 frontend/config/*.js
 

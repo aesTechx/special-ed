@@ -5,23 +5,6 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-/*@media (min-width: @screen-sm) {
-    .login-page .img-container {
-      bottom:10%;
-    }
-}*/
-
-/*@media (max-width: @screen-sm) {
-    body{font-size: 14px;}
-}
-@media (max-width: @screen-m) {
-    body{font-size: 20px;}
-}
-@media (max-width: @screen-lg) {
-    body{font-size: 25px;}
-}*/
-
-
 h2 {
   font-size: 2em;
 }
@@ -8185,22 +8168,6 @@ to prevent collapsing during animation*/
   color: #000;
   padding: 0.2em 0;
 }
-/*custome classes */
-/*.svg-container {
-    display: inline-block;
-    position: relative;
-    width: 300%;
-    padding-bottom: 160%; 
-    vertical-align: top;
-    overflow: hidden;
-}
-.svg-content-responsive {
-    display: inline-block;
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-}*/
 html,
 body {
   overflow: hidden;
