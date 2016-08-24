@@ -14,81 +14,81 @@
         <p>Click <big><i class='glyphiscon glyphicon-play'></i></big> to start or <big> <i class='glyphicon glyphicon-floppy-disk'></i></big> to show saved assessments</p> 
           <div class='col-xs-6'><button style='width:80%;' class="btn btn-login-hover btn-lg login-btn-new text-center" ng-click="start()" ><i class='glyphicon glyphicon-play'></i></button></div>
       </div>
-      </div>          
+    </div>          
     <div class='jumbotron col-xs-12' style='background:none;' ng-if="!readyToStart && !showAllQs">
       <div>
-      <h3> Category: {{currentQuestion.category}} Q <span class='h4'>{{currentQuestion.questionNum}}</span> of <span class='h4'>{{totalNumberOfQuestions}} </span><span class='h4'> </span></h3>
-      <div class="container-fluid" style="background: rgba(255,255,255,0.5); padding:20px;">
-        <form role="form">
-          <div class="table-form">
-            <div class="form-groups">
-              <div class="form-group">
-                <div style='height:190px;'>
-                  <div class='col-xs-12'>
-                    <h4>Does your kid show the following: </span></h4>
-                  </div>
-                  <div class='col-xs-8'>
-                    <p><big>{{currentQuestion.Q}}</big></p>
+        <h3> Category: {{currentQuestion.category}} Q <span class='h4'>{{currentQuestion.questionNum}}</span> of <span class='h4'>{{totalNumberOfQuestions}} </span><span class='h4'> </span></h3>
+        <div class="container-fluid" style="background: rgba(255,255,255,0.5); padding:20px;">
+          <form role="form">
+            <div class="table-form">
+              <div class="form-groups">
+                <div class="form-group">
+                  <div style='height:190px;'>
+                    <div class='col-xs-12'>
+                      <h4>Does your kid show the following: </span></h4>
+                    </div>
+                    <div class='col-xs-8'>
+                      <p><big>{{currentQuestion.Q}}</big></p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
-        <div class='col-xs-12 text-center' style='height:40px;'>
-          <div class="navbar-form input-group radio" >
-            <div class='col-xs-6'>
-              <span ><input type="radio"  value="0" ng-model="currentQuestion.value" > Yes </span> <span class='col-xs-2'></span>
-            </div>
-            <div class='col-xs-6'>
-              <span ><input type="radio" value="1" ng-model="currentQuestion.value" > No </span>
+          </form>
+          <div class='col-xs-12 text-center' style='height:40px;'>
+            <div class="navbar-form input-group radio" >
+              <div class='col-xs-6'>
+                <span ><input type="radio"  value="0" ng-model="currentQuestion.value" > Yes </span> <span class='col-xs-2'></span>
+              </div>
+              <div class='col-xs-6'>
+                <span ><input type="radio" value="1" ng-model="currentQuestion.value" > No </span>
+              </div>
             </div>
           </div>
         </div>
+        <div class='col-md-4 col-xs-12'  ng-if="!readyToSubmit">
+          <button class='btn btn-login-hover btn-lg login-btn-new text-center' ng-click="nextQuestion()" style='width:80%'> Next</button>
       </div>
-    <div class='col-md-4 col-xs-12'  ng-if="!readyToSubmit">
-      <button class='btn btn-login-hover btn-lg login-btn-new text-center' ng-click="nextQuestion()" style='width:80%'> Next</button>
+      <div class='col-md-4 col-xs-12' ng-if="readyToSubmit">
+        <button class='btn btn-login-hover btn-lg login-btn-new text-center'  ng-click="submitFree()" style=' width:80%'> Submit </button>
+      </div>
+      <div class='col-md-4 col-xs-12'>
+        <button style=' width:80%' class='btn btn-login-hover btn-lg login-btn-new text-center' ng-click="showAll()"> All Questions </button>
+      </div>
     </div>
-    <div class='col-md-4 col-xs-12' ng-if="readyToSubmit">
-      <button class='btn btn-login-hover btn-lg login-btn-new text-center'  ng-click="submitFree()" style=' width:80%'> Submit </button>
-    </div>
-    <div class='col-md-4 col-xs-12'>
-      <button style=' width:80%' class='btn btn-login-hover btn-lg login-btn-new text-center' ng-click="showAll()"> All Questions </button>
+    <div class='fr text-center' ng-if='showAllQs'>
+      <div class='col-xs-8' >
+        <div class='container-fluid col-xs-2' style='padding:10px; border:1px #fff solid; background:#232c4b; color:#fff;'>
+          #
+        </div>
+        <div class='container-fluid col-xs-4 ' style='padding:10px; border:1px #fff solid; background:#232c4b; color:#fff;'>
+          Catgory
+        </div>
+        <div class='container-fluid col-xs-2' style='padding:10px; border:1px #fff solid; background:#232c4b; color:#fff;'>
+          Answer
+        </div>
+      </div>
+      <div class='col-xs-8' ng-repeat='question in list.questions'>
+        <a href='' ng-click='goToQuestion($index)' style='color:blue;'> 
+          <div class='container-fluid col-xs-2' style='background:#fff;'>
+            <u>{{question.questionNum}}</u>
+          </div> 
+        </a>
+        <div class='container-fluid col-xs-4' style='background:#fff; color:#232c4b;'>
+         {{question.category}}
+        </div>
+        <div class='container-fluid col-xs-2' ng-if="question.value==='1'" style='background:#fff; color:#232c4b;'>
+          No
+        </div>
+        <div class='container-fluid col-xs-2' ng-if='question.value === "0"' style='background:#fff; color:#232c4b;'>
+          Yes
+        </div>
+        <div class='container-fluid col-xs-2' ng-if='!question.value' style='background:#fff; color:#232c4b;'>
+          -
+        </div>  
+      </div>
     </div>
   </div>
-  <div class='fr text-center' ng-if='showAllQs'>
-    <div class='col-xs-8' >
-      <div class='container-fluid col-xs-2' style='padding:10px; border:1px #fff solid; background:#232c4b; color:#fff;'>
-        #
-      </div>
-      <div class='container-fluid col-xs-4 ' style='padding:10px; border:1px #fff solid; background:#232c4b; color:#fff;'>
-        Catgory
-      </div>
-      <div class='container-fluid col-xs-2' style='padding:10px; border:1px #fff solid; background:#232c4b; color:#fff;'>
-        Answer
-      </div>
-    </div>
-    <div class='col-xs-8' ng-repeat='question in list.questions'>
-      <a href='' ng-click='goToQuestion($index)' style='color:blue;'> 
-        <div class='container-fluid col-xs-2' style='background:#fff;'>
-          <u>{{question.questionNum}}</u>
-        </div> 
-      </a>
-      <div class='container-fluid col-xs-4' style='background:#fff; color:#232c4b;'>
-       {{question.category}}
-      </div>
-      <div class='container-fluid col-xs-2' ng-if="question.value==='1'" style='background:#fff; color:#232c4b;'>
-        No
-      </div>
-      <div class='container-fluid col-xs-2' ng-if='question.value === "0"' style='background:#fff; color:#232c4b;'>
-        Yes
-      </div>
-      <div class='container-fluid col-xs-2' ng-if='!question.value' style='background:#fff; color:#232c4b;'>
-        -
-      </div>  
-    </div>
-</div>
-</div>
 </div>
 </div>
 </snap-content>

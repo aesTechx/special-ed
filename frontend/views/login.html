@@ -1,51 +1,56 @@
 <div class='col-xs-12' style='background:white;border-bottom: 1px solid #232c4b;'>
-	<h1 class='col-xs-10' style='color:#232c4b;'>
-		<a href="#landingPage"><i class="glyphicon glyphicon-home"></i></a>
-		SPECIAL ED
-	</h1>
-	<a ui-sref="signup" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center">Sign up</a>
+  <h1 class='col-xs-10' style='color:#232c4b;'>
+    <a href="#landingPage"><i class="glyphicon glyphicon-home"></i></a>
+    SPECIAL ED
+  </h1>
+  <a ui-sref="signup" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center">Sign up</a>
 </div>
 <div class="login-page">
-	<div class="img-container">
-		<div class="text-center pull-right photo" >
-		</div>
-	</div>
-	<div class="form-content">
-		<h1 style='color:#232c4b;'> HELLO </h1>
-		<p style='color:#232c4b;'> Please sign in </p>
-		<form role="form" class="bottom-75">
-			<div class="table-form">
-				<div class="form-groups">
-					<div class='select-wrapper form-control input-lg-wrapper' style='margin-bottom: 10px;'>
-			      <select id="sel1" class='form-control2 input-lg2' ng-model="option">
-			      	<option value='Select Type of User' selected="selected">Select Type of User </option>
-			        <option value='Student'>Student</option>
-			        <option value='Teacher'>Teacher</option>
-			        <option value='Center'>Center</option>
-			      </select>
-			    </div> 
-				<div class="form-group" ng-if='!resetPass'>
-					<input type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
-				</div>
-				<div class="form-group" ng-if='!resetPass'>
-					<input type="password" class="form-control input-lg"  id="" placeholder="PASSWORD" ng-model='user.password' class='glyphicon'>
-				</div>
-        <button class="btn btn-login-hover btn-block login-btn-new" type='submit'ng-if='!resetPass' ng-click='submit()'></span> Login <i class='glyphicon glyphicon-log-in' ></i></button>
-        <div class="remember" ng-if='!resetPass'>
-  				<label class="checkbox1" for="Option"> 
-  					<input id="Option" type="checkbox" class="">
-  					<span></span>
-  				</label>
-  			  remember me
-  			  <span class="pass"><button ng-click='forgotPass()' style="background:none; border:none;">Forgot your password? <strong>Reset</strong> ...</button></span>
-        </div>
-        <div class="form-group" ng-if='resetPass'>
-          <input type="text" class="form-control input-lg" id="" placeholder="Email" ng-model='reset.email'>
-          <button class="btn btn-login-hover btn-block login-btn-new" ng-click='resetPassword()'></span> Reset <i class='glyphicon glyphicon-log-in'></i></button>
-          <span class="pass"><button ng-click='forgotPass()' style="background:none; border:none;"><strong><i class='glyphicon glyphicon-arrow-left'></i>Back to login</strong></button></span>
-          <br><p style="color: red;">{{msg}}</p>
-        </div>
+  <div class="img-container">
+    <div class="text-center pull-right photo" >
+    </div>
+  </div>
+  <div class="form-content">
+    <h1 style='color:#232c4b;'> HELLO </h1>
+      <p style='color:#232c4b;'> Please sign in </p>
+        <form role="form" class="bottom-75">
+          <div class="table-form">
+            <div class="form-groups">
+              <div class='select-wrapper form-control input-lg-wrapper' style='margin-bottom: 10px;'>
+                <select id="sel1" class='form-control2 input-lg2' ng-model="option">
+                  <option value='Select Type of User' selected="selected">Select Type of User </option>
+                  <option value='Student'>Student</option>
+                  <option value='Teacher'>Teacher</option>
+                  <option value='Center'>Center</option>
+                </select>
+              </div> 
+            <div class="form-group" ng-if='!resetPass'>
+              <input type="text" class="form-control input-lg" id="" placeholder="USERNAME" ng-model='user.username'>
+            </div>
+            <div class="form-group" ng-if='!resetPass'>
+              <input type="password" class="form-control input-lg"  id="" placeholder="PASSWORD" ng-model='user.password' class='glyphicon'>
+            </div>
+            <button class="btn btn-login-hover btn-block login-btn-new" type='submit'ng-if='!resetPass' ng-click='submit()'></span> Login <i class='glyphicon glyphicon-log-in' ></i></button>
+            <div class="remember" ng-if='!resetPass'>
+              <label class="checkbox1" for="Option"> 
+                <input id="Option" type="checkbox" class="">
+                  <span></span>
+                </label>
+                  remember me
+              <span class="pass"><button ng-click='forgotPass()' style="background:none; border:none;">Forgot your password? <strong>Reset</strong> ...</button></span>
+            </div>
+            <div class="form-group" ng-if='resetPass'>
+              <input type="text" class="form-control input-lg" id="" placeholder="Email" ng-model='reset.email'>
+              <button class="btn btn-login-hover btn-block login-btn-new" ng-click='resetPassword()'> 
+                Reset <i class='glyphicon glyphicon-log-in'></i>
+              </button>
+              <span class="pass">
+                <button ng-click='forgotPass()' style="background:none; border:none;"><strong><i class='glyphicon glyphicon-arrow-left'></i>Back to login</strong>
+                </button>
+              </span>
+              <br><p style="color: red;">{{msg}}</p>
+            </div>
+          </div>			
+        </form>
       </div>			
-		</form>
-	</div>			
-</div>
+    </div>

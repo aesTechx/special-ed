@@ -19,64 +19,72 @@
             <div class="photo text-center col-sm-3 col-xs-12">
               <div class="img-container">
                 <img src={{data.student.profilePicture}} class="user-avatar img-circle img-responsive" style='border:#232c4b solid 2px;display:inline-block;width:250px;height:250px;overflow:hidden;vertical-align:top'/>
-                <h3><button style='border:none; background:none;' ng-click="editflag()"></span> MY Profile <sup><span class='glyphicon glyphicon-edit'></span></sup> </button></h3>
+                <h3>
+                  <button style='border:none; background:none;' ng-click="editflag()"> MY Profile <sup><span class='glyphicon glyphicon-edit'></span></sup> 
+                  </button>
+                </h3>
               </div>
-              <button ng-click="viewTeachers()" class="btn btn-login-hover btn-block profile-btn-new" ></span><i class="fa fa-user"></i> My Teachers</button>
-               <button ng-click="teacherflag()" class="btn btn-login-hover btn-block profile-btn-new" ></span><i class="fa fa-user"></i> My Stats</button>
-              <a ng-click="hello()" class="btn btn-login-hover btn-block profile-btn-new" href='#/dashboard/centerProfile/{{data.student.centerId}}'></span><i class='glyphicon glyphicon-glass'></i> My Center </a>
+              <button ng-click="viewTeachers()" class="btn btn-login-hover btn-block profile-btn-new" >
+                <i class="fa fa-user"></i> My Teachers
+              </button>
+              <button ng-click="teacherflag()" class="btn btn-login-hover btn-block profile-btn-new" >
+                <i class="fa fa-user"></i> My Stats
+              </button>
+              <a ng-click="hello()" class="btn btn-login-hover btn-block profile-btn-new" href='#/dashboard/centerProfile/{{data.student.centerId}}'>
+                <i class='glyphicon glyphicon-glass'></i> My Center </a>
             </div>
-          <div ng-if="!edit" class="col-sm-9">
-            <h2 >{{data.student.fullname}}
-              <span class="text-center p">
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star-o"></span>
-              </span>
-            </h2>
-            <p><strong>Birthday: </strong> {{data.student.birthdate}} </p>
-            <p><strong>Emergency Number: </strong>{{data.student.emergencyNumber}}</p>
-            <p><strong>Center:</strong></strong>{{data.student.center}}</p></p>
-            <p><strong>Todos:</strong><span ng-repeat='todo in data.student.todos'>{{todo}}</span></p>
-            <p><strong>Hobbies:</strong><span ng-repeat='hobby in data.student.hobbies'>{{hobby}}</span></p>
+            <div ng-if="!edit" class="col-sm-9">
+              <h2 >{{data.student.fullname}}
+                <span class="text-center p">
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star-o"></span>
+                </span>
+              </h2>
+              <p><strong>Birthday: </strong> {{data.student.birthdate}} </p>
+              <p><strong>Emergency Number: </strong>{{data.student.emergencyNumber}}</p>
+              <p><strong>Center:</strong></strong>{{data.student.center}}</p></p>
+              <p><strong>Todos:</strong><span ng-repeat='todo in data.student.todos'>{{todo}}</span></p>
+              <p><strong>Hobbies:</strong><span ng-repeat='hobby in data.student.hobbies'>{{hobby}}</span></p>
+            </div>
+            <div ng-if="edit">
+              <p><strong>Name: </strong> <input type="text" value={{data.student.fullname}} style="color: #C0C0C0;" ng-model="user.fullname"></input></p>
+              <p><strong>Password: </strong><input type="text" value={{data.student.password}} style="color: #C0C0C0;" ng-model=user.password> </p>
+              <p><strong>Birthdate: </strong><input type="date" id="dateOfBirth" ng-model="user.birthdate"></p>
+              <p><strong>Emergency Number: </strong><input type="text" value={{data.student.emergencyNumber}} style="color: #C0C0C0;" ng-model="user.emergencyNumber"></p>
+              <p><strong>Todos:</strong><input type="text" value={{data.student.todos}} style="color: #C0C0C0;" ng-model="user.todos"></p>
+              <button ng-click="editProfile()">Edit</button>
+            </div>
           </div>
-          <div ng-if="edit">
-            <p><strong>Name: </strong> <input type="text" value={{data.student.fullname}} style="color: #C0C0C0;" ng-model="user.fullname"></input></p>
-            <p><strong>Password: </strong><input type="text" value={{data.student.password}} style="color: #C0C0C0;" ng-model=user.password> </p>
-            <p><strong>Birthdate: </strong><input type="date" id="dateOfBirth" ng-model="user.birthdate"></p>
-            <p><strong>Emergency Number: </strong><input type="text" value={{data.student.emergencyNumber}} style="color: #C0C0C0;" ng-model="user.emergencyNumber"></p>
-            <p><strong>Todos:</strong><input type="text" value={{data.student.todos}} style="color: #C0C0C0;" ng-model="user.todos"></p>
-            <button ng-click="editProfile()">Edit</button>
+          <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
+            <div class="container text-center">
+              <div class='col-sm-2 col-xs-12'>
+                <svg id="fillgauge0" width="97%"><h4> OVERALL </h4></svg>
+              </div>
+              <div class='col-sm-2 col-xs-12'>
+                <svg id="fillgauge1" width="97%"><h4> SOCIAL </h4></svg>   
+              </div>
+              <div class='col-sm-2 col-xs-12'>
+                <svg id="fillgauge2" width="97%"><h4> PRESERVATION </h4></svg>
+              </div>
+              <div class='col-sm-2 col-xs-12'>
+                <svg id="fillgauge3" width="97%"><h4> COMMUNICATIONS </h4></svg>
+              </div>
+              <div class='col-sm-2 col-xs-12'>
+                <svg id="fillgauge4" width="97%"><h4> SENSORY </h4></svg>
+              </div>
+              <div class='col-sm-2 col-xs-12'>
+                <svg id="fillgauge5" width="97%"><h4> ATTENTION </h4></svg>
+              </div>
+            </div>
           </div>
+          <ul>
+            <a ng-if="teachers" href="#/dashboard/teacherProfile/{{teacher._id}}" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</a>
+          </ul>
         </div>
-        <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
-          <div class="container text-center">
-            <div class='col-sm-2 col-xs-12'>
-              <svg id="fillgauge0" width="97%"><h4> OVERALL </h4></svg>
-            </div>
-            <div class='col-sm-2 col-xs-12'>
-              <svg id="fillgauge1" width="97%"><h4> SOCIAL </h4></svg>   
-            </div>
-            <div class='col-sm-2 col-xs-12'>
-              <svg id="fillgauge2" width="97%"><h4> PRESERVATION </h4></svg>
-            </div>
-            <div class='col-sm-2 col-xs-12'>
-              <svg id="fillgauge3" width="97%"><h4> COMMUNICATIONS </h4></svg>
-            </div>
-            <div class='col-sm-2 col-xs-12'>
-              <svg id="fillgauge4" width="97%"><h4> SENSORY </h4></svg>
-            </div>
-            <div class='col-sm-2 col-xs-12'>
-              <svg id="fillgauge5" width="97%"><h4> ATTENTION </h4></svg>
-            </div>
-          </div>
-        </div>
-        <ul>
-          <a ng-if="teachers" href="#/dashboard/teacherProfile/{{teacher._id}}" class="btn btn-login-hover btn-lg login-btn-new col-xs-2 text-center" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</a>
-        </ul>
       </div>
-    </div>
-  </snap-content>	
-</div>
+    </snap-content>	
+  </div>
 </div>

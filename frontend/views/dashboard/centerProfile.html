@@ -20,81 +20,99 @@
             <div class="photo text-center col-sm-3 col-xs-12">
               <div class="img-container">
                 <img src={{data.center.profilePicture}} class="user-avatar img-circle img-responsive" style='border:#232c4b solid 2px;display:inline-block;width:250px;height:250px;overflow:hidden;vertical-align:top'/>
-                <h3><button style='border:none; background:none;' ng-click="editflag()"></span> MY Profile <sup><span class='glyphicon glyphicon-edit'></span></sup> </button></h3>
+                  <h3>
+                    <button style='border:none; background:none;' ng-click="editflag()"> MY Profile 
+                      <sup><span class='glyphicon glyphicon-edit'></span></sup> 
+                    </button>
+                  </h3>
               </div>
-              <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="viewTeachers()"></span><i class="fa glyphicon-education"></i> My Teachers</button>
-              <button class="btn btn-login-hover btn-block profile-btn-new" type='submit' ng-click="viewStudents()"></span><i class='glyphicon glyphicon-user'></i> My Students </button>
-              <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="assign()" type='submit'></span><i class='glyphicon glyphicon-pencil'></i> Assign Teachers Students</button>
+              <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="viewTeachers()">  </span><i class="fa glyphicon-education"></i> My Teachers
+              </button>
+              <button class="btn btn-login-hover btn-block profile-btn-new" type='submit' ng-click="viewStudents()">
+                <i class='glyphicon glyphicon-user'></i> My Students 
+              </button>
+              <button class="btn btn-login-hover btn-block profile-btn-new" ng-click="assign()" type='submit'>
+                <i class='glyphicon glyphicon-pencil'></i> Assign Teachers Students
+              </button>
             </div>
-          <div ng-if="!edit" class="col-sm-9">
-            <h2> {{data.center.centername}}
-              <span class="text-center p">
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star-o"></span>
-              </span>
-            </h2>
-            <p><strong>Foundation Date : </strong> {{data.center.foundationDate}} </p>
-            <p><strong>Phone Number: </strong>{{data.center.phone}}</p>
-            <p><strong>mobile:</strong>{{data.center.mobile}}</p>
-          </div>
+            <div ng-if="!edit" class="col-sm-9">
+              <h2> {{data.center.centername}}
+                <span class="text-center p">
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star-o"></span>
+                </span>
+              </h2>
+              <p><strong>Foundation Date : </strong> {{data.center.foundationDate}} </p>
+              <p><strong>Phone Number: </strong>{{data.center.phone}}</p>
+              <p><strong>mobile:</strong>{{data.center.mobile}}</p>
+            </div>
           </div>
           <div ng-if="edit">
-            <p><strong>Name: </strong> <input type="text" value={{data.center.fullname}} style="color: #C0C0C0;" ng-model="center.fullname"></input></p>
-            <p><strong>Foundation Date: </strong><input type="date" value={{data.center.foundationDate}} style="color: #C0C0C0;"ng-model="center.foundationDate"></p>
-            <p><strong>Password: </strong><input type="text" value={{data.center.password}} style="color: #C0C0C0;" ng-model=center.password> </p>
-            <!-- <p><strong>Birthdate: </strong><input type="date" id="dateOfBirth" ng-model="user.birthdate"></p> -->
-            <p><strong>Phone Number: </strong><input type="text" value={{data.center.phone}} style="color: #C0C0C0;" ng-model="center.phone"></p>
-            <p><strong>mobile:</strong><input type="text" value={{data.center.mobile}} style="color: #C0C0C0;" ng-model="center.mobile"></p>
+            <p><strong>Name: </strong> 
+              <input type="text" value={{data.center.fullname}} style="color: #C0C0C0;" ng-model="center.fullname"></input>
+            </p>
+            <p><strong>Foundation Date: </strong>
+              <input type="date" value={{data.center.foundationDate}} style="color: #C0C0C0;"ng-model="center.foundationDate">
+            </p>
+            <p><strong>Password: </strong>
+              <input type="text" value={{data.center.password}} style="color: #C0C0C0;" ng-model=center.password>
+            </p>
+            <p><strong>Phone Number: </strong>
+              <input type="text" value={{data.center.phone}} style="color: #C0C0C0;" ng-model="center.phone">
+            </p>
+            <p><strong>mobile:</strong>
+              <input type="text" value={{data.center.mobile}} style="color: #C0C0C0;" ng-model="center.mobile">
+            </p>
             <button ng-click="editProfile()">Edit</button>
           </div>
         </div> 
-          <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
-            <div class="container text-center">
-              <div ng-if='viewTeachersFlag' ng-if="!assignFlag" style='background:#fff;' class="item col-sm-4 col-xs-4" ng-repeat="teacher in data.teachers">
-                <div class="thumbnail">
-                  <img class="col-xs-6 group list-group-image" src="../../images/school-minions.jpg" alt="" />
-                  <div class="col-xs-6 caption">
-                    <h4 class="group inner list-group-item-heading">
-                      Teacher Name: {{teacher.fullname}}</h4>
-                    <p class="group inner list-group-item-text">
-                      {{teacher.email}}</p>
-                    <div class="row">
-                      <div class="col-xs-12 col-md-6">
-                        <p class="lead">{{teacher.fullname}}</p>
-                      </div>
+        <div class='row' style="background:#232c4b; padding:10px; color:#fff;">
+          <div class="container text-center">
+            <div ng-if='viewTeachersFlag' ng-if="!assignFlag" style='background:#fff;' class="item col-sm-4 col-xs-4" ng-repeat="teacher in data.teachers">
+              <div class="thumbnail">
+                <img class="col-xs-6 group list-group-image" src="../../images/school-minions.jpg" alt="" />
+                <div class="col-xs-6 caption">
+                  <h4 class="group inner list-group-item-heading">
+                    Teacher Name: {{teacher.fullname}}</h4>
+                  <p class="group inner list-group-item-text">
+                    {{teacher.email}}</p>
+                  <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                      <p class="lead">{{teacher.fullname}}</p>
                     </div>
                   </div>
                 </div>
               </div>
-          <div ng-if="assignFlag">
-          <h2>Teachers</h2>
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-success" ng-click="clickedteacher($index)" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</li>
-            </ul>
-          </div>
-           <div ng-if="assignFlag">
-           <h2>Students</h2>
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-success" ng-click="clickedstudent($index)" ng-repeat="student in data.students">{{student.fullname}}</li>
-            </ul>
-          </div>
-          <button ng-click="assignTeacher()" ng-if="assignOne">Assign</button>
-              <div ng-if='viewStudentsFlag' ng-if="!assignFlag" style='background:#fff;' class="item col-sm-4 col-xs-4" ng-repeat="student in data.students">
-                <div class="thumbnail">
-                    <img class="col-xs-6 group list-group-image" src="../../images/school-minions.jpg" alt="" />
-                  <div class="col-xs-6 caption">
-                    <p class="lead">{{student.fullname}}</p>
-                    <span class="group inner list-group-item-heading"> <small>
+            </div>
+            <div ng-if="assignFlag">
+            <h2>Teachers</h2>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-success" ng-click="clickedteacher($index)" ng-repeat="teacher in data.teachers">{{teacher.fullname}}</li>
+              </ul>
+            </div>
+            <div ng-if="assignFlag">
+             <h2>Students</h2>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-success" ng-click="clickedstudent($index)" ng-repeat="student in data.students">{{student.fullname}}</li>
+              </ul>
+            </div>
+            <button ng-click="assignTeacher()" ng-if="assignOne">Assign</button>
+            <div ng-if='viewStudentsFlag' ng-if="!assignFlag" style='background:#fff;' class="item col-sm-4 col-xs-4" ng-repeat="student in data.students">
+              <div class="thumbnail">
+                <img class="col-xs-6 group list-group-image" src="../../images/school-minions.jpg" alt="" />
+                <div class="col-xs-6 caption">
+                  <p class="lead">{{student.fullname}}</p>
+                  <span class="group inner list-group-item-heading"> <small>
                       Student Name: {{student.fullname}}</small></span></br>
-                    <span class="group inner list-group-item-text"> <small>
+                  <span class="group inner list-group-item-text"> <small>
                       {{teacher.email}}</small></span>
-                    <button ng-click="getTeachersMenu()">Teachers</button>
-                    <ui>
-                      <li ng-repeat="teach in data.menuteachers">{{teach.fullname}}</li>
-                    </ui>
+                  <button ng-click="getTeachersMenu()">Teachers</button>
+                  <ui>
+                    <li ng-repeat="teach in data.menuteachers">{{teach.fullname}}</li>
+                  </ui>
                 </div>
               </div>
             </div>

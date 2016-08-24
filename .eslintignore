@@ -7,3 +7,6 @@ Gulpfile.js
 **/lib
 **/vendor
 **/*.min.js
+**/frontend/lib
+**/frontend/src
+**/frontend/components
