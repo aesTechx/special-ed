@@ -46,8 +46,6 @@
   backface-visibility: hidden;
 }
 
-
-
 .card .back {
   background: blue;
   -webkit-transform: rotateY( 180deg );

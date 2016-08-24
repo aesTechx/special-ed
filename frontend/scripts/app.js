@@ -46,7 +46,7 @@ angular.module('SED', [
   'SED.studentProfile',
   'SED.teacherProfile',
   'SED.landing'
-  ])
+])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $urlRouterProvider.when('/dashboard', '/dashboard/overview');

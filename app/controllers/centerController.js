@@ -18,7 +18,7 @@ module.exports = {
       if (err) {
         res.status(500).send(err);
       }
-      console.log(users)
+      console.log(users);
       res.json(users);
     });
   },
@@ -128,7 +128,7 @@ module.exports = {
     var longitude = req.body.longitude;
     var latitude = req.body.latitude;
     var address = req.body.address;
-    var phone = req.body.phone
+    var phone = req.body.phone;
     Center.findOne({username: username})
       .exec(function(err, user) {
         if (!user) {

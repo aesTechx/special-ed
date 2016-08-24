@@ -38,5 +38,5 @@ memoryGameApp.directive('mgCard', function() {
     scope: {
       tile: '='
     }
-  }
+  };
 });
