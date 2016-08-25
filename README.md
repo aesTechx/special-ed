@@ -25,9 +25,9 @@ http://special-ed.herokuapp.com/
 * Take free assessment again to update your stats
 
 ## Meet The Engineers
-Product Owner: Eshraq Bakri
-Scrum Master: Salah Alomari
-Development Engineer: Aws Ahmed
+* Product Owner: Eshraq Bakri
+* Scrum Master: Salah Alomari
+* Development Engineer: Aws Ahmed
 
 ## Database
 This project uses Mongo DB, therefore, mongo must be installed on your PC, follow the instructions [here](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) for OS
