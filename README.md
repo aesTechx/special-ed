@@ -5,7 +5,7 @@
 A portal/app for helping those with learning disabilities and autism to connect to their facilitators and rehab centers, in a move to make it possible to learn from home and monitor progress
 http://special-ed.herokuapp.com/
 
-![alt tag](https://github.com/aesTechx/special-ed/blob/master/Screenshots/SpecialEd-Screenshot.jpg)
+![alt tag](https://github.com/aesTechx/special-ed/blob/master/Screenshots/SpecialEd-Screenshot-min.jpg)
 
 ## Special features
 
