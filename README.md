@@ -101,9 +101,6 @@ To run the lint file do:
 ### Build script
 Gulp
 
-### Integration Server
-Travis
-
 ## Contributing
 To contribute to this project please visit our [Contributing.md] (https://github.com/aesTechx/special-ed/blob/master/CONTRIBUTING.md)
 
