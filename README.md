@@ -26,6 +26,11 @@ http://special-ed.herokuapp.com/
 * Play game
 * Take free assessment again to update your stats
 
+### Test user
+* Type of User: Student
+* Username:     Amir
+* Password:     123
+
 ## Meet The Engineers
 * Product Owner: Eshraq Bakri
 * Scrum Master: Salah Alomari
