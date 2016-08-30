@@ -103,9 +103,6 @@ To run the lint file do:
 * Mocha
 * Chai
 
-### Build script
-Gulp
-
 ## Contributing
 To contribute to this project please visit our [Contributing.md] (https://github.com/aesTechx/special-ed/blob/master/CONTRIBUTING.md)
 
