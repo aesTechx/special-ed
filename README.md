@@ -5,7 +5,7 @@
 A portal/app for helping those with learning disabilities and autism to connect to their facilitators and rehab centers, in a move to make it possible to learn from home and monitor progress
 http://special-ed.herokuapp.com/
 
-![alt tag](https://github.com/aesTechx/special-ed/blob/master/Screenshots/SpecialEd-Screenshot.jpg)
+![alt tag](https://github.com/aesTechx/special-ed/blob/master/Screenshots/SpecialEd-Screenshot-min.jpg)
 
 ## Special features
 
@@ -25,6 +25,11 @@ http://special-ed.herokuapp.com/
 * Once you are part of a center, you can view teachers/center profiles
 * Play game
 * Take free assessment again to update your stats
+
+### Test user
+* Type of User: Student
+* Username:     Amir
+* Password:     123
 
 ## Meet The Engineers
 * Product Owner: Eshraq Bakri
@@ -97,12 +102,6 @@ To run the lint file do:
 #### Backend
 * Mocha
 * Chai
-
-### Build script
-Gulp
-
-### Integration Server
-Travis
 
 ## Contributing
 To contribute to this project please visit our [Contributing.md] (https://github.com/aesTechx/special-ed/blob/master/CONTRIBUTING.md)
