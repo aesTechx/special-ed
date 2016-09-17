@@ -3,7 +3,6 @@ var Q = require('q');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var CarsAssessmentSchema = new mongoose.Schema({
   name: String,
   questions: {},

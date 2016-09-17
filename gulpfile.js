@@ -8,20 +8,20 @@ var runSeq = require('run-sequence');
  */
 gulp.task('mocha', (cb) => 
 	gulp.src(['spec/server/*.js'], { read: false })
-        .pipe(mocha({ reporter: 'spec' }))
-        .once('error', () => {
-            process.exit(1);
-        })
-        .once('end', () => {
-            process.exit();
-        })
+    .pipe(mocha({ reporter: 'spec' }))
+    .once('error', () => {
+        process.exit(1);
+    })
+    .once('end', () => {
+        process.exit();
+    })
 );
-// gulp.task('karma', (done) => {
-//   new Server({
-//     configFile: __dirname + '/karma.conf.js',
-//     singleRun: true
-//   }, done).start();
-// });
+gulp.task('karma', (done) => {
+  new Server({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, done).start();
+});
 gulp.task ('test', function (cb) {
   runSeq('mocha', cb)
 })

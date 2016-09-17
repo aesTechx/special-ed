@@ -1,16 +1,17 @@
+// process.env.NODE_ENV = 'test';
 var path = require('path');
-var should = require('chai').should();
 var chai = require('chai');
 var chaihttp = require('chai-http');
-chai.use(chaihttp);
 var app = require('../../server');
+var should = require('chai').should();
+chai.use(chaihttp);
 
 describe('ControllersSpecs', function () {
   describe('studentGetPost()', function () {
     'use strict';
     it('post a new student to DB', function() {
       chai.request(app)
-      .post('http://127.0.0.1:8000/api/student/signup')
+      .post('/api/student/signup')
       .send({username: 'ali', password: 'ali', fullname: 'ali', birthdate: '25/11/2015'})
       .end(function(err, res) {
         res.should.have.status(201);
